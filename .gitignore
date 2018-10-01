@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/hexbox/v15/.suo
+/sources/.vs/Be.HexEditor/v15
+/sources/Be.HexEditor/obj/Debug
+/sources/Be.Windows.Forms.HexBox/bin/Debug
+/sources/Be.Windows.Forms.HexBox/obj/Debug
