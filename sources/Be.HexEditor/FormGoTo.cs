@@ -9,7 +9,7 @@ namespace Be.HexEditor
 	/// <summary>
 	/// Summary description for FormGoTo.
 	/// </summary>
-    public class FormGoTo : Core.FormEx
+    public class FormGoTo: Form
 	{
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btnCancel;

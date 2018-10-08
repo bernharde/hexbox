@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace Be.HexEditor.Core
 {
     public class MenuStripEx : MenuStrip
     {        
-        FormEx _form;
+        Form _form;
         float _dpiOld = 96F;
 
         public MenuStripEx()
@@ -17,8 +18,16 @@ namespace Be.HexEditor.Core
 
         protected override void ScaleControl(System.Drawing.SizeF factor, BoundsSpecified specified)
         {
-            base.ScaleControl(factor, specified);
-            CoreUtil.AdjustImages(this, ref _dpiOld, _form.DpiNew);
+            //base.ScaleControl(factor, specified);
+            //CoreUtil.AdjustImages(this, ref _dpiOld, this._form.DeviceDpi);
+        }
+
+        protected override void OnDpiChangedAfterParent(EventArgs e)
+        {
+            base.OnDpiChangedAfterParent(e);
+            var factor = DeviceDpi / 96F;
+            Font = new Font(SystemFonts.MessageBoxFont.FontFamily, SystemFonts.MessageBoxFont.Size*factor, SystemFonts.MessageBoxFont.Style);
+            CoreUtil.AdjustImages(this, ref _dpiOld, this._form.DeviceDpi);
         }
 
         protected override void OnParentChanged(EventArgs e)
@@ -42,11 +51,11 @@ namespace Be.HexEditor.Core
 
         void EnableFormEvents()
         {
-            _form = CoreUtil.GetParent<FormEx>(this);
+            _form = CoreUtil.GetParent<Form>(this);
 
-            if(_form != null)
+            if (_form != null)
             {
-                CoreUtil.AdjustImages(this, ref _dpiOld, _form.DpiNew);
+                CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
             }
         }
     }

@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace Be.HexEditor
 {
-    public partial class FormHexEditor : Core.FormEx
+    public partial class FormHexEditor: Form
     {
 		FormFind _formFind;
 		FindOptions _findOptions = new FindOptions();
@@ -26,7 +26,7 @@ namespace Be.HexEditor
 
             hexBox.Font = new Font(SystemFonts.MessageBoxFont.FontFamily, SystemFonts.MessageBoxFont.Size, SystemFonts.MessageBoxFont.Style);
 
-			this.toolStrip.Renderer.RenderToolStripBorder += new ToolStripRenderEventHandler(Renderer_RenderToolStripBorder);
+            this.toolStrip.Renderer.RenderToolStripBorder += new ToolStripRenderEventHandler(Renderer_RenderToolStripBorder);
         }
 
 		/// <summary>

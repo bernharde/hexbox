@@ -10,7 +10,7 @@ using Be.HexEditor.Properties;
 
 namespace Be.HexEditor
 {
-    public partial class FormOptions : Core.FormEx
+    public partial class FormOptions: Form
     {
         int recentFilesMax;
 

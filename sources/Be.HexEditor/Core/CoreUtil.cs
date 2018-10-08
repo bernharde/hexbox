@@ -53,6 +53,12 @@ namespace Be.HexEditor.Core
             }
         }
 
+        public static void ScaleFont(Control control)
+        {
+            var factor = control.DeviceDpi / 96F;
+            control.Font = new Font(control.Font.FontFamily, SystemFonts.MessageBoxFont.Size * factor, control.Font.Style);
+        }
+
         public static T GetParent<T>(Control c) where T : Control
         {
             if (c == null)

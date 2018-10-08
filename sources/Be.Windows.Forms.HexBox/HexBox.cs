@@ -3984,6 +3984,8 @@ namespace Be.Windows.Forms
         protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
         {
             base.ScaleControl(factor, specified);
+            scalefon
+           
 
             this.BeginInvoke(new MethodInvoker(() =>
                 {
@@ -3995,6 +3997,12 @@ namespace Be.Windows.Forms
                     }
                     this.Invalidate();
                 }));
+        }
+
+        public static void ScaleFont(Control control)
+        {
+            var factor = control.DeviceDpi / 96F;
+            control.Font = new Font(control.Font.FontFamily, SystemFonts.MessageBoxFont.Size * factor, control.Font.Style);
         }
         #endregion
     }

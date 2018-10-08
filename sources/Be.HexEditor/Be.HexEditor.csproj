@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -28,7 +28,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <SignAssembly>true</SignAssembly>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -138,9 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\CoreUtil.cs" />
-    <Compile Include="Core\FormEx.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Core\IScalingItem.cs" />
     <Compile Include="Core\MenuStripEx.cs">
       <SubType>Component</SubType>
@@ -162,7 +159,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ScalingImages.resx</DependentUpon>
     </Compile>
-    <Compile Include="W32.cs" />
     <EmbeddedResource Include="App.ico" />
     <EmbeddedResource Include="BitControl.de.resx">
       <DependentUpon>BitControl.cs</DependentUpon>

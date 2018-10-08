@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace Be.HexEditor.Core
 {
     public class ToolStripEx : ToolStrip
     {
-        FormEx _form;
+        Form _form;
         float _dpiOld = 96F;
 
         public ToolStripEx()
@@ -36,18 +37,27 @@ namespace Be.HexEditor.Core
 
         void EnableFormEvents()
         {
-            _form = CoreUtil.GetParent<FormEx>(this);
+            _form = CoreUtil.GetParent<Form>(this);
 
-            if(_form != null)
+            if (_form != null)
             {
-                CoreUtil.AdjustImages(this, ref _dpiOld, _form.DpiNew);
+                CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
             }
         }
 
-        protected override void ScaleControl(System.Drawing.SizeF factor, BoundsSpecified specified)
+        //protected override void ScaleControl(System.Drawing.SizeF factor, BoundsSpecified specified)
+        //{
+        //    base.ScaleControl(factor, specified);
+        //    CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
+        //}
+
+        protected override void OnDpiChangedAfterParent(EventArgs e)
         {
-            base.ScaleControl(factor, specified);
-            CoreUtil.AdjustImages(this, ref _dpiOld, _form.DpiNew);
+            base.OnDpiChangedAfterParent(e);
+            
+            CoreUtil.ScaleFont(this);
+            
+            CoreUtil.AdjustImages(this, ref _dpiOld, this._form.DeviceDpi);
         }
     }
 }

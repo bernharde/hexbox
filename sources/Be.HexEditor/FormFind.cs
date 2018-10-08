@@ -13,7 +13,7 @@ namespace Be.HexEditor
 	/// <summary>
 	/// Summary description for FormFind.
 	/// </summary>
-    public class FormFind : Core.FormEx
+    public class FormFind: Form
 	{
 		private Be.Windows.Forms.HexBox hexFind;
 		private System.Windows.Forms.TextBox txtFind;

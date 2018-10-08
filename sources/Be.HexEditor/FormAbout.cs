@@ -9,7 +9,7 @@ namespace Be.HexEditor
 	/// <summary>
 	/// Summary description for FormAbout.
 	/// </summary>
-	public class FormAbout : Core.FormEx
+	public class FormAbout: Form
 	{
 		private Be.HexEditor.UCAbout ucAbout1;
 		private System.Windows.Forms.Button btnOK;
