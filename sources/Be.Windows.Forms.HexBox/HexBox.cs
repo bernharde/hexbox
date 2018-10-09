@@ -2754,7 +2754,7 @@ namespace Be.Windows.Forms
             SizeF charSize;
             using (var graphics = this.CreateGraphics())
             {
-                charSize = this.CreateGraphics().MeasureString("A", Font, 100, _stringFormat);
+                charSize = this.CreateGraphics().MeasureString("W", Font, 100, _stringFormat);
             }
 			CharSize = new SizeF((float)Math.Ceiling(charSize.Width), (float)Math.Ceiling(charSize.Height));
 
@@ -3094,12 +3094,12 @@ namespace Be.Windows.Forms
 
 				_vScrollBarVisible = value;
 
-				if (_vScrollBarVisible)
-					Controls.Add(_vScrollBar);
-				else
-					Controls.Remove(_vScrollBar);
+                if (_vScrollBarVisible)
+                    Controls.Add(_vScrollBar);
+                else
+                    Controls.Remove(_vScrollBar);
 
-				UpdateRectanglePositioning();
+                UpdateRectanglePositioning();
 				UpdateScrollSize();
 
 				OnVScrollBarVisibleChanged(EventArgs.Empty);
@@ -4001,13 +4001,27 @@ namespace Be.Windows.Forms
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
             base.OnDpiChangedAfterParent(e);
-            ScaleFont(this);
+
+            var form = GetParent<Form>(this);
+            Font = new Font(Font.FontFamily, form.Font.Size, Font.Style);
+            _vScrollBar.Width = SystemInformation.GetVerticalScrollBarWidthForDpi(DeviceDpi);
+            UpdateVScroll();
+            UpdateRectanglePositioning();
+            Invalidate();
         }
 
-        public static void ScaleFont(Control control)
+        public static T GetParent<T>(Control c) where T : Control
         {
-            var factor = control.DeviceDpi / 96F;
-            control.Font = new Font(control.Font.FontFamily, SystemFonts.MessageBoxFont.Size * factor, control.Font.Style);
+            if (c == null)
+                return default(T);
+
+            var parent = c.Parent;
+
+            var found = parent as T;
+            if (found != null)
+                return found;
+
+            return GetParent<T>(parent);
         }
         #endregion
     }

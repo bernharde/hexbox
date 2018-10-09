@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -54,9 +55,21 @@ namespace Be.HexEditor.Core
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
             base.OnDpiChangedAfterParent(e);
-            
-            CoreUtil.ScaleFont(this);
-            
+
+            foreach(var item in this.Items)
+            {
+                var cbo = item as ToolStripComboBox;
+                if(cbo != null)
+                {
+                    Debug.WriteLine($"Toolstrip.ComboBox font {cbo.Font.Size}");
+                    cbo.Font = _form.Font;
+                }
+            }
+
+            Debug.WriteLine($"Toolstrip.OnDpiChangedAfterParent deviceDpi: {DeviceDpi} formFontSize: {_form.Font.Size}, fontSize: {Font.Size}");
+
+            //this.Font = _form.Font;
+
             CoreUtil.AdjustImages(this);
         }
     }

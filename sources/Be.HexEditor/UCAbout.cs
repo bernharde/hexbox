@@ -207,8 +207,7 @@ namespace Be.HexEditor
             // 
             // UCAbout
             // 
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.lblVersion);
@@ -217,6 +216,7 @@ namespace Be.HexEditor
             this.Controls.Add(this.lnkWorkspace);
             this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.label1);
+            resources.ApplyResources(this, "$this");
             this.Name = "UCAbout";
             this.Load += new System.EventHandler(this.UCAbout_Load);
             this.tabControl.ResumeLayout(false);

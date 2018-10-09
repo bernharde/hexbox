@@ -318,68 +318,29 @@
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;tabThanksTo.Name" xml:space="preserve">
-    <value>tabThanksTo</value>
-  </data>
-  <data name="&gt;&gt;tabThanksTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabThanksTo.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabThanksTo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabLicense.Name" xml:space="preserve">
-    <value>tabLicense</value>
-  </data>
-  <data name="&gt;&gt;tabLicense.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabLicense.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabLicense.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabChanges.Name" xml:space="preserve">
-    <value>tabChanges</value>
-  </data>
-  <data name="&gt;&gt;tabChanges.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabChanges.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabChanges.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 97</value>
-  </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>701, 348</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="tabThanksTo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="txtThanksTo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="txtThanksTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="txtThanksTo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="txtThanksTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>693, 322</value>
+  </data>
+  <data name="txtThanksTo.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="txtThanksTo.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="txtThanksTo.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;txtThanksTo.Name" xml:space="preserve">
     <value>txtThanksTo</value>
@@ -420,38 +381,26 @@
   <data name="&gt;&gt;tabThanksTo.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="txtThanksTo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="txtLicense.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="txtThanksTo.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtLicense.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="txtThanksTo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="txtLicense.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="txtThanksTo.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txtLicense.Size" type="System.Drawing.Size, System.Drawing">
     <value>693, 322</value>
   </data>
-  <data name="txtThanksTo.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="txtLicense.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="txtThanksTo.Text" xml:space="preserve">
+  <data name="txtLicense.Text" xml:space="preserve">
     <value />
   </data>
-  <data name="txtThanksTo.WordWrap" type="System.Boolean, mscorlib">
+  <data name="txtLicense.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtThanksTo.Name" xml:space="preserve">
-    <value>txtThanksTo</value>
-  </data>
-  <data name="&gt;&gt;txtThanksTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtThanksTo.Parent" xml:space="preserve">
-    <value>tabThanksTo</value>
-  </data>
-  <data name="&gt;&gt;txtThanksTo.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;txtLicense.Name" xml:space="preserve">
     <value>txtLicense</value>
@@ -492,38 +441,26 @@
   <data name="&gt;&gt;tabLicense.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="txtLicense.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="txtChanges.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="txtLicense.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtChanges.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="txtLicense.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="txtChanges.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="txtLicense.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txtChanges.Size" type="System.Drawing.Size, System.Drawing">
     <value>693, 322</value>
   </data>
-  <data name="txtLicense.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="txtChanges.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="txtLicense.Text" xml:space="preserve">
+  <data name="txtChanges.Text" xml:space="preserve">
     <value />
   </data>
-  <data name="txtLicense.WordWrap" type="System.Boolean, mscorlib">
+  <data name="txtChanges.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtLicense.Name" xml:space="preserve">
-    <value>txtLicense</value>
-  </data>
-  <data name="&gt;&gt;txtLicense.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtLicense.Parent" xml:space="preserve">
-    <value>tabLicense</value>
-  </data>
-  <data name="&gt;&gt;txtLicense.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;txtChanges.Name" xml:space="preserve">
     <value>txtChanges</value>
@@ -564,38 +501,29 @@
   <data name="&gt;&gt;tabChanges.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="txtChanges.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 97</value>
   </data>
-  <data name="txtChanges.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="txtChanges.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="txtChanges.Size" type="System.Drawing.Size, System.Drawing">
-    <value>693, 322</value>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>701, 348</value>
   </data>
-  <data name="txtChanges.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="txtChanges.Text" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
   </data>
-  <data name="txtChanges.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtChanges.Name" xml:space="preserve">
-    <value>txtChanges</value>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;txtChanges.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtChanges.Parent" xml:space="preserve">
-    <value>tabChanges</value>
-  </data>
-  <data name="&gt;&gt;txtChanges.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -630,9 +558,6 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>

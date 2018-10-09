@@ -71,7 +71,7 @@ namespace Be.HexEditor
             this.pasteToolStripMenuItem1 = new Be.HexEditor.Core.ToolStripMenuItemEx();
             this.pasteHexToolStripMenuItem1 = new Be.HexEditor.Core.ToolStripMenuItemEx();
             this.encodingToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new Core.StatusStripEx();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.fileSizeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.bitToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -330,7 +330,7 @@ namespace Be.HexEditor
             // openToolStripButton
             // 
             this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = global::Be.HexEditor.images.openHS;
+            this.openToolStripButton.Image = global::Be.HexEditor.ScalingImages.FolderOpen_16;
             this.openToolStripButton.Image16 = global::Be.HexEditor.ScalingImages.FolderOpen_16;
             this.openToolStripButton.Image24 = global::Be.HexEditor.ScalingImages.FolderOpen_24;
             this.openToolStripButton.Image32 = global::Be.HexEditor.ScalingImages.FolderOpen_32;
@@ -341,7 +341,7 @@ namespace Be.HexEditor
             // saveToolStripButton
             // 
             this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Image = global::Be.HexEditor.images.saveHS;
+            this.saveToolStripButton.Image = global::Be.HexEditor.ScalingImages.save16;
             this.saveToolStripButton.Image16 = global::Be.HexEditor.ScalingImages.save16;
             this.saveToolStripButton.Image24 = global::Be.HexEditor.ScalingImages.Save24;
             this.saveToolStripButton.Image32 = global::Be.HexEditor.ScalingImages.Save32;
@@ -357,7 +357,7 @@ namespace Be.HexEditor
             // cutToolStripButton
             // 
             this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cutToolStripButton.Image = global::Be.HexEditor.images.CutHS;
+            this.cutToolStripButton.Image = global::Be.HexEditor.ScalingImages.Cut16;
             this.cutToolStripButton.Image16 = global::Be.HexEditor.ScalingImages.Cut16;
             this.cutToolStripButton.Image24 = global::Be.HexEditor.ScalingImages.Cut24;
             this.cutToolStripButton.Image32 = global::Be.HexEditor.ScalingImages.Cut32;
@@ -558,7 +558,7 @@ namespace Be.HexEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private Core.ToolStripButtonEx cutToolStripButton;
         private Be.Windows.Forms.HexBox hexBox;
-        private System.Windows.Forms.StatusStrip statusStrip;
+        private Core.StatusStripEx statusStrip;
         private Core.ToolStripMenuItemEx findNextToolStripMenuItem;
         private Core.ToolStripMenuItemEx goToToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;

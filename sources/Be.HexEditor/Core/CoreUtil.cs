@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,9 @@ namespace Be.HexEditor.Core
             //MessageBox.Show(factor.ToString());
 
             toolStrip.ImageScalingSize = new System.Drawing.Size((int)(16F * factor), (int)(16F * factor));
+
+            Debug.WriteLine($"AdjustImages factor: {factor}, scalingSize: {toolStrip.ImageScalingSize}");
+
             //MessageBox.Show(toolStrip.ImageScalingSize.Width.ToString());
 
             var width = toolStrip.ImageScalingSize.Width;

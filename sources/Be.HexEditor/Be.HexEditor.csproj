@@ -142,6 +142,9 @@
     <Compile Include="Core\MenuStripEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Core\StatusStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\ToolStripButtonEx.cs">
       <SubType>Component</SubType>
     </Compile>
