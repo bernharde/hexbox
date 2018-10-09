@@ -25,8 +25,7 @@ namespace Be.HexEditor.Core
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
             base.OnDpiChangedAfterParent(e);
-            var factor = DeviceDpi / 96F;
-            Font = new Font(SystemFonts.MessageBoxFont.FontFamily, SystemFonts.MessageBoxFont.Size*factor, SystemFonts.MessageBoxFont.Style);
+            CoreUtil.ScaleFont(this);
             CoreUtil.AdjustImages(this, ref _dpiOld, this._form.DeviceDpi);
         }
 
@@ -55,7 +54,7 @@ namespace Be.HexEditor.Core
 
             if (_form != null)
             {
-                CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
+                //CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
             }
         }
     }

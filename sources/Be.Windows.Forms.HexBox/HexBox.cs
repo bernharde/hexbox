@@ -3984,7 +3984,6 @@ namespace Be.Windows.Forms
         protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
         {
             base.ScaleControl(factor, specified);
-            scalefon
            
 
             this.BeginInvoke(new MethodInvoker(() =>
@@ -3997,6 +3996,12 @@ namespace Be.Windows.Forms
                     }
                     this.Invalidate();
                 }));
+        }
+
+        protected override void OnDpiChangedAfterParent(EventArgs e)
+        {
+            base.OnDpiChangedAfterParent(e);
+            ScaleFont(this);
         }
 
         public static void ScaleFont(Control control)

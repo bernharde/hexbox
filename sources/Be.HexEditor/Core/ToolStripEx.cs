@@ -41,7 +41,7 @@ namespace Be.HexEditor.Core
 
             if (_form != null)
             {
-                CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
+                //CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
             }
         }
 
