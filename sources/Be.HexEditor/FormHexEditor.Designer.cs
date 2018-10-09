@@ -180,9 +180,9 @@ namespace Be.HexEditor
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Image = global::Be.HexEditor.ScalingImages.Cut16;
-            this.cutToolStripMenuItem.Image16 = global::Be.HexEditor.ScalingImages.Copy16;
-            this.cutToolStripMenuItem.Image24 = global::Be.HexEditor.ScalingImages.Copy24;
-            this.cutToolStripMenuItem.Image32 = global::Be.HexEditor.ScalingImages.Copy32;
+            this.cutToolStripMenuItem.Image16 = global::Be.HexEditor.ScalingImages.Cut16;
+            this.cutToolStripMenuItem.Image24 = global::Be.HexEditor.ScalingImages.Cut24;
+            this.cutToolStripMenuItem.Image32 = global::Be.HexEditor.ScalingImages.Cut32;
             resources.ApplyResources(this.cutToolStripMenuItem, "cutToolStripMenuItem");
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cut_Click);
@@ -359,8 +359,8 @@ namespace Be.HexEditor
             this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.cutToolStripButton.Image = global::Be.HexEditor.images.CutHS;
             this.cutToolStripButton.Image16 = global::Be.HexEditor.ScalingImages.Cut16;
-            this.cutToolStripButton.Image24 = global::Be.HexEditor.ScalingImages.Copy24;
-            this.cutToolStripButton.Image32 = global::Be.HexEditor.ScalingImages.Copy32;
+            this.cutToolStripButton.Image24 = global::Be.HexEditor.ScalingImages.Cut24;
+            this.cutToolStripButton.Image32 = global::Be.HexEditor.ScalingImages.Cut32;
             resources.ApplyResources(this.cutToolStripButton, "cutToolStripButton");
             this.cutToolStripButton.Name = "cutToolStripButton";
             this.cutToolStripButton.Click += new System.EventHandler(this.cut_Click);
@@ -483,7 +483,6 @@ namespace Be.HexEditor
             this.hexBox.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.SelectAllMenuItemText");
             this.hexBox.ColumnInfoVisible = true;
             this.hexBox.HexCasing = Be.Windows.Forms.HexCasing.Lower;
-            this.hexBox.InfoForeColor = System.Drawing.Color.Gray;
             this.hexBox.LineInfoVisible = true;
             this.hexBox.Name = "hexBox";
             this.hexBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));

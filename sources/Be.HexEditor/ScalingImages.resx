@@ -166,12 +166,6 @@
   <data name="Paste16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Paste16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Paste24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Paste24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Paste32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Paste32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="save16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\save16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -180,5 +174,11 @@
   </data>
   <data name="Save32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Save32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paste24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Paste24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paste32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Paste32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

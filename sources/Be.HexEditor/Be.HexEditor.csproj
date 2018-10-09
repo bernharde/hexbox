@@ -173,6 +173,7 @@
     <EmbeddedResource Include="strings.it.resx">
       <SubType>Designer</SubType>
       <LastGenOutput>strings.it.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAbout.de.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
@@ -267,6 +268,7 @@
     <EmbeddedResource Include="strings.de.resx">
       <SubType>Designer</SubType>
       <LastGenOutput>strings.de.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -275,9 +277,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="strings.ru.resx">
       <LastGenOutput>strings.ru.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="strings.zh-Hans.resx">
       <LastGenOutput>strings.zh-Hans.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="UCAbout.de.resx">
       <DependentUpon>UCAbout.cs</DependentUpon>
@@ -342,10 +346,35 @@
     <Compile Include="RecentFileHandler.Designer.cs">
       <DependentUpon>RecentFileHandler.cs</DependentUpon>
     </Compile>
+    <Compile Include="strings.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.de.resx</DependentUpon>
+    </Compile>
     <Compile Include="strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="strings.it.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.it.resx</DependentUpon>
+    </Compile>
+    <Compile Include="strings.ja.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.ja.resx</DependentUpon>
+    </Compile>
+    <Compile Include="strings.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="strings.zh-Hans.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>strings.zh-Hans.resx</DependentUpon>
     </Compile>
     <Compile Include="UCAbout.cs">
       <SubType>UserControl</SubType>
@@ -381,6 +410,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="strings.ja.resx">
       <LastGenOutput>strings.ja.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>

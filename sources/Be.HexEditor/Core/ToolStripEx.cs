@@ -41,7 +41,7 @@ namespace Be.HexEditor.Core
 
             if (_form != null)
             {
-                //CoreUtil.AdjustImages(this, ref _dpiOld, _form.DeviceDpi);
+                CoreUtil.AdjustImages(this);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Be.HexEditor.Core
             
             CoreUtil.ScaleFont(this);
             
-            CoreUtil.AdjustImages(this, ref _dpiOld, this._form.DeviceDpi);
+            CoreUtil.AdjustImages(this);
         }
     }
 }

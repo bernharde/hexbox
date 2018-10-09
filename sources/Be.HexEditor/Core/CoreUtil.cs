@@ -9,31 +9,24 @@ namespace Be.HexEditor.Core
 {
     public static class CoreUtil
     {
-        public static void ScaleFont(Control control, float factor)
-        {
-            control.Font = new Font(control.Font.FontFamily,
-                                 control.Font.Size * factor,
-                                 control.Font.Style);
-        }
-
-        public static void AdjustImages(ToolStrip toolStrip, ref float dpiOld, float dpiNew)
+        public static void AdjustImages(ToolStrip toolStrip)
         {
             if (Util.DesignMode) return;
 
             //var newDpi = _form.DpiNew;
-            var factor = dpiNew / dpiOld;
+            var factor = (float)toolStrip.DeviceDpi / 96F;
 
             //MessageBox.Show(factor.ToString());
 
-            if ((dpiNew == 0) || (dpiOld == dpiNew)) return; // Abort.
+            //if ((dpiNew == 0) || (dpiOld == dpiNew)) return; // Abort.
 
             //float factor = _form.DpiNew / _dpiOld;
 
-            dpiOld = dpiNew;
+            //dpiOld = dpiNew;
 
             //MessageBox.Show(factor.ToString());
 
-            toolStrip.ImageScalingSize = new System.Drawing.Size((int)(toolStrip.ImageScalingSize.Width * factor), (int)(toolStrip.ImageScalingSize.Height * factor));
+            toolStrip.ImageScalingSize = new System.Drawing.Size((int)(16F * factor), (int)(16F * factor));
             //MessageBox.Show(toolStrip.ImageScalingSize.Width.ToString());
 
             var width = toolStrip.ImageScalingSize.Width;
