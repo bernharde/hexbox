@@ -1384,7 +1384,7 @@ namespace Be.Windows.Forms
 			BackColor = Color.White;
             Font = SystemFonts.MessageBoxFont;
 			_stringFormat = new StringFormat(StringFormat.GenericTypographic);
-			_stringFormat.FormatFlags = StringFormatFlags.MeasureTrailingSpaces;
+			_stringFormat.FormatFlags = StringFormatFlags.NoClip;
 
 			ActivateEmptyKeyInterpreter();
 
@@ -2754,7 +2754,7 @@ namespace Be.Windows.Forms
             SizeF charSize;
             using (var graphics = this.CreateGraphics())
             {
-                charSize = this.CreateGraphics().MeasureString("W", Font, 100, _stringFormat);
+                charSize = this.CreateGraphics().MeasureString("A", Font, 100, _stringFormat);
             }
 			CharSize = new SizeF((float)Math.Ceiling(charSize.Width), (float)Math.Ceiling(charSize.Height));
 
@@ -3976,27 +3976,27 @@ namespace Be.Windows.Forms
 		#endregion
 
         #region Scaling Support for High DPI resolution screens
-        /// <summary>
-        /// For high resolution screen support
-        /// </summary>
-        /// <param name="factor">the factor</param>
-        /// <param name="specified">bounds</param>
-        protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
-        {
-            base.ScaleControl(factor, specified);
+        ///// <summary>
+        ///// For high resolution screen support
+        ///// </summary>
+        ///// <param name="factor">the factor</param>
+        ///// <param name="specified">bounds</param>
+        //protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+        //{
+        //    base.ScaleControl(factor, specified);
            
 
-            this.BeginInvoke(new MethodInvoker(() =>
-                {
-                    this.UpdateRectanglePositioning();
-                    if (_caretVisible)
-                    {
-                        DestroyCaret();
-                        CreateCaret();
-                    }
-                    this.Invalidate();
-                }));
-        }
+        //    this.BeginInvoke(new MethodInvoker(() =>
+        //        {
+        //            this.UpdateRectanglePositioning();
+        //            if (_caretVisible)
+        //            {
+        //                DestroyCaret();
+        //                CreateCaret();
+        //            }
+        //            this.Invalidate();
+        //        }));
+        //}
 
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
@@ -4007,6 +4007,11 @@ namespace Be.Windows.Forms
             _vScrollBar.Width = SystemInformation.GetVerticalScrollBarWidthForDpi(DeviceDpi);
             UpdateVScroll();
             UpdateRectanglePositioning();
+            if (_caretVisible)
+            {
+                DestroyCaret();
+                CreateCaret();
+            }
             Invalidate();
         }
 

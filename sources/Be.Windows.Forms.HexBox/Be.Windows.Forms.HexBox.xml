@@ -1554,13 +1554,6 @@
             </summary>
             <param name="e">An EventArgs that contains the event data.</param>
         </member>
-        <member name="M:Be.Windows.Forms.HexBox.ScaleControl(System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
-            <summary>
-            For high resolution screen support
-            </summary>
-            <param name="factor">the factor</param>
-            <param name="specified">bounds</param>
-        </member>
         <member name="T:Be.Windows.Forms.HexCasing">
             <summary>
             Specifies the case of hex characters in the HexBox control
