@@ -8,3 +8,8 @@
 /sources/Be.Windows.Forms.HexBox/bin/Debug
 /sources/Be.Windows.Forms.HexBox/obj/Debug
 /.vs
+/sources/Be.HexEditor/bin
+/sources/.vs/hexbox/v15/*.suo
+/sources/Be.HexEditor/bin
+/sources/Be.HexEditor/obj
+/sources/Be.Windows.Forms.HexBox/obj

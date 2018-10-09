@@ -23,15 +23,16 @@ namespace Be.HexEditor
 		private System.Windows.Forms.RichTextBox txtLicense;
 		private System.Windows.Forms.TabPage tabChanges;
 		private System.Windows.Forms.RichTextBox txtChanges;
-		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.LinkLabel lnkWorkspace;
 		private System.Windows.Forms.TabControl tabControl;
 		private System.Windows.Forms.TabPage tabThanksTo;
 		private System.Windows.Forms.RichTextBox txtThanksTo;
-		/// <summary> 
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        private Label label2;
+
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
 		public UCAbout()
 		{
@@ -103,12 +104,11 @@ namespace Be.HexEditor
             this.txtLicense = new System.Windows.Forms.RichTextBox();
             this.tabChanges = new System.Windows.Forms.TabPage();
             this.txtChanges = new System.Windows.Forms.RichTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabThanksTo.SuspendLayout();
             this.tabLicense.SuspendLayout();
             this.tabChanges.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -198,18 +198,18 @@ namespace Be.HexEditor
             resources.ApplyResources(this.txtChanges, "txtChanges");
             this.txtChanges.Name = "txtChanges";
             // 
-            // pictureBox1
+            // label2
             // 
-            this.pictureBox1.Image = global::Be.HexEditor.images.Logo;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Name = "label2";
             // 
             // UCAbout
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label7);
@@ -223,7 +223,6 @@ namespace Be.HexEditor
             this.tabThanksTo.ResumeLayout(false);
             this.tabLicense.ResumeLayout(false);
             this.tabChanges.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

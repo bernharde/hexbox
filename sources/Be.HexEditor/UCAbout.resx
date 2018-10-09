@@ -472,7 +472,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabLicense.Size" type="System.Drawing.Size, System.Drawing">
-    <value>501, 322</value>
+    <value>693, 322</value>
   </data>
   <data name="tabLicense.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -502,7 +502,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtLicense.Size" type="System.Drawing.Size, System.Drawing">
-    <value>501, 322</value>
+    <value>693, 322</value>
   </data>
   <data name="txtLicense.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -544,7 +544,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tabChanges.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 322</value>
+    <value>693, 322</value>
   </data>
   <data name="tabChanges.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -574,7 +574,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="txtChanges.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 322</value>
+    <value>693, 322</value>
   </data>
   <data name="txtChanges.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -597,34 +597,34 @@
   <data name="&gt;&gt;txtChanges.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 36pt</value>
   </data>
-  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 6</value>
   </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 76</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 67</value>
   </data>
-  <data name="pictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>0F</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
