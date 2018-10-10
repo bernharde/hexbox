@@ -71,7 +71,7 @@ namespace Be.HexEditor
             this.pasteToolStripMenuItem1 = new Be.HexEditor.Core.ToolStripMenuItemEx();
             this.pasteHexToolStripMenuItem1 = new Be.HexEditor.Core.ToolStripMenuItemEx();
             this.encodingToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.statusStrip = new Core.StatusStripEx();
+            this.statusStrip = new Be.HexEditor.Core.StatusStripEx();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.fileSizeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.bitToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();

@@ -11,7 +11,6 @@ namespace Be.HexEditor.Core
     public class ToolStripEx : ToolStrip
     {
         Form _form;
-        float _dpiOld = 96F;
 
         public ToolStripEx()
         {

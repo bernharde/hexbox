@@ -15,3 +15,5 @@
 /sources/Be.Windows.Forms.HexBox/obj
 /sources/.vs/hexbox/v15/Server/sqlite3
 .vs
+/sources/IG/ImageGen/bin
+/sources/IG/ImageGen/obj

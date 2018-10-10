@@ -14,14 +14,15 @@ namespace ImageGen
 
         static void Main(string[] args)
         {
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "Open.svg");
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "Save.svg");
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "SaveStatusBar.svg");
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "Cut.svg");
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "Copy.svg");
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "Paste.svg");
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "QuickFind.svg");
-            ProcessImage(@"C:\Users\mextbe\Desktop\i\Open17\", "FindNext.svg");
+            var path = @"C:\dev\hexbox\sources\IG\Images\";
+            ProcessImage(path, "Open.svg");
+            ProcessImage(path, "Save.svg");
+            ProcessImage(path, "SaveStatusBar.svg");
+            ProcessImage(path, "Cut.svg");
+            ProcessImage(path, "Copy.svg");
+            ProcessImage(path, "Paste.svg");
+            ProcessImage(path, "QuickFind.svg");
+            ProcessImage(path, "FindNext.svg");
         }
 
         static void ProcessImage(string path, string filename)
