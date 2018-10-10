@@ -174,6 +174,9 @@
   <data name="lblAuthor.Text" xml:space="preserve">
     <value>Bernhard Elbl</value>
   </data>
+  <data name="lblAuthor.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="&gt;&gt;lblAuthor.Name" xml:space="preserve">
     <value>lblAuthor</value>
   </data>
@@ -206,6 +209,9 @@
   </data>
   <data name="lnkWorkspace.Text" xml:space="preserve">
     <value>http://sourceforge.net/projects/hexbox</value>
+  </data>
+  <data name="lnkWorkspace.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;lnkWorkspace.Name" xml:space="preserve">
     <value>lnkWorkspace</value>
@@ -269,6 +275,9 @@
   </data>
   <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
+  </data>
+  <data name="lblVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
     <value>lblVersion</value>
