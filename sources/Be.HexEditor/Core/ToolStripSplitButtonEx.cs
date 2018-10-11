@@ -9,6 +9,10 @@ namespace Be.HexEditor.Core
 {
     public class ToolStripSplitButtonEx : ToolStripSplitButton, IScalingItem
     {
+        [DefaultValue(null)]
+        public string PngResourceName { get; set; }
+
+
         System.Drawing.Image _image16;
         [DefaultValue(null)]
         public System.Drawing.Image Image16

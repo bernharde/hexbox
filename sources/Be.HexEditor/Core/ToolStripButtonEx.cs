@@ -9,6 +9,9 @@ namespace Be.HexEditor.Core
 {
     public class ToolStripButtonEx : ToolStripButton, Be.HexEditor.Core.IScalingItem
     {
+        [DefaultValue(null)]
+        public string PngResourceName { get; set; }
+
         public ToolStripButtonEx()
         {
             

@@ -157,7 +157,16 @@
     <Compile Include="Core\ToolStripSplitButtonEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="images.Designer.cs" />
+    <Compile Include="images1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Pngs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pngs.resx</DependentUpon>
+    </Compile>
     <Compile Include="ScalingImages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,7 +179,14 @@
     <EmbeddedResource Include="BitControl.resx">
       <DependentUpon>BitControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="images.resx" />
+    <EmbeddedResource Include="images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>images1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pngs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Pngs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScalingImages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ScalingImages.Designer.cs</LastGenOutput>
@@ -415,6 +431,7 @@
     </None>
     <None Include="Be.HexEditor.snk" />
     <None Include="Be.pfx" />
+    <None Include="Images\Logo.pdn" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

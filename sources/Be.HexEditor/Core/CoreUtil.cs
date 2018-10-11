@@ -41,12 +41,34 @@ namespace Be.HexEditor.Core
                 if (scalingItem == null)
                     continue;
 
+                
                 if (width < 17 && scalingItem.Image16 != null)
                     item.Image = scalingItem.Image16;
                 else if (width < 25 && scalingItem.Image24 != null)
                     item.Image = scalingItem.Image24;
                 else if (width < 33 && scalingItem.Image32 != null)
                     item.Image = scalingItem.Image32;
+
+                if (!string.IsNullOrEmpty(scalingItem.PngResourceName))
+                {
+                    var size = 16;
+                    if (width < 17)
+                        size = 16;
+                    else if (width < 25)
+                        size = 24;
+                    else if (width < 33)
+                        size = 32;
+                    else if (width < 49)
+                        size = 48;
+                    else if (width < 65)
+                        size = 64;
+                    else if (width < 129)
+                        size = 128;
+
+                    var png = scalingItem.PngResourceName + size;
+                    var bitmap = (System.Drawing.Bitmap)Pngs.ResourceManager.GetObject(png);
+                    item.Image = bitmap;
+                }
             }
         }
 
