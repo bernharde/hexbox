@@ -157,6 +157,7 @@
     <Compile Include="Core\ToolStripSplitButtonEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="images.Designer.cs" />
     <Compile Include="ScalingImages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,6 +170,7 @@
     <EmbeddedResource Include="BitControl.resx">
       <DependentUpon>BitControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="images.resx" />
     <EmbeddedResource Include="ScalingImages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ScalingImages.Designer.cs</LastGenOutput>
@@ -314,11 +316,6 @@
     <Compile Include="FormOptions.Designer.cs">
       <DependentUpon>FormOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="images.Designer.cs">
-      <DependentUpon>images.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -406,11 +403,6 @@
     <EmbeddedResource Include="FormOptions.ja.resx">
       <DependentUpon>FormOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="images.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>images.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="strings.ja.resx">
       <LastGenOutput>strings.ja.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -470,7 +462,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\Logo.png" />
+    <None Include="Images\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
@@ -500,6 +492,56 @@
     <None Include="Resources\Save24.png" />
     <None Include="Resources\Save32.png" />
     <None Include="Resources\FindNext24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Copy128.png" />
+    <None Include="Images\Copy16.png" />
+    <None Include="Images\Copy24.png" />
+    <None Include="Images\Copy32.png" />
+    <None Include="Images\Copy48.png" />
+    <None Include="Images\Copy64.png" />
+    <None Include="Images\Cut128.png" />
+    <None Include="Images\Cut16.png" />
+    <None Include="Images\Cut24.png" />
+    <None Include="Images\Cut32.png" />
+    <None Include="Images\Cut48.png" />
+    <None Include="Images\Cut64.png" />
+    <None Include="Images\FindNext128.png" />
+    <None Include="Images\FindNext16.png" />
+    <None Include="Images\FindNext24.png" />
+    <None Include="Images\FindNext32.png" />
+    <None Include="Images\FindNext48.png" />
+    <None Include="Images\FindNext64.png" />
+    <None Include="Images\Open128.png" />
+    <None Include="Images\Open16.png" />
+    <None Include="Images\Open24.png" />
+    <None Include="Images\Open32.png" />
+    <None Include="Images\Open48.png" />
+    <None Include="Images\Open64.png" />
+    <None Include="Images\Paste128.png" />
+    <None Include="Images\Paste16.png" />
+    <None Include="Images\Paste24.png" />
+    <None Include="Images\Paste32.png" />
+    <None Include="Images\Paste48.png" />
+    <None Include="Images\Paste64.png" />
+    <None Include="Images\QuickFind128.png" />
+    <None Include="Images\QuickFind16.png" />
+    <None Include="Images\QuickFind24.png" />
+    <None Include="Images\QuickFind32.png" />
+    <None Include="Images\QuickFind48.png" />
+    <None Include="Images\QuickFind64.png" />
+    <None Include="Images\Save128.png" />
+    <None Include="Images\Save16.png" />
+    <None Include="Images\Save24.png" />
+    <None Include="Images\Save32.png" />
+    <None Include="Images\Save48.png" />
+    <None Include="Images\Save64.png" />
+    <None Include="Images\SaveStatusBar128.png" />
+    <None Include="Images\SaveStatusBar16.png" />
+    <None Include="Images\SaveStatusBar24.png" />
+    <None Include="Images\SaveStatusBar32.png" />
+    <None Include="Images\SaveStatusBar48.png" />
+    <None Include="Images\SaveStatusBar64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
