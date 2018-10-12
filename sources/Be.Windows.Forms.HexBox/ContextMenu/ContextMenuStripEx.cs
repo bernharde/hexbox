@@ -7,27 +7,20 @@ namespace Be.Windows.Forms
     public class ContextMenuStripEx : ContextMenuStrip
     {
         ScalingStripExtension ScalingStripExtension { get; set; }
+
         public ContextMenuStripEx()
         {
-            ScalingStripExtension = new ScalingStripExtension(this);
+            if (!Util.IsPerMonitorV2)
+                return;
 
-            this.Opened += ContextMenuStripEx_Opened;
+            ScalingStripExtension = new ScalingStripExtension(this);
+            Opened += ContextMenuStripEx_Opened;
         }
 
         private void ContextMenuStripEx_Opened(object sender, EventArgs e)
         {
             ScalingStripExtension.AdjustImages();
             ScalingStripExtension.AdjustFonts();
-        }
-
-        protected override void OnDpiChangedAfterParent(EventArgs e)
-        {
-            base.OnDpiChangedAfterParent(e);
-
-            foreach(ToolStripItem item in this.Items)
-            {
-                Debug.WriteLine($"ContextMenuStripEx.OnDpiChangedAfterParent {DeviceDpi}, fontsize {item.Font.Size}");
-            }
         }
     }
 }

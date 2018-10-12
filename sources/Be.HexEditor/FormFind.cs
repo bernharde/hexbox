@@ -13,7 +13,7 @@ namespace Be.HexEditor
 	/// <summary>
 	/// Summary description for FormFind.
 	/// </summary>
-    public class FormFind: Form
+    public class FormFind: FormEx
 	{
 		private Be.Windows.Forms.HexBox hexFind;
 		private System.Windows.Forms.TextBox txtFind;
@@ -87,10 +87,10 @@ namespace Be.HexEditor
             this.chkMatchCase = new System.Windows.Forms.CheckBox();
             this.timerPercent = new System.Windows.Forms.Timer(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.hexFind = new Be.Windows.Forms.HexBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.line = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.hexFind = new Be.Windows.Forms.HexBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -158,26 +158,6 @@ namespace Be.HexEditor
             this.timer.Interval = 50;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // hexFind
-            // 
-            resources.ApplyResources(this.hexFind, "hexFind");
-            // 
-            // 
-            // 
-            this.hexFind.BuiltInContextMenu.CopyMenuItemImage = global::Be.HexEditor.Pngs.Copy16;
-            this.hexFind.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
-            this.hexFind.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CopyMenuItemText");
-            this.hexFind.BuiltInContextMenu.CutMenuItemImage = global::Be.HexEditor.Pngs.Cut16;
-            this.hexFind.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
-            this.hexFind.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CutMenuItemText");
-            this.hexFind.BuiltInContextMenu.PasteMenuItemImage = global::Be.HexEditor.Pngs.Paste16;
-            this.hexFind.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
-            this.hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
-            this.hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
-            this.hexFind.InfoForeColor = System.Drawing.Color.Empty;
-            this.hexFind.Name = "hexFind";
-            this.hexFind.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label1);
@@ -200,6 +180,26 @@ namespace Be.HexEditor
             this.flowLayoutPanel2.Controls.Add(this.lblFinding);
             this.flowLayoutPanel2.Controls.Add(this.lblPercent);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // hexFind
+            // 
+            resources.ApplyResources(this.hexFind, "hexFind");
+            // 
+            // 
+            // 
+            this.hexFind.BuiltInContextMenu.CopyMenuItemImage = global::Be.HexEditor.Pngs.Copy16;
+            this.hexFind.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
+            this.hexFind.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CopyMenuItemText");
+            this.hexFind.BuiltInContextMenu.CutMenuItemImage = global::Be.HexEditor.Pngs.Cut16;
+            this.hexFind.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
+            this.hexFind.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CutMenuItemText");
+            this.hexFind.BuiltInContextMenu.PasteMenuItemImage = global::Be.HexEditor.Pngs.Paste16;
+            this.hexFind.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
+            this.hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
+            this.hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
+            this.hexFind.InfoForeColor = System.Drawing.Color.Empty;
+            this.hexFind.Name = "hexFind";
+            this.hexFind.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
             // 
             // FormFind
             // 

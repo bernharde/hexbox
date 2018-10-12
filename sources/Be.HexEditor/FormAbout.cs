@@ -9,7 +9,7 @@ namespace Be.HexEditor
 	/// <summary>
 	/// Summary description for FormAbout.
 	/// </summary>
-	public class FormAbout: Form
+	public class FormAbout: FormEx
 	{
 		private Be.HexEditor.UCAbout ucAbout1;
 		private System.Windows.Forms.Button btnOK;
@@ -82,8 +82,6 @@ namespace Be.HexEditor
             this.Name = "FormAbout";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.FormAbout_CorrectWidth);
-            this.Resize += new System.EventHandler(this.FormAbout_CorrectWidth);
             this.ResumeLayout(false);
 
 		}
@@ -93,11 +91,5 @@ namespace Be.HexEditor
 		{
 			Close();
 		}
-
-        private void FormAbout_CorrectWidth(object sender, EventArgs e)
-        {
-            //var factor = this.DpiNew / Core.FormEx.DpiAtDesign;
-            //this.ucAbout1.Width = (int)((this.Width - 40) * factor);
-        }
 	}
 }

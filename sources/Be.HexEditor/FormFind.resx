@@ -387,48 +387,6 @@
   <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="hexFind.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="hexFind.BuiltInContextMenu.CopyMenuItemText" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="hexFind.BuiltInContextMenu.CutMenuItemText" xml:space="preserve">
-    <value>Cut</value>
-  </data>
-  <data name="hexFind.BuiltInContextMenu.PasteMenuItemText" xml:space="preserve">
-    <value>Paste</value>
-  </data>
-  <data name="hexFind.BuiltInContextMenu.SelectAllMenuItemText" xml:space="preserve">
-    <value>Select All</value>
-  </data>
-  <data name="hexFind.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="hexFind.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Consolas, 9pt</value>
-  </data>
-  <data name="hexFind.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 154</value>
-  </data>
-  <data name="hexFind.Size" type="System.Drawing.Size, System.Drawing">
-    <value>495, 162</value>
-  </data>
-  <data name="hexFind.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;hexFind.Name" xml:space="preserve">
-    <value>hexFind</value>
-  </data>
-  <data name="&gt;&gt;hexFind.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.HexBox, Be.Windows.Forms.HexBox, Version=1.6.0.20431, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
-  </data>
-  <data name="&gt;&gt;hexFind.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;hexFind.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="line.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -510,6 +468,48 @@
   <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="hexFind.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="hexFind.BuiltInContextMenu.CopyMenuItemText" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="hexFind.BuiltInContextMenu.CutMenuItemText" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="hexFind.BuiltInContextMenu.PasteMenuItemText" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="hexFind.BuiltInContextMenu.SelectAllMenuItemText" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="hexFind.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="hexFind.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Consolas, 9pt</value>
+  </data>
+  <data name="hexFind.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 154</value>
+  </data>
+  <data name="hexFind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>495, 162</value>
+  </data>
+  <data name="hexFind.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;hexFind.Name" xml:space="preserve">
+    <value>hexFind</value>
+  </data>
+  <data name="&gt;&gt;hexFind.Type" xml:space="preserve">
+    <value>Be.Windows.Forms.HexBox, Be.Windows.Forms.HexBox, Version=1.6.0.30009, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+  </data>
+  <data name="&gt;&gt;hexFind.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;hexFind.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -518,9 +518,6 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>533, 369</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

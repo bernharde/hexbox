@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Be.Windows.Forms
 {
-    public sealed class ScalingStripExtension : Component
+    sealed class ScalingStripExtension : Component
     {
         ToolStrip ToolStrip { get; set; }
 
@@ -20,13 +20,15 @@ namespace Be.Windows.Forms
 
         public ScalingStripExtension(ToolStrip toolStrip)
         {
-            var resourceManagerTypeName = ConfigurationManager.AppSettings["ImageResourceManagerType"];
+            if (!Util.IsPerMonitorV2)
+                return;
 
             ToolStrip = toolStrip;
             toolStrip.HandleCreated += Scale;
             toolStrip.ParentChanged += Scale;
             toolStrip.DpiChangedAfterParent += ToolStrip_DpiChangedAfterParent;
 
+            var resourceManagerTypeName = ConfigurationManager.AppSettings["ImageResourceManagerType"];
             if (!string.IsNullOrEmpty(resourceManagerTypeName))
             {
                 var resourceManagerType = Type.GetType(resourceManagerTypeName);
@@ -55,7 +57,7 @@ namespace Be.Windows.Forms
         public void AdjustFonts()
         {
             var control = GetControl();
-            var form = Util.GetParent<Form>(control);
+            var form = Util.GetRoot<Control>(control);
             Debug.WriteLine($"Toolstrip.OnDpiChangedAfterParent deviceDpi: {ToolStrip.DeviceDpi} formFontSize: {form.Font.Size}, fontSize: {form.Font.Size}");
             foreach (ToolStripItem item in ToolStrip.Items)
             {
@@ -65,7 +67,11 @@ namespace Be.Windows.Forms
 
         public void AdjustImages()
         {
-            if (Util.DesignMode) return;
+            if (Util.DesignMode)
+                return;
+
+            if (ResourceManager == null)
+                return;
 
             Control control = GetControl();
             var factor = control.DeviceDpi / 96F;

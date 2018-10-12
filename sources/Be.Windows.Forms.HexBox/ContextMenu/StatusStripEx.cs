@@ -12,7 +12,11 @@ namespace Be.Windows.Forms
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
             base.OnDpiChangedAfterParent(e);
-            var form = Util.GetParent<Form>(this);
+
+            if (!Util.IsPerMonitorV2)
+                return;
+
+            var form = Util.GetRoot<Control>(this);
             this.Font = form.Font;
         }
     }

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace Be.Windows.Forms
@@ -17,6 +19,12 @@ namespace Be.Windows.Forms
                 var processName = process.ProcessName.ToLower();
                 DesignMode = designerHosts.Contains(processName);
             }
+            var section = (NameValueCollection)ConfigurationManager.GetSection("System.Windows.Forms.ApplicationConfigurationSection");
+            if(section != null)
+            {
+                DpiAwareness = section["DpiAwareness"];
+                IsPerMonitorV2 = DpiAwareness == "PerMonitorV2";
+            }
         }
 
         /// <summary>
@@ -28,7 +36,11 @@ namespace Be.Windows.Forms
         /// </remarks>
         public static bool DesignMode { get; private set; }
 
-        public static T GetParent<T>(Control c) where T : Control
+        public static string DpiAwareness { get; set; }
+
+        public static bool IsPerMonitorV2 { get; set; }
+
+        public static T GetRoot<T>(Control c) where T : Control
         {
             if (c == null)
                 return default(T);
@@ -36,10 +48,10 @@ namespace Be.Windows.Forms
             var parent = c.Parent;
 
             var found = parent as T;
-            if (found != null)
+            if (found != null && found.Parent == null)
                 return found;
 
-            return GetParent<T>(parent);
+            return GetRoot<T>(parent);
         }
 
     }

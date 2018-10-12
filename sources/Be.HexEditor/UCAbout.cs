@@ -27,7 +27,7 @@ namespace Be.HexEditor
 		private System.Windows.Forms.TabControl tabControl;
 		private System.Windows.Forms.TabPage tabThanksTo;
 		private System.Windows.Forms.RichTextBox txtThanksTo;
-        private Label label2;
+        private Label lblIcon;
 
         /// <summary> 
         /// Required designer variable.
@@ -104,7 +104,7 @@ namespace Be.HexEditor
             this.txtLicense = new System.Windows.Forms.RichTextBox();
             this.tabChanges = new System.Windows.Forms.TabPage();
             this.txtChanges = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblIcon = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabThanksTo.SuspendLayout();
             this.tabLicense.SuspendLayout();
@@ -198,17 +198,17 @@ namespace Be.HexEditor
             resources.ApplyResources(this.txtChanges, "txtChanges");
             this.txtChanges.Name = "txtChanges";
             // 
-            // label2
+            // lblIcon
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.lblIcon, "lblIcon");
+            this.lblIcon.BackColor = System.Drawing.Color.White;
+            this.lblIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblIcon.Name = "lblIcon";
             // 
             // UCAbout
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblIcon);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label7);
@@ -249,5 +249,15 @@ namespace Be.HexEditor
             this.lnkWorkspace.Width = this.Width - this.lnkWorkspace.Left - 10;
             this.lblVersion.Width = this.Width - this.lblVersion.Left - 10;
         }
-	}
+
+        protected override void OnDpiChangedAfterParent(EventArgs e)
+        {
+            base.OnDpiChangedAfterParent(e);
+            // 36F
+
+            var factor = DeviceDpi / 96F;
+            lblIcon.Font = new Font(Font.FontFamily, 36F * factor, FontStyle.Regular);
+
+        }
+    }
 }

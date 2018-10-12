@@ -7,6 +7,9 @@ namespace Be.Windows.Forms
         ScalingStripExtension ScalingStripExtension { get; set; }
         public ToolStripEx()
         {
+            if (!Util.IsPerMonitorV2)
+                return;
+
             ScalingStripExtension = new ScalingStripExtension(this);
         }
     }

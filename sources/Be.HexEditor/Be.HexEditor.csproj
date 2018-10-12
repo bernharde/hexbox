@@ -137,6 +137,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\FormEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="images1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -540,9 +543,7 @@
     <None Include="Images\SaveStatusBar48.png" />
     <None Include="Images\SaveStatusBar64.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
