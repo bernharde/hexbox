@@ -17,21 +17,9 @@ namespace Be.HexEditor.Core
             //var newDpi = _form.DpiNew;
             var factor = (float)toolStrip.DeviceDpi / 96F;
 
-            //MessageBox.Show(factor.ToString());
-
-            //if ((dpiNew == 0) || (dpiOld == dpiNew)) return; // Abort.
-
-            //float factor = _form.DpiNew / _dpiOld;
-
-            //dpiOld = dpiNew;
-
-            //MessageBox.Show(factor.ToString());
-
             toolStrip.ImageScalingSize = new System.Drawing.Size((int)(16F * factor), (int)(16F * factor));
 
             Debug.WriteLine($"AdjustImages factor: {factor}, scalingSize: {toolStrip.ImageScalingSize}");
-
-            //MessageBox.Show(toolStrip.ImageScalingSize.Width.ToString());
 
             var width = toolStrip.ImageScalingSize.Width;
 
@@ -40,14 +28,6 @@ namespace Be.HexEditor.Core
                 var scalingItem = item as IScalingItem;
                 if (scalingItem == null)
                     continue;
-
-                
-                if (width < 17 && scalingItem.Image16 != null)
-                    item.Image = scalingItem.Image16;
-                else if (width < 25 && scalingItem.Image24 != null)
-                    item.Image = scalingItem.Image24;
-                else if (width < 33 && scalingItem.Image32 != null)
-                    item.Image = scalingItem.Image32;
 
                 if (!string.IsNullOrEmpty(scalingItem.PngResourceName))
                 {
@@ -66,7 +46,7 @@ namespace Be.HexEditor.Core
                         size = 128;
 
                     var png = scalingItem.PngResourceName + size;
-                    var bitmap = (System.Drawing.Bitmap)Pngs.ResourceManager.GetObject(png);
+                    var bitmap = (Bitmap)Pngs.ResourceManager.GetObject(png);
                     item.Image = bitmap;
                 }
             }
