@@ -164,11 +164,14 @@ namespace Be.HexEditor
             // 
             // 
             // 
-            this.hexFind.BuiltInContextMenu.CopyMenuItemImage = global::Be.HexEditor.images.CopyHS;
+            this.hexFind.BuiltInContextMenu.CopyMenuItemImage = global::Be.HexEditor.Pngs.Copy16;
+            this.hexFind.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
             this.hexFind.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CopyMenuItemText");
-            this.hexFind.BuiltInContextMenu.CutMenuItemImage = global::Be.HexEditor.images.CutHS;
+            this.hexFind.BuiltInContextMenu.CutMenuItemImage = global::Be.HexEditor.Pngs.Cut16;
+            this.hexFind.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
             this.hexFind.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CutMenuItemText");
-            this.hexFind.BuiltInContextMenu.PasteMenuItemImage = global::Be.HexEditor.images.PasteHS;
+            this.hexFind.BuiltInContextMenu.PasteMenuItemImage = global::Be.HexEditor.Pngs.Paste16;
+            this.hexFind.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
             this.hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
             this.hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
             this.hexFind.InfoForeColor = System.Drawing.Color.Empty;

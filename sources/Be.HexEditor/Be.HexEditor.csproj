@@ -137,26 +137,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CoreUtil.cs" />
-    <Compile Include="Core\IScalingImage.cs" />
-    <Compile Include="Core\MenuStripEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Core\StatusStripEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Core\ToolStripButtonEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Core\ToolStripEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Core\ToolStripMenuItemEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Core\ToolStripSplitButtonEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="images1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -559,6 +539,9 @@
     <None Include="Images\SaveStatusBar32.png" />
     <None Include="Images\SaveStatusBar48.png" />
     <None Include="Images\SaveStatusBar64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

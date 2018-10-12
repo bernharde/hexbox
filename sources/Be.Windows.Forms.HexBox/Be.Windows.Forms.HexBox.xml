@@ -137,9 +137,19 @@
             Gets or sets the image of the "Cut" ContextMenuStrip item.
             </summary>
         </member>
+        <member name="P:Be.Windows.Forms.BuiltInContextMenu.CutMenuItemScalingImageName">
+            <summary>
+            Gets or sets the scaling image resource name of the "Cut" ContextMenuStrip item.
+            </summary>
+        </member>
         <member name="P:Be.Windows.Forms.BuiltInContextMenu.CopyMenuItemImage">
             <summary>
             Gets or sets the image of the "Copy" ContextMenuStrip item.
+            </summary>
+        </member>
+        <member name="P:Be.Windows.Forms.BuiltInContextMenu.CopyMenuItemScalingImageName">
+            <summary>
+            Gets or sets the scaling image resource name of the "Copy" ContextMenuStrip item.
             </summary>
         </member>
         <member name="P:Be.Windows.Forms.BuiltInContextMenu.PasteMenuItemImage">
@@ -147,9 +157,19 @@
             Gets or sets the image of the "Paste" ContextMenuStrip item.
             </summary>
         </member>
+        <member name="P:Be.Windows.Forms.BuiltInContextMenu.PasteMenuItemScalingImageName">
+            <summary>
+            Gets or sets the scaling image resource name of the "Paste" ContextMenuStrip item.
+            </summary>
+        </member>
         <member name="P:Be.Windows.Forms.BuiltInContextMenu.SelectAllMenuItemImage">
             <summary>
             Gets or sets the image of the "Select All" ContextMenuStrip item.
+            </summary>
+        </member>
+        <member name="P:Be.Windows.Forms.BuiltInContextMenu.SelectAllMenuItemScalingImageName">
+            <summary>
+            Gets or sets the scaling image resource name of the "Select All" ContextMenuStrip item.
             </summary>
         </member>
         <member name="T:Be.Windows.Forms.ByteCollection">
@@ -1736,11 +1756,6 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="F:Be.Windows.Forms.Util._designMode">
-            <summary>
-            Contains true, if we are in design mode of Visual Studio
             </summary>
         </member>
         <member name="M:Be.Windows.Forms.Util.#cctor">

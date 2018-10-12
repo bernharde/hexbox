@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Be.Windows.Forms
 {
     static class Util
     {
-        /// <summary>
-        /// Contains true, if we are in design mode of Visual Studio
-        /// </summary>
-        private static bool _designMode;
-
         /// <summary>
         /// Initializes an instance of Util class
         /// </summary>
@@ -21,7 +15,7 @@ namespace Be.Windows.Forms
             using (var process = System.Diagnostics.Process.GetCurrentProcess())
             {
                 var processName = process.ProcessName.ToLower();
-                _designMode = designerHosts.Contains(processName);
+                DesignMode = designerHosts.Contains(processName);
             }
         }
 
@@ -32,12 +26,20 @@ namespace Be.Windows.Forms
         /// In Visual Studio 2008 SP1 the designer is crashing sometimes on windows forms. 
         /// The DesignMode property of Control class is buggy and cannot be used, so use our own implementation instead.
         /// </remarks>
-        public static bool DesignMode
+        public static bool DesignMode { get; private set; }
+
+        public static T GetParent<T>(Control c) where T : Control
         {
-            get
-            {
-                return _designMode;
-            }
+            if (c == null)
+                return default(T);
+
+            var parent = c.Parent;
+
+            var found = parent as T;
+            if (found != null)
+                return found;
+
+            return GetParent<T>(parent);
         }
 
     }

@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Be.HexEditor.Core
+namespace Be.Windows.Forms
 {
     public class StatusStripEx : StatusStrip
     {
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
             base.OnDpiChangedAfterParent(e);
-            var form = CoreUtil.GetParent<Form>(this);
+            var form = Util.GetParent<Form>(this);
             this.Font = form.Font;
         }
     }

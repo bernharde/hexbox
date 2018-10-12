@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Be.HexEditor.Core
+namespace Be.Windows.Forms
 {
     public class ToolStripButtonEx : ToolStripButton, IScalingImage
     {

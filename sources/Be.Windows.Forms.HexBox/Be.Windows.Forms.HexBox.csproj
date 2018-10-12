@@ -99,6 +99,7 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
@@ -124,6 +125,31 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BytePositionInfo.cs" />
+    <Compile Include="ContextMenu\ContextMenuStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\IScalingImage.cs" />
+    <Compile Include="ContextMenu\MenuStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\ScalingStripExtension.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\StatusStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\ToolStripButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\ToolStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\ToolStripMenuItemEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContextMenu\ToolStripSplitButtonEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataBlock.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -201,6 +227,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

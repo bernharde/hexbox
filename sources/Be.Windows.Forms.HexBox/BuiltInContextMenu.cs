@@ -20,32 +20,33 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Contains the ContextMenuStrip control.
         /// </summary>
-        ContextMenuStrip _contextMenuStrip;
+        ContextMenuStripEx _contextMenuStrip;
         /// <summary>
         /// Contains the "Cut"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItem _cutToolStripMenuItem;
+        ToolStripMenuItemEx _cutToolStripMenuItem;
         /// <summary>
         /// Contains the "Copy"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItem _copyToolStripMenuItem;
+        ToolStripMenuItemEx _copyToolStripMenuItem;
         /// <summary>
         /// Contains the "Paste"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItem _pasteToolStripMenuItem;
+        ToolStripMenuItemEx _pasteToolStripMenuItem;
         /// <summary>
         /// Contains the "Select All"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItem _selectAllToolStripMenuItem;
+        ToolStripMenuItemEx _selectAllToolStripMenuItem;
         /// <summary>
         /// Initializes a new instance of BuildInContextMenu class.
         /// </summary>
         /// <param name="hexBox">the HexBox control</param>
-        internal BuiltInContextMenu(HexBox hexBox)
+        public BuiltInContextMenu(HexBox hexBox)
         {
             _hexBox = hexBox;
             _hexBox.ByteProviderChanged += new EventHandler(HexBox_ByteProviderChanged);
         }
+
         /// <summary>
         /// If ByteProvider
         /// </summary>
@@ -65,27 +66,42 @@ namespace Be.Windows.Forms
 
             if (this._contextMenuStrip == null)
             {
-                ContextMenuStrip cms = new ContextMenuStrip();
-                _cutToolStripMenuItem = new ToolStripMenuItem(CutMenuItemTextInternal, CutMenuItemImage, new EventHandler(CutMenuItem_Click));
-                cms.Items.Add(_cutToolStripMenuItem);
-                _copyToolStripMenuItem = new ToolStripMenuItem(CopyMenuItemTextInternal, CopyMenuItemImage, new EventHandler(CopyMenuItem_Click));
-                cms.Items.Add(_copyToolStripMenuItem);
-                _pasteToolStripMenuItem = new ToolStripMenuItem(PasteMenuItemTextInternal, PasteMenuItemImage, new EventHandler(PasteMenuItem_Click));
-                cms.Items.Add(_pasteToolStripMenuItem);
+                _contextMenuStrip = new ContextMenuStripEx();
 
-                cms.Items.Add(new ToolStripSeparator());
+                _cutToolStripMenuItem = AddMenuItem(
+                    CutMenuItemText, CutMenuItemImage, 
+                    CutMenuItem_Click, CutMenuItemScalingImageName);
+                _copyToolStripMenuItem = AddMenuItem(
+                    CopyMenuItemTextInternal, CopyMenuItemImage
+                    ,CopyMenuItem_Click, CopyMenuItemScalingImageName);
+                _pasteToolStripMenuItem = AddMenuItem(
+                    PasteMenuItemTextInternal, PasteMenuItemImage
+                    , PasteMenuItem_Click, PasteMenuItemScalingImageName);
 
-                _selectAllToolStripMenuItem = new ToolStripMenuItem(SelectAllMenuItemTextInternal, SelectAllMenuItemImage, new EventHandler(SelectAllMenuItem_Click));
-                cms.Items.Add(_selectAllToolStripMenuItem);
-                cms.Opening += new CancelEventHandler(BuildInContextMenuStrip_Opening);
+                _contextMenuStrip.Items.Add(new ToolStripSeparator());
 
-                _contextMenuStrip = cms;
+                _selectAllToolStripMenuItem = AddMenuItem(
+                    SelectAllMenuItemTextInternal, SelectAllMenuItemImage
+                    , SelectAllMenuItem_Click, SelectAllMenuItemScalingImageName);
+
+                _contextMenuStrip.Opening += new CancelEventHandler(BuildInContextMenuStrip_Opening);
             }
 
             if (this._hexBox.ByteProvider == null && this._hexBox.ContextMenuStrip == this._contextMenuStrip)
                 this._hexBox.ContextMenuStrip = null;
             else if (this._hexBox.ByteProvider != null && this._hexBox.ContextMenuStrip == null)
                 this._hexBox.ContextMenuStrip = _contextMenuStrip;
+        }
+
+        ToolStripMenuItemEx AddMenuItem(string text, Image image, EventHandler onClick, string scalingImageResourceName)
+        {
+            var item = new ToolStripMenuItemEx();
+            item.Text = text;
+            item.Image = image;
+            item.ScalingImageResourceName = scalingImageResourceName;
+            item.Click += onClick;
+            _contextMenuStrip.Items.Add(item);
+            return item;
         }
         /// <summary>
         /// Before opening the ContextMenuStrip, we manage the availability of the items.
@@ -127,41 +143,25 @@ namespace Be.Windows.Forms
         /// Gets or sets the custom text of the "Copy" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string CopyMenuItemText
-        {
-            get { return _copyMenuItemText; }
-            set { _copyMenuItemText = value; }
-        } string _copyMenuItemText;
+        public string CopyMenuItemText { get; set; }
 
         /// <summary>
         /// Gets or sets the custom text of the "Cut" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string CutMenuItemText
-        {
-            get { return _cutMenuItemText; }
-            set { _cutMenuItemText = value; }
-        } string _cutMenuItemText;
+        public string CutMenuItemText { get; set; }
 
         /// <summary>
         /// Gets or sets the custom text of the "Paste" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string PasteMenuItemText
-        {
-            get { return _pasteMenuItemText; }
-            set { _pasteMenuItemText = value; }
-        } string _pasteMenuItemText;
+        public string PasteMenuItemText { get; set; }
 
         /// <summary>
         /// Gets or sets the custom text of the "Select All" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
-        public string SelectAllMenuItemText
-        {
-            get { return _selectAllMenuItemText; }
-            set { _selectAllMenuItemText = value; }
-        } string _selectAllMenuItemText = null;
+        public string SelectAllMenuItemText { get; set; } = null;
 
         /// <summary>
         /// Gets the text of the "Cut" ContextMenuStrip item.
@@ -184,37 +184,44 @@ namespace Be.Windows.Forms
         /// Gets or sets the image of the "Cut" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image CutMenuItemImage
-        {
-            get { return _cutMenuItemImage; }
-            set { _cutMenuItemImage = value; }
-        } Image _cutMenuItemImage = null;
+        public Image CutMenuItemImage { get; set; }
+        /// <summary>
+        /// Gets or sets the scaling image resource name of the "Cut" ContextMenuStrip item.
+        /// </summary>
+        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        public string CutMenuItemScalingImageName { get; set; }
+
         /// <summary>
         /// Gets or sets the image of the "Copy" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image CopyMenuItemImage
-        {
-            get { return _copyMenuItemImage; }
-            set { _copyMenuItemImage = value; }
-        } Image _copyMenuItemImage = null;
+        public Image CopyMenuItemImage { get; set; }
+        /// <summary>
+        /// Gets or sets the scaling image resource name of the "Copy" ContextMenuStrip item.
+        /// </summary>
+        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        public string CopyMenuItemScalingImageName { get; set; }
+
         /// <summary>
         /// Gets or sets the image of the "Paste" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image PasteMenuItemImage
-        {
-            get { return _pasteMenuItemImage; }
-            set { _pasteMenuItemImage = value; }
-        } Image _pasteMenuItemImage = null;
+        public Image PasteMenuItemImage { get; set; }
+        /// <summary>
+        /// Gets or sets the scaling image resource name of the "Paste" ContextMenuStrip item.
+        /// </summary>
+        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        public string PasteMenuItemScalingImageName { get; set; }
+
         /// <summary>
         /// Gets or sets the image of the "Select All" ContextMenuStrip item.
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
-        public Image SelectAllMenuItemImage
-        {
-            get { return _selectAllMenuItemImage; }
-            set { _selectAllMenuItemImage = value; }
-        } Image _selectAllMenuItemImage = null;
+        public Image SelectAllMenuItemImage { get; set; }
+        /// <summary>
+        /// Gets or sets the scaling image resource name of the "Select All" ContextMenuStrip item.
+        /// </summary>
+        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        public string SelectAllMenuItemScalingImageName { get; set; }
     }
 }
