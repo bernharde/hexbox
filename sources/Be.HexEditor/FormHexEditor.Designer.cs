@@ -117,7 +117,7 @@ namespace Be.HexEditor
             this.openToolStripMenuItem.Image = global::Be.HexEditor.Pngs.Open16;
             resources.ApplyResources(this.openToolStripMenuItem, "openToolStripMenuItem");
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.PngResourceName = "Open";
+            this.openToolStripMenuItem.ScalingImageResourceName = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.open_Click);
             // 
             // toolStripSeparator
@@ -130,7 +130,7 @@ namespace Be.HexEditor
             this.saveToolStripMenuItem.Image = global::Be.HexEditor.Pngs.SaveStatusBar16;
             resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.PngResourceName = "SaveStatusBar";
+            this.saveToolStripMenuItem.ScalingImageResourceName = "SaveStatusBar";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.save_Click);
             // 
             // toolStripSeparator2
@@ -178,7 +178,7 @@ namespace Be.HexEditor
             this.cutToolStripMenuItem.Image = global::Be.HexEditor.Pngs.Cut16;
             resources.ApplyResources(this.cutToolStripMenuItem, "cutToolStripMenuItem");
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.PngResourceName = "Cut";
+            this.cutToolStripMenuItem.ScalingImageResourceName = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cut_Click);
             // 
             // copyToolStripMenuItem
@@ -186,7 +186,7 @@ namespace Be.HexEditor
             this.copyToolStripMenuItem.Image = global::Be.HexEditor.Pngs.Copy16;
             resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.PngResourceName = "Copy";
+            this.copyToolStripMenuItem.ScalingImageResourceName = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copy_Click);
             // 
             // pasteToolStripMenuItem
@@ -194,7 +194,7 @@ namespace Be.HexEditor
             this.pasteToolStripMenuItem.Image = global::Be.HexEditor.Pngs.Paste16;
             resources.ApplyResources(this.pasteToolStripMenuItem, "pasteToolStripMenuItem");
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.PngResourceName = "Paste";
+            this.pasteToolStripMenuItem.ScalingImageResourceName = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.paste_Click);
             // 
             // toolStripSeparator3
@@ -223,7 +223,7 @@ namespace Be.HexEditor
             // 
             this.findToolStripMenuItem.Image = global::Be.HexEditor.Pngs.QuickFind16;
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.PngResourceName = "QuickFind";
+            this.findToolStripMenuItem.ScalingImageResourceName = "QuickFind";
             resources.ApplyResources(this.findToolStripMenuItem, "findToolStripMenuItem");
             this.findToolStripMenuItem.Click += new System.EventHandler(this.find_Click);
             // 
@@ -231,7 +231,7 @@ namespace Be.HexEditor
             // 
             this.findNextToolStripMenuItem.Image = global::Be.HexEditor.Pngs.FindNext16;
             this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
-            this.findNextToolStripMenuItem.PngResourceName = "FindNext";
+            this.findNextToolStripMenuItem.ScalingImageResourceName = "FindNext";
             resources.ApplyResources(this.findNextToolStripMenuItem, "findNextToolStripMenuItem");
             this.findNextToolStripMenuItem.Click += new System.EventHandler(this.findNext_Click);
             // 
@@ -319,7 +319,7 @@ namespace Be.HexEditor
             this.openToolStripButton.Image = global::Be.HexEditor.Pngs.Open16;
             resources.ApplyResources(this.openToolStripButton, "openToolStripButton");
             this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.PngResourceName = "Open";
+            this.openToolStripButton.ScalingImageResourceName = "Open";
             this.openToolStripButton.Click += new System.EventHandler(this.open_Click);
             // 
             // saveToolStripButton
@@ -328,7 +328,7 @@ namespace Be.HexEditor
             this.saveToolStripButton.Image = global::Be.HexEditor.Pngs.SaveStatusBar16;
             resources.ApplyResources(this.saveToolStripButton, "saveToolStripButton");
             this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.PngResourceName = "SaveStatusBar";
+            this.saveToolStripButton.ScalingImageResourceName = "SaveStatusBar";
             this.saveToolStripButton.Click += new System.EventHandler(this.save_Click);
             // 
             // toolStripSeparator6
@@ -342,7 +342,7 @@ namespace Be.HexEditor
             this.cutToolStripButton.Image = global::Be.HexEditor.Pngs.Cut16;
             resources.ApplyResources(this.cutToolStripButton, "cutToolStripButton");
             this.cutToolStripButton.Name = "cutToolStripButton";
-            this.cutToolStripButton.PngResourceName = "Cut";
+            this.cutToolStripButton.ScalingImageResourceName = "Cut";
             this.cutToolStripButton.Click += new System.EventHandler(this.cut_Click);
             // 
             // copyToolStripSplitButton
@@ -355,7 +355,7 @@ namespace Be.HexEditor
             this.copyToolStripSplitButton.Image = global::Be.HexEditor.Pngs.Copy16;
             resources.ApplyResources(this.copyToolStripSplitButton, "copyToolStripSplitButton");
             this.copyToolStripSplitButton.Name = "copyToolStripSplitButton";
-            this.copyToolStripSplitButton.PngResourceName = "Copy";
+            this.copyToolStripSplitButton.ScalingImageResourceName = "Copy";
             this.copyToolStripSplitButton.ButtonClick += new System.EventHandler(this.copy_Click);
             // 
             // copyToolStripMenuItem1
@@ -379,7 +379,7 @@ namespace Be.HexEditor
             this.pasteToolStripSplitButton.Image = global::Be.HexEditor.Pngs.Paste16;
             resources.ApplyResources(this.pasteToolStripSplitButton, "pasteToolStripSplitButton");
             this.pasteToolStripSplitButton.Name = "pasteToolStripSplitButton";
-            this.pasteToolStripSplitButton.PngResourceName = "Paste";
+            this.pasteToolStripSplitButton.ScalingImageResourceName = "Paste";
             this.pasteToolStripSplitButton.ButtonClick += new System.EventHandler(this.paste_Click);
             // 
             // pasteToolStripMenuItem1

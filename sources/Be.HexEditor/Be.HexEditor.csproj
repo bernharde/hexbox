@@ -138,7 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\CoreUtil.cs" />
-    <Compile Include="Core\IScalingItem.cs" />
+    <Compile Include="Core\IScalingImage.cs" />
     <Compile Include="Core\MenuStripEx.cs">
       <SubType>Component</SubType>
     </Compile>

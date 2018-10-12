@@ -7,10 +7,10 @@ using System.Windows.Forms;
 
 namespace Be.HexEditor.Core
 {
-    public class ToolStripButtonEx : ToolStripButton, Be.HexEditor.Core.IScalingItem
+    public class ToolStripButtonEx : ToolStripButton, IScalingImage
     {
         [DefaultValue(null)]
-        public string PngResourceName { get; set; }
+        public string ScalingImageResourceName { get; set; }
 
         public ToolStripButtonEx()
         {

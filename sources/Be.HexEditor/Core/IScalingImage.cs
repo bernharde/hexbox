@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Be.HexEditor.Core
 {
-    public interface IScalingItem
+    public interface IScalingImage
     {
-        string PngResourceName { get; set; }
+        string ScalingImageResourceName { get; set; }
     }
 }

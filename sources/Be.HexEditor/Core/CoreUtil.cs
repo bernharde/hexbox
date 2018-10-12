@@ -25,11 +25,11 @@ namespace Be.HexEditor.Core
 
             foreach (ToolStripItem item in toolStrip.Items)
             {
-                var scalingItem = item as IScalingItem;
+                var scalingItem = item as IScalingImage;
                 if (scalingItem == null)
                     continue;
 
-                if (!string.IsNullOrEmpty(scalingItem.PngResourceName))
+                if (!string.IsNullOrEmpty(scalingItem.ScalingImageResourceName))
                 {
                     var size = 16;
                     if (width < 17)
@@ -45,7 +45,7 @@ namespace Be.HexEditor.Core
                     else if (width < 129)
                         size = 128;
 
-                    var png = scalingItem.PngResourceName + size;
+                    var png = scalingItem.ScalingImageResourceName + size;
                     var bitmap = (Bitmap)Pngs.ResourceManager.GetObject(png);
                     item.Image = bitmap;
                 }

@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace Be.HexEditor.Core
 {
-    public class ToolStripMenuItemEx : ToolStripMenuItem, IScalingItem
+    public class ToolStripMenuItemEx : ToolStripMenuItem, IScalingImage
     {
         [DefaultValue(null)]
-        public string PngResourceName { get; set; }
+        public string ScalingImageResourceName { get; set; }
     }
 }
