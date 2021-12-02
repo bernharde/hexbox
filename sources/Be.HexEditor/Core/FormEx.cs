@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Core
 {
     public class FormEx : Form
     {
@@ -44,7 +44,7 @@ namespace Be.HexEditor
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
 
         [DllImport("Shcore.dll")]
-        private static extern IntPtr GetDpiForMonitor([In]IntPtr hmonitor, [In]DpiType dpiType, [Out]out uint dpiX, [Out]out uint dpiY);
+        private static extern IntPtr GetDpiForMonitor([In] IntPtr hmonitor, [In] DpiType dpiType, [Out] out uint dpiX, [Out] out uint dpiY);
 
         private static int GetPerMonitorDpiForControl(Control c)
         {
@@ -74,7 +74,7 @@ namespace Be.HexEditor
             if (reportedDpi == trueDpi)
                 return;
 
-            var wParam = (trueDpi << 16) | (trueDpi & 0xffff);
+            var wParam = trueDpi << 16 | trueDpi & 0xffff;
             var dpiRatio = trueDpi / (double)reportedDpi;
             var suggestedBounds = new SuggestedBoundsRect
             {

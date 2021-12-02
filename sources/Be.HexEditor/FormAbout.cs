@@ -3,13 +3,14 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Be.HexEditor.Core;
 
 namespace Be.HexEditor
 {
-	/// <summary>
-	/// Summary description for FormAbout.
-	/// </summary>
-	public class FormAbout: FormEx
+    /// <summary>
+    /// Summary description for FormAbout.
+    /// </summary>
+    public class FormAbout: FormEx
 	{
 		private Be.HexEditor.UCAbout ucAbout1;
 		private System.Windows.Forms.Button btnOK;

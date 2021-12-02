@@ -59,17 +59,17 @@ namespace Be.HexEditor
 			miDefault.Tag = defConverter;
 			miDefault.Click += new EventHandler(encodingMenuItem_Clicked);
 
-			var ebcdicConverter = new EbcdicByteCharProvider();
-			ToolStripMenuItem miEbcdic = new ToolStripMenuItem();
-			miEbcdic.Text = ebcdicConverter.ToString();
-			miEbcdic.Tag = ebcdicConverter;
-			miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
+			//var ebcdicConverter = new EbcdicByteCharProvider();
+			//ToolStripMenuItem miEbcdic = new ToolStripMenuItem();
+			//miEbcdic.Text = ebcdicConverter.ToString();
+			//miEbcdic.Tag = ebcdicConverter;
+			//miEbcdic.Click += new EventHandler(encodingMenuItem_Clicked);
 
 			encodingToolStripComboBox.Items.Add(defConverter);
-			encodingToolStripComboBox.Items.Add(ebcdicConverter);
+			//encodingToolStripComboBox.Items.Add(ebcdicConverter);
 
 			encodingToolStripMenuItem.DropDownItems.Add(miDefault);
-			encodingToolStripMenuItem.DropDownItems.Add(miEbcdic);
+			//encodingToolStripMenuItem.DropDownItems.Add(miEbcdic);
 			encodingToolStripComboBox.SelectedIndex = 0;
 
             UpdateFormWidth();

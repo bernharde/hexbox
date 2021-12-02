@@ -7,12 +7,13 @@ using System.Windows.Forms;
 using Be.Windows.Forms;
 using System.Collections.Generic;
 using System.Text;
+using Be.HexEditor.Core;
 
 namespace Be.HexEditor
 {
-	/// <summary>
-	/// Summary description for FormFind.
-	/// </summary>
+    /// <summary>
+    /// Summary description for FormFind.
+    /// </summary>
     public class FormFind: FormEx
 	{
 		private Be.Windows.Forms.HexBox hexFind;
