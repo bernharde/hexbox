@@ -115,8 +115,8 @@ namespace Be.HexEditor
         }
 
         ToolStripMenuItem recentFileToolStripItem;
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public ToolStripMenuItem RecentFileToolStripItem
         {
             get { return recentFileToolStripItem; }

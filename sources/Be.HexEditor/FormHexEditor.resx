@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -124,7 +124,7 @@
   <data name="openToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="openToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
   </data>
@@ -327,6 +327,7 @@
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>9, 2, 0, 2</value>
   </data>
@@ -343,7 +344,7 @@
     <value>menuStrip</value>
   </data>
   <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.MenuStripEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.MenuStripEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -457,7 +458,7 @@
     <value>toolStrip</value>
   </data>
   <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -493,7 +494,7 @@
     <value>statusStrip</value>
   </data>
   <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.StatusStripEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.StatusStripEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -505,9 +506,6 @@
     <value>332, 17</value>
   </metadata>
   <data name="bodyPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="hexBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="hexBox.BuiltInContextMenu.CopyMenuItemText" xml:space="preserve">
@@ -522,6 +520,9 @@
   <data name="hexBox.BuiltInContextMenu.SelectAllMenuItemText" xml:space="preserve">
     <value>Select All </value>
   </data>
+  <data name="hexBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="hexBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Consolas, 9pt</value>
   </data>
@@ -532,7 +533,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="hexBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>649, 332</value>
+    <value>649, 338</value>
   </data>
   <data name="hexBox.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -541,7 +542,7 @@
     <value>hexBox</value>
   </data>
   <data name="&gt;&gt;hexBox.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.HexBox, Be.Windows.Forms.HexBox, Version=1.6.0.20431, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>Be.Windows.Forms.HexBox, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;hexBox.Parent" xml:space="preserve">
     <value>bodyPanel</value>
@@ -549,11 +550,11 @@
   <data name="&gt;&gt;hexBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="bitControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
+  <data name="bitControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
   <data name="bitControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 335</value>
+    <value>0, 338</value>
   </data>
   <data name="bitControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -568,7 +569,7 @@
     <value>bitControl1</value>
   </data>
   <data name="&gt;&gt;bitControl1.Type" xml:space="preserve">
-    <value>Be.HexEditor.BitControl, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.HexEditor.BitControl, Be.HexEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bitControl1.Parent" xml:space="preserve">
     <value>bodyPanel</value>
@@ -592,7 +593,7 @@
     <value>bodyPanel</value>
   </data>
   <data name="&gt;&gt;bodyPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bodyPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2075,270 +2076,270 @@
     <value>fileToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;openToolStripMenuItem.Name" xml:space="preserve">
     <value>openToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;openToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator.Name" xml:space="preserve">
     <value>toolStripSeparator</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">
     <value>saveToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;recentFilesToolStripMenuItem.Name" xml:space="preserve">
     <value>recentFilesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;recentFilesToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
     <value>exitToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;editToolStripMenuItem.Name" xml:space="preserve">
     <value>editToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;editToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;cutToolStripMenuItem.Name" xml:space="preserve">
     <value>cutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;cutToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Name" xml:space="preserve">
     <value>copyToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem.Name" xml:space="preserve">
     <value>pasteToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
     <value>toolStripSeparator3</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;copyHexStringToolStripMenuItem.Name" xml:space="preserve">
     <value>copyHexStringToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;copyHexStringToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem.Name" xml:space="preserve">
     <value>pasteHexToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
     <value>toolStripSeparator4</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;findToolStripMenuItem.Name" xml:space="preserve">
     <value>findToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;findToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;findNextToolStripMenuItem.Name" xml:space="preserve">
     <value>findNextToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;findNextToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;goToToolStripMenuItem.Name" xml:space="preserve">
     <value>goToToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;goToToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
     <value>toolStripSeparator5</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;selectAllToolStripMenuItem.Name" xml:space="preserve">
     <value>selectAllToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;selectAllToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;viewToolStripMenuItem.Name" xml:space="preserve">
     <value>viewToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;viewToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;encodingToolStripMenuItem.Name" xml:space="preserve">
     <value>encodingToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;encodingToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;bitsToolStripMenuItem.Name" xml:space="preserve">
     <value>bitsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;bitsToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolsToolStripMenuItem.Name" xml:space="preserve">
     <value>toolsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;toolsToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;optionsToolStripMenuItem.Name" xml:space="preserve">
     <value>optionsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;optionsToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
     <value>helpToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
     <value>aboutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;openToolStripButton.Name" xml:space="preserve">
     <value>openToolStripButton</value>
   </data>
   <data name="&gt;&gt;openToolStripButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripButtonEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;saveToolStripButton.Name" xml:space="preserve">
     <value>saveToolStripButton</value>
   </data>
   <data name="&gt;&gt;saveToolStripButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripButtonEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
     <value>toolStripSeparator6</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cutToolStripButton.Name" xml:space="preserve">
     <value>cutToolStripButton</value>
   </data>
   <data name="&gt;&gt;cutToolStripButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripButtonEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;copyToolStripSplitButton.Name" xml:space="preserve">
     <value>copyToolStripSplitButton</value>
   </data>
   <data name="&gt;&gt;copyToolStripSplitButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripSplitButtonEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripSplitButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem1.Name" xml:space="preserve">
     <value>copyToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;copyHexToolStripMenuItem1.Name" xml:space="preserve">
     <value>copyHexToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;copyHexToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;pasteToolStripSplitButton.Name" xml:space="preserve">
     <value>pasteToolStripSplitButton</value>
   </data>
   <data name="&gt;&gt;pasteToolStripSplitButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripSplitButtonEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripSplitButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem1.Name" xml:space="preserve">
     <value>pasteToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem1.Name" xml:space="preserve">
     <value>pasteHexToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.Windows.Forms.ToolStripMenuItemEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
   </data>
   <data name="&gt;&gt;encodingToolStripComboBox.Name" xml:space="preserve">
     <value>encodingToolStripComboBox</value>
   </data>
   <data name="&gt;&gt;encodingToolStripComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel.Name" xml:space="preserve">
     <value>toolStripStatusLabel</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileSizeToolStripStatusLabel.Name" xml:space="preserve">
     <value>fileSizeToolStripStatusLabel</value>
   </data>
   <data name="&gt;&gt;fileSizeToolStripStatusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bitToolStripStatusLabel.Name" xml:space="preserve">
     <value>bitToolStripStatusLabel</value>
   </data>
   <data name="&gt;&gt;bitToolStripStatusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openFileDialog.Name" xml:space="preserve">
     <value>openFileDialog</value>
   </data>
   <data name="&gt;&gt;openFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RecentFileHandler.Name" xml:space="preserve">
     <value>RecentFileHandler</value>
   </data>
   <data name="&gt;&gt;RecentFileHandler.Type" xml:space="preserve">
-    <value>Be.HexEditor.RecentFileHandler, Be.HexEditor, Version=1.6.1.20431, Culture=neutral, PublicKeyToken=01fb039ca8b8c445</value>
+    <value>Be.HexEditor.RecentFileHandler, Be.HexEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormHexEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
