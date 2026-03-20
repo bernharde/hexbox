@@ -61,7 +61,7 @@ namespace Be.Windows.Forms
         /// </summary>
         void CheckBuiltInContextMenu()
         {
-            if (Util.DesignMode)
+            if (this.DesignMode)
                 return;
 
             if (this._contextMenuStrip == null)

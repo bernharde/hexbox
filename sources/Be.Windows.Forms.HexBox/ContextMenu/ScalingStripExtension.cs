@@ -67,7 +67,7 @@ namespace Be.Windows.Forms
 
         public void AdjustImages()
         {
-            if (Util.DesignMode)
+            if (this.DesignMode)
                 return;
 
             if (ResourceManager == null)
