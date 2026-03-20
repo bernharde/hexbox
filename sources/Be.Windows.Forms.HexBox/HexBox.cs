@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
-using System.Security.Permissions;
 using System.Windows.Forms.VisualStyles;
 using System.Text;
 using System.Collections.Generic;
@@ -1919,8 +1918,7 @@ namespace Be.Windows.Forms
 		/// </summary>
 		/// <param name="m">the message to process.</param>
 		/// <returns>true, if the message was processed</returns>
-		[SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode = true), SecurityPermission(SecurityAction.InheritanceDemand, UnmanagedCode = true)]
-		public override bool PreProcessMessage(ref Message m)
+        public override bool PreProcessMessage(ref Message m)
 		{
 			switch (m.Msg)
 			{
@@ -2750,11 +2748,11 @@ namespace Be.Windows.Forms
 		#region Positioning methods
 		void UpdateRectanglePositioning()
 		{
-			// calc char size
+            // calc char size
             SizeF charSize;
             using (var graphics = this.CreateGraphics())
             {
-                charSize = this.CreateGraphics().MeasureString("A", Font, 100, _stringFormat);
+                charSize = graphics.MeasureString("A", Font, 100, _stringFormat);
             }
 			CharSize = new SizeF((float)Math.Ceiling(charSize.Width), (float)Math.Ceiling(charSize.Height));
 
