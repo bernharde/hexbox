@@ -5,30 +5,6 @@
     <Compile Update="BuiltInContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="ContextMenu\ContextMenuStripEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ContextMenu\MenuStripEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ContextMenu\ScalingStripExtension.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ContextMenu\StatusStripEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ContextMenu\ToolStripButtonEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ContextMenu\ToolStripEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ContextMenu\ToolStripMenuItemEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="ContextMenu\ToolStripSplitButtonEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Update="HexBox.cs">
       <SubType>Component</SubType>
     </Compile>

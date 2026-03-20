@@ -20,23 +20,23 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Contains the ContextMenuStrip control.
         /// </summary>
-        ContextMenuStripEx _contextMenuStrip;
+        ContextMenuStrip _contextMenuStrip;
         /// <summary>
         /// Contains the "Cut"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItemEx _cutToolStripMenuItem;
+        ToolStripMenuItem _cutToolStripMenuItem;
         /// <summary>
         /// Contains the "Copy"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItemEx _copyToolStripMenuItem;
+        ToolStripMenuItem _copyToolStripMenuItem;
         /// <summary>
         /// Contains the "Paste"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItemEx _pasteToolStripMenuItem;
+        ToolStripMenuItem _pasteToolStripMenuItem;
         /// <summary>
         /// Contains the "Select All"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItemEx _selectAllToolStripMenuItem;
+        ToolStripMenuItem _selectAllToolStripMenuItem;
         /// <summary>
         /// Initializes a new instance of BuildInContextMenu class.
         /// </summary>
@@ -66,23 +66,23 @@ namespace Be.Windows.Forms
 
             if (this._contextMenuStrip == null)
             {
-                _contextMenuStrip = new ContextMenuStripEx();
+                _contextMenuStrip = new ContextMenuStrip();
 
                 _cutToolStripMenuItem = AddMenuItem(
                     CutMenuItemText, CutMenuItemImage, 
-                    CutMenuItem_Click, CutMenuItemScalingImageName);
+                    CutMenuItem_Click);
                 _copyToolStripMenuItem = AddMenuItem(
                     CopyMenuItemTextInternal, CopyMenuItemImage
-                    ,CopyMenuItem_Click, CopyMenuItemScalingImageName);
+                    ,CopyMenuItem_Click);
                 _pasteToolStripMenuItem = AddMenuItem(
                     PasteMenuItemTextInternal, PasteMenuItemImage
-                    , PasteMenuItem_Click, PasteMenuItemScalingImageName);
+                    , PasteMenuItem_Click);
 
                 _contextMenuStrip.Items.Add(new ToolStripSeparator());
 
                 _selectAllToolStripMenuItem = AddMenuItem(
                     SelectAllMenuItemTextInternal, SelectAllMenuItemImage
-                    , SelectAllMenuItem_Click, SelectAllMenuItemScalingImageName);
+                    , SelectAllMenuItem_Click);
 
                 _contextMenuStrip.Opening += new CancelEventHandler(BuildInContextMenuStrip_Opening);
             }
@@ -93,12 +93,11 @@ namespace Be.Windows.Forms
                 this._hexBox.ContextMenuStrip = _contextMenuStrip;
         }
 
-        ToolStripMenuItemEx AddMenuItem(string text, Image image, EventHandler onClick, string scalingImageResourceName)
+        ToolStripMenuItem AddMenuItem(string text, Image image, EventHandler onClick)
         {
-            var item = new ToolStripMenuItemEx();
+            var item = new ToolStripMenuItem();
             item.Text = text;
             item.Image = image;
-            item.ScalingImageResourceName = scalingImageResourceName;
             item.Click += onClick;
             _contextMenuStrip.Items.Add(item);
             return item;

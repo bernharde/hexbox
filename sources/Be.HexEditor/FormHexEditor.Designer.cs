@@ -30,48 +30,48 @@ namespace Be.HexEditor
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHexEditor));
-            menuStrip = new Be.Windows.Forms.MenuStripEx();
-            fileToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            openToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
+            menuStrip = new System.Windows.Forms.MenuStrip();
+            fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            saveToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
+            saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            recentFilesToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
+            recentFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            exitToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            editToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            cutToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            copyToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            pasteToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
+            exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            copyHexStringToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            pasteHexToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
+            copyHexStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            pasteHexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            findToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            findNextToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            goToToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
+            findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            goToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            selectAllToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            viewToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            encodingToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            bitsToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            toolsToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            optionsToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            helpToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            aboutToolStripMenuItem = new Be.Windows.Forms.ToolStripMenuItemEx();
-            toolStrip = new Be.Windows.Forms.ToolStripEx();
-            openToolStripButton = new Be.Windows.Forms.ToolStripButtonEx();
-            saveToolStripButton = new Be.Windows.Forms.ToolStripButtonEx();
+            selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            encodingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            bitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStrip = new System.Windows.Forms.ToolStrip();
+            openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            cutToolStripButton = new Be.Windows.Forms.ToolStripButtonEx();
-            copyToolStripSplitButton = new Be.Windows.Forms.ToolStripSplitButtonEx();
-            copyToolStripMenuItem1 = new Be.Windows.Forms.ToolStripMenuItemEx();
-            copyHexToolStripMenuItem1 = new Be.Windows.Forms.ToolStripMenuItemEx();
-            pasteToolStripSplitButton = new Be.Windows.Forms.ToolStripSplitButtonEx();
-            pasteToolStripMenuItem1 = new Be.Windows.Forms.ToolStripMenuItemEx();
-            pasteHexToolStripMenuItem1 = new Be.Windows.Forms.ToolStripMenuItemEx();
+            cutToolStripButton = new System.Windows.Forms.ToolStripButton();
+            copyToolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+            copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            copyHexToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            pasteToolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+            pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            pasteHexToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             encodingToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            statusStrip = new Be.Windows.Forms.StatusStripEx();
+            statusStrip = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             fileSizeToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             bitToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -105,7 +105,6 @@ namespace Be.HexEditor
             openToolStripMenuItem.Image = Pngs.Open16;
             resources.ApplyResources(openToolStripMenuItem, "openToolStripMenuItem");
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.ScalingImageResourceName = "Open";
             openToolStripMenuItem.Click += open_Click;
             // 
             // toolStripSeparator
@@ -118,7 +117,6 @@ namespace Be.HexEditor
             saveToolStripMenuItem.Image = Pngs.SaveStatusBar16;
             resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.ScalingImageResourceName = "SaveStatusBar";
             saveToolStripMenuItem.Click += save_Click;
             // 
             // toolStripSeparator2
@@ -154,7 +152,6 @@ namespace Be.HexEditor
             cutToolStripMenuItem.Image = Pngs.Cut16;
             resources.ApplyResources(cutToolStripMenuItem, "cutToolStripMenuItem");
             cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            cutToolStripMenuItem.ScalingImageResourceName = "Cut";
             cutToolStripMenuItem.Click += cut_Click;
             // 
             // copyToolStripMenuItem
@@ -162,7 +159,6 @@ namespace Be.HexEditor
             copyToolStripMenuItem.Image = Pngs.Copy16;
             resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.ScalingImageResourceName = "Copy";
             copyToolStripMenuItem.Click += copy_Click;
             // 
             // pasteToolStripMenuItem
@@ -170,7 +166,6 @@ namespace Be.HexEditor
             pasteToolStripMenuItem.Image = Pngs.Paste16;
             resources.ApplyResources(pasteToolStripMenuItem, "pasteToolStripMenuItem");
             pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            pasteToolStripMenuItem.ScalingImageResourceName = "Paste";
             pasteToolStripMenuItem.Click += paste_Click;
             // 
             // toolStripSeparator3
@@ -199,7 +194,6 @@ namespace Be.HexEditor
             // 
             findToolStripMenuItem.Image = Pngs.QuickFind16;
             findToolStripMenuItem.Name = "findToolStripMenuItem";
-            findToolStripMenuItem.ScalingImageResourceName = "QuickFind";
             resources.ApplyResources(findToolStripMenuItem, "findToolStripMenuItem");
             findToolStripMenuItem.Click += find_Click;
             // 
@@ -207,7 +201,6 @@ namespace Be.HexEditor
             // 
             findNextToolStripMenuItem.Image = Pngs.FindNext16;
             findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
-            findNextToolStripMenuItem.ScalingImageResourceName = "FindNext";
             resources.ApplyResources(findNextToolStripMenuItem, "findNextToolStripMenuItem");
             findNextToolStripMenuItem.Click += findNext_Click;
             // 
@@ -284,7 +277,6 @@ namespace Be.HexEditor
             openToolStripButton.Image = Pngs.Open16;
             resources.ApplyResources(openToolStripButton, "openToolStripButton");
             openToolStripButton.Name = "openToolStripButton";
-            openToolStripButton.ScalingImageResourceName = "Open";
             openToolStripButton.Click += open_Click;
             // 
             // saveToolStripButton
@@ -293,7 +285,6 @@ namespace Be.HexEditor
             saveToolStripButton.Image = Pngs.SaveStatusBar16;
             resources.ApplyResources(saveToolStripButton, "saveToolStripButton");
             saveToolStripButton.Name = "saveToolStripButton";
-            saveToolStripButton.ScalingImageResourceName = "SaveStatusBar";
             saveToolStripButton.Click += save_Click;
             // 
             // toolStripSeparator6
@@ -307,7 +298,6 @@ namespace Be.HexEditor
             cutToolStripButton.Image = Pngs.Cut16;
             resources.ApplyResources(cutToolStripButton, "cutToolStripButton");
             cutToolStripButton.Name = "cutToolStripButton";
-            cutToolStripButton.ScalingImageResourceName = "Cut";
             cutToolStripButton.Click += cut_Click;
             // 
             // copyToolStripSplitButton
@@ -318,7 +308,6 @@ namespace Be.HexEditor
             copyToolStripSplitButton.Image = Pngs.Copy16;
             resources.ApplyResources(copyToolStripSplitButton, "copyToolStripSplitButton");
             copyToolStripSplitButton.Name = "copyToolStripSplitButton";
-            copyToolStripSplitButton.ScalingImageResourceName = "Copy";
             copyToolStripSplitButton.ButtonClick += copy_Click;
             // 
             // copyToolStripMenuItem1
@@ -340,7 +329,6 @@ namespace Be.HexEditor
             pasteToolStripSplitButton.Image = Pngs.Paste16;
             resources.ApplyResources(pasteToolStripSplitButton, "pasteToolStripSplitButton");
             pasteToolStripSplitButton.Name = "pasteToolStripSplitButton";
-            pasteToolStripSplitButton.ScalingImageResourceName = "Paste";
             pasteToolStripSplitButton.ButtonClick += paste_Click;
             // 
             // pasteToolStripMenuItem1
@@ -469,54 +457,54 @@ namespace Be.HexEditor
 
         #endregion
 
-        private Be.Windows.Forms.MenuStripEx menuStrip;
-        private Be.Windows.Forms.ToolStripMenuItemEx fileToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx openToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private Be.Windows.Forms.ToolStripMenuItemEx saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private Be.Windows.Forms.ToolStripMenuItemEx exitToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx editToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx cutToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx copyToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private Be.Windows.Forms.ToolStripMenuItemEx findToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx toolsToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx optionsToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx helpToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx aboutToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripEx toolStrip;
-        private Be.Windows.Forms.ToolStripButtonEx openToolStripButton;
-        private Be.Windows.Forms.ToolStripButtonEx saveToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripButton openToolStripButton;
+        private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private Be.Windows.Forms.ToolStripButtonEx cutToolStripButton;
+        private System.Windows.Forms.ToolStripButton cutToolStripButton;
         private Be.Windows.Forms.HexBox hexBox;
-        private Be.Windows.Forms.StatusStripEx statusStrip;
-        private Be.Windows.Forms.ToolStripMenuItemEx findNextToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx goToToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripMenuItem findNextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goToToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private Be.Windows.Forms.ToolStripMenuItemEx recentFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recentFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripStatusLabel fileSizeToolStripStatusLabel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private Be.Windows.Forms.ToolStripMenuItemEx copyHexStringToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripMenuItemEx pasteHexToolStripMenuItem;
-        private Be.Windows.Forms.ToolStripSplitButtonEx copyToolStripSplitButton;
-        private Be.Windows.Forms.ToolStripMenuItemEx copyToolStripMenuItem1;
-        private Be.Windows.Forms.ToolStripMenuItemEx copyHexToolStripMenuItem1;
-        private Be.Windows.Forms.ToolStripSplitButtonEx pasteToolStripSplitButton;
-        private Be.Windows.Forms.ToolStripMenuItemEx pasteToolStripMenuItem1;
-        private Be.Windows.Forms.ToolStripMenuItemEx pasteHexToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem copyHexStringToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteHexToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSplitButton copyToolStripSplitButton;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem copyHexToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSplitButton pasteToolStripSplitButton;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem pasteHexToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private Be.Windows.Forms.ToolStripMenuItemEx selectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         public RecentFileHandler RecentFileHandler;
 		private System.Windows.Forms.ToolStripStatusLabel bitToolStripStatusLabel;
 		private System.Windows.Forms.ToolStripComboBox encodingToolStripComboBox;
-		private Be.Windows.Forms.ToolStripMenuItemEx viewToolStripMenuItem;
-		private Be.Windows.Forms.ToolStripMenuItemEx encodingToolStripMenuItem;
-		private Be.Windows.Forms.ToolStripMenuItemEx bitsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem encodingToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem bitsToolStripMenuItem;
 		private BitControl bitControl1;
 		private System.Windows.Forms.Panel bodyPanel;
     }
