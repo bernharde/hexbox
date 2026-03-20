@@ -1,29 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+
+		<OutputType>WinExe</OutputType>
+		<ApplicationIcon>App.ico</ApplicationIcon>
+
+		<Nullable>enable</Nullable>
+
 		<AssemblyTitle>Be.HexEditor</AssemblyTitle>
 		<Description>View and edit files in hex format</Description>
 		<Company>Be</Company>
 		<Product>Be.HexEditor</Product>
-		
-    <TargetFramework>net10.0-windows</TargetFramework>
-    <ApplicationIcon>App.ico</ApplicationIcon>
-    
-    <OutputType>WinExe</OutputType>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <SupportUrl>http://sourceforge.net/projects/hexbox/</SupportUrl>
-    <ProductName>Be.HexEditor</ProductName>
-    <PublisherName>Bernhard Elbl</PublisherName>
-    <UseWindowsForms>true</UseWindowsForms>
-  </PropertyGroup>
- 
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\license.txt">
-      <Link>Resources\license.txt</Link>
-    </EmbeddedResource>
-  </ItemGroup>
- 
-  <ItemGroup>
-    <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
-  </ItemGroup>
-	
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="..\..\license.txt">
+			<Link>Resources\license.txt</Link>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
+	</ItemGroup>
+
 </Project>
