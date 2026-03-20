@@ -157,8 +157,6 @@ namespace Be.Windows.Forms
 			#region Mouse selection methods
 			void BeginMouseSelection(object sender, MouseEventArgs e)
 			{
-				System.Diagnostics.Debug.WriteLine("BeginMouseSelection()", "KeyInterpreter");
-
 				if (e.Button != MouseButtons.Left)
 					return;
 
@@ -217,8 +215,6 @@ namespace Be.Windows.Forms
 			#region PrePrcessWmKeyDown methods
 			public virtual bool PreProcessWmKeyDown(ref Message m)
 			{
-				System.Diagnostics.Debug.WriteLine("PreProcessWmKeyDown(ref Message m)", "KeyInterpreter");
-
 				Keys vc = (Keys)m.WParam.ToInt32();
 
 				Keys keyData = vc | Control.ModifierKeys;
@@ -747,8 +743,6 @@ namespace Be.Windows.Forms
 			#region PreProcessWmKeyUp methods
 			public virtual bool PreProcessWmKeyUp(ref Message m)
 			{
-				System.Diagnostics.Debug.WriteLine("PreProcessWmKeyUp(ref Message m)", "KeyInterpreter");
-
 				Keys vc = (Keys)m.WParam.ToInt32();
 
 				Keys keyData = vc | Control.ModifierKeys;
@@ -953,9 +947,7 @@ namespace Be.Windows.Forms
 
 			public virtual PointF GetCaretPointF(long byteIndex)
 			{
-				System.Diagnostics.Debug.WriteLine("GetCaretPointF()", "KeyInterpreter");
-
-				return _hexBox.GetBytePointF(byteIndex);
+			return _hexBox.GetBytePointF(byteIndex);
 			}
 
 			protected virtual BytePositionInfo GetBytePositionInfo(Point p)
@@ -1082,10 +1074,8 @@ namespace Be.Windows.Forms
 			#region Misc
 			public override PointF GetCaretPointF(long byteIndex)
 			{
-				System.Diagnostics.Debug.WriteLine("GetCaretPointF()", "StringKeyInterpreter");
-
-				Point gp = _hexBox.GetGridBytePoint(byteIndex);
-				return _hexBox.GetByteStringPointF(gp);
+			Point gp = _hexBox.GetGridBytePoint(byteIndex);
+			return _hexBox.GetByteStringPointF(gp);
 			}
 
 			protected override BytePositionInfo GetBytePositionInfo(Point p)
@@ -1462,7 +1452,6 @@ namespace Be.Windows.Forms
 
 		void UpdateScrollSize()
 		{
-			System.Diagnostics.Debug.WriteLine("UpdateScrollSize()", "HexBox");
 
 			// calc scroll bar info
 			if (VScrollBarVisible && _byteProvider != null && _byteProvider.Length > 0 && _iHexMaxHBytes != 0)
@@ -1500,7 +1489,6 @@ namespace Be.Windows.Forms
 
 		void UpdateVScroll()
 		{
-			System.Diagnostics.Debug.WriteLine("UpdateVScroll()", "HexBox");
 
 			int max = ToScrollMax(_scrollVmax);
 
@@ -1627,8 +1615,6 @@ namespace Be.Windows.Forms
 		/// </summary>
 		public void ScrollByteIntoView()
 		{
-			System.Diagnostics.Debug.WriteLine("ScrollByteIntoView()", "HexBox");
-
 			ScrollByteIntoView(_bytePos);
 		}
 
@@ -1638,8 +1624,6 @@ namespace Be.Windows.Forms
 		/// <param name="index">the index of the byte</param>
 		public void ScrollByteIntoView(long index)
 		{
-			System.Diagnostics.Debug.WriteLine("ScrollByteIntoView(long index)", "HexBox");
-
 			if (_byteProvider == null || _keyInterpreter == null)
 				return;
 
@@ -1660,8 +1644,6 @@ namespace Be.Windows.Forms
 		#region Selection methods
 		void ReleaseSelection()
 		{
-			System.Diagnostics.Debug.WriteLine("ReleaseSelection()", "HexBox");
-
 			if (_selectionLength == 0)
 				return;
 			_selectionLength = 0;
@@ -1785,9 +1767,6 @@ namespace Be.Windows.Forms
 		{
 			if (_byteProvider == null || _keyInterpreter == null || _caretVisible || !this.Focused)
 				return;
-
-			System.Diagnostics.Debug.WriteLine("CreateCaret()", "HexBox");
-
 			// define the caret width depending on InsertActive mode
 			int caretWidth = (this.InsertActive) ? 1 : (int)_charSize.Width;
 			int caretHeight = (int)_charSize.Height;
@@ -1804,9 +1783,6 @@ namespace Be.Windows.Forms
 		{
 			if (_byteProvider == null || _keyInterpreter == null)
 				return;
-
-			System.Diagnostics.Debug.WriteLine("UpdateCaret()", "HexBox");
-
 			long byteIndex = _bytePos - _startByte;
 			PointF p = _keyInterpreter.GetCaretPointF(byteIndex);
 			p.X += _byteCharacterPos * _charSize.Width;
@@ -1817,17 +1793,12 @@ namespace Be.Windows.Forms
 		{
 			if (!_caretVisible)
 				return;
-
-			System.Diagnostics.Debug.WriteLine("DestroyCaret()", "HexBox");
-
 			NativeMethods.DestroyCaret();
 			_caretVisible = false;
 		}
 
 		void SetCaretPosition(Point p)
 		{
-			System.Diagnostics.Debug.WriteLine("SetCaretPosition()", "HexBox");
-
 			if (_byteProvider == null || _keyInterpreter == null)
 				return;
 
@@ -1862,8 +1833,6 @@ namespace Be.Windows.Forms
 
 		BytePositionInfo GetHexBytePositionInfo(Point p)
 		{
-			System.Diagnostics.Debug.WriteLine("GetHexBytePositionInfo()", "HexBox");
-
 			long bytePos;
 			int byteCharaterPos;
 
@@ -1890,8 +1859,6 @@ namespace Be.Windows.Forms
 
 		BytePositionInfo GetStringBytePositionInfo(Point p)
 		{
-			System.Diagnostics.Debug.WriteLine("GetStringBytePositionInfo()", "HexBox");
-
 			long bytePos;
 			int byteCharacterPos;
 
@@ -2347,7 +2314,6 @@ namespace Be.Windows.Forms
 			if (_byteProvider == null)
 				return;
 
-			System.Diagnostics.Debug.WriteLine("OnPaint " + DateTime.Now.ToString(), "HexBox");
 
 			// draw only in the content rectangle, so exclude the border and the scrollbar.
 			Region r = new Region(ClientRectangle);
@@ -2382,11 +2348,11 @@ namespace Be.Windows.Forms
 			// Ensure endByte isn't > length of array.
 			endByte = Math.Min(_byteProvider.Length - 1, endByte);
 
-			Color lineInfoColor = (this.InfoForeColor != Color.Empty) ? this.InfoForeColor : this.ForeColor;
-			Brush brush = new SolidBrush(lineInfoColor);
+		Color lineInfoColor = (this.InfoForeColor != Color.Empty) ? this.InfoForeColor : this.ForeColor;
+		int maxLine = GetGridBytePoint(endByte - startByte).Y + 1;
 
-			int maxLine = GetGridBytePoint(endByte - startByte).Y + 1;
-
+		using (Brush brush = new SolidBrush(lineInfoColor))
+		{
 			for (int i = 0; i < maxLine; i++)
 			{
 				long firstLineByte = (startByte + (_iHexMaxHBytes) * i) + _lineInfoOffset;
@@ -2407,59 +2373,66 @@ namespace Be.Windows.Forms
 				g.DrawString(formattedInfo, Font, brush, new PointF(_recLineInfo.X, bytePointF.Y), _stringFormat);
 			}
 		}
+		}
 
 		void PaintHeaderRow(Graphics g)
 		{
-			Brush brush = new SolidBrush(this.InfoForeColor);
-			for (int col = 0; col < _iHexMaxHBytes; col++)
+			using (Brush brush = new SolidBrush(this.InfoForeColor))
 			{
-				PaintColumnInfo(g, (byte)col, brush, col);
+				for (int col = 0; col < _iHexMaxHBytes; col++)
+				{
+					PaintColumnInfo(g, (byte)col, brush, col);
+				}
 			}
 		}
 
 		void PaintColumnSeparator(Graphics g)
 		{
-			for (int col = GroupSize; col < _iHexMaxHBytes; col += GroupSize)
+			using (var penBrush = new SolidBrush(this.InfoForeColor))
+			using (var pen = new Pen(penBrush, 1))
 			{
-				var pen = new Pen(new SolidBrush(this.InfoForeColor), 1);
-				PointF headerPointF = GetColumnInfoPointF(col);
-				headerPointF.X -= _charSize.Width / 2;
-				g.DrawLine(pen, headerPointF, new PointF(headerPointF.X, headerPointF.Y + _recColumnInfo.Height + _recHex.Height));
-				if (StringViewVisible)
+				for (int col = GroupSize; col < _iHexMaxHBytes; col += GroupSize)
 				{
-					PointF byteStringPointF = GetByteStringPointF(new Point(col, 0));
-					headerPointF.X -= 2;
-					g.DrawLine(pen, new PointF(byteStringPointF.X, byteStringPointF.Y), new PointF(byteStringPointF.X, byteStringPointF.Y + _recHex.Height));
+					PointF headerPointF = GetColumnInfoPointF(col);
+					headerPointF.X -= _charSize.Width / 2;
+					g.DrawLine(pen, headerPointF, new PointF(headerPointF.X, headerPointF.Y + _recColumnInfo.Height + _recHex.Height));
+					if (StringViewVisible)
+					{
+						PointF byteStringPointF = GetByteStringPointF(new Point(col, 0));
+						headerPointF.X -= 2;
+						g.DrawLine(pen, new PointF(byteStringPointF.X, byteStringPointF.Y), new PointF(byteStringPointF.X, byteStringPointF.Y + _recHex.Height));
+					}
 				}
 			}
 		}
 
 		void PaintHex(Graphics g, long startByte, long endByte)
 		{
-			Brush brush = new SolidBrush(GetDefaultForeColor());
-			Brush selBrush = new SolidBrush(_selectionForeColor);
-			Brush selBrushBack = new SolidBrush(_selectionBackColor);
-
-			int counter = -1;
-			long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
-
-			bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
-
-			for (long i = startByte; i < intern_endByte + 1; i++)
+			using (Brush brush = new SolidBrush(GetDefaultForeColor()))
+			using (Brush selBrush = new SolidBrush(_selectionForeColor))
+			using (Brush selBrushBack = new SolidBrush(_selectionBackColor))
 			{
-				counter++;
-				Point gridPoint = GetGridBytePoint(counter);
-				byte b = _byteProvider.ReadByte(i);
+				int counter = -1;
+				long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
 
-				bool isSelectedByte = i >= _bytePos && i <= (_bytePos + _selectionLength - 1) && _selectionLength != 0;
+				bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
 
-				if (isSelectedByte && isKeyInterpreterActive)
+				for (long i = startByte; i < intern_endByte + 1; i++)
 				{
-					PaintHexStringSelected(g, b, selBrush, selBrushBack, gridPoint);
-				}
-				else
-				{
-					PaintHexString(g, b, brush, gridPoint);
+					counter++;
+					Point gridPoint = GetGridBytePoint(counter);
+					byte b = _byteProvider.ReadByte(i);
+
+					bool isSelectedByte = i >= _bytePos && i <= (_bytePos + _selectionLength - 1) && _selectionLength != 0;
+
+					if (isSelectedByte && isKeyInterpreterActive)
+					{
+						PaintHexStringSelected(g, b, selBrush, selBrushBack, gridPoint);
+					}
+					else
+					{
+						PaintHexString(g, b, brush, gridPoint);
+					}
 				}
 			}
 		}
@@ -2505,44 +2478,45 @@ namespace Be.Windows.Forms
 
 		void PaintHexAndStringView(Graphics g, long startByte, long endByte)
 		{
-			Brush brush = new SolidBrush(GetDefaultForeColor());
-			Brush selBrush = new SolidBrush(_selectionForeColor);
-			Brush selBrushBack = new SolidBrush(_selectionBackColor);
-
-			int counter = -1;
-			long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
-
-			bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
-			bool isStringKeyInterpreterActive = _keyInterpreter != null && _keyInterpreter.GetType() == typeof(StringKeyInterpreter);
-
-			for (long i = startByte; i < intern_endByte + 1; i++)
+			using (Brush brush = new SolidBrush(GetDefaultForeColor()))
+			using (Brush selBrush = new SolidBrush(_selectionForeColor))
+			using (Brush selBrushBack = new SolidBrush(_selectionBackColor))
 			{
-				counter++;
-				Point gridPoint = GetGridBytePoint(counter);
-				PointF byteStringPointF = GetByteStringPointF(gridPoint);
-				byte b = _byteProvider.ReadByte(i);
+				int counter = -1;
+				long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
 
-				bool isSelectedByte = i >= _bytePos && i <= (_bytePos + _selectionLength - 1) && _selectionLength != 0;
+				bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
+				bool isStringKeyInterpreterActive = _keyInterpreter != null && _keyInterpreter.GetType() == typeof(StringKeyInterpreter);
 
-				if (isSelectedByte && isKeyInterpreterActive)
+				for (long i = startByte; i < intern_endByte + 1; i++)
 				{
-					PaintHexStringSelected(g, b, selBrush, selBrushBack, gridPoint);
-				}
-				else
-				{
-					PaintHexString(g, b, brush, gridPoint);
-				}
+					counter++;
+					Point gridPoint = GetGridBytePoint(counter);
+					PointF byteStringPointF = GetByteStringPointF(gridPoint);
+					byte b = _byteProvider.ReadByte(i);
 
-				string s = new String(ByteCharConverter.ToChar(b), 1);
+					bool isSelectedByte = i >= _bytePos && i <= (_bytePos + _selectionLength - 1) && _selectionLength != 0;
 
-				if (isSelectedByte && isStringKeyInterpreterActive)
-				{
-					g.FillRectangle(selBrushBack, byteStringPointF.X, byteStringPointF.Y, _charSize.Width, _charSize.Height);
-					g.DrawString(s, Font, selBrush, byteStringPointF, _stringFormat);
-				}
-				else
-				{
-					g.DrawString(s, Font, brush, byteStringPointF, _stringFormat);
+					if (isSelectedByte && isKeyInterpreterActive)
+					{
+						PaintHexStringSelected(g, b, selBrush, selBrushBack, gridPoint);
+					}
+					else
+					{
+						PaintHexString(g, b, brush, gridPoint);
+					}
+
+					string s = new String(ByteCharConverter.ToChar(b), 1);
+
+					if (isSelectedByte && isStringKeyInterpreterActive)
+					{
+						g.FillRectangle(selBrushBack, byteStringPointF.X, byteStringPointF.Y, _charSize.Width, _charSize.Height);
+						g.DrawString(s, Font, selBrush, byteStringPointF, _stringFormat);
+					}
+					else
+					{
+						g.DrawString(s, Font, brush, byteStringPointF, _stringFormat);
+					}
 				}
 			}
 		}
@@ -2715,26 +2689,20 @@ namespace Be.Windows.Forms
 			if (rec.Top < 0 || rec.Left < 0 || rec.Width <= 0 || rec.Height <= 0)
 				return;
 
-			Bitmap myBitmap = new Bitmap(rec.Width, rec.Height);
-			Graphics bitmapGraphics = Graphics.FromImage(myBitmap);
+			using (var myBitmap = new Bitmap(rec.Width, rec.Height))
+			using (Graphics bitmapGraphics = Graphics.FromImage(myBitmap))
+			using (SolidBrush greenBrush = new SolidBrush(_shadowSelectionColor))
+			{
+				bitmapGraphics.FillRectangle(greenBrush, 0,
+					0, rec.Width, rec.Height);
 
-			SolidBrush greenBrush = new SolidBrush(_shadowSelectionColor);
+				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.GammaCorrected;
 
-			bitmapGraphics.FillRectangle(greenBrush, 0,
-				0, rec.Width, rec.Height);
-
-			g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.GammaCorrected;
-
-			g.DrawImage(myBitmap, rec.Left, rec.Top);
+				g.DrawImage(myBitmap, rec.Left, rec.Top);
+			}
 		}
 
-		Color GetDefaultForeColor()
-		{
-			if (Enabled)
-				return ForeColor;
-			else
-				return Color.Gray;
-		}
+		Color GetDefaultForeColor() => Enabled ? ForeColor : Color.Gray;
 		void UpdateVisibilityBytes()
 		{
 			if (_byteProvider == null || _byteProvider.Length == 0)
@@ -3709,8 +3677,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnInsertActiveChanged(EventArgs e)
 		{
-			if (InsertActiveChanged != null)
-				InsertActiveChanged(this, e);
+			InsertActiveChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3719,8 +3686,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnReadOnlyChanged(EventArgs e)
 		{
-			if (ReadOnlyChanged != null)
-				ReadOnlyChanged(this, e);
+			ReadOnlyChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3729,8 +3695,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnByteProviderChanged(EventArgs e)
 		{
-			if (ByteProviderChanged != null)
-				ByteProviderChanged(this, e);
+			ByteProviderChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3739,8 +3704,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnSelectionStartChanged(EventArgs e)
 		{
-			if (SelectionStartChanged != null)
-				SelectionStartChanged(this, e);
+			SelectionStartChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3749,8 +3713,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnSelectionLengthChanged(EventArgs e)
 		{
-			if (SelectionLengthChanged != null)
-				SelectionLengthChanged(this, e);
+			SelectionLengthChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3759,8 +3722,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnLineInfoVisibleChanged(EventArgs e)
 		{
-			if (LineInfoVisibleChanged != null)
-				LineInfoVisibleChanged(this, e);
+			LineInfoVisibleChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3769,8 +3731,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnColumnInfoVisibleChanged(EventArgs e)
 		{
-			if (ColumnInfoVisibleChanged != null)
-				ColumnInfoVisibleChanged(this, e);
+			ColumnInfoVisibleChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3779,8 +3740,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnGroupSeparatorVisibleChanged(EventArgs e)
 		{
-			if (GroupSeparatorVisibleChanged != null)
-				GroupSeparatorVisibleChanged(this, e);
+			GroupSeparatorVisibleChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3789,8 +3749,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnStringViewVisibleChanged(EventArgs e)
 		{
-			if (StringViewVisibleChanged != null)
-				StringViewVisibleChanged(this, e);
+			StringViewVisibleChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3799,8 +3758,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnBorderStyleChanged(EventArgs e)
 		{
-			if (BorderStyleChanged != null)
-				BorderStyleChanged(this, e);
+			BorderStyleChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3809,8 +3767,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnUseFixedBytesPerLineChanged(EventArgs e)
 		{
-			if (UseFixedBytesPerLineChanged != null)
-				UseFixedBytesPerLineChanged(this, e);
+			UseFixedBytesPerLineChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3819,8 +3776,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnGroupSizeChanged(EventArgs e)
 		{
-			if (GroupSizeChanged != null)
-				GroupSizeChanged(this, e);
+			GroupSizeChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3829,8 +3785,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnBytesPerLineChanged(EventArgs e)
 		{
-			if (BytesPerLineChanged != null)
-				BytesPerLineChanged(this, e);
+			BytesPerLineChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3839,8 +3794,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnVScrollBarVisibleChanged(EventArgs e)
 		{
-			if (VScrollBarVisibleChanged != null)
-				VScrollBarVisibleChanged(this, e);
+			VScrollBarVisibleChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3849,8 +3803,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnHexCasingChanged(EventArgs e)
 		{
-			if (HexCasingChanged != null)
-				HexCasingChanged(this, e);
+			HexCasingChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3859,8 +3812,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnHorizontalByteCountChanged(EventArgs e)
 		{
-			if (HorizontalByteCountChanged != null)
-				HorizontalByteCountChanged(this, e);
+			HorizontalByteCountChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3869,8 +3821,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnVerticalByteCountChanged(EventArgs e)
 		{
-			if (VerticalByteCountChanged != null)
-				VerticalByteCountChanged(this, e);
+			VerticalByteCountChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3879,8 +3830,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnCurrentLineChanged(EventArgs e)
 		{
-			if (CurrentLineChanged != null)
-				CurrentLineChanged(this, e);
+			CurrentLineChanged?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3889,8 +3839,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnCurrentPositionInLineChanged(EventArgs e)
 		{
-			if (CurrentPositionInLineChanged != null)
-				CurrentPositionInLineChanged(this, e);
+			CurrentPositionInLineChanged?.Invoke(this, e);
 		}
 
 
@@ -3900,8 +3849,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnCopied(EventArgs e)
 		{
-			if (Copied != null)
-				Copied(this, e);
+			Copied?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3910,8 +3858,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected virtual void OnCopiedHex(EventArgs e)
 		{
-			if (CopiedHex != null)
-				CopiedHex(this, e);
+			CopiedHex?.Invoke(this, e);
 		}
 
 		/// <summary>
@@ -3920,7 +3867,6 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
-			System.Diagnostics.Debug.WriteLine("OnMouseDown()", "HexBox");
 
 			if (!Focused)
 				Focus();
@@ -3960,7 +3906,6 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected override void OnGotFocus(EventArgs e)
 		{
-			System.Diagnostics.Debug.WriteLine("OnGotFocus()", "HexBox");
 
 			base.OnGotFocus(e);
 
@@ -3973,7 +3918,6 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected override void OnLostFocus(EventArgs e)
 		{
-			System.Diagnostics.Debug.WriteLine("OnLostFocus()", "HexBox");
 
 			base.OnLostFocus(e);
 
@@ -3987,27 +3931,6 @@ namespace Be.Windows.Forms
 		#endregion
 
         #region Scaling Support for High DPI resolution screens
-        ///// <summary>
-        ///// For high resolution screen support
-        ///// </summary>
-        ///// <param name="factor">the factor</param>
-        ///// <param name="specified">bounds</param>
-        //protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
-        //{
-        //    base.ScaleControl(factor, specified);
-           
-
-        //    this.BeginInvoke(new MethodInvoker(() =>
-        //        {
-        //            this.UpdateRectanglePositioning();
-        //            if (_caretVisible)
-        //            {
-        //                DestroyCaret();
-        //                CreateCaret();
-        //            }
-        //            this.Invalidate();
-        //        }));
-        //}
 
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
