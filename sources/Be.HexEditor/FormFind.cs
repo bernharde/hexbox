@@ -234,8 +234,9 @@ namespace Be.HexEditor
 		#endregion
 
 		private FindOptions _findOptions;
-
-		public FindOptions FindOptions
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public FindOptions FindOptions
 		{
 			get 
 			{ 
@@ -248,7 +249,9 @@ namespace Be.HexEditor
 			}
 		}
 
-		public HexBox HexBox { get; set; }
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public HexBox HexBox { get; set; }
 
 		private void Reinitialize()
 		{

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <ProjectType>Local</ProjectType>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <AssemblyKeyContainerName>
@@ -178,4 +178,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </None>
   </ItemGroup>
+  <PropertyGroup>
+    <SignAssembly Condition="Exists('HexBox.snk')">true</SignAssembly>
+    <SignAssembly Condition="!Exists('HexBox.snk')">false</SignAssembly>
+    <AssemblyOriginatorKeyFile Condition="Exists('HexBox.snk')">HexBox.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
 </Project>

@@ -2315,7 +2315,7 @@ namespace Be.Windows.Forms
 
 							// draw default border
 							ControlPaint.DrawBorder3D(e.Graphics, ClientRectangle, Border3DStyle.Sunken);
-						}
+												}
 
 						break;
 					}
@@ -3417,6 +3417,19 @@ namespace Be.Windows.Forms
 			get { return _shadowSelectionColor; }
 			set { _shadowSelectionColor = value; Invalidate(); }
 		} Color _shadowSelectionColor = Color.FromArgb(100, 60, 188, 255);
+
+        // Designer serialization helpers
+        // Ensures the designer serializes the property when it differs from the default
+        public bool ShouldSerializeShadowSelectionColor()
+        {
+            return _shadowSelectionColor != Color.FromArgb(100, 60, 188, 255);
+        }
+
+        // Resets the property to its default value
+        public void ResetShadowSelectionColor()
+        {
+            ShadowSelectionColor = Color.FromArgb(100, 60, 188, 255);
+        }
 
         /// <summary>
         /// Contains the size of a single character in pixel

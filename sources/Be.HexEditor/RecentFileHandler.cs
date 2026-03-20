@@ -15,6 +15,8 @@ namespace Be.HexEditor
         {
             string fileName;
 
+            [Browsable(false)]
+            [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
             public string FileName
             {
                 get { return fileName; }
@@ -113,7 +115,8 @@ namespace Be.HexEditor
         }
 
         ToolStripMenuItem recentFileToolStripItem;
-
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ToolStripMenuItem RecentFileToolStripItem
         {
             get { return recentFileToolStripItem; }

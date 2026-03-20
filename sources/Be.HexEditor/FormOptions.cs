@@ -13,7 +13,8 @@ namespace Be.HexEditor
     public partial class FormOptions: Form
     {
         int recentFilesMax;
-
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int RecentFilesMax
         {
             get { return recentFilesMax; }
@@ -30,7 +31,8 @@ namespace Be.HexEditor
 
 
         bool useSystemLanguage;
-
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool UseSystemLanguage
         {
             get { return useSystemLanguage; }
