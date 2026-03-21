@@ -1,20 +1,14 @@
+using Be.Windows.Forms;
 using System;
-using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-
-using Be.Windows.Forms;
-using System.Collections.Generic;
-using System.Text;
-using Be.HexEditor.Core;
 
 namespace Be.HexEditor
 {
     /// <summary>
     /// Summary description for FormFind.
     /// </summary>
-    public class FormFind: FormEx
+    public class FormFind: Form
 	{
 		private Be.Windows.Forms.HexBox hexFind;
 		private System.Windows.Forms.TextBox txtFind;

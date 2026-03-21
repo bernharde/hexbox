@@ -8,9 +8,6 @@
     <Compile Update="BitControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Core\FormEx.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
