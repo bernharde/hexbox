@@ -15,6 +15,13 @@ namespace Be.Windows.Forms
 	[ToolboxBitmap(typeof(HexBox), "HexBox.bmp")]
 	public class HexBox : Control
 	{
+		// Cached hex strings for performance
+		readonly string[] _hexUpper = new string[256];
+		readonly string[] _hexLower = new string[256];
+		// helper to pick current hex table
+		string[] HexTable => (_hexStringFormat == "X") ? _hexUpper : _hexLower;
+
+
 		#region IKeyInterpreter interface
 		/// <summary>
 		/// Defines a user input handler such as for mouse and keyboard input
@@ -103,7 +110,8 @@ namespace Be.Windows.Forms
 			/// <returns>True, if the message was processed</returns>
 			delegate bool MessageDelegate(ref Message m);
 
-			#region Fields
+				#region Fields
+
 			/// <summary>
 			/// Contains the parent HexBox control
 			/// </summary>
@@ -1384,6 +1392,13 @@ namespace Be.Windows.Forms
 
 			_thumbTrackTimer.Interval = 50;
 			_thumbTrackTimer.Tick += new EventHandler(PerformScrollThumbTrack);
+
+			// initialize hex lookup tables
+			for (int i = 0; i < 256; i++)
+			{
+				_hexUpper[i] = i.ToString("X2", System.Threading.Thread.CurrentThread.CurrentCulture);
+				_hexLower[i] = i.ToString("x2", System.Threading.Thread.CurrentThread.CurrentCulture);
+			}
 		}
 
 		#endregion
@@ -2440,30 +2455,22 @@ namespace Be.Windows.Forms
 		void PaintHexString(Graphics g, byte b, Brush brush, Point gridPoint)
 		{
 			PointF bytePointF = GetBytePointF(gridPoint);
-
-			string sB = ConvertByteToHex(b);
-
-			g.DrawString(sB.Substring(0, 1), Font, brush, bytePointF, _stringFormat);
-			bytePointF.X += _charSize.Width;
-			g.DrawString(sB.Substring(1, 1), Font, brush, bytePointF, _stringFormat);
+			string sB = HexTable[b];
+			g.DrawString(sB, Font, brush, bytePointF, _stringFormat);
 		}
 
 		void PaintColumnInfo(Graphics g, byte b, Brush brush, int col)
 		{
 			PointF headerPointF = GetColumnInfoPointF(col);
 
-			string sB = ConvertByteToHex(b);
+			string sB = HexTable[b];
 
-			g.DrawString(sB.Substring(0, 1), Font, brush, headerPointF, _stringFormat);
-			headerPointF.X += _charSize.Width;
-			g.DrawString(sB.Substring(1, 1), Font, brush, headerPointF, _stringFormat);
+			g.DrawString(sB, Font, brush, headerPointF, _stringFormat);
 		}
 
 		void PaintHexStringSelected(Graphics g, byte b, Brush brush, Brush brushBack, Point gridPoint)
 		{
-			string sB = b.ToString(_hexStringFormat, System.Threading.Thread.CurrentThread.CurrentCulture);
-			if (sB.Length == 1)
-				sB = "0" + sB;
+			string sB = HexTable[b];
 
 			PointF bytePointF = GetBytePointF(gridPoint);
 
@@ -2471,55 +2478,53 @@ namespace Be.Windows.Forms
 			float bcWidth = (isLastLineChar) ? _charSize.Width * 2 : _charSize.Width * 3;
 
 			g.FillRectangle(brushBack, bytePointF.X, bytePointF.Y, bcWidth, _charSize.Height);
-			g.DrawString(sB.Substring(0, 1), Font, brush, bytePointF, _stringFormat);
-			bytePointF.X += _charSize.Width;
-			g.DrawString(sB.Substring(1, 1), Font, brush, bytePointF, _stringFormat);
+			g.DrawString(sB, Font, brush, bytePointF, _stringFormat);
 		}
 
-		void PaintHexAndStringView(Graphics g, long startByte, long endByte)
-		{
-			using (Brush brush = new SolidBrush(GetDefaultForeColor()))
-			using (Brush selBrush = new SolidBrush(_selectionForeColor))
-			using (Brush selBrushBack = new SolidBrush(_selectionBackColor))
-			{
-				int counter = -1;
-				long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
+        void PaintHexAndStringView(Graphics g, long startByte, long endByte)
+        {
+            using (Brush brush = new SolidBrush(GetDefaultForeColor()))
+            using (Brush selBrush = new SolidBrush(_selectionForeColor))
+            using (Brush selBrushBack = new SolidBrush(_selectionBackColor))
+            {
+                int counter = -1;
+                long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
 
-				bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
-				bool isStringKeyInterpreterActive = _keyInterpreter != null && _keyInterpreter.GetType() == typeof(StringKeyInterpreter);
+                bool isKeyInterpreterActive = _keyInterpreter == null || _keyInterpreter.GetType() == typeof(KeyInterpreter);
+                bool isStringKeyInterpreterActive = _keyInterpreter != null && _keyInterpreter.GetType() == typeof(StringKeyInterpreter);
 
-				for (long i = startByte; i < intern_endByte + 1; i++)
-				{
-					counter++;
-					Point gridPoint = GetGridBytePoint(counter);
-					PointF byteStringPointF = GetByteStringPointF(gridPoint);
-					byte b = _byteProvider.ReadByte(i);
+                for (long i = startByte; i < intern_endByte + 1; i++)
+                {
+                    counter++;
+                    Point gridPoint = GetGridBytePoint(counter);
+                    PointF byteStringPointF = GetByteStringPointF(gridPoint);
+                    byte b = _byteProvider.ReadByte(i);
 
-					bool isSelectedByte = i >= _bytePos && i <= (_bytePos + _selectionLength - 1) && _selectionLength != 0;
+                    bool isSelectedByte = i >= _bytePos && i <= (_bytePos + _selectionLength - 1) && _selectionLength != 0;
 
-					if (isSelectedByte && isKeyInterpreterActive)
-					{
-						PaintHexStringSelected(g, b, selBrush, selBrushBack, gridPoint);
-					}
-					else
-					{
-						PaintHexString(g, b, brush, gridPoint);
-					}
+                    if (isSelectedByte && isKeyInterpreterActive)
+                    {
+                        PaintHexStringSelected(g, b, selBrush, selBrushBack, gridPoint);
+                    }
+                    else
+                    {
+                        PaintHexString(g, b, brush, gridPoint);
+                    }
 
-					string s = new String(ByteCharConverter.ToChar(b), 1);
+                    string s = new String(ByteCharConverter.ToChar(b), 1);
 
-					if (isSelectedByte && isStringKeyInterpreterActive)
-					{
-						g.FillRectangle(selBrushBack, byteStringPointF.X, byteStringPointF.Y, _charSize.Width, _charSize.Height);
-						g.DrawString(s, Font, selBrush, byteStringPointF, _stringFormat);
-					}
-					else
-					{
-						g.DrawString(s, Font, brush, byteStringPointF, _stringFormat);
-					}
-				}
-			}
-		}
+                    if (isSelectedByte && isStringKeyInterpreterActive)
+                    {
+                        g.FillRectangle(selBrushBack, byteStringPointF.X, byteStringPointF.Y, _charSize.Width, _charSize.Height);
+                        g.DrawString(s, Font, selBrush, byteStringPointF, _stringFormat);
+                    }
+                    else
+                    {
+                        g.DrawString(s, Font, brush, byteStringPointF, _stringFormat);
+                    }
+                }
+            }
+        }
 
 		void PaintCurrentBytesSign(Graphics g)
 		{
@@ -2683,24 +2688,24 @@ namespace Be.Windows.Forms
 			}
 		}
 
-		void PaintCurrentByteSign(Graphics g, Rectangle rec)
-		{
-			// stack overflowexception on big files - workaround
-			if (rec.Top < 0 || rec.Left < 0 || rec.Width <= 0 || rec.Height <= 0)
-				return;
+        void PaintCurrentByteSign(Graphics g, Rectangle rec)
+        {
+            // stack overflowexception on big files - workaround
+            if (rec.Top < 0 || rec.Left < 0 || rec.Width <= 0 || rec.Height <= 0)
+                return;
 
-			using (var myBitmap = new Bitmap(rec.Width, rec.Height))
-			using (Graphics bitmapGraphics = Graphics.FromImage(myBitmap))
-			using (SolidBrush greenBrush = new SolidBrush(_shadowSelectionColor))
-			{
-				bitmapGraphics.FillRectangle(greenBrush, 0,
-					0, rec.Width, rec.Height);
+            using (var myBitmap = new Bitmap(rec.Width, rec.Height))
+            using (Graphics bitmapGraphics = Graphics.FromImage(myBitmap))
+            using (SolidBrush greenBrush = new SolidBrush(_shadowSelectionColor))
+            {
+                bitmapGraphics.FillRectangle(greenBrush, 0,
+                    0, rec.Width, rec.Height);
 
-				g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.GammaCorrected;
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.GammaCorrected;
 
-				g.DrawImage(myBitmap, rec.Left, rec.Top);
-			}
-		}
+                g.DrawImage(myBitmap, rec.Left, rec.Top);
+            }
+        }
 
 		Color GetDefaultForeColor() => Enabled ? ForeColor : Color.Gray;
 		void UpdateVisibilityBytes()
@@ -3535,7 +3540,7 @@ namespace Be.Windows.Forms
 			StringBuilder sb = new StringBuilder();
 			foreach (byte b in data)
 			{
-				string hex = ConvertByteToHex(b);
+				string hex = HexTable[b];
 				sb.Append(hex);
 				sb.Append(" ");
 			}
@@ -3544,18 +3549,7 @@ namespace Be.Windows.Forms
 			string result = sb.ToString();
 			return result;
 		}
-		/// <summary>
-		/// Converts the byte to a hex string. For example: "10" = "0A";
-		/// </summary>
-		/// <param name="b">the byte to format</param>
-		/// <returns>the hex string</returns>
-		string ConvertByteToHex(byte b)
-		{
-			string sB = b.ToString(_hexStringFormat, System.Threading.Thread.CurrentThread.CurrentCulture);
-			if (sB.Length == 1)
-				sB = "0" + sB;
-			return sB;
-		}
+		
 		/// <summary>
 		/// Converts the hex string to an byte array. The hex string must be separated by a space char ' '. If there is any invalid hex information in the string the result will be null.
 		/// </summary>
