@@ -16,9 +16,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\ThanksTo.rtf" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<EmbeddedResource Include="..\..\license.txt">
 			<Link>Resources\license.txt</Link>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Resources\ThanksTo.rtf" />
 	</ItemGroup>
 
 	<ItemGroup>

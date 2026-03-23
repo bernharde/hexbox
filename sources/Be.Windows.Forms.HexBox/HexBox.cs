@@ -1,7 +1,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Windows.Forms.VisualStyles;
 using System.Text;
@@ -3900,9 +3899,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected override void OnGotFocus(EventArgs e)
 		{
-
 			base.OnGotFocus(e);
-
 			CreateCaret();
 		}
 
@@ -3912,9 +3909,7 @@ namespace Be.Windows.Forms
 		/// <param name="e">An EventArgs that contains the event data.</param>
 		protected override void OnLostFocus(EventArgs e)
 		{
-
 			base.OnLostFocus(e);
-
 			DestroyCaret();
 		}
 
