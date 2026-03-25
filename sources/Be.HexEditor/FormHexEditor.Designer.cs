@@ -268,6 +268,7 @@ namespace Be.HexEditor
             resources.ApplyResources(toolStrip, "toolStrip");
             toolStrip.BackColor = System.Drawing.SystemColors.Control;
             toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripButton, saveToolStripButton, toolStripSeparator6, cutToolStripButton, copyToolStripSplitButton, pasteToolStripSplitButton, encodingToolStripComboBox });
             toolStrip.Name = "toolStrip";
             // 

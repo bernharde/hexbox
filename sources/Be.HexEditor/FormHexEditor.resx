@@ -344,7 +344,7 @@
     <value>menuStrip</value>
   </data>
   <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.MenuStripEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -362,7 +362,7 @@
     <value>Magenta</value>
   </data>
   <data name="openToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>28, 22</value>
   </data>
   <data name="openToolStripButton.Text" xml:space="preserve">
     <value>&amp;Open</value>
@@ -371,7 +371,7 @@
     <value>Magenta</value>
   </data>
   <data name="saveToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>28, 22</value>
   </data>
   <data name="saveToolStripButton.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -383,7 +383,7 @@
     <value>Magenta</value>
   </data>
   <data name="cutToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>28, 22</value>
   </data>
   <data name="cutToolStripButton.Text" xml:space="preserve">
     <value>Cut</value>
@@ -404,7 +404,7 @@
     <value>Magenta</value>
   </data>
   <data name="copyToolStripSplitButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 22</value>
+    <value>40, 22</value>
   </data>
   <data name="copyToolStripSplitButton.Text" xml:space="preserve">
     <value>Copy</value>
@@ -425,7 +425,7 @@
     <value>Magenta</value>
   </data>
   <data name="pasteToolStripSplitButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 22</value>
+    <value>40, 22</value>
   </data>
   <data name="pasteToolStripSplitButton.Text" xml:space="preserve">
     <value>Paste</value>
@@ -458,7 +458,7 @@
     <value>toolStrip</value>
   </data>
   <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -494,7 +494,7 @@
     <value>statusStrip</value>
   </data>
   <data name="&gt;&gt;statusStrip.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.StatusStripEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;statusStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2076,13 +2076,13 @@
     <value>fileToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openToolStripMenuItem.Name" xml:space="preserve">
     <value>openToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;openToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator.Name" xml:space="preserve">
     <value>toolStripSeparator</value>
@@ -2094,7 +2094,7 @@
     <value>saveToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
@@ -2106,7 +2106,7 @@
     <value>recentFilesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;recentFilesToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
@@ -2118,31 +2118,31 @@
     <value>exitToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;editToolStripMenuItem.Name" xml:space="preserve">
     <value>editToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;editToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cutToolStripMenuItem.Name" xml:space="preserve">
     <value>cutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;cutToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Name" xml:space="preserve">
     <value>copyToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem.Name" xml:space="preserve">
     <value>pasteToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
     <value>toolStripSeparator3</value>
@@ -2154,13 +2154,13 @@
     <value>copyHexStringToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;copyHexStringToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem.Name" xml:space="preserve">
     <value>pasteHexToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
     <value>toolStripSeparator4</value>
@@ -2172,19 +2172,19 @@
     <value>findToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;findToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;findNextToolStripMenuItem.Name" xml:space="preserve">
     <value>findNextToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;findNextToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;goToToolStripMenuItem.Name" xml:space="preserve">
     <value>goToToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;goToToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
     <value>toolStripSeparator5</value>
@@ -2196,61 +2196,61 @@
     <value>selectAllToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;selectAllToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;viewToolStripMenuItem.Name" xml:space="preserve">
     <value>viewToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;viewToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;encodingToolStripMenuItem.Name" xml:space="preserve">
     <value>encodingToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;encodingToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bitsToolStripMenuItem.Name" xml:space="preserve">
     <value>bitsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;bitsToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolsToolStripMenuItem.Name" xml:space="preserve">
     <value>toolsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;toolsToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;optionsToolStripMenuItem.Name" xml:space="preserve">
     <value>optionsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;optionsToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
     <value>helpToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
     <value>aboutToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openToolStripButton.Name" xml:space="preserve">
     <value>openToolStripButton</value>
   </data>
   <data name="&gt;&gt;openToolStripButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveToolStripButton.Name" xml:space="preserve">
     <value>saveToolStripButton</value>
   </data>
   <data name="&gt;&gt;saveToolStripButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
     <value>toolStripSeparator6</value>
@@ -2262,43 +2262,43 @@
     <value>cutToolStripButton</value>
   </data>
   <data name="&gt;&gt;cutToolStripButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;copyToolStripSplitButton.Name" xml:space="preserve">
     <value>copyToolStripSplitButton</value>
   </data>
   <data name="&gt;&gt;copyToolStripSplitButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripSplitButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem1.Name" xml:space="preserve">
     <value>copyToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;copyHexToolStripMenuItem1.Name" xml:space="preserve">
     <value>copyHexToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;copyHexToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pasteToolStripSplitButton.Name" xml:space="preserve">
     <value>pasteToolStripSplitButton</value>
   </data>
   <data name="&gt;&gt;pasteToolStripSplitButton.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripSplitButtonEx, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem1.Name" xml:space="preserve">
     <value>pasteToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;pasteToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem1.Name" xml:space="preserve">
     <value>pasteHexToolStripMenuItem1</value>
   </data>
   <data name="&gt;&gt;pasteHexToolStripMenuItem1.Type" xml:space="preserve">
-    <value>Be.Windows.Forms.ToolStripMenuItem, Be.Windows.Forms.HexBox, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;encodingToolStripComboBox.Name" xml:space="preserve">
     <value>encodingToolStripComboBox</value>

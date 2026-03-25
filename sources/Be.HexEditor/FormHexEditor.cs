@@ -16,7 +16,7 @@ namespace Be.HexEditor
 		FormFind _formFind;
 		FindOptions _findOptions = new FindOptions();
         FormGoTo _formGoto = new FormGoTo();
-        string _fileName;
+        string? _fileName;
 
         public FormHexEditor()
         {

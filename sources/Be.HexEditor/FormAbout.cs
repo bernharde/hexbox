@@ -12,7 +12,7 @@ namespace Be.HexEditor
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private System.ComponentModel.Container? components = null;
 
 		public FormAbout()
 		{

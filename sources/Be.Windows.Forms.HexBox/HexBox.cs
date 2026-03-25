@@ -3080,7 +3080,7 @@ namespace Be.Windows.Forms
 		/// Gets or sets the ByteProvider.
 		/// </summary>
 		[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public IByteProvider ByteProvider
+		public IByteProvider? ByteProvider
 		{
 			get { return _byteProvider; }
 			set

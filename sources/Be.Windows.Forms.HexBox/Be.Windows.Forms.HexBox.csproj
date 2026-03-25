@@ -5,6 +5,8 @@
 	  <AssemblyOriginatorKeyFile>HexBox.snk</AssemblyOriginatorKeyFile>
     <UseWindowsForms>true</UseWindowsForms>
 	  <RootNamespace>Be.Windows.Forms</RootNamespace>
+    <LangVersion>latest</LangVersion>
+	
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />
