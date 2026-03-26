@@ -417,6 +417,8 @@ namespace Be.HexEditor
             hexBox.HexCasing = Windows.Forms.HexCasing.Lower;
             hexBox.LineInfoVisible = true;
             hexBox.Name = "hexBox";
+            hexBox.SelectionBackColor = System.Drawing.Color.FromArgb(0, 120, 212);
+            hexBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(38, 79, 120, 255);
             hexBox.StringViewVisible = true;
             hexBox.UseFixedBytesPerLine = true;
             hexBox.VScrollBarVisible = true;
