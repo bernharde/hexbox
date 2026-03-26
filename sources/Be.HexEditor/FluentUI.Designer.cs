@@ -63,9 +63,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add16 {
+        internal static System.Drawing.Bitmap Add_dark_16 {
             get {
-                object obj = ResourceManager.GetObject("Add16", resourceCulture);
+                object obj = ResourceManager.GetObject("Add_dark_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add24 {
+        internal static System.Drawing.Bitmap Add_dark_24 {
             get {
-                object obj = ResourceManager.GetObject("Add24", resourceCulture);
+                object obj = ResourceManager.GetObject("Add_dark_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Add32 {
+        internal static System.Drawing.Bitmap Add_dark_32 {
             get {
-                object obj = ResourceManager.GetObject("Add32", resourceCulture);
+                object obj = ResourceManager.GetObject("Add_dark_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ArrowRight16 {
+        internal static System.Drawing.Bitmap Add_light_16 {
             get {
-                object obj = ResourceManager.GetObject("ArrowRight16", resourceCulture);
+                object obj = ResourceManager.GetObject("Add_light_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ArrowRight24 {
+        internal static System.Drawing.Bitmap Add_light_24 {
             get {
-                object obj = ResourceManager.GetObject("ArrowRight24", resourceCulture);
+                object obj = ResourceManager.GetObject("Add_light_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ArrowRight32 {
+        internal static System.Drawing.Bitmap Add_light_32 {
             get {
-                object obj = ResourceManager.GetObject("ArrowRight32", resourceCulture);
+                object obj = ResourceManager.GetObject("Add_light_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ClipboardPaste16 {
+        internal static System.Drawing.Bitmap ArrowRight_dark_16 {
             get {
-                object obj = ResourceManager.GetObject("ClipboardPaste16", resourceCulture);
+                object obj = ResourceManager.GetObject("ArrowRight_dark_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ClipboardPaste24 {
+        internal static System.Drawing.Bitmap ArrowRight_dark_24 {
             get {
-                object obj = ResourceManager.GetObject("ClipboardPaste24", resourceCulture);
+                object obj = ResourceManager.GetObject("ArrowRight_dark_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ClipboardPaste32 {
+        internal static System.Drawing.Bitmap ArrowRight_dark_32 {
             get {
-                object obj = ResourceManager.GetObject("ClipboardPaste32", resourceCulture);
+                object obj = ResourceManager.GetObject("ArrowRight_dark_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Copy16 {
+        internal static System.Drawing.Bitmap ArrowRight_light_16 {
             get {
-                object obj = ResourceManager.GetObject("Copy16", resourceCulture);
+                object obj = ResourceManager.GetObject("ArrowRight_light_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Copy24 {
+        internal static System.Drawing.Bitmap ArrowRight_light_24 {
             get {
-                object obj = ResourceManager.GetObject("Copy24", resourceCulture);
+                object obj = ResourceManager.GetObject("ArrowRight_light_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Copy32 {
+        internal static System.Drawing.Bitmap ArrowRight_light_32 {
             get {
-                object obj = ResourceManager.GetObject("Copy32", resourceCulture);
+                object obj = ResourceManager.GetObject("ArrowRight_light_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cut16 {
+        internal static System.Drawing.Bitmap ClipboardPaste_dark_16 {
             get {
-                object obj = ResourceManager.GetObject("Cut16", resourceCulture);
+                object obj = ResourceManager.GetObject("ClipboardPaste_dark_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cut24 {
+        internal static System.Drawing.Bitmap ClipboardPaste_dark_24 {
             get {
-                object obj = ResourceManager.GetObject("Cut24", resourceCulture);
+                object obj = ResourceManager.GetObject("ClipboardPaste_dark_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cut32 {
+        internal static System.Drawing.Bitmap ClipboardPaste_dark_32 {
             get {
-                object obj = ResourceManager.GetObject("Cut32", resourceCulture);
+                object obj = ResourceManager.GetObject("ClipboardPaste_dark_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FolderOpen16 {
+        internal static System.Drawing.Bitmap ClipboardPaste_light_16 {
             get {
-                object obj = ResourceManager.GetObject("FolderOpen16", resourceCulture);
+                object obj = ResourceManager.GetObject("ClipboardPaste_light_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FolderOpen24 {
+        internal static System.Drawing.Bitmap ClipboardPaste_light_24 {
             get {
-                object obj = ResourceManager.GetObject("FolderOpen24", resourceCulture);
+                object obj = ResourceManager.GetObject("ClipboardPaste_light_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Save16 {
+        internal static System.Drawing.Bitmap ClipboardPaste_light_32 {
             get {
-                object obj = ResourceManager.GetObject("Save16", resourceCulture);
+                object obj = ResourceManager.GetObject("ClipboardPaste_light_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Save24 {
+        internal static System.Drawing.Bitmap Copy_dark_16 {
             get {
-                object obj = ResourceManager.GetObject("Save24", resourceCulture);
+                object obj = ResourceManager.GetObject("Copy_dark_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +253,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Save32 {
+        internal static System.Drawing.Bitmap Copy_dark_24 {
             get {
-                object obj = ResourceManager.GetObject("Save32", resourceCulture);
+                object obj = ResourceManager.GetObject("Copy_dark_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Search16 {
+        internal static System.Drawing.Bitmap Copy_dark_32 {
             get {
-                object obj = ResourceManager.GetObject("Search16", resourceCulture);
+                object obj = ResourceManager.GetObject("Copy_dark_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Search24 {
+        internal static System.Drawing.Bitmap Copy_light_16 {
             get {
-                object obj = ResourceManager.GetObject("Search24", resourceCulture);
+                object obj = ResourceManager.GetObject("Copy_light_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +283,259 @@ namespace Be.HexEditor {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Search32 {
+        internal static System.Drawing.Bitmap Copy_light_24 {
             get {
-                object obj = ResourceManager.GetObject("Search32", resourceCulture);
+                object obj = ResourceManager.GetObject("Copy_light_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Copy_light_32 {
+            get {
+                object obj = ResourceManager.GetObject("Copy_light_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_dark_16 {
+            get {
+                object obj = ResourceManager.GetObject("Cut_dark_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_dark_24 {
+            get {
+                object obj = ResourceManager.GetObject("Cut_dark_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_dark_32 {
+            get {
+                object obj = ResourceManager.GetObject("Cut_dark_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_light_16 {
+            get {
+                object obj = ResourceManager.GetObject("Cut_light_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_light_24 {
+            get {
+                object obj = ResourceManager.GetObject("Cut_light_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cut_light_32 {
+            get {
+                object obj = ResourceManager.GetObject("Cut_light_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderOpen_dark_16 {
+            get {
+                object obj = ResourceManager.GetObject("FolderOpen_dark_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderOpen_dark_24 {
+            get {
+                object obj = ResourceManager.GetObject("FolderOpen_dark_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderOpen_dark_32 {
+            get {
+                object obj = ResourceManager.GetObject("FolderOpen_dark_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderOpen_light_16 {
+            get {
+                object obj = ResourceManager.GetObject("FolderOpen_light_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderOpen_light_24 {
+            get {
+                object obj = ResourceManager.GetObject("FolderOpen_light_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FolderOpen_light_32 {
+            get {
+                object obj = ResourceManager.GetObject("FolderOpen_light_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_dark_16 {
+            get {
+                object obj = ResourceManager.GetObject("Save_dark_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_dark_24 {
+            get {
+                object obj = ResourceManager.GetObject("Save_dark_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_dark_32 {
+            get {
+                object obj = ResourceManager.GetObject("Save_dark_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_light_16 {
+            get {
+                object obj = ResourceManager.GetObject("Save_light_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_light_24 {
+            get {
+                object obj = ResourceManager.GetObject("Save_light_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_light_32 {
+            get {
+                object obj = ResourceManager.GetObject("Save_light_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_dark_16 {
+            get {
+                object obj = ResourceManager.GetObject("Search_dark_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_dark_24 {
+            get {
+                object obj = ResourceManager.GetObject("Search_dark_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_dark_32 {
+            get {
+                object obj = ResourceManager.GetObject("Search_dark_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_light_16 {
+            get {
+                object obj = ResourceManager.GetObject("Search_light_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_light_24 {
+            get {
+                object obj = ResourceManager.GetObject("Search_light_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_light_32 {
+            get {
+                object obj = ResourceManager.GetObject("Search_light_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -118,73 +118,148 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Add16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Add16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Add_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Add24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Add_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Add32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Add32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Add_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ArrowRight16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\ArrowRight16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Add_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ArrowRight24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\ArrowRight24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Add_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ArrowRight32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\ArrowRight32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Add_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ClipboardPaste16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\ClipboardPaste16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ArrowRight_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ArrowRight_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ClipboardPaste24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\ClipboardPaste24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ArrowRight_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ArrowRight_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ClipboardPaste32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\ClipboardPaste32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ArrowRight_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ArrowRight_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Copy16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Copy16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ArrowRight_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ArrowRight_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Copy24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Copy24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ArrowRight_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ArrowRight_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Copy32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Copy32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ArrowRight_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ArrowRight_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cut16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Cut16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClipboardPaste_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ClipboardPaste_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cut24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Cut24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClipboardPaste_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ClipboardPaste_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cut32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Cut32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClipboardPaste_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ClipboardPaste_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FolderOpen16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\FolderOpen16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClipboardPaste_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ClipboardPaste_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FolderOpen24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\FolderOpen24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClipboardPaste_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ClipboardPaste_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Save16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ClipboardPaste_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\ClipboardPaste_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Save24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Copy_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Copy_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Save32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Save32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Copy_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Copy_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Search16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Copy_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Copy_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Search24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Copy_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Copy_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>FluentUI\Search32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Copy_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Copy_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Copy_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Copy_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Cut_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Cut_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Cut_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Cut_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Cut_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Cut_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderOpen_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\FolderOpen_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderOpen_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\FolderOpen_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderOpen_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\FolderOpen_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderOpen_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\FolderOpen_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderOpen_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\FolderOpen_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderOpen_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\FolderOpen_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Save_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Save_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Save_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Save_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Save_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Save_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_dark_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Search_dark_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_dark_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Search_dark_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_dark_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Search_dark_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_light_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Search_light_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_light_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Search_light_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_light_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>FluentUI\Search_light_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

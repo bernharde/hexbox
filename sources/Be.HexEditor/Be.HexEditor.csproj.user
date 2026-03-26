@@ -29,6 +29,9 @@
     <Compile Update="UCAbout.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UiManagerComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Pngs.resx">
