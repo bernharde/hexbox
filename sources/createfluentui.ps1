@@ -16,7 +16,7 @@ $icons = @(
     "Search"
 )
 
-# Fluent blue (works in light & dark mode)
+# Fluent blue
 $color = "#0078D4"
 
 # ensure output directory exists
@@ -31,6 +31,13 @@ foreach ($icon in $icons) {
     $cleanName    = $icon -replace " ", ""
 
     foreach ($size in $sizes) {
+
+        # ===== SCALE TUNING =====
+        $scale = switch ($size) {
+            16 { 0.90 }
+            24 { 0.90 }
+            32 { 0.90 }
+        }
 
         $actualSize = $size
 
@@ -55,24 +62,39 @@ foreach ($icon in $icons) {
             continue
         }
 
-        # ===== FORCE COLOR (reliable) =====
+        # ===== LOAD SVG =====
+        [xml]$svg = Get-Content $svgFile
 
+        # read viewBox (important for centering)
+        $viewBox = $svg.svg.viewBox
+        $parts = $viewBox -split " "
+        $vbSize = [float]$parts[2]
+
+        # calculate centering offset
+        $offset = ($vbSize * (1 - $scale)) / 2
+
+        # wrap original content
+        $inner = $svg.svg.InnerXml
+        $svg.svg.InnerXml = "<g transform='translate($offset,$offset) scale($scale)'>$inner</g>"
+
+        # ===== FORCE COLOR =====
         $tempSvg = Join-Path $env:TEMP "icon_$cleanName.svg"
 
-        (Get-Content $svgFile) `
+        $svg.OuterXml `
             -replace 'stroke="[^"]*"', "stroke=""$color""" `
             -replace 'fill="[^"]*"', "fill=""$color""" `
             | Set-Content $tempSvg
 
+        # ===== EXPORT =====
         $outputFile = Join-Path $targetDir "$cleanName$size.png"
 
-        Write-Host "Export [$size] $icon (src: $actualSize)"
+        Write-Host "Export [$size] $icon (src: $actualSize, scale: $scale)"
 
         & $inkscape $tempSvg `
             --export-type=png `
             --export-width=$size `
             --export-height=$size `
-            --export-area-drawing `
+            --export-area-page `
             --export-background-opacity=0 `
             --export-filename=$outputFile `
             --export-overwrite
