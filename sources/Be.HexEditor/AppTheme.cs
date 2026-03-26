@@ -8,5 +8,6 @@ namespace Be.HexEditor
         public Color ForeColor { get; init; }
         public Color ToolStripBack { get; init; }
         public Color MenuBack { get; init; }
+        public Color DisabledBackColor { get; init; }
     }
 }

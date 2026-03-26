@@ -47,6 +47,8 @@ namespace Be.HexEditor
             this.recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
             this.useSystemLanguage = Settings.Default.UseSystemLanguage;
             this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
+            this.themeComboBox.DataSource = Enum.GetValues(typeof(ThemeMode));
+            this.themeComboBox.SelectedItem = Settings.Default.SelectedTheme;
 
             if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
                 Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName; 

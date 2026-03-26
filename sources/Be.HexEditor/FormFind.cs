@@ -25,7 +25,8 @@ namespace Be.HexEditor
 		private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
         private Panel line;
-		private IContainer components;
+        private UiManagerComponent uiManagerComponent;
+        private IContainer components;
 
 		public FormFind()
 		{
@@ -62,172 +63,179 @@ namespace Be.HexEditor
 			base.Dispose( disposing );
 		}
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFind));
-            this.txtFind = new System.Windows.Forms.TextBox();
-            this.rbString = new System.Windows.Forms.RadioButton();
-            this.rbHex = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.lblPercent = new System.Windows.Forms.Label();
-            this.lblFinding = new System.Windows.Forms.Label();
-            this.chkMatchCase = new System.Windows.Forms.CheckBox();
-            this.timerPercent = new System.Windows.Forms.Timer(this.components);
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.line = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.hexFind = new Be.Windows.Forms.HexBox();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.SuspendLayout();
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormFind));
+            txtFind = new TextBox();
+            rbString = new RadioButton();
+            rbHex = new RadioButton();
+            label1 = new Label();
+            btnOK = new Button();
+            btnCancel = new Button();
+            lblPercent = new Label();
+            lblFinding = new Label();
+            chkMatchCase = new CheckBox();
+            timerPercent = new Timer(components);
+            timer = new Timer(components);
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            line = new Panel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            hexFind = new HexBox();
+            uiManagerComponent = new UiManagerComponent(components);
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            ((ISupportInitialize)uiManagerComponent).BeginInit();
+            SuspendLayout();
             // 
             // txtFind
             // 
-            resources.ApplyResources(this.txtFind, "txtFind");
-            this.txtFind.Name = "txtFind";
-            this.txtFind.TextChanged += new System.EventHandler(this.txtString_TextChanged);
+            resources.ApplyResources(txtFind, "txtFind");
+            txtFind.Name = "txtFind";
+            txtFind.TextChanged += txtString_TextChanged;
             // 
             // rbString
             // 
-            resources.ApplyResources(this.rbString, "rbString");
-            this.rbString.Checked = true;
-            this.rbString.Name = "rbString";
-            this.rbString.TabStop = true;
+            resources.ApplyResources(rbString, "rbString");
+            rbString.Checked = true;
+            rbString.Name = "rbString";
+            rbString.TabStop = true;
             // 
             // rbHex
             // 
-            resources.ApplyResources(this.rbHex, "rbHex");
-            this.rbHex.Name = "rbHex";
+            resources.ApplyResources(rbHex, "rbHex");
+            rbHex.Name = "rbHex";
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.ForeColor = System.Drawing.Color.Blue;
+            label1.Name = "label1";
             // 
             // btnOK
             // 
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            resources.ApplyResources(btnOK, "btnOK");
+            btnOK.Name = "btnOK";
+            btnOK.Click += btnOK_Click;
             // 
             // btnCancel
             // 
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            resources.ApplyResources(btnCancel, "btnCancel");
+            btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.Name = "btnCancel";
+            btnCancel.Click += btnCancel_Click;
             // 
             // lblPercent
             // 
-            resources.ApplyResources(this.lblPercent, "lblPercent");
-            this.lblPercent.Name = "lblPercent";
+            resources.ApplyResources(lblPercent, "lblPercent");
+            lblPercent.Name = "lblPercent";
             // 
             // lblFinding
             // 
-            this.lblFinding.ForeColor = System.Drawing.Color.Blue;
-            resources.ApplyResources(this.lblFinding, "lblFinding");
-            this.lblFinding.Name = "lblFinding";
+            lblFinding.ForeColor = System.Drawing.Color.Blue;
+            resources.ApplyResources(lblFinding, "lblFinding");
+            lblFinding.Name = "lblFinding";
             // 
             // chkMatchCase
             // 
-            resources.ApplyResources(this.chkMatchCase, "chkMatchCase");
-            this.chkMatchCase.Name = "chkMatchCase";
-            this.chkMatchCase.UseVisualStyleBackColor = true;
+            resources.ApplyResources(chkMatchCase, "chkMatchCase");
+            chkMatchCase.Name = "chkMatchCase";
+            chkMatchCase.UseVisualStyleBackColor = true;
             // 
             // timerPercent
             // 
-            this.timerPercent.Tick += new System.EventHandler(this.timerPercent_Tick);
+            timerPercent.Tick += timerPercent_Tick;
             // 
             // timer
             // 
-            this.timer.Interval = 50;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            timer.Interval = 50;
+            timer.Tick += timer_Tick;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.line);
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(line);
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // line
             // 
-            resources.ApplyResources(this.line, "line");
-            this.line.BackColor = System.Drawing.Color.LightGray;
-            this.line.Name = "line";
+            resources.ApplyResources(line, "line");
+            line.BackColor = System.Drawing.Color.LightGray;
+            line.Name = "line";
             // 
             // flowLayoutPanel2
             // 
-            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
-            this.flowLayoutPanel2.Controls.Add(this.btnCancel);
-            this.flowLayoutPanel2.Controls.Add(this.btnOK);
-            this.flowLayoutPanel2.Controls.Add(this.lblFinding);
-            this.flowLayoutPanel2.Controls.Add(this.lblPercent);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(btnCancel);
+            flowLayoutPanel2.Controls.Add(btnOK);
+            flowLayoutPanel2.Controls.Add(lblFinding);
+            flowLayoutPanel2.Controls.Add(lblPercent);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // hexFind
             // 
-            resources.ApplyResources(this.hexFind, "hexFind");
+            resources.ApplyResources(hexFind, "hexFind");
             // 
             // 
             // 
-            this.hexFind.BuiltInContextMenu.CopyMenuItemImage = global::Be.HexEditor.Pngs.Copy16;
-            this.hexFind.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
-            this.hexFind.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CopyMenuItemText");
-            this.hexFind.BuiltInContextMenu.CutMenuItemImage = global::Be.HexEditor.Pngs.Cut16;
-            this.hexFind.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
-            this.hexFind.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CutMenuItemText");
-            this.hexFind.BuiltInContextMenu.PasteMenuItemImage = global::Be.HexEditor.Pngs.Paste16;
-            this.hexFind.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
-            this.hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
-            this.hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
-            this.hexFind.InfoForeColor = System.Drawing.Color.Empty;
-            this.hexFind.Name = "hexFind";
-            this.hexFind.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            hexFind.BuiltInContextMenu.CopyMenuItemImage = Pngs.Copy16;
+            hexFind.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
+            hexFind.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CopyMenuItemText");
+            hexFind.BuiltInContextMenu.CutMenuItemImage = Pngs.Cut16;
+            hexFind.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
+            hexFind.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CutMenuItemText");
+            hexFind.BuiltInContextMenu.PasteMenuItemImage = Pngs.Paste16;
+            hexFind.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
+            hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
+            hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
+            hexFind.InfoForeColor = System.Drawing.Color.Empty;
+            hexFind.Name = "hexFind";
+            // 
+            // uiManagerComponent
+            // 
+            uiManagerComponent.Form = this;
+            uiManagerComponent.Mode = ThemeMode.Dark;
             // 
             // FormFind
             // 
-            this.AcceptButton = this.btnOK;
+            AcceptButton = btnOK;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.CancelButton = this.btnCancel;
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.chkMatchCase);
-            this.Controls.Add(this.rbHex);
-            this.Controls.Add(this.rbString);
-            this.Controls.Add(this.txtFind);
-            this.Controls.Add(this.hexFind);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormFind";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.Activated += new System.EventHandler(this.FormFind_Activated);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = System.Drawing.SystemColors.Control;
+            CancelButton = btnCancel;
+            Controls.Add(flowLayoutPanel2);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(chkMatchCase);
+            Controls.Add(rbHex);
+            Controls.Add(rbString);
+            Controls.Add(txtFind);
+            Controls.Add(hexFind);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormFind";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            Activated += FormFind_Activated;
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            ((ISupportInitialize)uiManagerComponent).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private FindOptions _findOptions;
+        private FindOptions _findOptions;
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public FindOptions FindOptions

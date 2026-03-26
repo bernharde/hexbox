@@ -22,6 +22,11 @@ namespace Be.HexEditor
                     : new ToolStripProfessionalRenderer();
             }
 
+            if(control is Be.Windows.Forms.HexBox hexBox)
+            {
+                hexBox.BackColorDisabled = theme.DisabledBackColor;
+            }
+
             if (control is MenuStrip or ContextMenuStrip)
             {
                 control.BackColor = theme.MenuBack;

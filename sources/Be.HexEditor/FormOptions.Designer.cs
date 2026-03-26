@@ -28,138 +28,122 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOptions));
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.generalTabPage = new System.Windows.Forms.TabPage();
-            this.languageSettingsGroupBox = new System.Windows.Forms.GroupBox();
-            this.selectLanguageLabel = new System.Windows.Forms.Label();
-            this.languageComboBox = new System.Windows.Forms.ComboBox();
-            this.useSystemLanguageCheckBox = new System.Windows.Forms.CheckBox();
-            this.recentFilesGroupBox = new System.Windows.Forms.GroupBox();
-            this.clearRecentFilesButton = new System.Windows.Forms.Button();
-            this.recentFilesMaxlabel = new System.Windows.Forms.Label();
-            this.recentFilesMaxTextBox = new System.Windows.Forms.TextBox();
-            this.okButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabControl.SuspendLayout();
-            this.generalTabPage.SuspendLayout();
-            this.languageSettingsGroupBox.SuspendLayout();
-            this.recentFilesGroupBox.SuspendLayout();
-            this.flowLayoutPanel.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // tabControl
-            // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Controls.Add(this.generalTabPage);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            // 
-            // generalTabPage
-            // 
-            this.generalTabPage.Controls.Add(this.languageSettingsGroupBox);
-            this.generalTabPage.Controls.Add(this.recentFilesGroupBox);
-            resources.ApplyResources(this.generalTabPage, "generalTabPage");
-            this.generalTabPage.Name = "generalTabPage";
-            this.generalTabPage.UseVisualStyleBackColor = true;
-            // 
-            // languageSettingsGroupBox
-            // 
-            resources.ApplyResources(this.languageSettingsGroupBox, "languageSettingsGroupBox");
-            this.languageSettingsGroupBox.Controls.Add(this.selectLanguageLabel);
-            this.languageSettingsGroupBox.Controls.Add(this.languageComboBox);
-            this.languageSettingsGroupBox.Controls.Add(this.useSystemLanguageCheckBox);
-            this.languageSettingsGroupBox.Name = "languageSettingsGroupBox";
-            this.languageSettingsGroupBox.TabStop = false;
+            selectLanguageLabel = new System.Windows.Forms.Label();
+            languageComboBox = new System.Windows.Forms.ComboBox();
+            useSystemLanguageCheckBox = new System.Windows.Forms.CheckBox();
+            clearRecentFilesButton = new System.Windows.Forms.Button();
+            recentFilesMaxlabel = new System.Windows.Forms.Label();
+            recentFilesMaxTextBox = new System.Windows.Forms.TextBox();
+            okButton = new System.Windows.Forms.Button();
+            cancelButton = new System.Windows.Forms.Button();
+            flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            uiManagerComponent = new UiManagerComponent(components);
+            label1 = new System.Windows.Forms.Label();
+            themeComboBox = new System.Windows.Forms.ComboBox();
+            flowLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
+            SuspendLayout();
             // 
             // selectLanguageLabel
             // 
-            resources.ApplyResources(this.selectLanguageLabel, "selectLanguageLabel");
-            this.selectLanguageLabel.Name = "selectLanguageLabel";
+            resources.ApplyResources(selectLanguageLabel, "selectLanguageLabel");
+            selectLanguageLabel.Name = "selectLanguageLabel";
             // 
             // languageComboBox
             // 
-            this.languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.languageComboBox.FormattingEnabled = true;
-            resources.ApplyResources(this.languageComboBox, "languageComboBox");
-            this.languageComboBox.Name = "languageComboBox";
+            languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            languageComboBox.FormattingEnabled = true;
+            resources.ApplyResources(languageComboBox, "languageComboBox");
+            languageComboBox.Name = "languageComboBox";
             // 
             // useSystemLanguageCheckBox
             // 
-            resources.ApplyResources(this.useSystemLanguageCheckBox, "useSystemLanguageCheckBox");
-            this.useSystemLanguageCheckBox.Name = "useSystemLanguageCheckBox";
-            this.useSystemLanguageCheckBox.UseVisualStyleBackColor = true;
-            this.useSystemLanguageCheckBox.CheckedChanged += new System.EventHandler(this.useSystemLanguageCheckBox_CheckedChanged);
-            // 
-            // recentFilesGroupBox
-            // 
-            resources.ApplyResources(this.recentFilesGroupBox, "recentFilesGroupBox");
-            this.recentFilesGroupBox.Controls.Add(this.clearRecentFilesButton);
-            this.recentFilesGroupBox.Controls.Add(this.recentFilesMaxlabel);
-            this.recentFilesGroupBox.Controls.Add(this.recentFilesMaxTextBox);
-            this.recentFilesGroupBox.Name = "recentFilesGroupBox";
-            this.recentFilesGroupBox.TabStop = false;
+            resources.ApplyResources(useSystemLanguageCheckBox, "useSystemLanguageCheckBox");
+            useSystemLanguageCheckBox.Name = "useSystemLanguageCheckBox";
+            useSystemLanguageCheckBox.UseVisualStyleBackColor = true;
+            useSystemLanguageCheckBox.CheckedChanged += useSystemLanguageCheckBox_CheckedChanged;
             // 
             // clearRecentFilesButton
             // 
-            resources.ApplyResources(this.clearRecentFilesButton, "clearRecentFilesButton");
-            this.clearRecentFilesButton.Name = "clearRecentFilesButton";
-            this.clearRecentFilesButton.UseVisualStyleBackColor = true;
-            this.clearRecentFilesButton.Click += new System.EventHandler(this.clearRecentFilesButton_Click);
+            resources.ApplyResources(clearRecentFilesButton, "clearRecentFilesButton");
+            clearRecentFilesButton.Name = "clearRecentFilesButton";
+            clearRecentFilesButton.UseVisualStyleBackColor = true;
+            clearRecentFilesButton.Click += clearRecentFilesButton_Click;
             // 
             // recentFilesMaxlabel
             // 
-            resources.ApplyResources(this.recentFilesMaxlabel, "recentFilesMaxlabel");
-            this.recentFilesMaxlabel.Name = "recentFilesMaxlabel";
+            resources.ApplyResources(recentFilesMaxlabel, "recentFilesMaxlabel");
+            recentFilesMaxlabel.Name = "recentFilesMaxlabel";
             // 
             // recentFilesMaxTextBox
             // 
-            resources.ApplyResources(this.recentFilesMaxTextBox, "recentFilesMaxTextBox");
-            this.recentFilesMaxTextBox.Name = "recentFilesMaxTextBox";
+            resources.ApplyResources(recentFilesMaxTextBox, "recentFilesMaxTextBox");
+            recentFilesMaxTextBox.Name = "recentFilesMaxTextBox";
             // 
             // okButton
             // 
-            resources.ApplyResources(this.okButton, "okButton");
-            this.okButton.Name = "okButton";
-            this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            resources.ApplyResources(okButton, "okButton");
+            okButton.Name = "okButton";
+            okButton.UseVisualStyleBackColor = true;
+            okButton.Click += okButton_Click;
             // 
             // cancelButton
             // 
-            resources.ApplyResources(this.cancelButton, "cancelButton");
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            resources.ApplyResources(cancelButton, "cancelButton");
+            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel
             // 
-            resources.ApplyResources(this.flowLayoutPanel, "flowLayoutPanel");
-            this.flowLayoutPanel.Controls.Add(this.cancelButton);
-            this.flowLayoutPanel.Controls.Add(this.okButton);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            resources.ApplyResources(flowLayoutPanel, "flowLayoutPanel");
+            flowLayoutPanel.Controls.Add(cancelButton);
+            flowLayoutPanel.Controls.Add(okButton);
+            flowLayoutPanel.Name = "flowLayoutPanel";
+            // 
+            // uiManagerComponent
+            // 
+            uiManagerComponent.Form = this;
+            uiManagerComponent.Mode = ThemeMode.Dark;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
+            // themeComboBox
+            // 
+            themeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            themeComboBox.FormattingEnabled = true;
+            resources.ApplyResources(themeComboBox, "themeComboBox");
+            themeComboBox.Name = "themeComboBox";
             // 
             // FormOptions
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.CancelButton = this.cancelButton;
-            this.Controls.Add(this.flowLayoutPanel);
-            this.Controls.Add(this.tabControl);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormOptions";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.tabControl.ResumeLayout(false);
-            this.generalTabPage.ResumeLayout(false);
-            this.languageSettingsGroupBox.ResumeLayout(false);
-            this.languageSettingsGroupBox.PerformLayout();
-            this.recentFilesGroupBox.ResumeLayout(false);
-            this.recentFilesGroupBox.PerformLayout();
-            this.flowLayoutPanel.ResumeLayout(false);
-            this.flowLayoutPanel.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            CancelButton = cancelButton;
+            Controls.Add(themeComboBox);
+            Controls.Add(label1);
+            Controls.Add(clearRecentFilesButton);
+            Controls.Add(recentFilesMaxlabel);
+            Controls.Add(selectLanguageLabel);
+            Controls.Add(recentFilesMaxTextBox);
+            Controls.Add(flowLayoutPanel);
+            Controls.Add(languageComboBox);
+            Controls.Add(useSystemLanguageCheckBox);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormOptions";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            flowLayoutPanel.ResumeLayout(false);
+            flowLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -178,5 +162,8 @@
         private System.Windows.Forms.ComboBox languageComboBox;
         private System.Windows.Forms.CheckBox useSystemLanguageCheckBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private UiManagerComponent uiManagerComponent;
+        private System.Windows.Forms.ComboBox themeComboBox;
+        private System.Windows.Forms.Label label1;
     }
 }

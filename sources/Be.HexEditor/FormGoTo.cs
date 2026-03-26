@@ -18,12 +18,10 @@ namespace Be.HexEditor
 		private System.Windows.Forms.Label label2;
         private Panel line;
         private FlowLayoutPanel flowLayoutPanel1;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container? components = null;
+        private UiManagerComponent uiManagerComponent;
+        private IContainer components;
 
-		public FormGoTo()
+        public FormGoTo()
 		{
 			//
 			// Required for Windows Form Designer support
@@ -50,103 +48,104 @@ namespace Be.HexEditor
 			base.Dispose( disposing );
 		}
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGoTo));
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.nup = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.line = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.nup)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.SuspendLayout();
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormGoTo));
+            label1 = new Label();
+            btnCancel = new Button();
+            btnOK = new Button();
+            nup = new NumericUpDown();
+            label2 = new Label();
+            line = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            uiManagerComponent = new UiManagerComponent(components);
+            ((ISupportInitialize)nup).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            ((ISupportInitialize)uiManagerComponent).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
             // 
             // btnCancel
             // 
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            resources.ApplyResources(btnCancel, "btnCancel");
+            btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.Name = "btnCancel";
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnOK
             // 
-            resources.ApplyResources(this.btnOK, "btnOK");
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            resources.ApplyResources(btnOK, "btnOK");
+            btnOK.DialogResult = DialogResult.OK;
+            btnOK.Name = "btnOK";
+            btnOK.Click += btnOK_Click;
             // 
             // nup
             // 
-            resources.ApplyResources(this.nup, "nup");
-            this.nup.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nup.Name = "nup";
-            this.nup.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            resources.ApplyResources(nup, "nup");
+            nup.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nup.Name = "nup";
+            nup.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label2
             // 
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            label2.ForeColor = Color.Blue;
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
             // 
             // line
             // 
-            resources.ApplyResources(this.line, "line");
-            this.line.BackColor = System.Drawing.Color.LightGray;
-            this.line.Name = "line";
+            resources.ApplyResources(line, "line");
+            line.BackColor = Color.LightGray;
+            line.Name = "line";
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
-            this.flowLayoutPanel1.Controls.Add(this.btnOK);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(btnCancel);
+            flowLayoutPanel1.Controls.Add(btnOK);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // uiManagerComponent
+            // 
+            uiManagerComponent.Form = this;
+            uiManagerComponent.Mode = ThemeMode.Dark;
             // 
             // FormGoTo
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.line);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.nup);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormGoTo";
-            this.ShowInTaskbar = false;
-            this.Activated += new System.EventHandler(this.FormGoTo_Activated);
-            ((System.ComponentModel.ISupportInitialize)(this.nup)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.ResumeLayout(false);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = SystemColors.Control;
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(line);
+            Controls.Add(label2);
+            Controls.Add(nup);
+            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormGoTo";
+            ShowInTaskbar = false;
+            Activated += FormGoTo_Activated;
+            ((ISupportInitialize)nup).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            ((ISupportInitialize)uiManagerComponent).EndInit();
+            ResumeLayout(false);
 
-		}
-		#endregion
+        }
+        #endregion
 
-		public void SetDefaultValue(long byteIndex)
+        public void SetDefaultValue(long byteIndex)
 		{
 			nup.Value = byteIndex + 1;
 		}
