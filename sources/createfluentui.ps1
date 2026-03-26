@@ -16,11 +16,8 @@ $icons = @(
     "Search"
 )
 
-# theme colors (soft, modern)
-$themes = @{
-    light = "#1E1E1E"
-    dark  = "#E6E6E6"
-}
+# Fluent blue (works in light & dark mode)
+$color = "#0078D4"
 
 # ensure output directory exists
 New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
@@ -37,47 +34,47 @@ foreach ($icon in $icons) {
 
         $actualSize = $size
 
-        # expected SVG path
+        # expected SVG
         $svgFile = Join-Path $baseDir "$folderName\SVG\ic_fluent_${fileNamePart}_${size}_regular.svg"
 
-        # ===== FALLBACK LOGIC =====
-
+        # ===== FALLBACK =====
         if (!(Test-Path $svgFile)) {
 
             if ($size -eq 32) {
-                # fallback 32 → 24
                 $actualSize = 24
                 $svgFile = Join-Path $baseDir "$folderName\SVG\ic_fluent_${fileNamePart}_24_regular.svg"
             }
-
             elseif ($size -eq 24) {
-                # fallback 24 → 16 (rare)
                 $actualSize = 16
                 $svgFile = Join-Path $baseDir "$folderName\SVG\ic_fluent_${fileNamePart}_16_regular.svg"
             }
         }
 
         if (!(Test-Path $svgFile)) {
-            Write-Warning "Missing SVG (even after fallback): $icon size $size"
+            Write-Warning "Missing SVG: $icon size $size"
             continue
         }
 
-        foreach ($theme in $themes.Keys) {
+        # ===== FORCE COLOR (reliable) =====
 
-            $color = $themes[$theme]
-            $outputFile = Join-Path $targetDir "$cleanName`_${theme}_$size.png"
+        $tempSvg = Join-Path $env:TEMP "icon_$cleanName.svg"
 
-            Write-Host "Export [$theme][$size] $icon (src: $actualSize)"
+        (Get-Content $svgFile) `
+            -replace 'stroke="[^"]*"', "stroke=""$color""" `
+            -replace 'fill="[^"]*"', "fill=""$color""" `
+            | Set-Content $tempSvg
 
-            & $inkscape $svgFile `
-                --export-type=png `
-                --export-width=$size `
-                --export-height=$size `
-                --export-area-drawing `
-                --export-background-opacity=0 `
-                --export-filename=$outputFile `
-                --export-overwrite `
-                --actions="select-all;object-set-fill:$color;object-set-stroke:$color;export-do"
-        }
+        $outputFile = Join-Path $targetDir "$cleanName$size.png"
+
+        Write-Host "Export [$size] $icon (src: $actualSize)"
+
+        & $inkscape $tempSvg `
+            --export-type=png `
+            --export-width=$size `
+            --export-height=$size `
+            --export-area-drawing `
+            --export-background-opacity=0 `
+            --export-filename=$outputFile `
+            --export-overwrite
     }
 }

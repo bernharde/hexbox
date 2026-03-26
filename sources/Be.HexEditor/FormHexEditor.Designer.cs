@@ -104,7 +104,7 @@ namespace Be.HexEditor
             // 
             // openToolStripMenuItem
             // 
-            openToolStripMenuItem.Image = FluentUI.FolderOpen_light_16;
+            openToolStripMenuItem.Image = FluentUI.FolderOpen16;
             resources.ApplyResources(openToolStripMenuItem, "openToolStripMenuItem");
             openToolStripMenuItem.Name = "openToolStripMenuItem";
             openToolStripMenuItem.Click += open_Click;
@@ -116,7 +116,7 @@ namespace Be.HexEditor
             // 
             // saveToolStripMenuItem
             // 
-            saveToolStripMenuItem.Image = FluentUI.Save_light_16;
+            saveToolStripMenuItem.Image = FluentUI.Save16;
             resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.Click += save_Click;
@@ -151,21 +151,21 @@ namespace Be.HexEditor
             // 
             // cutToolStripMenuItem
             // 
-            cutToolStripMenuItem.Image = FluentUI.Cut_light_16;
+            cutToolStripMenuItem.Image = FluentUI.Cut16;
             resources.ApplyResources(cutToolStripMenuItem, "cutToolStripMenuItem");
             cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             cutToolStripMenuItem.Click += cut_Click;
             // 
             // copyToolStripMenuItem
             // 
-            copyToolStripMenuItem.Image = FluentUI.Copy_light_16;
+            copyToolStripMenuItem.Image = FluentUI.Copy16;
             resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             copyToolStripMenuItem.Click += copy_Click;
             // 
             // pasteToolStripMenuItem
             // 
-            pasteToolStripMenuItem.Image = FluentUI.ClipboardPaste_light_16;
+            pasteToolStripMenuItem.Image = FluentUI.ClipboardPaste16;
             resources.ApplyResources(pasteToolStripMenuItem, "pasteToolStripMenuItem");
             pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             pasteToolStripMenuItem.Click += paste_Click;
@@ -194,14 +194,14 @@ namespace Be.HexEditor
             // 
             // findToolStripMenuItem
             // 
-            findToolStripMenuItem.Image = FluentUI.Search_light_16;
+            findToolStripMenuItem.Image = FluentUI.Search16;
             findToolStripMenuItem.Name = "findToolStripMenuItem";
             resources.ApplyResources(findToolStripMenuItem, "findToolStripMenuItem");
             findToolStripMenuItem.Click += find_Click;
             // 
             // findNextToolStripMenuItem
             // 
-            findNextToolStripMenuItem.Image = FluentUI.ArrowRight_light_16;
+            findNextToolStripMenuItem.Image = FluentUI.ArrowRight16;
             findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
             resources.ApplyResources(findNextToolStripMenuItem, "findNextToolStripMenuItem");
             findNextToolStripMenuItem.Click += findNext_Click;
@@ -277,7 +277,7 @@ namespace Be.HexEditor
             // openToolStripButton
             // 
             openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            openToolStripButton.Image = FluentUI.FolderOpen_light_16;
+            openToolStripButton.Image = FluentUI.FolderOpen16;
             resources.ApplyResources(openToolStripButton, "openToolStripButton");
             openToolStripButton.Name = "openToolStripButton";
             openToolStripButton.Padding = new System.Windows.Forms.Padding(2);
@@ -286,7 +286,7 @@ namespace Be.HexEditor
             // saveToolStripButton
             // 
             saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            saveToolStripButton.Image = FluentUI.Save_light_16;
+            saveToolStripButton.Image = FluentUI.Save16;
             resources.ApplyResources(saveToolStripButton, "saveToolStripButton");
             saveToolStripButton.Name = "saveToolStripButton";
             saveToolStripButton.Padding = new System.Windows.Forms.Padding(2);
@@ -300,7 +300,7 @@ namespace Be.HexEditor
             // cutToolStripButton
             // 
             cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            cutToolStripButton.Image = FluentUI.Cut_light_16;
+            cutToolStripButton.Image = FluentUI.Cut16;
             resources.ApplyResources(cutToolStripButton, "cutToolStripButton");
             cutToolStripButton.Name = "cutToolStripButton";
             cutToolStripButton.Padding = new System.Windows.Forms.Padding(2);
@@ -311,7 +311,7 @@ namespace Be.HexEditor
             copyToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             copyToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyToolStripMenuItem1, copyHexToolStripMenuItem1 });
             copyToolStripSplitButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            copyToolStripSplitButton.Image = FluentUI.Copy_light_16;
+            copyToolStripSplitButton.Image = FluentUI.Copy16;
             resources.ApplyResources(copyToolStripSplitButton, "copyToolStripSplitButton");
             copyToolStripSplitButton.Name = "copyToolStripSplitButton";
             copyToolStripSplitButton.Padding = new System.Windows.Forms.Padding(2);
@@ -333,7 +333,7 @@ namespace Be.HexEditor
             // 
             pasteToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             pasteToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { pasteToolStripMenuItem1, pasteHexToolStripMenuItem1 });
-            pasteToolStripSplitButton.Image = FluentUI.ClipboardPaste_light_16;
+            pasteToolStripSplitButton.Image = FluentUI.ClipboardPaste16;
             resources.ApplyResources(pasteToolStripSplitButton, "pasteToolStripSplitButton");
             pasteToolStripSplitButton.Name = "pasteToolStripSplitButton";
             pasteToolStripSplitButton.Padding = new System.Windows.Forms.Padding(2);
@@ -402,13 +402,13 @@ namespace Be.HexEditor
             // 
             // 
             // 
-            hexBox.BuiltInContextMenu.CopyMenuItemImage = FluentUI.Copy_light_16;
+            hexBox.BuiltInContextMenu.CopyMenuItemImage = FluentUI.Copy16;
             hexBox.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
             hexBox.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.CopyMenuItemText");
-            hexBox.BuiltInContextMenu.CutMenuItemImage = FluentUI.Cut_light_16;
+            hexBox.BuiltInContextMenu.CutMenuItemImage = FluentUI.Cut16;
             hexBox.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
             hexBox.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.CutMenuItemText");
-            hexBox.BuiltInContextMenu.PasteMenuItemImage = FluentUI.ClipboardPaste_light_16;
+            hexBox.BuiltInContextMenu.PasteMenuItemImage = FluentUI.ClipboardPaste16;
             hexBox.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
             hexBox.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.PasteMenuItemText");
             hexBox.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.SelectAllMenuItemText");

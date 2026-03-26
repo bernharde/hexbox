@@ -14,7 +14,7 @@ namespace Be.HexEditor
                 // Buttons etc.
                 if (c.Tag is string key)
                 {
-                    var img = ImageManager.Get(key, parent.DeviceDpi, dark);
+                    var img = ImageManager.Get(key, parent.DeviceDpi);
 
                     switch (c)
                     {
@@ -40,7 +40,7 @@ namespace Be.HexEditor
             {
                 if (item.Tag is string key)
                 {
-                    item.Image = ImageManager.Get(key, dpi, dark);
+                    item.Image = ImageManager.Get(key, dpi);
                     item.ImageScaling = ToolStripItemImageScaling.None;
                 }
             }

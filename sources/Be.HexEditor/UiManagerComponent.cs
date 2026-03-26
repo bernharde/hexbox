@@ -75,6 +75,9 @@ namespace Be.HexEditor
         // TOOLSTRIP CONFIG
         // =========================
 
+        private static readonly ToolStripRenderer _darkRenderer = new ToolStripDarkRenderer();
+        private static readonly ToolStripRenderer _lightRenderer = new ToolStripProfessionalRenderer();
+
         private void ConfigureToolStrips(Control parent, bool dark)
         {
             foreach (Control c in parent.Controls)
@@ -86,7 +89,7 @@ namespace Be.HexEditor
 
                     ts.ImageScalingSize = new Size(size, size);
                     ts.RenderMode = ToolStripRenderMode.Professional;
-                    ts.Renderer = new ToolStripDarkRenderer();
+                    ts.Renderer = dark ? _darkRenderer : _lightRenderer;
 
                     ts.Padding = new Padding(2, 3, 2, 3);
 

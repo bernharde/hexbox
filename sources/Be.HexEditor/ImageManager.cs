@@ -6,7 +6,7 @@ namespace Be.HexEditor
 {
     public static class ImageManager
     {
-        public static Image Get(string name, float dpi, bool dark)
+        public static Image Get(string name, float dpi)
         {
             int size = dpi switch
             {
@@ -15,8 +15,7 @@ namespace Be.HexEditor
                 _ => 16
             };
 
-            string theme = dark ? "dark" : "light";
-            string key = $"{name}_{theme}_{size}";
+            string key = $"{name}{size}";
 
             var rm = FluentUI.ResourceManager;
 
@@ -24,10 +23,10 @@ namespace Be.HexEditor
 
             // fallback (important!)
             if (img == null && size == 32)
-                img = (Image?)rm.GetObject($"{name}_{theme}_24");
+                img = (Image?)rm.GetObject($"{name}24");
 
             if (img == null && size == 24)
-                img = (Image?)rm.GetObject($"{name}_{theme}_16");
+                img = (Image?)rm.GetObject($"{name}16");
 
             return img!;
         }
