@@ -72,7 +72,7 @@ namespace Be.HexEditor
 
         void clearRecentFilesButton_Click(object sender, EventArgs e)
         {
-            Program.MainForm.RecentFileHandler.Clear();
+            Program.MainForm.recentFileHandler.Clear();
         }
 
         void okButton_Click(object sender, EventArgs e)

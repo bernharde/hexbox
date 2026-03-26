@@ -79,11 +79,13 @@ namespace Be.HexEditor
             bodyPanel = new System.Windows.Forms.Panel();
             hexBox = new Be.Windows.Forms.HexBox();
             bitControl1 = new BitControl();
-            RecentFileHandler = new RecentFileHandler(components);
+            recentFileHandler = new RecentFileHandler(components);
+            uiManagerComponent = new UiManagerComponent(components);
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             statusStrip.SuspendLayout();
             bodyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
             SuspendLayout();
             // 
             // menuStrip
@@ -434,9 +436,14 @@ namespace Be.HexEditor
             bitControl1.Name = "bitControl1";
             bitControl1.BitChanged += bitControl1_BitChanged;
             // 
-            // RecentFileHandler
+            // recentFileHandler
             // 
-            RecentFileHandler.RecentFileToolStripItem = recentFilesToolStripMenuItem;
+            recentFileHandler.RecentFileToolStripItem = recentFilesToolStripMenuItem;
+            // 
+            // uiManagerComponent
+            // 
+            uiManagerComponent.Form = this;
+            uiManagerComponent.Mode = ThemeMode.Dark;
             // 
             // FormHexEditor
             // 
@@ -457,6 +464,7 @@ namespace Be.HexEditor
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
             bodyPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -506,7 +514,7 @@ namespace Be.HexEditor
         private System.Windows.Forms.ToolStripMenuItem pasteHexToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        public RecentFileHandler RecentFileHandler;
+        public RecentFileHandler recentFileHandler;
 		private System.Windows.Forms.ToolStripStatusLabel bitToolStripStatusLabel;
 		private System.Windows.Forms.ToolStripComboBox encodingToolStripComboBox;
 		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
@@ -514,5 +522,6 @@ namespace Be.HexEditor
 		private System.Windows.Forms.ToolStripMenuItem bitsToolStripMenuItem;
 		private BitControl bitControl1;
 		private System.Windows.Forms.Panel bodyPanel;
+        private UiManagerComponent uiManagerComponent;
     }
 }

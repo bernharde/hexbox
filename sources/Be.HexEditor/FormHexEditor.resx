@@ -389,13 +389,13 @@
     <value>Cut</value>
   </data>
   <data name="copyToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>125, 22</value>
   </data>
   <data name="copyToolStripMenuItem1.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
   <data name="copyHexToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>125, 22</value>
   </data>
   <data name="copyHexToolStripMenuItem1.Text" xml:space="preserve">
     <value>Copy Hex</value>
@@ -410,13 +410,13 @@
     <value>Copy</value>
   </data>
   <data name="pasteToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>125, 22</value>
   </data>
   <data name="pasteToolStripMenuItem1.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
   <data name="pasteHexToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>125, 22</value>
   </data>
   <data name="pasteHexToolStripMenuItem1.Text" xml:space="preserve">
     <value>Paste Hex</value>
@@ -434,7 +434,7 @@
     <value>Flat</value>
   </data>
   <data name="encodingToolStripComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 27</value>
+    <value>260, 27</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
@@ -598,8 +598,11 @@
   <data name="&gt;&gt;bodyPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="RecentFileHandler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="recentFileHandler.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>465, 17</value>
+  </metadata>
+  <metadata name="uiManagerComponent.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>615, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2327,11 +2330,17 @@
   <data name="&gt;&gt;openFileDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RecentFileHandler.Name" xml:space="preserve">
-    <value>RecentFileHandler</value>
+  <data name="&gt;&gt;recentFileHandler.Name" xml:space="preserve">
+    <value>recentFileHandler</value>
   </data>
-  <data name="&gt;&gt;RecentFileHandler.Type" xml:space="preserve">
+  <data name="&gt;&gt;recentFileHandler.Type" xml:space="preserve">
     <value>Be.HexEditor.RecentFileHandler, Be.HexEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uiManagerComponent.Name" xml:space="preserve">
+    <value>uiManagerComponent</value>
+  </data>
+  <data name="&gt;&gt;uiManagerComponent.Type" xml:space="preserve">
+    <value>Be.HexEditor.UiManagerComponent, Be.HexEditor, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormHexEditor</value>

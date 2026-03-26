@@ -18,29 +18,31 @@ namespace Be.HexEditor
 
     public class UiManagerComponent : Component, ISupportInitialize
     {
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public UiManagerComponent() { }
+
+        public UiManagerComponent(IContainer container) 
+        {
+            container.Add(this);
+        }
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public ThemeMode Mode { get; set; } = ThemeMode.System;
 
-        private Form? _form;
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public Form? Form { get; set; }
 
         public void BeginInit() { }
 
         public void EndInit()
         {
             // Called after designer initializes component
-            _form = FindForm();
 
-            if (_form != null)
+            if (Form != null)
             {
-                _form.Load += (s, e) => Apply(_form);
+                Form.Load += (s, e) => Apply(Form);
             }
-        }
-
-        private Form? FindForm()
-        {
-            return this.Site?.Container?.Components
-                .OfType<Form>()
-                .FirstOrDefault();
         }
 
         private bool IsDark()
@@ -58,8 +60,12 @@ namespace Be.HexEditor
         public void Apply(Form form)
         {
             bool dark = IsDark();
+
+            DarkTitleBar.Apply(form, dark);
+
             var theme = dark ? Themes.Dark : Themes.Light;
 
+            
             ThemeManager.Apply(form, theme, dark);
             ImageApplier.Apply(form, dark);
             ConfigureToolStrips(form);
@@ -75,8 +81,6 @@ namespace Be.HexEditor
                                parent.DeviceDpi >= 144 ? 24 : 16;
 
                     ts.ImageScalingSize = new Size(size, size);
-                    ts.AutoSize = false;
-                    ts.Height = size + 8;
                 }
 
                 ConfigureToolStrips(c);

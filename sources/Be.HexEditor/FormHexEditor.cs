@@ -201,7 +201,7 @@ namespace Be.HexEditor
 
                 UpdateFileSizeStatus();
 
-                RecentFileHandler.AddFile(fileName);
+                recentFileHandler.AddFile(fileName);
             }
             catch (Exception ex1)
             {
