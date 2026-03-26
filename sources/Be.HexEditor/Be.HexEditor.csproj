@@ -30,4 +30,19 @@
 		<ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="FluentUI.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>FluentUI.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="FluentUI.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>FluentUI.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 </Project>

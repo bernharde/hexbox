@@ -23,23 +23,7 @@ namespace Be.HexEditor
             InitializeComponent();
 
 			Init();
-
-            this.toolStrip.Renderer.RenderToolStripBorder += new ToolStripRenderEventHandler(Renderer_RenderToolStripBorder);
         }
-
-		/// <summary>
-		/// Removes the border on the right of the tool strip
-		/// </summary>
-		/// <param name="sender">the renderer</param>
-		/// <param name="e">the event args</param>
-		void Renderer_RenderToolStripBorder(object sender, ToolStripRenderEventArgs e)
-		{
-			if (e.ToolStrip.GetType() != typeof(ToolStrip))
-				return;
-
-			e.Graphics.DrawLine(new Pen(new SolidBrush(SystemColors.Control)), new Point(toolStrip.Width - 1, 0),
-				new Point(toolStrip.Width - 1, toolStrip.Height));
-		}
 
         /// <summary>
         /// Initializes the hex editor´s main form
