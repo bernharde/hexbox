@@ -359,7 +359,7 @@
     <value>Magenta</value>
   </data>
   <data name="openToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 28</value>
+    <value>23, 20</value>
   </data>
   <data name="openToolStripButton.Text" xml:space="preserve">
     <value>&amp;Open</value>
@@ -371,19 +371,19 @@
     <value>Magenta</value>
   </data>
   <data name="saveToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 28</value>
+    <value>23, 20</value>
   </data>
   <data name="saveToolStripButton.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 31</value>
+    <value>6, 23</value>
   </data>
   <data name="cutToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="cutToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 28</value>
+    <value>23, 20</value>
   </data>
   <data name="cutToolStripButton.Text" xml:space="preserve">
     <value>Cut</value>
@@ -404,7 +404,7 @@
     <value>Magenta</value>
   </data>
   <data name="copyToolStripSplitButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 28</value>
+    <value>32, 20</value>
   </data>
   <data name="copyToolStripSplitButton.Text" xml:space="preserve">
     <value>Copy</value>
@@ -425,7 +425,7 @@
     <value>Magenta</value>
   </data>
   <data name="pasteToolStripSplitButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 28</value>
+    <value>32, 20</value>
   </data>
   <data name="pasteToolStripSplitButton.Text" xml:space="preserve">
     <value>Paste</value>
@@ -434,13 +434,13 @@
     <value>Flat</value>
   </data>
   <data name="encodingToolStripComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 31</value>
+    <value>268, 23</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
   <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>652, 31</value>

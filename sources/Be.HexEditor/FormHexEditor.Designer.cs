@@ -268,15 +268,15 @@ namespace Be.HexEditor
             toolStrip.BackColor = System.Drawing.SystemColors.Control;
             toolStrip.GripMargin = new System.Windows.Forms.Padding(0);
             toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            toolStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripButton, saveToolStripButton, toolStripSeparator6, cutToolStripButton, copyToolStripSplitButton, pasteToolStripSplitButton, encodingToolStripComboBox });
             resources.ApplyResources(toolStrip, "toolStrip");
             toolStrip.Name = "toolStrip";
+            toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // openToolStripButton
             // 
             openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            openToolStripButton.Image = FluentUI.FolderOpen_light_24;
+            openToolStripButton.Image = FluentUI.FolderOpen_light_16;
             resources.ApplyResources(openToolStripButton, "openToolStripButton");
             openToolStripButton.Name = "openToolStripButton";
             openToolStripButton.Click += open_Click;
@@ -284,7 +284,7 @@ namespace Be.HexEditor
             // saveToolStripButton
             // 
             saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            saveToolStripButton.Image = FluentUI.Save_light_24;
+            saveToolStripButton.Image = FluentUI.Save_light_16;
             resources.ApplyResources(saveToolStripButton, "saveToolStripButton");
             saveToolStripButton.Name = "saveToolStripButton";
             saveToolStripButton.Click += save_Click;
@@ -297,7 +297,7 @@ namespace Be.HexEditor
             // cutToolStripButton
             // 
             cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            cutToolStripButton.Image = FluentUI.Cut_light_24;
+            cutToolStripButton.Image = FluentUI.Cut_light_16;
             resources.ApplyResources(cutToolStripButton, "cutToolStripButton");
             cutToolStripButton.Name = "cutToolStripButton";
             cutToolStripButton.Click += cut_Click;
@@ -307,7 +307,7 @@ namespace Be.HexEditor
             copyToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             copyToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyToolStripMenuItem1, copyHexToolStripMenuItem1 });
             copyToolStripSplitButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            copyToolStripSplitButton.Image = FluentUI.Copy_light_24;
+            copyToolStripSplitButton.Image = FluentUI.Copy_light_16;
             resources.ApplyResources(copyToolStripSplitButton, "copyToolStripSplitButton");
             copyToolStripSplitButton.Name = "copyToolStripSplitButton";
             copyToolStripSplitButton.ButtonClick += copy_Click;
@@ -328,7 +328,7 @@ namespace Be.HexEditor
             // 
             pasteToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             pasteToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { pasteToolStripMenuItem1, pasteHexToolStripMenuItem1 });
-            pasteToolStripSplitButton.Image = FluentUI.ClipboardPaste_light_24;
+            pasteToolStripSplitButton.Image = FluentUI.ClipboardPaste_light_16;
             resources.ApplyResources(pasteToolStripSplitButton, "pasteToolStripSplitButton");
             pasteToolStripSplitButton.Name = "pasteToolStripSplitButton";
             pasteToolStripSplitButton.ButtonClick += paste_Click;
