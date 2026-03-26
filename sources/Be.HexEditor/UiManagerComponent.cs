@@ -16,11 +16,12 @@ namespace Be.HexEditor
     }
 
 
+
     public class UiManagerComponent : Component, ISupportInitialize
     {
         public UiManagerComponent() { }
 
-        public UiManagerComponent(IContainer container) 
+        public UiManagerComponent(IContainer container)
         {
             container.Add(this);
         }
@@ -37,8 +38,6 @@ namespace Be.HexEditor
 
         public void EndInit()
         {
-            // Called after designer initializes component
-
             if (Form != null)
             {
                 Form.Load += (s, e) => Apply(Form);
@@ -54,7 +53,7 @@ namespace Be.HexEditor
                 @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
                 "AppsUseLightTheme", 1);
 
-            return (int)value == 0;
+            return value is int i && i == 0;
         }
 
         public void Apply(Form form)
@@ -65,13 +64,18 @@ namespace Be.HexEditor
 
             var theme = dark ? Themes.Dark : Themes.Light;
 
-            
             ThemeManager.Apply(form, theme, dark);
             ImageApplier.Apply(form, dark);
-            ConfigureToolStrips(form);
+
+            ConfigureToolStrips(form, dark);
+            FixToolStripText(form, dark);
         }
 
-        private void ConfigureToolStrips(Control parent)
+        // =========================
+        // TOOLSTRIP CONFIG
+        // =========================
+
+        private void ConfigureToolStrips(Control parent, bool dark)
         {
             foreach (Control c in parent.Controls)
             {
@@ -81,10 +85,57 @@ namespace Be.HexEditor
                                parent.DeviceDpi >= 144 ? 24 : 16;
 
                     ts.ImageScalingSize = new Size(size, size);
+                    ts.RenderMode = ToolStripRenderMode.Professional;
+                    ts.Renderer = new ToolStripDarkRenderer();
+
+                    ts.Padding = new Padding(2, 3, 2, 3);
+
+                    foreach (ToolStripItem item in ts.Items)
+                    {
+                        item.Padding = new Padding(3);
+                    }
                 }
 
-                ConfigureToolStrips(c);
+                ConfigureToolStrips(c, dark);
+            }
+        }
+
+        // =========================
+        // TEXT COLOR FIX
+        // =========================
+
+        private void FixToolStripText(Control parent, bool dark)
+        {
+            foreach (Control c in parent.Controls)
+            {
+                if (c is ToolStrip ts)
+                {
+                    var foreColor = dark
+                        ? Color.FromArgb(230, 230, 230)
+                        : Color.Black;
+
+                    foreach (ToolStripItem item in ts.Items)
+                    {
+                        item.ForeColor = foreColor;
+                        ApplyDropDown(item, foreColor);
+                    }
+                }
+
+                FixToolStripText(c, dark);
+            }
+        }
+
+        private void ApplyDropDown(ToolStripItem item, Color foreColor)
+        {
+            if (item is ToolStripDropDownItem dd)
+            {
+                foreach (ToolStripItem sub in dd.DropDownItems)
+                {
+                    sub.ForeColor = foreColor;
+                    ApplyDropDown(sub, foreColor);
+                }
             }
         }
     }
+
 }
