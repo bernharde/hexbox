@@ -106,7 +106,6 @@
             // uiManagerComponent
             // 
             uiManagerComponent.Form = this;
-            uiManagerComponent.Mode = ThemeMode.Dark;
             // 
             // label1
             // 

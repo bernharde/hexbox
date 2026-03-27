@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Be.HexEditor.Properties;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;

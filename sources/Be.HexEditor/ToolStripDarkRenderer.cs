@@ -6,6 +6,19 @@ using System.Windows.Forms;
 
 namespace Be.HexEditor
 {
+    class VsColorTable : ProfessionalColorTable
+    {
+        public override Color ToolStripDropDownBackground => Color.FromArgb(30, 30, 30);
+        public override Color ImageMarginGradientBegin => Color.FromArgb(30, 30, 30);
+        public override Color ImageMarginGradientMiddle => Color.FromArgb(30, 30, 30);
+        public override Color ImageMarginGradientEnd => Color.FromArgb(30, 30, 30);
+
+        public override Color MenuItemSelected => Color.FromArgb(45, 45, 48);
+        public override Color MenuItemBorder => Color.FromArgb(45, 45, 48);
+
+        public override Color ButtonSelectedHighlight => Color.FromArgb(45, 45, 48);
+        public override Color ButtonPressedHighlight => Color.FromArgb(0, 122, 204);
+    }
 
     // =========================
     // DARK RENDERER
@@ -13,6 +26,11 @@ namespace Be.HexEditor
 
     class ToolStripDarkRenderer : ToolStripProfessionalRenderer
     {
+        public ToolStripDarkRenderer() : base(new VsColorTable())
+        {
+        }
+
+
         protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
         {
             e.Graphics.Clear(Color.FromArgb(45, 45, 48));
@@ -44,12 +62,19 @@ namespace Be.HexEditor
 
         protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
         {
-            using var pen = new Pen(Color.FromArgb(60, 60, 60));
-            e.Graphics.DrawRectangle(
-                pen,
-                0, 0,
-                e.ToolStrip.Width - 1,
-                e.ToolStrip.Height - 1);
+            //using var pen = new Pen(Color.FromArgb(60, 60, 60));
+            //e.Graphics.DrawRectangle(
+            //    pen,
+            //    0, 0,
+            //    e.ToolStrip.Width - 1,
+            //    e.ToolStrip.Height - 1);
+        }
+
+        protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
+        {
+            if(e.Item?.Enabled == true)
+                e.ArrowColor = Color.WhiteSmoke;
+            base.OnRenderArrow(e);
         }
     }
 }

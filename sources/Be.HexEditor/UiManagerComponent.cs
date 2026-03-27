@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Be.HexEditor.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -19,16 +20,45 @@ namespace Be.HexEditor
 
     public class UiManagerComponent : Component, ISupportInitialize
     {
-        public UiManagerComponent() { }
+        public UiManagerComponent() {
+            ThemeChanged += UiManagerComponent_ThemeChanged;
+        }
 
         public UiManagerComponent(IContainer container)
         {
             container.Add(this);
+            ThemeChanged += UiManagerComponent_ThemeChanged;
         }
 
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public ThemeMode Mode { get; set; } = ThemeMode.System;
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            ThemeChanged -= UiManagerComponent_ThemeChanged;
+        }
+
+
+        public static event EventHandler<ThemeMode>? ThemeChanged;
+
+        public static ThemeMode CurrentTheme
+        {
+            get => Settings.Default.SelectedTheme;
+            set
+            {
+                if (Settings.Default.SelectedTheme == value)
+                    return;
+
+                Settings.Default.SelectedTheme = value;
+                Settings.Default.Save();
+
+                ThemeChanged?.Invoke(null, value); // ✔ FIX
+            }
+        }
+
+        private void UiManagerComponent_ThemeChanged(object? sender, ThemeMode e)
+        {
+            if(Form != null)
+                Apply(Form);
+        }
 
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -40,14 +70,15 @@ namespace Be.HexEditor
         {
             if (Form != null)
             {
+                ThemeChanged += UiManagerComponent_ThemeChanged;
                 Form.Load += (s, e) => Apply(Form);
             }
         }
 
         private bool IsDark()
         {
-            if (Mode == ThemeMode.Dark) return true;
-            if (Mode == ThemeMode.Light) return false;
+            if (CurrentTheme == ThemeMode.Dark) return true;
+            if (CurrentTheme == ThemeMode.Light) return false;
 
             var value = Microsoft.Win32.Registry.GetValue(
                 @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",

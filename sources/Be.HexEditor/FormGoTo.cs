@@ -118,7 +118,6 @@ namespace Be.HexEditor
             // uiManagerComponent
             // 
             uiManagerComponent.Form = this;
-            uiManagerComponent.Mode = ThemeMode.Dark;
             // 
             // FormGoTo
             // 

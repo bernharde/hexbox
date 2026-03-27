@@ -48,7 +48,7 @@ namespace Be.HexEditor
             this.useSystemLanguage = Settings.Default.UseSystemLanguage;
             this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
             this.themeComboBox.DataSource = Enum.GetValues(typeof(ThemeMode));
-            this.themeComboBox.SelectedItem = Settings.Default.SelectedTheme;
+            this.themeComboBox.SelectedItem = UiManagerComponent.CurrentTheme;
 
             if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
                 Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName; 
@@ -83,6 +83,12 @@ namespace Be.HexEditor
             if (recentFilesMax != Settings.Default.RecentFilesMax)
             {
                 Settings.Default.RecentFilesMax = recentFilesMax;
+                changed = true;
+            }
+
+            if ((ThemeMode)this.themeComboBox.SelectedValue != UiManagerComponent.CurrentTheme)
+            {
+                UiManagerComponent.CurrentTheme = (ThemeMode)this.themeComboBox.SelectedValue;
                 changed = true;
             }
 
