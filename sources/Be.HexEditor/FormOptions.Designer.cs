@@ -30,8 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOptions));
-            selectLanguageLabel = new System.Windows.Forms.Label();
-            languageComboBox = new System.Windows.Forms.ComboBox();
             useSystemLanguageCheckBox = new System.Windows.Forms.CheckBox();
             clearRecentFilesButton = new System.Windows.Forms.Button();
             recentFilesMaxlabel = new System.Windows.Forms.Label();
@@ -41,22 +39,15 @@
             flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             uiManagerComponent = new UiManagerComponent(components);
             label1 = new System.Windows.Forms.Label();
-            themeComboBox = new System.Windows.Forms.ComboBox();
+            languageListBox = new System.Windows.Forms.ListBox();
+            buttonSystem = new System.Windows.Forms.Button();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            buttonDark = new System.Windows.Forms.Button();
+            buttonLight = new System.Windows.Forms.Button();
             flowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // selectLanguageLabel
-            // 
-            resources.ApplyResources(selectLanguageLabel, "selectLanguageLabel");
-            selectLanguageLabel.Name = "selectLanguageLabel";
-            // 
-            // languageComboBox
-            // 
-            languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            languageComboBox.FormattingEnabled = true;
-            resources.ApplyResources(languageComboBox, "languageComboBox");
-            languageComboBox.Name = "languageComboBox";
             // 
             // useSystemLanguageCheckBox
             // 
@@ -112,26 +103,51 @@
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
             // 
-            // themeComboBox
+            // languageListBox
             // 
-            themeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            themeComboBox.FormattingEnabled = true;
-            resources.ApplyResources(themeComboBox, "themeComboBox");
-            themeComboBox.Name = "themeComboBox";
+            resources.ApplyResources(languageListBox, "languageListBox");
+            languageListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            languageListBox.FormattingEnabled = true;
+            languageListBox.Name = "languageListBox";
+            // 
+            // buttonSystem
+            // 
+            resources.ApplyResources(buttonSystem, "buttonSystem");
+            buttonSystem.Name = "buttonSystem";
+            buttonSystem.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(buttonSystem);
+            flowLayoutPanel1.Controls.Add(buttonDark);
+            flowLayoutPanel1.Controls.Add(buttonLight);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // buttonDark
+            // 
+            resources.ApplyResources(buttonDark, "buttonDark");
+            buttonDark.Name = "buttonDark";
+            buttonDark.UseVisualStyleBackColor = true;
+            // 
+            // buttonLight
+            // 
+            resources.ApplyResources(buttonLight, "buttonLight");
+            buttonLight.Name = "buttonLight";
+            buttonLight.UseVisualStyleBackColor = true;
             // 
             // FormOptions
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             CancelButton = cancelButton;
-            Controls.Add(themeComboBox);
-            Controls.Add(label1);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(languageListBox);
             Controls.Add(clearRecentFilesButton);
             Controls.Add(recentFilesMaxlabel);
-            Controls.Add(selectLanguageLabel);
             Controls.Add(recentFilesMaxTextBox);
             Controls.Add(flowLayoutPanel);
-            Controls.Add(languageComboBox);
             Controls.Add(useSystemLanguageCheckBox);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -141,6 +157,8 @@
             flowLayoutPanel.ResumeLayout(false);
             flowLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -157,12 +175,14 @@
         private System.Windows.Forms.Label recentFilesMaxlabel;
         private System.Windows.Forms.TextBox recentFilesMaxTextBox;
         private System.Windows.Forms.GroupBox languageSettingsGroupBox;
-        private System.Windows.Forms.Label selectLanguageLabel;
-        private System.Windows.Forms.ComboBox languageComboBox;
         private System.Windows.Forms.CheckBox useSystemLanguageCheckBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private UiManagerComponent uiManagerComponent;
-        private System.Windows.Forms.ComboBox themeComboBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox languageListBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button buttonSystem;
+        private System.Windows.Forms.Button buttonDark;
+        private System.Windows.Forms.Button buttonLight;
     }
 }
