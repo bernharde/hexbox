@@ -518,6 +518,7 @@ namespace Be.HexEditor
             bitControl1.Name = "bitControl1";
             bitControl1.Size = new System.Drawing.Size(652, 60);
             bitControl1.TabIndex = 10;
+            bitControl1.Visible = false;
             bitControl1.BitChanged += bitControl1_BitChanged;
             // 
             // recentFileHandler

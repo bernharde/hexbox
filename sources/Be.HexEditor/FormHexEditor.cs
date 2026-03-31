@@ -540,22 +540,9 @@ namespace Be.HexEditor
 
 		void UpdateBitControlVisibility()
 		{
-            if (Util.DesignMode)
-                return;
-			//if (this.bitControl1.Visible == bitsToolStripMenuItem.Checked)
-			//{
-			//    return;
-			//}
-			if (bitsToolStripMenuItem.Checked)
-			{
-                hexBox.Height -= bitControl1.Height;
-				bitControl1.Visible = true;
-			}
-			else
-			{
-                hexBox.Height += bitControl1.Height;
-				bitControl1.Visible = false;
-			}
+			if (Util.DesignMode)
+				return;
+			bitControl1.Visible = bitsToolStripMenuItem.Checked;
 		}
 
 		void bitControl1_BitChanged(object sender, EventArgs e)
