@@ -240,13 +240,13 @@ namespace Be.HexEditor
             // 
             // 
             // 
-            hexFind.BuiltInContextMenu.CopyMenuItemImage = Pngs.Copy16;
+            hexFind.BuiltInContextMenu.CopyMenuItemImage = FluentUI.Copy16;
             hexFind.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
             hexFind.BuiltInContextMenu.CopyMenuItemText = "Copy";
-            hexFind.BuiltInContextMenu.CutMenuItemImage = Pngs.Cut16;
+            hexFind.BuiltInContextMenu.CutMenuItemImage = FluentUI.Cut16;
             hexFind.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
             hexFind.BuiltInContextMenu.CutMenuItemText = "Cut";
-            hexFind.BuiltInContextMenu.PasteMenuItemImage = Pngs.Paste16;
+            hexFind.BuiltInContextMenu.PasteMenuItemImage = FluentUI.ClipboardPaste16;
             hexFind.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
             hexFind.BuiltInContextMenu.PasteMenuItemText = "Paste";
             hexFind.BuiltInContextMenu.SelectAllMenuItemText = "Select All";

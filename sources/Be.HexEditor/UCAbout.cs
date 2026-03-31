@@ -83,153 +83,186 @@ namespace Be.HexEditor
 			base.Dispose( disposing );
 		}
 
-		#region Component Designer generated code
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCAbout));
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblAuthor = new System.Windows.Forms.Label();
-            this.lnkWorkspace = new System.Windows.Forms.LinkLabel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabThanksTo = new System.Windows.Forms.TabPage();
-            this.txtThanksTo = new System.Windows.Forms.RichTextBox();
-            this.tabLicense = new System.Windows.Forms.TabPage();
-            this.txtLicense = new System.Windows.Forms.RichTextBox();
-            this.tabChanges = new System.Windows.Forms.TabPage();
-            this.txtChanges = new System.Windows.Forms.RichTextBox();
-            this.lblIcon = new System.Windows.Forms.Label();
-            this.tabControl.SuspendLayout();
-            this.tabThanksTo.SuspendLayout();
-            this.tabLicense.SuspendLayout();
-            this.tabChanges.SuspendLayout();
-            this.SuspendLayout();
+        #region Component Designer generated code
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            label1 = new Label();
+            lblAuthor = new Label();
+            lnkWorkspace = new LinkLabel();
+            label5 = new Label();
+            lblVersion = new Label();
+            label7 = new Label();
+            tabControl = new TabControl();
+            tabThanksTo = new TabPage();
+            txtThanksTo = new RichTextBox();
+            tabLicense = new TabPage();
+            txtLicense = new RichTextBox();
+            tabChanges = new TabPage();
+            txtChanges = new RichTextBox();
+            lblIcon = new Label();
+            tabControl.SuspendLayout();
+            tabThanksTo.SuspendLayout();
+            tabLicense.SuspendLayout();
+            tabChanges.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            label1.AutoSize = true;
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 15);
+            label1.TabIndex = 7;
             // 
             // lblAuthor
             // 
-            resources.ApplyResources(this.lblAuthor, "lblAuthor");
-            this.lblAuthor.BackColor = System.Drawing.Color.White;
-            this.lblAuthor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblAuthor.Name = "lblAuthor";
+            lblAuthor.BackColor = Color.White;
+            lblAuthor.BorderStyle = BorderStyle.FixedSingle;
+            lblAuthor.Location = new Point(0, 0);
+            lblAuthor.Name = "lblAuthor";
+            lblAuthor.Size = new Size(100, 23);
+            lblAuthor.TabIndex = 6;
             // 
             // lnkWorkspace
             // 
-            resources.ApplyResources(this.lnkWorkspace, "lnkWorkspace");
-            this.lnkWorkspace.BackColor = System.Drawing.Color.White;
-            this.lnkWorkspace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lnkWorkspace.Name = "lnkWorkspace";
-            this.lnkWorkspace.TabStop = true;
-            this.lnkWorkspace.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCompany_LinkClicked);
+            lnkWorkspace.BackColor = Color.White;
+            lnkWorkspace.BorderStyle = BorderStyle.FixedSingle;
+            lnkWorkspace.Location = new Point(0, 0);
+            lnkWorkspace.Name = "lnkWorkspace";
+            lnkWorkspace.Size = new Size(100, 23);
+            lnkWorkspace.TabIndex = 5;
+            lnkWorkspace.TabStop = true;
+            lnkWorkspace.LinkClicked += lnkCompany_LinkClicked;
             // 
             // label5
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            label5.AutoSize = true;
+            label5.Location = new Point(0, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(0, 15);
+            label5.TabIndex = 4;
             // 
             // lblVersion
             // 
-            resources.ApplyResources(this.lblVersion, "lblVersion");
-            this.lblVersion.BackColor = System.Drawing.Color.White;
-            this.lblVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVersion.Name = "lblVersion";
+            lblVersion.BackColor = Color.White;
+            lblVersion.BorderStyle = BorderStyle.FixedSingle;
+            lblVersion.Location = new Point(0, 0);
+            lblVersion.Name = "lblVersion";
+            lblVersion.Size = new Size(100, 23);
+            lblVersion.TabIndex = 2;
             // 
             // label7
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            label7.AutoSize = true;
+            label7.Location = new Point(0, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(0, 15);
+            label7.TabIndex = 3;
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
-            this.tabControl.Controls.Add(this.tabThanksTo);
-            this.tabControl.Controls.Add(this.tabLicense);
-            this.tabControl.Controls.Add(this.tabChanges);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
+            tabControl.Controls.Add(tabThanksTo);
+            tabControl.Controls.Add(tabLicense);
+            tabControl.Controls.Add(tabChanges);
+            tabControl.Location = new Point(0, 0);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(200, 100);
+            tabControl.TabIndex = 1;
             // 
             // tabThanksTo
             // 
-            resources.ApplyResources(this.tabThanksTo, "tabThanksTo");
-            this.tabThanksTo.Controls.Add(this.txtThanksTo);
-            this.tabThanksTo.Name = "tabThanksTo";
+            tabThanksTo.Controls.Add(txtThanksTo);
+            tabThanksTo.Location = new Point(4, 24);
+            tabThanksTo.Name = "tabThanksTo";
+            tabThanksTo.Size = new Size(192, 72);
+            tabThanksTo.TabIndex = 0;
             // 
             // txtThanksTo
             // 
-            this.txtThanksTo.BackColor = System.Drawing.Color.White;
-            this.txtThanksTo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.txtThanksTo, "txtThanksTo");
-            this.txtThanksTo.Name = "txtThanksTo";
-            this.txtThanksTo.ReadOnly = true;
+            txtThanksTo.BackColor = Color.White;
+            txtThanksTo.BorderStyle = BorderStyle.None;
+            txtThanksTo.Location = new Point(0, 0);
+            txtThanksTo.Name = "txtThanksTo";
+            txtThanksTo.ReadOnly = true;
+            txtThanksTo.Size = new Size(100, 96);
+            txtThanksTo.TabIndex = 0;
+            txtThanksTo.Text = "";
             // 
             // tabLicense
             // 
-            this.tabLicense.Controls.Add(this.txtLicense);
-            resources.ApplyResources(this.tabLicense, "tabLicense");
-            this.tabLicense.Name = "tabLicense";
+            tabLicense.Controls.Add(txtLicense);
+            tabLicense.Location = new Point(4, 24);
+            tabLicense.Name = "tabLicense";
+            tabLicense.Size = new Size(192, 72);
+            tabLicense.TabIndex = 1;
             // 
             // txtLicense
             // 
-            this.txtLicense.BackColor = System.Drawing.Color.White;
-            this.txtLicense.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.txtLicense, "txtLicense");
-            this.txtLicense.Name = "txtLicense";
-            this.txtLicense.ReadOnly = true;
+            txtLicense.BackColor = Color.White;
+            txtLicense.BorderStyle = BorderStyle.None;
+            txtLicense.Location = new Point(0, 0);
+            txtLicense.Name = "txtLicense";
+            txtLicense.ReadOnly = true;
+            txtLicense.Size = new Size(100, 96);
+            txtLicense.TabIndex = 0;
+            txtLicense.Text = "";
             // 
             // tabChanges
             // 
-            this.tabChanges.Controls.Add(this.txtChanges);
-            resources.ApplyResources(this.tabChanges, "tabChanges");
-            this.tabChanges.Name = "tabChanges";
+            tabChanges.Controls.Add(txtChanges);
+            tabChanges.Location = new Point(4, 24);
+            tabChanges.Name = "tabChanges";
+            tabChanges.Size = new Size(192, 72);
+            tabChanges.TabIndex = 2;
             // 
             // txtChanges
             // 
-            this.txtChanges.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.txtChanges, "txtChanges");
-            this.txtChanges.Name = "txtChanges";
+            txtChanges.BorderStyle = BorderStyle.None;
+            txtChanges.Location = new Point(0, 0);
+            txtChanges.Name = "txtChanges";
+            txtChanges.Size = new Size(100, 96);
+            txtChanges.TabIndex = 0;
+            txtChanges.Text = "";
             // 
             // lblIcon
             // 
-            resources.ApplyResources(this.lblIcon, "lblIcon");
-            this.lblIcon.BackColor = System.Drawing.Color.White;
-            this.lblIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblIcon.Name = "lblIcon";
+            lblIcon.BackColor = Color.White;
+            lblIcon.BorderStyle = BorderStyle.FixedSingle;
+            lblIcon.Location = new Point(0, 0);
+            lblIcon.Name = "lblIcon";
+            lblIcon.Size = new Size(100, 23);
+            lblIcon.TabIndex = 0;
             // 
             // UCAbout
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.Controls.Add(this.lblIcon);
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.lblVersion);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lnkWorkspace);
-            this.Controls.Add(this.lblAuthor);
-            this.Controls.Add(this.label1);
-            resources.ApplyResources(this, "$this");
-            this.Name = "UCAbout";
-            this.Load += new System.EventHandler(this.UCAbout_Load);
-            this.tabControl.ResumeLayout(false);
-            this.tabThanksTo.ResumeLayout(false);
-            this.tabLicense.ResumeLayout(false);
-            this.tabChanges.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = AutoScaleMode.Inherit;
+            Controls.Add(lblIcon);
+            Controls.Add(tabControl);
+            Controls.Add(lblVersion);
+            Controls.Add(label7);
+            Controls.Add(label5);
+            Controls.Add(lnkWorkspace);
+            Controls.Add(lblAuthor);
+            Controls.Add(label1);
+            Name = "UCAbout";
+            Size = new Size(393, 245);
+            Load += UCAbout_Load;
+            tabControl.ResumeLayout(false);
+            tabThanksTo.ResumeLayout(false);
+            tabLicense.ResumeLayout(false);
+            tabChanges.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private void lnkCompany_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        private void lnkCompany_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
 		{
 			try
 			{
@@ -241,9 +274,15 @@ namespace Be.HexEditor
 			}
 		}
 
-        private void UCAbout_Load(object sender, EventArgs e)
-        {
-            this.tabControl.Width = this.Width - 10;
+		private void UCAbout_Load(object sender, EventArgs e)
+		{
+			// Load localization based on current culture
+			LocalizationManager.LoadCurrentCulture();
+
+			// Apply localization to all UI elements
+			this.ApplyLocalization();
+
+			this.tabControl.Width = this.Width - 10;
             this.tabControl.Height = this.Height - this.tabControl.Top - 10;
             this.lblAuthor.Width = this.Width - this.lblAuthor.Left - 10;
             this.lnkWorkspace.Width = this.Width - this.lnkWorkspace.Left - 10;
