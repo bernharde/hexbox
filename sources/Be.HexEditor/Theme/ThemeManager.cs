@@ -8,8 +8,14 @@ namespace Be.HexEditor.Theme
 {
     public static class ThemeManager
     {
+        private static AppTheme _currentTheme;
+        private static bool _isDarkTheme;
+
         public static void Apply(Control control, AppTheme theme, bool dark)
         {
+            _currentTheme = theme;
+            _isDarkTheme = dark;
+
             control.BackColor = theme.BackColor;
             control.ForeColor = theme.ForeColor;
 
@@ -36,7 +42,7 @@ namespace Be.HexEditor.Theme
 
             if (control is Button button && button.FlatStyle == FlatStyle.Flat)
             {
-                button.BackColor = theme.ToolStripBack;
+                button.BackColor = theme.BackColor;
                 button.ForeColor = theme.ForeColor;
             }
 
@@ -50,5 +56,16 @@ namespace Be.HexEditor.Theme
                 Apply(child, theme, dark);
             }
         }
+
+        public static AppTheme GetCurrentTheme()
+        {
+            return _currentTheme;
+        }
+
+        public static bool IsDarkTheme()
+        {
+            return _isDarkTheme;
+        }
     }
 }
+

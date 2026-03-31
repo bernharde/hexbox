@@ -401,21 +401,26 @@ namespace Be.HexEditor
 
 		private void SelectTab(int index)
 		{
+			// Get theme colors
+			var theme = ThemeManager.GetCurrentTheme();
+			var foreColor = theme != null ? theme.ForeColor : SystemColors.ControlText;
+			var backColor = theme != null ? theme.BackColor : SystemColors.Control;
+
 			// Hide all panels
 			pnlAbout.Visible = false;
 			pnlThanksTo.Visible = false;
 			pnlLicense.Visible = false;
 			pnlChanges.Visible = false;
 
-			// Reset all button styles
-			btnTabAbout.BackColor = Color.Transparent;
-			btnTabAbout.ForeColor = SystemColors.ControlText;
-			btnTabThanksTo.BackColor = Color.Transparent;
-			btnTabThanksTo.ForeColor = SystemColors.ControlText;
-			btnTabLicense.BackColor = Color.Transparent;
-			btnTabLicense.ForeColor = SystemColors.ControlText;
-			btnTabChanges.BackColor = Color.Transparent;
-			btnTabChanges.ForeColor = SystemColors.ControlText;
+			// Reset all button styles to unselected state
+			btnTabAbout.BackColor = backColor;
+			btnTabAbout.ForeColor = foreColor;
+			btnTabThanksTo.BackColor = backColor;
+			btnTabThanksTo.ForeColor = foreColor;
+			btnTabLicense.BackColor = backColor;
+			btnTabLicense.ForeColor = foreColor;
+			btnTabChanges.BackColor = backColor;
+			btnTabChanges.ForeColor = foreColor;
 
 			// Show selected panel and highlight button
 			switch (index)
