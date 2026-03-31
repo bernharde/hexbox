@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Reflection;
 using System.IO;
+using Be.HexEditor.Localization;
 
 namespace Be.HexEditor
 {

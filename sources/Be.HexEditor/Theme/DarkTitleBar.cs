@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Theme
 {
     using System.Runtime.InteropServices;
     using System.Windows.Forms;

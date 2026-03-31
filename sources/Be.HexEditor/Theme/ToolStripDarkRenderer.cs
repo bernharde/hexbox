@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Theme
 {
     class VsColorTable : ProfessionalColorTable
     {
@@ -24,7 +24,7 @@ namespace Be.HexEditor
     // DARK RENDERER
     // =========================
 
-    class ToolStripDarkRenderer : ToolStripProfessionalRenderer
+    public class ToolStripDarkRenderer : ToolStripProfessionalRenderer
     {
         public ToolStripDarkRenderer() : base(new VsColorTable())
         {

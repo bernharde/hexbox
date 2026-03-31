@@ -1,3 +1,6 @@
+using Be.HexEditor.Theme;
+using Be.HexEditor.Localization;
+
 namespace Be.HexEditor
 {
     partial class FormHexEditor

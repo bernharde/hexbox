@@ -1,4 +1,4 @@
-﻿using Be.HexEditor.Properties;
+using Be.HexEditor.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Theme
 {
     public enum ThemeMode
     {
@@ -15,8 +15,6 @@ namespace Be.HexEditor
         Dark,
         System
     }
-
-
 
     public class UiManagerComponent : Component, ISupportInitialize
     {
@@ -171,5 +169,4 @@ namespace Be.HexEditor
             }
         }
     }
-
 }

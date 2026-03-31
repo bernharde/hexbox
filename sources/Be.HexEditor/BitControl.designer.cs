@@ -1,4 +1,6 @@
-﻿namespace Be.HexEditor
+﻿using Be.HexEditor.Localization;
+
+namespace Be.HexEditor
 {
 	partial class BitControl
 	{

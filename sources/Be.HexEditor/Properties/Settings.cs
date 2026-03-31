@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Be.HexEditor.Theme;
 
 namespace Be.HexEditor.Properties
 {

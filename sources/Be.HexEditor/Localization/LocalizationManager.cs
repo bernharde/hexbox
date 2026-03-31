@@ -5,7 +5,7 @@ using System.IO;
 using System.Text.Json;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Localization
 {
     /// <summary>
     /// Manages localization by loading JSON resource files and applying them to UI elements.

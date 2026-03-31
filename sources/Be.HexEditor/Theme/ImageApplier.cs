@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Theme
 {
     public static class ImageApplier
     {

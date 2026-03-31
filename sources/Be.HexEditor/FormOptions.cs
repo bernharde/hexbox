@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
 using Be.HexEditor.Properties;
+using Be.HexEditor.Localization;
+using Be.HexEditor.Theme;
 
 namespace Be.HexEditor
 {

@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+using System.Drawing;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Theme
 {
     public class AppTheme
     {

@@ -8,6 +8,7 @@ using System.IO;
 using System.Windows.Forms;
 using Be.Windows.Forms;
 using System.Diagnostics;
+using Be.HexEditor.Localization;
 
 namespace Be.HexEditor
 {

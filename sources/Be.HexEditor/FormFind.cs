@@ -2,6 +2,7 @@ using Be.Windows.Forms;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Be.HexEditor.Theme;
 
 namespace Be.HexEditor
 {

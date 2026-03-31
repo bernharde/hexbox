@@ -1,10 +1,10 @@
-﻿using Be.HexEditor.Properties;
+using Be.HexEditor.Properties;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Theme
 {
     public static class ThemeManager
     {

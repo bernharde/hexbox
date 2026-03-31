@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Localization
 {
     /// <summary>
     /// Helper extension methods for applying localization to UI elements.
