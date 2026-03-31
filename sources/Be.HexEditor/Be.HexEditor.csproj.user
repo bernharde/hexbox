@@ -32,9 +32,6 @@
     <Compile Update="Theme\UiManagerComponent.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="UCAbout.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup />
 </Project>
