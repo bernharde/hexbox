@@ -36,226 +36,284 @@ namespace Be.HexEditor
 		public FormAbout()
 		{
 			InitializeComponent();
-			LoadResources();
-			LocalizationManager.LoadCurrentCulture();
-			this.ApplyLocalization();
+			if (!DesignMode)
+			{
+				LoadResources();
+				LocalizationManager.LoadCurrentCulture();
+				this.ApplyLocalization();
+				lnkWebsite.LinkClicked += (s, e) => Process.Start(new ProcessStartInfo(lnkWebsite.Text) { UseShellExecute = true });
+				btnOK.Click += (s, e) => Close();
+				uiManagerComponent.Form = this;
+			}
 		}
 
-		private void InitializeComponent()
-		{
-			components = new System.ComponentModel.Container();
+        private void InitializeComponent()
+        {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
+            mainLayout = new TableLayoutPanel();
+            headerPanel = new Panel();
+            headerContent = new FlowLayoutPanel();
+            lblTitle = new Label();
+            lblVersion = new Label();
+            lblAuthor = new Label();
+            lnkWebsite = new LinkLabel();
+            tabControl = new TabControl();
+            tabAbout = new TabPage();
+            txtAbout = new RichTextBox();
+            tabThanksTo = new TabPage();
+            txtThanksTo = new RichTextBox();
+            tabLicense = new TabPage();
+            txtLicense = new RichTextBox();
+            tabChanges = new TabPage();
+            txtChanges = new RichTextBox();
+            btnOK = new Button();
+            uiManagerComponent = new UiManagerComponent(components);
+            mainLayout.SuspendLayout();
+            headerPanel.SuspendLayout();
+            headerContent.SuspendLayout();
+            tabControl.SuspendLayout();
+            tabAbout.SuspendLayout();
+            tabThanksTo.SuspendLayout();
+            tabLicense.SuspendLayout();
+            tabChanges.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
+            SuspendLayout();
+            // 
+            // mainLayout
+            // 
+            mainLayout.ColumnCount = 1;
+            mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            mainLayout.Controls.Add(headerPanel, 0, 0);
+            mainLayout.Controls.Add(tabControl, 0, 1);
+            mainLayout.Controls.Add(btnOK, 0, 2);
+            mainLayout.Dock = DockStyle.Fill;
+            mainLayout.Location = new Point(0, 0);
+            mainLayout.Margin = new Padding(0);
+            mainLayout.Name = "mainLayout";
+            mainLayout.Padding = new Padding(10);
+            mainLayout.RowCount = 3;
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            mainLayout.Size = new Size(650, 550);
+            mainLayout.TabIndex = 0;
+            // 
+            // headerPanel
+            // 
+            headerPanel.BorderStyle = BorderStyle.FixedSingle;
+            headerPanel.Controls.Add(headerContent);
+            headerPanel.Dock = DockStyle.Fill;
+            headerPanel.Location = new Point(13, 13);
+            headerPanel.Name = "headerPanel";
+            headerPanel.Padding = new Padding(5);
+            headerPanel.Size = new Size(624, 134);
+            headerPanel.TabIndex = 0;
+            // 
+            // headerContent
+            // 
+            headerContent.Controls.Add(lblTitle);
+            headerContent.Controls.Add(lblVersion);
+            headerContent.Controls.Add(lblAuthor);
+            headerContent.Controls.Add(lnkWebsite);
+            headerContent.Dock = DockStyle.Fill;
+            headerContent.FlowDirection = FlowDirection.TopDown;
+            headerContent.Location = new Point(5, 5);
+            headerContent.Margin = new Padding(0);
+            headerContent.Name = "headerContent";
+            headerContent.Padding = new Padding(5);
+            headerContent.Size = new Size(612, 122);
+            headerContent.TabIndex = 0;
+            headerContent.WrapContents = false;
+            // 
+            // lblTitle
+            // 
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.Location = new Point(5, 5);
+            lblTitle.Margin = new Padding(0, 0, 0, 5);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(300, 35);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Be.HexEditor";
+            // 
+            // lblVersion
+            // 
+            lblVersion.Location = new Point(5, 45);
+            lblVersion.Margin = new Padding(0, 0, 0, 3);
+            lblVersion.Name = "lblVersion";
+            lblVersion.Size = new Size(300, 25);
+            lblVersion.TabIndex = 1;
+            lblVersion.Text = "Version: ";
+            // 
+            // lblAuthor
+            // 
+            lblAuthor.Location = new Point(5, 73);
+            lblAuthor.Margin = new Padding(0, 0, 0, 3);
+            lblAuthor.Name = "lblAuthor";
+            lblAuthor.Size = new Size(300, 25);
+            lblAuthor.TabIndex = 2;
+            lblAuthor.Text = "Author: Bernhard Elbl";
+            // 
+            // lnkWebsite
+            // 
+            lnkWebsite.AutoSize = true;
+            lnkWebsite.Location = new Point(5, 101);
+            lnkWebsite.Margin = new Padding(0);
+            lnkWebsite.Name = "lnkWebsite";
+            lnkWebsite.Size = new Size(204, 15);
+            lnkWebsite.TabIndex = 3;
+            lnkWebsite.TabStop = true;
+            lnkWebsite.Text = "https://github.com/bemento/hexbox";
+            // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(tabAbout);
+            tabControl.Controls.Add(tabThanksTo);
+            tabControl.Controls.Add(tabLicense);
+            tabControl.Controls.Add(tabChanges);
+            tabControl.Dock = DockStyle.Fill;
+            tabControl.Location = new Point(10, 155);
+            tabControl.Margin = new Padding(0, 5, 0, 5);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(630, 330);
+            tabControl.TabIndex = 1;
+            // 
+            // tabAbout
+            // 
+            tabAbout.Controls.Add(txtAbout);
+            tabAbout.Location = new Point(4, 24);
+            tabAbout.Name = "tabAbout";
+            tabAbout.Padding = new Padding(5);
+            tabAbout.Size = new Size(622, 302);
+            tabAbout.TabIndex = 0;
+            tabAbout.Text = "About";
+            // 
+            // txtAbout
+            // 
+            txtAbout.BackColor = Color.White;
+            txtAbout.BorderStyle = BorderStyle.None;
+            txtAbout.Dock = DockStyle.Fill;
+            txtAbout.Location = new Point(5, 5);
+            txtAbout.Name = "txtAbout";
+            txtAbout.ReadOnly = true;
+            txtAbout.Size = new Size(612, 292);
+            txtAbout.TabIndex = 0;
+            txtAbout.Text = resources.GetString("txtAbout.Text");
+            // 
+            // tabThanksTo
+            // 
+            tabThanksTo.Controls.Add(txtThanksTo);
+            tabThanksTo.Location = new Point(4, 24);
+            tabThanksTo.Name = "tabThanksTo";
+            tabThanksTo.Padding = new Padding(5);
+            tabThanksTo.Size = new Size(172, 0);
+            tabThanksTo.TabIndex = 1;
+            tabThanksTo.Text = "Thanks To";
+            // 
+            // txtThanksTo
+            // 
+            txtThanksTo.BackColor = Color.White;
+            txtThanksTo.BorderStyle = BorderStyle.None;
+            txtThanksTo.Dock = DockStyle.Fill;
+            txtThanksTo.Location = new Point(5, 5);
+            txtThanksTo.Name = "txtThanksTo";
+            txtThanksTo.ReadOnly = true;
+            txtThanksTo.Size = new Size(162, 0);
+            txtThanksTo.TabIndex = 0;
+            txtThanksTo.Text = "";
+            // 
+            // tabLicense
+            // 
+            tabLicense.Controls.Add(txtLicense);
+            tabLicense.Location = new Point(4, 24);
+            tabLicense.Name = "tabLicense";
+            tabLicense.Padding = new Padding(5);
+            tabLicense.Size = new Size(172, 0);
+            tabLicense.TabIndex = 2;
+            tabLicense.Text = "License";
+            // 
+            // txtLicense
+            // 
+            txtLicense.BackColor = Color.White;
+            txtLicense.BorderStyle = BorderStyle.None;
+            txtLicense.Dock = DockStyle.Fill;
+            txtLicense.Location = new Point(5, 5);
+            txtLicense.Name = "txtLicense";
+            txtLicense.ReadOnly = true;
+            txtLicense.Size = new Size(162, 0);
+            txtLicense.TabIndex = 0;
+            txtLicense.Text = "";
+            // 
+            // tabChanges
+            // 
+            tabChanges.Controls.Add(txtChanges);
+            tabChanges.Location = new Point(4, 24);
+            tabChanges.Name = "tabChanges";
+            tabChanges.Padding = new Padding(5);
+            tabChanges.Size = new Size(172, 0);
+            tabChanges.TabIndex = 3;
+            tabChanges.Text = "Changes";
+            // 
+            // txtChanges
+            // 
+            txtChanges.BackColor = Color.White;
+            txtChanges.BorderStyle = BorderStyle.None;
+            txtChanges.Dock = DockStyle.Fill;
+            txtChanges.Location = new Point(5, 5);
+            txtChanges.Name = "txtChanges";
+            txtChanges.ReadOnly = true;
+            txtChanges.Size = new Size(162, 0);
+            txtChanges.TabIndex = 0;
+            txtChanges.Text = "";
+            // 
+            // btnOK
+            // 
+            btnOK.AutoSize = true;
+            btnOK.DialogResult = DialogResult.OK;
+            btnOK.FlatStyle = FlatStyle.Flat;
+            btnOK.Location = new Point(10, 495);
+            btnOK.Margin = new Padding(0, 5, 0, 0);
+            btnOK.MinimumSize = new Size(100, 34);
+            btnOK.Name = "btnOK";
+            btnOK.Size = new Size(100, 34);
+            btnOK.TabIndex = 2;
+            btnOK.Text = "OK";
+            // 
+            // uiManagerComponent
+            // 
+            uiManagerComponent.Form = null;
+            // 
+            // FormAbout
+            // 
+            AcceptButton = btnOK;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            CancelButton = btnOK;
+            ClientSize = new Size(650, 550);
+            Controls.Add(mainLayout);
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(550, 450);
+            Name = "FormAbout";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "About";
+            mainLayout.ResumeLayout(false);
+            mainLayout.PerformLayout();
+            headerPanel.ResumeLayout(false);
+            headerContent.ResumeLayout(false);
+            headerContent.PerformLayout();
+            tabControl.ResumeLayout(false);
+            tabAbout.ResumeLayout(false);
+            tabThanksTo.ResumeLayout(false);
+            tabLicense.ResumeLayout(false);
+            tabChanges.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
+            ResumeLayout(false);
+        }
 
-			mainLayout = new TableLayoutPanel();
-			headerPanel = new Panel();
-			headerContent = new FlowLayoutPanel();
-			lblTitle = new Label();
-			lblVersion = new Label();
-			lblAuthor = new Label();
-			lnkWebsite = new LinkLabel();
-			tabControl = new TabControl();
-			tabAbout = new TabPage();
-			tabThanksTo = new TabPage();
-			tabLicense = new TabPage();
-			tabChanges = new TabPage();
-			txtAbout = new RichTextBox();
-			txtThanksTo = new RichTextBox();
-			txtLicense = new RichTextBox();
-			txtChanges = new RichTextBox();
-			btnOK = new Button();
-			uiManagerComponent = new UiManagerComponent(components);
-
-			mainLayout.SuspendLayout();
-			headerPanel.SuspendLayout();
-			headerContent.SuspendLayout();
-			tabControl.SuspendLayout();
-			tabAbout.SuspendLayout();
-			tabThanksTo.SuspendLayout();
-			tabLicense.SuspendLayout();
-			tabChanges.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
-			SuspendLayout();
-
-			// mainLayout setup
-			mainLayout.ColumnCount = 1;
-			mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-			mainLayout.RowCount = 3;
-			mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 130F));
-			mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-			mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-			mainLayout.Dock = DockStyle.Fill;
-			mainLayout.Padding = new Padding(10);
-			mainLayout.Margin = new Padding(0);
-			mainLayout.Name = "mainLayout";
-
-			// Add controls to mainLayout
-			mainLayout.Controls.Add(headerPanel, 0, 0);
-			mainLayout.Controls.Add(tabControl, 0, 1);
-			mainLayout.Controls.Add(btnOK, 0, 2);
-
-			// Set button alignment in table layout
-			mainLayout.SetCellPosition(btnOK, new TableLayoutPanelCellPosition(0, 2));
-
-			// headerPanel setup
-			headerPanel.BorderStyle = BorderStyle.FixedSingle;
-			headerPanel.Dock = DockStyle.Fill;
-			headerPanel.Name = "headerPanel";
-			headerPanel.Padding = new Padding(5);
-
-			// headerContent (FlowLayoutPanel) setup to avoid docking conflicts
-			headerContent.AutoSize = true;
-			headerContent.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-			headerContent.FlowDirection = FlowDirection.TopDown;
-			headerContent.Dock = DockStyle.Fill;
-			headerContent.WrapContents = false;
-			headerContent.Margin = new Padding(0);
-			headerContent.Padding = new Padding(5);
-			headerContent.Name = "headerContent";
-
-			// lblTitle
-			lblTitle.AutoSize = false;
-			lblTitle.Height = 35;
-			lblTitle.Width = 300;
-			lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-			lblTitle.Name = "lblTitle";
-			lblTitle.Text = "Be.HexEditor";
-			lblTitle.Margin = new Padding(0, 0, 0, 5);
-
-			// lblVersion
-			lblVersion.AutoSize = false;
-			lblVersion.Height = 25;
-			lblVersion.Width = 300;
-			lblVersion.Name = "lblVersion";
-			lblVersion.Text = "Version: ";
-			lblVersion.Margin = new Padding(0, 0, 0, 3);
-
-			// lblAuthor
-			lblAuthor.AutoSize = false;
-			lblAuthor.Height = 25;
-			lblAuthor.Width = 300;
-			lblAuthor.Name = "lblAuthor";
-			lblAuthor.Text = "Author: Bernhard Elbl";
-			lblAuthor.Margin = new Padding(0, 0, 0, 3);
-
-			// lnkWebsite
-			lnkWebsite.AutoSize = true;
-			lnkWebsite.Name = "lnkWebsite";
-			lnkWebsite.Text = "https://github.com/bemento/hexbox";
-			lnkWebsite.Margin = new Padding(0);
-			lnkWebsite.LinkClicked += (s, e) => Process.Start(new ProcessStartInfo(lnkWebsite.Text) { UseShellExecute = true });
-
-			// Add header controls to flow layout
-			headerContent.Controls.Add(lblTitle);
-			headerContent.Controls.Add(lblVersion);
-			headerContent.Controls.Add(lblAuthor);
-			headerContent.Controls.Add(lnkWebsite);
-			headerPanel.Controls.Add(headerContent);
-
-			// tabControl setup
-			tabControl.Controls.Add(tabAbout);
-			tabControl.Controls.Add(tabThanksTo);
-			tabControl.Controls.Add(tabLicense);
-			tabControl.Controls.Add(tabChanges);
-			tabControl.Dock = DockStyle.Fill;
-			tabControl.Name = "tabControl";
-			tabControl.Margin = new Padding(0, 5, 0, 5);
-
-			// tabAbout
-			tabAbout.Controls.Add(txtAbout);
-			tabAbout.Name = "tabAbout";
-			tabAbout.Padding = new Padding(5);
-			tabAbout.Text = "About";
-
-			// txtAbout
-			txtAbout.BackColor = Color.White;
-			txtAbout.BorderStyle = BorderStyle.None;
-			txtAbout.Dock = DockStyle.Fill;
-			txtAbout.Name = "txtAbout";
-			txtAbout.ReadOnly = true;
-			txtAbout.Text = "Be.HexEditor\n\nA simple and modern hex editor built with .NET 10.\n\nFeatures:\n- View and edit binary files\n- Multiple encoding support\n- Find and replace functionality\n- Recent files list\n- Dark/Light theme support\n- Multi-language support";
-
-			// tabThanksTo
-			tabThanksTo.Controls.Add(txtThanksTo);
-			tabThanksTo.Name = "tabThanksTo";
-			tabThanksTo.Padding = new Padding(5);
-			tabThanksTo.Text = "Thanks To";
-
-			// txtThanksTo
-			txtThanksTo.BackColor = Color.White;
-			txtThanksTo.BorderStyle = BorderStyle.None;
-			txtThanksTo.Dock = DockStyle.Fill;
-			txtThanksTo.Name = "txtThanksTo";
-			txtThanksTo.ReadOnly = true;
-
-			// tabLicense
-			tabLicense.Controls.Add(txtLicense);
-			tabLicense.Name = "tabLicense";
-			tabLicense.Padding = new Padding(5);
-			tabLicense.Text = "License";
-
-			// txtLicense
-			txtLicense.BackColor = Color.White;
-			txtLicense.BorderStyle = BorderStyle.None;
-			txtLicense.Dock = DockStyle.Fill;
-			txtLicense.Name = "txtLicense";
-			txtLicense.ReadOnly = true;
-
-			// tabChanges
-			tabChanges.Controls.Add(txtChanges);
-			tabChanges.Name = "tabChanges";
-			tabChanges.Padding = new Padding(5);
-			tabChanges.Text = "Changes";
-
-			// txtChanges
-			txtChanges.BackColor = Color.White;
-			txtChanges.BorderStyle = BorderStyle.None;
-			txtChanges.Dock = DockStyle.Fill;
-			txtChanges.Name = "txtChanges";
-			txtChanges.ReadOnly = true;
-
-			// btnOK button setup
-			btnOK.AutoSize = true;
-			btnOK.DialogResult = DialogResult.OK;
-			btnOK.FlatStyle = FlatStyle.Flat;
-			btnOK.MinimumSize = new Size(100, 34);
-			btnOK.Name = "btnOK";
-			btnOK.Text = "OK";
-			btnOK.Margin = new Padding(0, 5, 0, 0);
-			btnOK.Click += (s, e) => Close();
-
-			// uiManagerComponent
-			uiManagerComponent.Form = this;
-
-			// FormAbout
-			AcceptButton = btnOK;
-			AutoScaleDimensions = new SizeF(96F, 96F);
-			AutoScaleMode = AutoScaleMode.Dpi;
-			CancelButton = btnOK;
-			ClientSize = new Size(650, 550);
-			Controls.Add(mainLayout);
-			MinimumSize = new Size(550, 450);
-			Name = "FormAbout";
-			ShowIcon = false;
-			ShowInTaskbar = false;
-			StartPosition = FormStartPosition.CenterScreen;
-			Text = "About";
-			Font = new Font("Segoe UI", 9F);
-
-			mainLayout.ResumeLayout(false);
-			mainLayout.PerformLayout();
-			headerPanel.ResumeLayout(false);
-			headerContent.ResumeLayout(false);
-			headerPanel.PerformLayout();
-			tabControl.ResumeLayout(false);
-			tabAbout.ResumeLayout(false);
-			tabThanksTo.ResumeLayout(false);
-			tabLicense.ResumeLayout(false);
-			tabChanges.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
-			ResumeLayout(false);
-			PerformLayout();
-		}
-
-		private void LoadResources()
+        private void LoadResources()
 		{
 			try
 			{
