@@ -6,6 +6,9 @@ using System.Windows.Forms;
 
 namespace Be.HexEditor;
 
+[ToolboxItem(true)]
+[DefaultEvent(nameof(SelectedValueChanged))]
+[DefaultProperty(nameof(EnumType))]
 public class EnumPanel : FlowLayoutPanel
 {
     private Label _headerLabel;
@@ -13,13 +16,19 @@ public class EnumPanel : FlowLayoutPanel
 
     public event EventHandler SelectedValueChanged;
 
+    [Category("Data")]
+    [Browsable(true)]
+    //[TypeConverter(typeof(EnumValueConverter))]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public object SelectedValue
     {
         get => _selectedValue;
-        private set
+        set
         {
-            _selectedValue = value;
-            SelectedValueChanged?.Invoke(this, EventArgs.Empty);
+            if (_selectedValue == value)
+                return;
+
+            SelectValue(value);
         }
     }
 
@@ -44,14 +53,56 @@ public class EnumPanel : FlowLayoutPanel
         BackColor = BackgroundColor;
     }
 
-    public void SetEnum<T>(string header) where T : Enum
+
+    private Type _enumType;
+
+    [Category("Data")]
+    [Description("Enum type used to generate buttons")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    //[TypeConverter(typeof(EnumTypeConverter))]
+    public Type EnumType
+    {
+        get => _enumType;
+        set
+        {
+            if (_enumType != value)
+            {
+                _enumType = value;
+
+                Rebuild();
+
+                if (IsInDesignMode)
+                    TypeDescriptor.Refresh(this); 
+            }
+        }
+    }
+
+    private string _headerText = "Header";
+
+    [Category("Appearance")]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    public string HeaderText
+    {
+        get => _headerText;
+        set
+        {
+            _headerText = value;
+            if (_headerLabel != null)
+                _headerLabel.Text = value;
+        }
+    }
+
+    private void Rebuild()
     {
         Controls.Clear();
+
+        if (_enumType == null || !_enumType.IsEnum)
+            return;
 
         // Header
         _headerLabel = new Label
         {
-            Text = header,
+            Text = HeaderText,
             AutoSize = true,
             ForeColor = TextColor,
             Margin = new Padding(0, 6, 10, 0)
@@ -59,7 +110,7 @@ public class EnumPanel : FlowLayoutPanel
 
         Controls.Add(_headerLabel);
 
-        var values = Enum.GetValues(typeof(T)).Cast<T>().ToList();
+        var values = Enum.GetValues(_enumType);
 
         foreach (var val in values)
         {
@@ -67,10 +118,19 @@ public class EnumPanel : FlowLayoutPanel
             Controls.Add(btn);
         }
 
-        // select first by default
-        if (values.Count > 0)
-            SelectValue(values[0]);
+        if (values.Length > 0)
+            SelectValue(values.GetValue(0));
     }
+
+    protected override void OnCreateControl()
+    {
+        base.OnCreateControl();
+
+        if (IsInDesignMode)
+            Rebuild();
+    }
+
+    private bool IsInDesignMode =>  LicenseManager.UsageMode == LicenseUsageMode.Designtime;
 
     private Button CreateButton(object value)
     {

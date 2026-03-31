@@ -38,15 +38,10 @@
             cancelButton = new System.Windows.Forms.Button();
             flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             uiManagerComponent = new UiManagerComponent(components);
-            label1 = new System.Windows.Forms.Label();
             languageListBox = new System.Windows.Forms.ListBox();
-            buttonSystem = new System.Windows.Forms.Button();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            buttonDark = new System.Windows.Forms.Button();
-            buttonLight = new System.Windows.Forms.Button();
+            flowLayoutPanelTheme = new EnumPanel();
             flowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
-            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // useSystemLanguageCheckBox
@@ -98,11 +93,6 @@
             // 
             uiManagerComponent.Form = this;
             // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            // 
             // languageListBox
             // 
             resources.ApplyResources(languageListBox, "languageListBox");
@@ -110,39 +100,19 @@
             languageListBox.FormattingEnabled = true;
             languageListBox.Name = "languageListBox";
             // 
-            // buttonSystem
+            // flowLayoutPanelTheme
             // 
-            resources.ApplyResources(buttonSystem, "buttonSystem");
-            buttonSystem.Name = "buttonSystem";
-            buttonSystem.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(label1);
-            flowLayoutPanel1.Controls.Add(buttonSystem);
-            flowLayoutPanel1.Controls.Add(buttonDark);
-            flowLayoutPanel1.Controls.Add(buttonLight);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // buttonDark
-            // 
-            resources.ApplyResources(buttonDark, "buttonDark");
-            buttonDark.Name = "buttonDark";
-            buttonDark.UseVisualStyleBackColor = true;
-            // 
-            // buttonLight
-            // 
-            resources.ApplyResources(buttonLight, "buttonLight");
-            buttonLight.Name = "buttonLight";
-            buttonLight.UseVisualStyleBackColor = true;
+            resources.ApplyResources(flowLayoutPanelTheme, "flowLayoutPanelTheme");
+            flowLayoutPanelTheme.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
+            flowLayoutPanelTheme.HeaderText = "Theme";
+            flowLayoutPanelTheme.Name = "flowLayoutPanelTheme";
             // 
             // FormOptions
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             CancelButton = cancelButton;
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(flowLayoutPanelTheme);
             Controls.Add(languageListBox);
             Controls.Add(clearRecentFilesButton);
             Controls.Add(recentFilesMaxlabel);
@@ -157,8 +127,6 @@
             flowLayoutPanel.ResumeLayout(false);
             flowLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -178,11 +146,7 @@
         private System.Windows.Forms.CheckBox useSystemLanguageCheckBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private UiManagerComponent uiManagerComponent;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox languageListBox;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button buttonSystem;
-        private System.Windows.Forms.Button buttonDark;
-        private System.Windows.Forms.Button buttonLight;
+        private Be.HexEditor.EnumPanel flowLayoutPanelTheme;
     }
 }

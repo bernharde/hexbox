@@ -44,9 +44,9 @@ namespace Be.HexEditor
             var bgColor = Color.FromArgb(0, 120, 215);
             var textColor = Color.White;
             var theme = UiManagerComponent.CurrentTheme;
-            buttonSystem.BackColor = theme == ThemeMode.System ? ;
-            buttonDark.Checked = theme == ThemeMode.Dark;
-            buttonLight.Checked = theme == ThemeMode.Light;
+            //buttonSystem.BackColor = theme == ThemeMode.System ? ;
+            //buttonDark.Checked = theme == ThemeMode.Dark;
+            //buttonLight.Checked = theme == ThemeMode.Light;
         }
 
         public FormOptions()
@@ -60,10 +60,10 @@ namespace Be.HexEditor
 
             var theme = UiManagerComponent.CurrentTheme;
             Button button;
-            if (theme == ThemeMode.System)
-                button = buttonSystem;
-            this.themeComboBox.DataSource = Enum.GetValues(typeof(ThemeMode));
-            this.themeComboBox.SelectedItem = UiManagerComponent.CurrentTheme;
+            //if (theme == ThemeMode.System)
+            //    button = buttonSystem;
+            //this.themeComboBox.DataSource = Enum.GetValues(typeof(ThemeMode));
+            //this.themeComboBox.SelectedItem = UiManagerComponent.CurrentTheme;
 
             if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
                 Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName; 
@@ -101,11 +101,11 @@ namespace Be.HexEditor
                 changed = true;
             }
 
-            if ((ThemeMode)this.themeComboBox.SelectedValue != UiManagerComponent.CurrentTheme)
-            {
-                UiManagerComponent.CurrentTheme = (ThemeMode)this.themeComboBox.SelectedValue;
-                changed = true;
-            }
+            //if ((ThemeMode)this.themeComboBox.SelectedValue != UiManagerComponent.CurrentTheme)
+            //{
+            //    UiManagerComponent.CurrentTheme = (ThemeMode)this.themeComboBox.SelectedValue;
+            //    changed = true;
+            //}
 
             if (Settings.Default.UseSystemLanguage != this.useSystemLanguage ||
                 Settings.Default.SelectedLanguage != (string)this.languageListBox.SelectedValue)
