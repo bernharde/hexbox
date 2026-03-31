@@ -71,7 +71,6 @@ namespace Be.HexEditor
         private void InitializeComponent()
         {
             components = new Container();
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormFind));
             txtFind = new TextBox();
             rbString = new RadioButton();
             rbHex = new RadioButton();
@@ -95,56 +94,100 @@ namespace Be.HexEditor
             // 
             // txtFind
             // 
-            resources.ApplyResources(txtFind, "txtFind");
+            txtFind.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtFind.Location = new System.Drawing.Point(26, 81);
             txtFind.Name = "txtFind";
+            txtFind.Size = new System.Drawing.Size(495, 23);
+            txtFind.TabIndex = 1;
             txtFind.TextChanged += txtString_TextChanged;
             // 
             // rbString
             // 
-            resources.ApplyResources(rbString, "rbString");
+            rbString.AutoSize = true;
             rbString.Checked = true;
+            rbString.ImeMode = ImeMode.NoControl;
+            rbString.Location = new System.Drawing.Point(26, 59);
             rbString.Name = "rbString";
+            rbString.Size = new System.Drawing.Size(46, 19);
+            rbString.TabIndex = 0;
             rbString.TabStop = true;
+            rbString.Text = "Text";
             // 
             // rbHex
             // 
-            resources.ApplyResources(rbHex, "rbHex");
+            rbHex.AutoSize = true;
+            rbHex.ImeMode = ImeMode.NoControl;
+            rbHex.Location = new System.Drawing.Point(26, 131);
             rbHex.Name = "rbHex";
+            rbHex.Size = new System.Drawing.Size(45, 19);
+            rbHex.TabIndex = 3;
+            rbHex.Text = "Hex";
             // 
             // label1
             // 
-            resources.ApplyResources(label1, "label1");
+            label1.AutoSize = true;
             label1.ForeColor = System.Drawing.Color.Blue;
+            label1.ImeMode = ImeMode.NoControl;
+            label1.Location = new System.Drawing.Point(3, 0);
             label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(30, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Find";
             // 
             // btnOK
             // 
-            resources.ApplyResources(btnOK, "btnOK");
+            btnOK.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnOK.AutoSize = true;
+            btnOK.FlatStyle = FlatStyle.Flat;
+            btnOK.ImeMode = ImeMode.NoControl;
+            btnOK.Location = new System.Drawing.Point(266, 3);
             btnOK.Name = "btnOK";
+            btnOK.Size = new System.Drawing.Size(120, 34);
+            btnOK.TabIndex = 5;
+            btnOK.Text = "&Find";
             btnOK.Click += btnOK_Click;
             // 
             // btnCancel
             // 
-            resources.ApplyResources(btnCancel, "btnCancel");
+            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCancel.AutoSize = true;
             btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.ImeMode = ImeMode.NoControl;
+            btnCancel.Location = new System.Drawing.Point(392, 3);
             btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(120, 34);
+            btnCancel.TabIndex = 6;
+            btnCancel.Text = "&Cancel";
             btnCancel.Click += btnCancel_Click;
             // 
             // lblPercent
             // 
-            resources.ApplyResources(lblPercent, "lblPercent");
+            lblPercent.ImeMode = ImeMode.NoControl;
+            lblPercent.Location = new System.Drawing.Point(59, 0);
             lblPercent.Name = "lblPercent";
+            lblPercent.Size = new System.Drawing.Size(96, 34);
+            lblPercent.TabIndex = 14;
+            lblPercent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblFinding
             // 
             lblFinding.ForeColor = System.Drawing.Color.Blue;
-            resources.ApplyResources(lblFinding, "lblFinding");
+            lblFinding.ImeMode = ImeMode.NoControl;
+            lblFinding.Location = new System.Drawing.Point(161, 0);
             lblFinding.Name = "lblFinding";
+            lblFinding.Size = new System.Drawing.Size(99, 34);
+            lblFinding.TabIndex = 13;
             // 
             // chkMatchCase
             // 
-            resources.ApplyResources(chkMatchCase, "chkMatchCase");
+            chkMatchCase.AutoSize = true;
+            chkMatchCase.ImeMode = ImeMode.NoControl;
+            chkMatchCase.Location = new System.Drawing.Point(384, 57);
             chkMatchCase.Name = "chkMatchCase";
+            chkMatchCase.Size = new System.Drawing.Size(86, 19);
+            chkMatchCase.TabIndex = 2;
+            chkMatchCase.Text = "Match case";
             chkMatchCase.UseVisualStyleBackColor = true;
             // 
             // timerPercent
@@ -160,43 +203,60 @@ namespace Be.HexEditor
             // 
             flowLayoutPanel1.Controls.Add(label1);
             flowLayoutPanel1.Controls.Add(line);
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Location = new System.Drawing.Point(17, 19);
+            flowLayoutPanel1.Margin = new Padding(3, 1, 3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(515, 32);
+            flowLayoutPanel1.TabIndex = 15;
+            flowLayoutPanel1.WrapContents = false;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // line
             // 
-            resources.ApplyResources(line, "line");
+            line.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             line.BackColor = System.Drawing.Color.LightGray;
+            line.Location = new System.Drawing.Point(39, 10);
+            line.Margin = new Padding(3, 10, 3, 3);
             line.Name = "line";
+            line.Size = new System.Drawing.Size(462, 1);
+            line.TabIndex = 7;
             // 
             // flowLayoutPanel2
             // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             flowLayoutPanel2.Controls.Add(btnCancel);
             flowLayoutPanel2.Controls.Add(btnOK);
             flowLayoutPanel2.Controls.Add(lblFinding);
             flowLayoutPanel2.Controls.Add(lblPercent);
+            flowLayoutPanel2.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanel2.Location = new System.Drawing.Point(6, 322);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new System.Drawing.Size(515, 42);
+            flowLayoutPanel2.TabIndex = 16;
             // 
             // hexFind
             // 
-            resources.ApplyResources(hexFind, "hexFind");
+            hexFind.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             // 
             // 
             // 
             hexFind.BuiltInContextMenu.CopyMenuItemImage = Pngs.Copy16;
             hexFind.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
-            hexFind.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CopyMenuItemText");
+            hexFind.BuiltInContextMenu.CopyMenuItemText = "Copy";
             hexFind.BuiltInContextMenu.CutMenuItemImage = Pngs.Cut16;
             hexFind.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
-            hexFind.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CutMenuItemText");
+            hexFind.BuiltInContextMenu.CutMenuItemText = "Cut";
             hexFind.BuiltInContextMenu.PasteMenuItemImage = Pngs.Paste16;
             hexFind.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
-            hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
-            hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
+            hexFind.BuiltInContextMenu.PasteMenuItemText = "Paste";
+            hexFind.BuiltInContextMenu.SelectAllMenuItemText = "Select All";
+            hexFind.Enabled = false;
+            hexFind.Font = new System.Drawing.Font("Consolas", 9F);
             hexFind.InfoForeColor = System.Drawing.Color.Empty;
+            hexFind.Location = new System.Drawing.Point(26, 154);
             hexFind.Name = "hexFind";
+            hexFind.Size = new System.Drawing.Size(495, 162);
+            hexFind.TabIndex = 4;
             // 
             // uiManagerComponent
             // 
@@ -205,10 +265,11 @@ namespace Be.HexEditor
             // FormFind
             // 
             AcceptButton = btnOK;
-            resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = System.Drawing.SystemColors.Control;
             CancelButton = btnCancel;
+            ClientSize = new System.Drawing.Size(533, 369);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(chkMatchCase);
@@ -217,11 +278,14 @@ namespace Be.HexEditor
             Controls.Add(txtFind);
             Controls.Add(hexFind);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormFind";
             ShowIcon = false;
             ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Find";
             Activated += FormFind_Activated;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();

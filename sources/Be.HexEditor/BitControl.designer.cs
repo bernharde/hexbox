@@ -28,54 +28,50 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BitControl));
-            this.lblValue = new System.Windows.Forms.Label();
-            this.lblBit = new System.Windows.Forms.Label();
-            this.pnBitsEditor = new System.Windows.Forms.Panel();
-            this.pnBitsHeader = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // lblValue
-            // 
-            resources.ApplyResources(this.lblValue, "lblValue");
-            this.lblValue.Name = "lblValue";
-            // 
-            // lblBit
-            // 
-            resources.ApplyResources(this.lblBit, "lblBit");
-            this.lblBit.Name = "lblBit";
-            // 
-            // pnBitsEditor
-            // 
-            resources.ApplyResources(this.pnBitsEditor, "pnBitsEditor");
-            this.pnBitsEditor.Name = "pnBitsEditor";
-            // 
-            // pnBitsHeader
-            // 
-            resources.ApplyResources(this.pnBitsHeader, "pnBitsHeader");
-            this.flowLayoutPanel.SetFlowBreak(this.pnBitsHeader, true);
-            this.pnBitsHeader.Name = "pnBitsHeader";
-            // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.Controls.Add(this.lblBit);
-            this.flowLayoutPanel.Controls.Add(this.pnBitsHeader);
-            this.flowLayoutPanel.Controls.Add(this.lblValue);
-            this.flowLayoutPanel.Controls.Add(this.pnBitsEditor);
-            resources.ApplyResources(this.flowLayoutPanel, "flowLayoutPanel");
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            // 
-            // BitControl
-            // 
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.flowLayoutPanel);
-            this.Name = "BitControl";
-            this.flowLayoutPanel.ResumeLayout(false);
-            this.flowLayoutPanel.PerformLayout();
-            this.ResumeLayout(false);
+			this.lblValue = new System.Windows.Forms.Label();
+			this.lblBit = new System.Windows.Forms.Label();
+			this.pnBitsEditor = new System.Windows.Forms.Panel();
+			this.pnBitsHeader = new System.Windows.Forms.Panel();
+			this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+			this.flowLayoutPanel.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// lblValue
+			// 
+			this.lblValue.Name = "lblValue";
+			this.lblValue.AutoSize = true;
+			// 
+			// lblBit
+			// 
+			this.lblBit.Name = "lblBit";
+			this.lblBit.AutoSize = true;
+			// 
+			// pnBitsEditor
+			// 
+			this.pnBitsEditor.Name = "pnBitsEditor";
+			// 
+			// pnBitsHeader
+			// 
+			this.flowLayoutPanel.SetFlowBreak(this.pnBitsHeader, true);
+			this.pnBitsHeader.Name = "pnBitsHeader";
+			// 
+			// flowLayoutPanel
+			// 
+			this.flowLayoutPanel.Controls.Add(this.lblBit);
+			this.flowLayoutPanel.Controls.Add(this.pnBitsHeader);
+			this.flowLayoutPanel.Controls.Add(this.lblValue);
+			this.flowLayoutPanel.Controls.Add(this.pnBitsEditor);
+			this.flowLayoutPanel.Name = "flowLayoutPanel";
+			// 
+			// BitControl
+			// 
+			this.Text = LocalizationManager.GetString("BitControl");
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.Controls.Add(this.flowLayoutPanel);
+			this.Name = "BitControl";
+			this.flowLayoutPanel.ResumeLayout(false);
+			this.flowLayoutPanel.PerformLayout();
+			this.ResumeLayout(false);
 
 		}
 

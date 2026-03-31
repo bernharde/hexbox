@@ -92,177 +92,220 @@ namespace Be.HexEditor
             // 
             menuStrip.BackColor = System.Drawing.SystemColors.Control;
             menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, viewToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem });
-            resources.ApplyResources(menuStrip, "menuStrip");
+            menuStrip.Location = new System.Drawing.Point(0, 0);
             menuStrip.Name = "menuStrip";
+            menuStrip.Padding = new System.Windows.Forms.Padding(9, 2, 0, 2);
+            menuStrip.Size = new System.Drawing.Size(652, 24);
+            menuStrip.TabIndex = 0;
+            menuStrip.Text = "menuStrip1";
             menuStrip.ItemClicked += menuStrip_ItemClicked;
             // 
             // fileToolStripMenuItem
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripMenuItem, toolStripSeparator, saveToolStripMenuItem, toolStripSeparator2, recentFilesToolStripMenuItem, toolStripSeparator1, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
+            fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Image = FluentUI.FolderOpen16;
-            resources.ApplyResources(openToolStripMenuItem, "openToolStripMenuItem");
+            openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             openToolStripMenuItem.Name = "openToolStripMenuItem";
+            openToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O;
+            openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            openToolStripMenuItem.Text = "&Open";
             openToolStripMenuItem.Click += open_Click;
             // 
             // toolStripSeparator
             // 
             toolStripSeparator.Name = "toolStripSeparator";
-            resources.ApplyResources(toolStripSeparator, "toolStripSeparator");
+            toolStripSeparator.Size = new System.Drawing.Size(143, 6);
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Image = FluentUI.Save16;
-            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
+            saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S;
+            saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            saveToolStripMenuItem.Text = "&Save";
             saveToolStripMenuItem.Click += save_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
+            toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
             // 
             // recentFilesToolStripMenuItem
             // 
-            resources.ApplyResources(recentFilesToolStripMenuItem, "recentFilesToolStripMenuItem");
+            recentFilesToolStripMenuItem.Enabled = false;
             recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
+            recentFilesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            recentFilesToolStripMenuItem.Text = "Recent Files";
             recentFilesToolStripMenuItem.DropDownItemClicked += recentFiles_DropDownItemClicked;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
+            toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            resources.ApplyResources(exitToolStripMenuItem, "exitToolStripMenuItem");
+            exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exit_Click;
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { cutToolStripMenuItem, copyToolStripMenuItem, pasteToolStripMenuItem, toolStripSeparator3, copyHexStringToolStripMenuItem, pasteHexToolStripMenuItem, toolStripSeparator4, findToolStripMenuItem, findNextToolStripMenuItem, goToToolStripMenuItem, toolStripSeparator5, selectAllToolStripMenuItem });
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            resources.ApplyResources(editToolStripMenuItem, "editToolStripMenuItem");
+            editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            editToolStripMenuItem.Text = "&Edit";
             // 
             // cutToolStripMenuItem
             // 
             cutToolStripMenuItem.Image = FluentUI.Cut16;
-            resources.ApplyResources(cutToolStripMenuItem, "cutToolStripMenuItem");
+            cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            cutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X;
+            cutToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            cutToolStripMenuItem.Text = "Cu&t";
             cutToolStripMenuItem.Click += cut_Click;
             // 
             // copyToolStripMenuItem
             // 
             copyToolStripMenuItem.Image = FluentUI.Copy16;
-            resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
+            copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            copyToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C;
+            copyToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            copyToolStripMenuItem.Text = "&Copy";
             copyToolStripMenuItem.Click += copy_Click;
             // 
             // pasteToolStripMenuItem
             // 
             pasteToolStripMenuItem.Image = FluentUI.ClipboardPaste16;
-            resources.ApplyResources(pasteToolStripMenuItem, "pasteToolStripMenuItem");
+            pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            pasteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V;
+            pasteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            pasteToolStripMenuItem.Text = "&Paste";
             pasteToolStripMenuItem.Click += paste_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
+            toolStripSeparator3.Size = new System.Drawing.Size(196, 6);
             // 
             // copyHexStringToolStripMenuItem
             // 
             copyHexStringToolStripMenuItem.Name = "copyHexStringToolStripMenuItem";
-            resources.ApplyResources(copyHexStringToolStripMenuItem, "copyHexStringToolStripMenuItem");
+            copyHexStringToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.C;
+            copyHexStringToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            copyHexStringToolStripMenuItem.Text = "Copy Hex";
             copyHexStringToolStripMenuItem.Click += copyHex_Click;
             // 
             // pasteHexToolStripMenuItem
             // 
             pasteHexToolStripMenuItem.Name = "pasteHexToolStripMenuItem";
-            resources.ApplyResources(pasteHexToolStripMenuItem, "pasteHexToolStripMenuItem");
+            pasteHexToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.V;
+            pasteHexToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            pasteHexToolStripMenuItem.Text = "Paste Hex";
             pasteHexToolStripMenuItem.Click += pasteHex_Click;
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
+            toolStripSeparator4.Size = new System.Drawing.Size(196, 6);
             // 
             // findToolStripMenuItem
             // 
             findToolStripMenuItem.Image = FluentUI.Search16;
             findToolStripMenuItem.Name = "findToolStripMenuItem";
-            resources.ApplyResources(findToolStripMenuItem, "findToolStripMenuItem");
+            findToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F;
+            findToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            findToolStripMenuItem.Text = "Find";
             findToolStripMenuItem.Click += find_Click;
             // 
             // findNextToolStripMenuItem
             // 
             findNextToolStripMenuItem.Image = FluentUI.ArrowRight16;
             findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
-            resources.ApplyResources(findNextToolStripMenuItem, "findNextToolStripMenuItem");
+            findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            findNextToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            findNextToolStripMenuItem.Text = "Find Next";
             findNextToolStripMenuItem.Click += findNext_Click;
             // 
             // goToToolStripMenuItem
             // 
             goToToolStripMenuItem.Name = "goToToolStripMenuItem";
-            resources.ApplyResources(goToToolStripMenuItem, "goToToolStripMenuItem");
+            goToToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G;
+            goToToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            goToToolStripMenuItem.Text = "Go To";
             goToToolStripMenuItem.Click += goTo_Click;
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            resources.ApplyResources(toolStripSeparator5, "toolStripSeparator5");
+            toolStripSeparator5.Size = new System.Drawing.Size(196, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            resources.ApplyResources(selectAllToolStripMenuItem, "selectAllToolStripMenuItem");
+            selectAllToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A;
+            selectAllToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            selectAllToolStripMenuItem.Text = "Select &All";
             selectAllToolStripMenuItem.Click += selectAllToolStripMenuItem_Click;
             // 
             // viewToolStripMenuItem
             // 
             viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { encodingToolStripMenuItem, bitsToolStripMenuItem });
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            resources.ApplyResources(viewToolStripMenuItem, "viewToolStripMenuItem");
+            viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            viewToolStripMenuItem.Text = "&View";
             // 
             // encodingToolStripMenuItem
             // 
             encodingToolStripMenuItem.Name = "encodingToolStripMenuItem";
-            resources.ApplyResources(encodingToolStripMenuItem, "encodingToolStripMenuItem");
+            encodingToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            encodingToolStripMenuItem.Text = "&Encoding";
             // 
             // bitsToolStripMenuItem
             // 
             bitsToolStripMenuItem.CheckOnClick = true;
             bitsToolStripMenuItem.Name = "bitsToolStripMenuItem";
-            resources.ApplyResources(bitsToolStripMenuItem, "bitsToolStripMenuItem");
+            bitsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            bitsToolStripMenuItem.Text = "&Bits";
             bitsToolStripMenuItem.CheckedChanged += bitsToolStripMenuItem_CheckedChanged;
             // 
             // toolsToolStripMenuItem
             // 
             toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { optionsToolStripMenuItem });
             toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            resources.ApplyResources(toolsToolStripMenuItem, "toolsToolStripMenuItem");
+            toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
             // 
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            resources.ApplyResources(optionsToolStripMenuItem, "optionsToolStripMenuItem");
+            optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            optionsToolStripMenuItem.Text = "&Options";
             optionsToolStripMenuItem.Click += options_Click;
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
+            helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            helpToolStripMenuItem.Text = "&Help";
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            resources.ApplyResources(aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            aboutToolStripMenuItem.Text = "&About...";
             aboutToolStripMenuItem.Click += about_Click;
             // 
             // toolStrip
@@ -271,39 +314,50 @@ namespace Be.HexEditor
             toolStrip.GripMargin = new System.Windows.Forms.Padding(0);
             toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripButton, saveToolStripButton, toolStripSeparator6, cutToolStripButton, copyToolStripSplitButton, pasteToolStripSplitButton, encodingToolStripComboBox });
-            resources.ApplyResources(toolStrip, "toolStrip");
+            toolStrip.Location = new System.Drawing.Point(0, 24);
             toolStrip.Name = "toolStrip";
+            toolStrip.Padding = new System.Windows.Forms.Padding(4);
+            toolStrip.Size = new System.Drawing.Size(652, 35);
+            toolStrip.TabIndex = 1;
+            toolStrip.Text = "toolStrip1";
             // 
             // openToolStripButton
             // 
             openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             openToolStripButton.Image = FluentUI.FolderOpen16;
-            resources.ApplyResources(openToolStripButton, "openToolStripButton");
+            openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             openToolStripButton.Name = "openToolStripButton";
             openToolStripButton.Padding = new System.Windows.Forms.Padding(2);
+            openToolStripButton.Size = new System.Drawing.Size(24, 24);
+            openToolStripButton.Text = "&Open";
+            openToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             openToolStripButton.Click += open_Click;
             // 
             // saveToolStripButton
             // 
             saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             saveToolStripButton.Image = FluentUI.Save16;
-            resources.ApplyResources(saveToolStripButton, "saveToolStripButton");
+            saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             saveToolStripButton.Name = "saveToolStripButton";
             saveToolStripButton.Padding = new System.Windows.Forms.Padding(2);
+            saveToolStripButton.Size = new System.Drawing.Size(24, 24);
+            saveToolStripButton.Text = "&Save";
             saveToolStripButton.Click += save_Click;
             // 
             // toolStripSeparator6
             // 
             toolStripSeparator6.Name = "toolStripSeparator6";
-            resources.ApplyResources(toolStripSeparator6, "toolStripSeparator6");
+            toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
             // 
             // cutToolStripButton
             // 
             cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             cutToolStripButton.Image = FluentUI.Cut16;
-            resources.ApplyResources(cutToolStripButton, "cutToolStripButton");
+            cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             cutToolStripButton.Name = "cutToolStripButton";
             cutToolStripButton.Padding = new System.Windows.Forms.Padding(2);
+            cutToolStripButton.Size = new System.Drawing.Size(24, 24);
+            cutToolStripButton.Text = "Cut";
             cutToolStripButton.Click += cut_Click;
             // 
             // copyToolStripSplitButton
@@ -312,21 +366,25 @@ namespace Be.HexEditor
             copyToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyToolStripMenuItem1, copyHexToolStripMenuItem1 });
             copyToolStripSplitButton.ForeColor = System.Drawing.SystemColors.ControlText;
             copyToolStripSplitButton.Image = FluentUI.Copy16;
-            resources.ApplyResources(copyToolStripSplitButton, "copyToolStripSplitButton");
+            copyToolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             copyToolStripSplitButton.Name = "copyToolStripSplitButton";
             copyToolStripSplitButton.Padding = new System.Windows.Forms.Padding(2);
+            copyToolStripSplitButton.Size = new System.Drawing.Size(36, 24);
+            copyToolStripSplitButton.Text = "Copy";
             copyToolStripSplitButton.ButtonClick += copy_Click;
             // 
             // copyToolStripMenuItem1
             // 
             copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            resources.ApplyResources(copyToolStripMenuItem1, "copyToolStripMenuItem1");
+            copyToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            copyToolStripMenuItem1.Text = "Copy";
             copyToolStripMenuItem1.Click += copy_Click;
             // 
             // copyHexToolStripMenuItem1
             // 
             copyHexToolStripMenuItem1.Name = "copyHexToolStripMenuItem1";
-            resources.ApplyResources(copyHexToolStripMenuItem1, "copyHexToolStripMenuItem1");
+            copyHexToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            copyHexToolStripMenuItem1.Text = "Copy Hex";
             copyHexToolStripMenuItem1.Click += copyHex_Click;
             // 
             // pasteToolStripSplitButton
@@ -334,21 +392,25 @@ namespace Be.HexEditor
             pasteToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             pasteToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { pasteToolStripMenuItem1, pasteHexToolStripMenuItem1 });
             pasteToolStripSplitButton.Image = FluentUI.ClipboardPaste16;
-            resources.ApplyResources(pasteToolStripSplitButton, "pasteToolStripSplitButton");
+            pasteToolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             pasteToolStripSplitButton.Name = "pasteToolStripSplitButton";
             pasteToolStripSplitButton.Padding = new System.Windows.Forms.Padding(2);
+            pasteToolStripSplitButton.Size = new System.Drawing.Size(36, 24);
+            pasteToolStripSplitButton.Text = "Paste";
             pasteToolStripSplitButton.ButtonClick += paste_Click;
             // 
             // pasteToolStripMenuItem1
             // 
             pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
-            resources.ApplyResources(pasteToolStripMenuItem1, "pasteToolStripMenuItem1");
+            pasteToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            pasteToolStripMenuItem1.Text = "Paste";
             pasteToolStripMenuItem1.Click += paste_Click;
             // 
             // pasteHexToolStripMenuItem1
             // 
             pasteHexToolStripMenuItem1.Name = "pasteHexToolStripMenuItem1";
-            resources.ApplyResources(pasteHexToolStripMenuItem1, "pasteHexToolStripMenuItem1");
+            pasteHexToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            pasteHexToolStripMenuItem1.Text = "Paste Hex";
             pasteHexToolStripMenuItem1.Click += pasteHex_Click;
             // 
             // encodingToolStripComboBox
@@ -356,44 +418,52 @@ namespace Be.HexEditor
             encodingToolStripComboBox.BackColor = System.Drawing.SystemColors.Control;
             encodingToolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             encodingToolStripComboBox.DropDownWidth = 180;
-            resources.ApplyResources(encodingToolStripComboBox, "encodingToolStripComboBox");
+            encodingToolStripComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             encodingToolStripComboBox.Name = "encodingToolStripComboBox";
             encodingToolStripComboBox.Padding = new System.Windows.Forms.Padding(2);
+            encodingToolStripComboBox.Size = new System.Drawing.Size(192, 27);
             encodingToolStripComboBox.SelectedIndexChanged += toolStripEncoding_SelectedIndexChanged;
             // 
             // statusStrip
             // 
             statusStrip.BackColor = System.Drawing.SystemColors.Control;
             statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel, fileSizeToolStripStatusLabel, bitToolStripStatusLabel });
-            resources.ApplyResources(statusStrip, "statusStrip");
+            statusStrip.Location = new System.Drawing.Point(0, 453);
             statusStrip.Name = "statusStrip";
+            statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
             statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            statusStrip.Size = new System.Drawing.Size(652, 22);
             statusStrip.SizingGrip = false;
+            statusStrip.TabIndex = 9;
             // 
             // toolStripStatusLabel
             // 
             toolStripStatusLabel.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
             toolStripStatusLabel.Name = "toolStripStatusLabel";
             toolStripStatusLabel.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            resources.ApplyResources(toolStripStatusLabel, "toolStripStatusLabel");
+            toolStripStatusLabel.Size = new System.Drawing.Size(7, 17);
             // 
             // fileSizeToolStripStatusLabel
             // 
             fileSizeToolStripStatusLabel.Name = "fileSizeToolStripStatusLabel";
             fileSizeToolStripStatusLabel.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            resources.ApplyResources(fileSizeToolStripStatusLabel, "fileSizeToolStripStatusLabel");
+            fileSizeToolStripStatusLabel.Size = new System.Drawing.Size(8, 17);
             // 
             // bitToolStripStatusLabel
             // 
             bitToolStripStatusLabel.Name = "bitToolStripStatusLabel";
-            resources.ApplyResources(bitToolStripStatusLabel, "bitToolStripStatusLabel");
+            bitToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // bodyPanel
             // 
             bodyPanel.Controls.Add(hexBox);
             bodyPanel.Controls.Add(bitControl1);
-            resources.ApplyResources(bodyPanel, "bodyPanel");
+            bodyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            bodyPanel.Location = new System.Drawing.Point(0, 59);
+            bodyPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             bodyPanel.Name = "bodyPanel";
+            bodyPanel.Size = new System.Drawing.Size(652, 394);
+            bodyPanel.TabIndex = 11;
             // 
             // hexBox
             // 
@@ -404,22 +474,27 @@ namespace Be.HexEditor
             // 
             hexBox.BuiltInContextMenu.CopyMenuItemImage = FluentUI.Copy16;
             hexBox.BuiltInContextMenu.CopyMenuItemScalingImageName = "Copy";
-            hexBox.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.CopyMenuItemText");
+            hexBox.BuiltInContextMenu.CopyMenuItemText = "Copy ";
             hexBox.BuiltInContextMenu.CutMenuItemImage = FluentUI.Cut16;
             hexBox.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
-            hexBox.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.CutMenuItemText");
+            hexBox.BuiltInContextMenu.CutMenuItemText = "Cut ";
             hexBox.BuiltInContextMenu.PasteMenuItemImage = FluentUI.ClipboardPaste16;
             hexBox.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
-            hexBox.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.PasteMenuItemText");
-            hexBox.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexBox.BuiltInContextMenu.SelectAllMenuItemText");
+            hexBox.BuiltInContextMenu.PasteMenuItemText = "Paste ";
+            hexBox.BuiltInContextMenu.SelectAllMenuItemText = "Select All ";
             hexBox.ColumnInfoVisible = true;
-            resources.ApplyResources(hexBox, "hexBox");
+            hexBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            hexBox.Font = new System.Drawing.Font("Consolas", 9F);
             hexBox.HexCasing = Windows.Forms.HexCasing.Lower;
             hexBox.LineInfoVisible = true;
+            hexBox.Location = new System.Drawing.Point(0, 0);
+            hexBox.Margin = new System.Windows.Forms.Padding(0);
             hexBox.Name = "hexBox";
             hexBox.SelectionBackColor = System.Drawing.Color.FromArgb(0, 120, 212);
             hexBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(38, 79, 120, 255);
+            hexBox.Size = new System.Drawing.Size(652, 334);
             hexBox.StringViewVisible = true;
+            hexBox.TabIndex = 8;
             hexBox.UseFixedBytesPerLine = true;
             hexBox.VScrollBarVisible = true;
             hexBox.SelectionStartChanged += hexBox_SelectionStartChanged;
@@ -434,8 +509,12 @@ namespace Be.HexEditor
             // 
             // bitControl1
             // 
-            resources.ApplyResources(bitControl1, "bitControl1");
+            bitControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            bitControl1.Location = new System.Drawing.Point(0, 334);
+            bitControl1.Margin = new System.Windows.Forms.Padding(0);
             bitControl1.Name = "bitControl1";
+            bitControl1.Size = new System.Drawing.Size(652, 60);
+            bitControl1.TabIndex = 10;
             bitControl1.BitChanged += bitControl1_BitChanged;
             // 
             // recentFileHandler
@@ -448,15 +527,21 @@ namespace Be.HexEditor
             // 
             // FormHexEditor
             // 
-            resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.SystemColors.Control;
+            ClientSize = new System.Drawing.Size(652, 475);
             Controls.Add(bodyPanel);
             Controls.Add(statusStrip);
             Controls.Add(toolStrip);
             Controls.Add(menuStrip);
+            Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip;
+            Margin = new System.Windows.Forms.Padding(44, 29, 44, 29);
             Name = "FormHexEditor";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Be.HexEditor";
             FormClosing += FormHexEditor_FormClosing;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();

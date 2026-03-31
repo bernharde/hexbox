@@ -53,6 +53,12 @@ namespace Be.HexEditor
         {
             InitializeComponent();
 
+            // Load localization based on current culture
+            LocalizationManager.LoadCurrentCulture();
+
+            // Apply localization to all UI elements
+            this.ApplyLocalization();
+
             this.recentFilesMax = Settings.Default.RecentFilesMax;
             this.recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
             this.useSystemLanguage = Settings.Default.UseSystemLanguage;

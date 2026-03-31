@@ -48,7 +48,6 @@ namespace Be.HexEditor
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
             btnOK = new Button();
             ucAbout1 = new UCAbout();
             uiManagerComponent = new UiManagerComponent(components);
@@ -57,14 +56,24 @@ namespace Be.HexEditor
             // 
             // btnOK
             // 
-            resources.ApplyResources(btnOK, "btnOK");
+            btnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnOK.FlatStyle = FlatStyle.Flat;
+            btnOK.ImeMode = ImeMode.NoControl;
+            btnOK.Location = new System.Drawing.Point(390, 398);
             btnOK.Name = "btnOK";
+            btnOK.Size = new System.Drawing.Size(120, 34);
+            btnOK.TabIndex = 0;
+            btnOK.Text = "Ok";
             btnOK.Click += btnOK_Click;
             // 
             // ucAbout1
             // 
-            resources.ApplyResources(ucAbout1, "ucAbout1");
+            ucAbout1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ucAbout1.Location = new System.Drawing.Point(1, 11);
+            ucAbout1.Margin = new Padding(2);
             ucAbout1.Name = "ucAbout1";
+            ucAbout1.Size = new System.Drawing.Size(518, 382);
+            ucAbout1.TabIndex = 1;
             // 
             // uiManagerComponent
             // 
@@ -73,16 +82,20 @@ namespace Be.HexEditor
             // FormAbout
             // 
             AcceptButton = btnOK;
-            resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = System.Drawing.SystemColors.Control;
+            ClientSize = new System.Drawing.Size(530, 450);
             Controls.Add(btnOK);
             Controls.Add(ucAbout1);
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormAbout";
             ShowIcon = false;
             ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "About";
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
             ResumeLayout(false);
 

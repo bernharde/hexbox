@@ -30,6 +30,12 @@ namespace Be.HexEditor
         /// </summary>
         void Init()
         {
+            // Load localization based on current culture
+            LocalizationManager.LoadCurrentCulture();
+
+            // Apply localization to all UI elements
+            this.ApplyLocalization();
+
             DisplayText();
 
             ManageAbility();

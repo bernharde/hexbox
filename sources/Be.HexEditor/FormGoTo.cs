@@ -56,7 +56,6 @@ namespace Be.HexEditor
         private void InitializeComponent()
         {
             components = new Container();
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormGoTo));
             label1 = new Label();
             btnCancel = new Button();
             btnOK = new Button();
@@ -72,48 +71,77 @@ namespace Be.HexEditor
             // 
             // label1
             // 
-            resources.ApplyResources(label1, "label1");
+            label1.Location = new Point(13, 47);
             label1.Name = "label1";
+            label1.Size = new Size(112, 23);
+            label1.TabIndex = 0;
+            label1.Text = "Byte number:";
             // 
             // btnCancel
             // 
-            resources.ApplyResources(btnCancel, "btnCancel");
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancel.AutoSize = true;
             btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Location = new Point(170, 3);
             btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(95, 34);
+            btnCancel.TabIndex = 1;
+            btnCancel.Text = "Cancel";
             btnCancel.Click += btnCancel_Click;
             // 
             // btnOK
             // 
-            resources.ApplyResources(btnOK, "btnOK");
+            btnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnOK.AutoSize = true;
             btnOK.DialogResult = DialogResult.OK;
+            btnOK.FlatStyle = FlatStyle.Flat;
+            btnOK.Location = new Point(73, 3);
             btnOK.Name = "btnOK";
+            btnOK.Size = new Size(91, 34);
+            btnOK.TabIndex = 2;
+            btnOK.Text = "OK";
             btnOK.Click += btnOK_Click;
             // 
             // nup
             // 
-            resources.ApplyResources(nup, "nup");
+            nup.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            nup.Location = new Point(153, 47);
             nup.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nup.Name = "nup";
+            nup.Size = new Size(120, 20);
+            nup.TabIndex = 3;
             nup.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label2
             // 
             label2.ForeColor = Color.Blue;
-            resources.ApplyResources(label2, "label2");
+            label2.Location = new Point(13, 12);
             label2.Name = "label2";
+            label2.Size = new Size(64, 23);
+            label2.TabIndex = 10;
+            label2.Text = "Goto";
             // 
             // line
             // 
-            resources.ApplyResources(line, "line");
+            line.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             line.BackColor = Color.LightGray;
+            line.Location = new Point(78, 22);
+            line.Margin = new Padding(3, 10, 3, 3);
             line.Name = "line";
+            line.Size = new Size(195, 1);
+            line.TabIndex = 11;
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.Controls.Add(btnCancel);
             flowLayoutPanel1.Controls.Add(btnOK);
+            flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanel1.Location = new Point(5, 87);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(268, 40);
+            flowLayoutPanel1.TabIndex = 12;
             // 
             // uiManagerComponent
             // 
@@ -121,19 +149,24 @@ namespace Be.HexEditor
             // 
             // FormGoTo
             // 
-            resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.Control;
+            ClientSize = new Size(279, 139);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(line);
             Controls.Add(label2);
             Controls.Add(nup);
             Controls.Add(label1);
+            Font = new Font("Microsoft Sans Serif", 8F);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormGoTo";
             ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Goto byte";
             Activated += FormGoTo_Activated;
             ((ISupportInitialize)nup).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
