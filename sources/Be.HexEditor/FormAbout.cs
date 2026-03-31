@@ -101,7 +101,6 @@ namespace Be.HexEditor
             // 
             // headerPanel
             // 
-            headerPanel.BorderStyle = BorderStyle.FixedSingle;
             headerPanel.Controls.Add(headerContent);
             headerPanel.Dock = DockStyle.Fill;
             headerPanel.Location = new Point(13, 13);
@@ -122,7 +121,7 @@ namespace Be.HexEditor
             headerContent.Margin = new Padding(0);
             headerContent.Name = "headerContent";
             headerContent.Padding = new Padding(5);
-            headerContent.Size = new Size(612, 122);
+            headerContent.Size = new Size(614, 124);
             headerContent.TabIndex = 0;
             headerContent.WrapContents = false;
             // 
