@@ -207,7 +207,7 @@ namespace Be.HexEditor
             tabThanksTo.Location = new Point(4, 24);
             tabThanksTo.Name = "tabThanksTo";
             tabThanksTo.Padding = new Padding(5);
-            tabThanksTo.Size = new Size(172, 0);
+            tabThanksTo.Size = new Size(622, 302);
             tabThanksTo.TabIndex = 1;
             tabThanksTo.Text = "Thanks To";
             // 
@@ -219,7 +219,7 @@ namespace Be.HexEditor
             txtThanksTo.Location = new Point(5, 5);
             txtThanksTo.Name = "txtThanksTo";
             txtThanksTo.ReadOnly = true;
-            txtThanksTo.Size = new Size(162, 0);
+            txtThanksTo.Size = new Size(612, 292);
             txtThanksTo.TabIndex = 0;
             txtThanksTo.Text = "";
             // 
@@ -229,7 +229,7 @@ namespace Be.HexEditor
             tabLicense.Location = new Point(4, 24);
             tabLicense.Name = "tabLicense";
             tabLicense.Padding = new Padding(5);
-            tabLicense.Size = new Size(172, 0);
+            tabLicense.Size = new Size(622, 302);
             tabLicense.TabIndex = 2;
             tabLicense.Text = "License";
             // 
@@ -241,7 +241,7 @@ namespace Be.HexEditor
             txtLicense.Location = new Point(5, 5);
             txtLicense.Name = "txtLicense";
             txtLicense.ReadOnly = true;
-            txtLicense.Size = new Size(162, 0);
+            txtLicense.Size = new Size(612, 292);
             txtLicense.TabIndex = 0;
             txtLicense.Text = "";
             // 
@@ -251,7 +251,7 @@ namespace Be.HexEditor
             tabChanges.Location = new Point(4, 24);
             tabChanges.Name = "tabChanges";
             tabChanges.Padding = new Padding(5);
-            tabChanges.Size = new Size(172, 0);
+            tabChanges.Size = new Size(622, 302);
             tabChanges.TabIndex = 3;
             tabChanges.Text = "Changes";
             // 
@@ -263,7 +263,7 @@ namespace Be.HexEditor
             txtChanges.Location = new Point(5, 5);
             txtChanges.Name = "txtChanges";
             txtChanges.ReadOnly = true;
-            txtChanges.Size = new Size(162, 0);
+            txtChanges.Size = new Size(612, 292);
             txtChanges.TabIndex = 0;
             txtChanges.Text = "";
             // 
@@ -282,7 +282,7 @@ namespace Be.HexEditor
             // 
             // uiManagerComponent
             // 
-            uiManagerComponent.Form = null;
+            uiManagerComponent.Form = this;
             // 
             // FormAbout
             // 
