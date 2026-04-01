@@ -53,7 +53,6 @@ namespace Be.HexEditor
 				this.ApplyLocalization();
 				lnkWebsite.LinkClicked += (s, e) => Process.Start(new ProcessStartInfo(lnkWebsite.Text) { UseShellExecute = true });
 				btnOK.Click += (s, e) => Close();
-				uiManagerComponent.Form = this;
 
 				// Tab button event handlers
 				btnTabAbout.Click += (s, e) => SelectTab(0);
@@ -61,7 +60,11 @@ namespace Be.HexEditor
 				btnTabLicense.Click += (s, e) => SelectTab(2);
 				btnTabChanges.Click += (s, e) => SelectTab(3);
 
-				SelectTab(0); // Show first tab
+				// Apply theme BEFORE selecting the first tab
+				uiManagerComponent.Form = this;
+
+				// Select first tab AFTER theme is applied
+				SelectTab(0);
 			}
 		}
 
@@ -399,12 +402,13 @@ namespace Be.HexEditor
             ResumeLayout(false);
         }
 
-		private void SelectTab(int index)
+        private void SelectTab(int index)
 		{
 			// Get theme colors
 			var theme = ThemeManager.GetCurrentTheme();
 			var foreColor = theme != null ? theme.ForeColor : SystemColors.ControlText;
 			var backColor = theme != null ? theme.BackColor : SystemColors.Control;
+			var accentColor = theme != null ? theme.AccentColor : Color.CornflowerBlue;
 
 			// Hide all panels
 			pnlAbout.Visible = false;
@@ -422,28 +426,28 @@ namespace Be.HexEditor
 			btnTabChanges.BackColor = backColor;
 			btnTabChanges.ForeColor = foreColor;
 
-			// Show selected panel and highlight button
+			// Show selected panel and highlight button with accent color
 			switch (index)
 			{
 				case 0:
 					pnlAbout.Visible = true;
-					btnTabAbout.BackColor = SystemColors.Highlight;
-					btnTabAbout.ForeColor = SystemColors.HighlightText;
+					btnTabAbout.BackColor = accentColor;
+					btnTabAbout.ForeColor = Color.White;
 					break;
 				case 1:
 					pnlThanksTo.Visible = true;
-					btnTabThanksTo.BackColor = SystemColors.Highlight;
-					btnTabThanksTo.ForeColor = SystemColors.HighlightText;
+					btnTabThanksTo.BackColor = accentColor;
+					btnTabThanksTo.ForeColor = Color.White;
 					break;
 				case 2:
 					pnlLicense.Visible = true;
-					btnTabLicense.BackColor = SystemColors.Highlight;
-					btnTabLicense.ForeColor = SystemColors.HighlightText;
+					btnTabLicense.BackColor = accentColor;
+					btnTabLicense.ForeColor = Color.White;
 					break;
 				case 3:
 					pnlChanges.Visible = true;
-					btnTabChanges.BackColor = SystemColors.Highlight;
-					btnTabChanges.ForeColor = SystemColors.HighlightText;
+					btnTabChanges.BackColor = accentColor;
+					btnTabChanges.ForeColor = Color.White;
 					break;
 			}
 		}
@@ -498,3 +502,5 @@ namespace Be.HexEditor
 		}
 	}
 }
+
+
