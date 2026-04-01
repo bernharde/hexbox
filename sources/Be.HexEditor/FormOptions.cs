@@ -79,12 +79,12 @@ namespace Be.HexEditor
             DataTable dt = new DataTable();
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Value", typeof(string));
-            dt.Rows.Add(strings.English, "en");
-            dt.Rows.Add(strings.German, "de");
-			dt.Rows.Add(strings.Italian, "it");
-            dt.Rows.Add(strings.Japanese, "ja");
-            dt.Rows.Add(strings.Russian, "ru");
-            dt.Rows.Add(strings.SimplifiedChinese, "zh-CN");
+            dt.Rows.Add("English", "en");
+            dt.Rows.Add("Deutsch", "de");
+			dt.Rows.Add("Italiano", "it");
+            dt.Rows.Add("日本語", "ja");
+            dt.Rows.Add("Русский", "ru");
+            dt.Rows.Add("中文", "zh-CN");
             dt.DefaultView.Sort = "Name";
 
             this.languageListBox.DataSource = dt.DefaultView;
@@ -121,7 +121,6 @@ namespace Be.HexEditor
                 Settings.Default.UseSystemLanguage = this.UseSystemLanguage;
                 Settings.Default.SelectedLanguage = (string)this.languageListBox.SelectedValue;
 
-                Program.ShowMessage(strings.ProgramRestartSettings);
 
                 changed = true;
             }
@@ -138,3 +137,8 @@ namespace Be.HexEditor
         }
     }
 }
+
+
+
+
+
