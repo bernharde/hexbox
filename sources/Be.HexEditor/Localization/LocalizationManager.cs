@@ -22,23 +22,23 @@ namespace Be.HexEditor.Localization
         public static void LoadLocalization(CultureInfo culture)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            
+
             // Build fallback chain: specific culture → neutral language → en-US → en → default
             var fileNames = new List<string>();
-            
+
             // 1. Exact culture match (e.g., de-DE)
             if (!culture.Equals(CultureInfo.InvariantCulture))
             {
-                fileNames.Add($"strings.{culture.Name}.json");
-                
+                fileNames.Add($"strings-{culture.Name}.json");
+
                 // 2. Neutral language (e.g., de from de-DE)
                 if (!string.IsNullOrEmpty(culture.Name) && culture.Name.Contains("-"))
                 {
                     var neutral = culture.Name.Split('-')[0];
-                    fileNames.Add($"strings.{neutral}.json");
+                    fileNames.Add($"strings-{neutral}.json");
                 }
             }
-            
+
             // 3. Default invariant culture
             fileNames.Add("strings.json");
             
@@ -46,8 +46,7 @@ namespace Be.HexEditor.Localization
             {
                 foreach (var fileName in fileNames)
                 {
-                    var stream = FindEmbeddedResource(assembly, fileName);
-                    
+                    var stream = assembly.GetManifestResourceStream($"Be.HexEditor.Locales.{fileName}");
                     if (stream != null)
                     {
                         using (stream)
@@ -72,50 +71,6 @@ namespace Be.HexEditor.Localization
             }
         }
 
-        /// <summary>
-        /// Finds an embedded resource by searching common resource name patterns.
-        /// </summary>
-        private static Stream FindEmbeddedResource(Assembly assembly, string fileName)
-        {
-            // Try multiple possible resource name patterns
-            var resourcePatterns = new[]
-            {
-                $"Be.HexEditor.Locales.{fileName}",
-                fileName
-            };
-
-            foreach (var pattern in resourcePatterns)
-            {
-                var stream = assembly.GetManifestResourceStream(pattern);       
-                if (stream != null)
-                {
-                    return stream;
-                }
-            }
-
-            // Log available resources for debugging
-            System.Diagnostics.Debug.WriteLine($"Available resources for '{fileName}':");
-            var allResources = assembly.GetManifestResourceNames();
-            var matchingResources = allResources.Where(r => r.Contains(fileName)).ToList();
-            if (matchingResources.Count > 0)
-            {
-                foreach (var resource in matchingResources)
-                {
-                    System.Diagnostics.Debug.WriteLine($"  - {resource}");
-                }
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine($"  No resources found containing '{fileName}'");
-                System.Diagnostics.Debug.WriteLine($"  All embedded resources:");
-                foreach (var resource in allResources.Where(r => r.Contains("Locales") || r.Contains("strings")).OrderBy(r => r))
-                {
-                    System.Diagnostics.Debug.WriteLine($"    - {resource}");
-                }
-            }
-
-            return null;
-        }
 
         /// <summary>
         /// Gets the localized string for the specified key.
