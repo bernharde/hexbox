@@ -36,13 +36,8 @@ namespace Be.HexEditor
             clearRecentFilesButton = new System.Windows.Forms.Button();
             recentFilesMaxlabel = new System.Windows.Forms.Label();
             recentFilesMaxTextBox = new System.Windows.Forms.TextBox();
-            okButton = new System.Windows.Forms.Button();
-            cancelButton = new System.Windows.Forms.Button();
-            flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             uiManagerComponent = new UiManagerComponent(components);
             languageListBox = new System.Windows.Forms.ListBox();
-            flowLayoutPanelTheme = new EnumPanel();
-            flowLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
             SuspendLayout();
             // 
@@ -60,14 +55,15 @@ namespace Be.HexEditor
             // 
             // clearRecentFilesButton
             // 
+            clearRecentFilesButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             clearRecentFilesButton.AutoSize = true;
             clearRecentFilesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            clearRecentFilesButton.Location = new System.Drawing.Point(28, 243);
+            clearRecentFilesButton.Location = new System.Drawing.Point(28, 257);
             clearRecentFilesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             clearRecentFilesButton.Name = "clearRecentFilesButton";
-            clearRecentFilesButton.Size = new System.Drawing.Size(120, 34);
+            clearRecentFilesButton.Size = new System.Drawing.Size(103, 25);
             clearRecentFilesButton.TabIndex = 2;
-            clearRecentFilesButton.Text = LocalizationManager.GetString("ClearRecentFiles");
+            clearRecentFilesButton.Text = "ClearRecentFiles";
             clearRecentFilesButton.UseVisualStyleBackColor = true;
             clearRecentFilesButton.Click += clearRecentFilesButton_Click;
             // 
@@ -75,7 +71,7 @@ namespace Be.HexEditor
             // 
             recentFilesMaxlabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             recentFilesMaxlabel.AutoSize = true;
-            recentFilesMaxlabel.Location = new System.Drawing.Point(14, 214);
+            recentFilesMaxlabel.Location = new System.Drawing.Point(14, 207);
             recentFilesMaxlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             recentFilesMaxlabel.Name = "recentFilesMaxlabel";
             recentFilesMaxlabel.Size = new System.Drawing.Size(196, 13);
@@ -85,49 +81,11 @@ namespace Be.HexEditor
             // recentFilesMaxTextBox
             // 
             recentFilesMaxTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            recentFilesMaxTextBox.Location = new System.Drawing.Point(218, 214);
+            recentFilesMaxTextBox.Location = new System.Drawing.Point(28, 225);
             recentFilesMaxTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             recentFilesMaxTextBox.Name = "recentFilesMaxTextBox";
             recentFilesMaxTextBox.Size = new System.Drawing.Size(66, 22);
             recentFilesMaxTextBox.TabIndex = 0;
-            // 
-            // okButton
-            // 
-            okButton.AutoSize = true;
-            okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            okButton.Location = new System.Drawing.Point(62, 5);
-            okButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            okButton.Name = "okButton";
-            okButton.Size = new System.Drawing.Size(120, 34);
-            okButton.TabIndex = 1;
-            okButton.Text = LocalizationManager.GetString("OK");
-            okButton.UseVisualStyleBackColor = true;
-            okButton.Click += okButton_Click;
-            // 
-            // cancelButton
-            // 
-            cancelButton.AutoSize = true;
-            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            cancelButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            cancelButton.Location = new System.Drawing.Point(190, 5);
-            cancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new System.Drawing.Size(120, 34);
-            cancelButton.TabIndex = 2;
-            cancelButton.Text = "Cancel";
-            cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel
-            // 
-            flowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanel.Controls.Add(cancelButton);
-            flowLayoutPanel.Controls.Add(okButton);
-            flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            flowLayoutPanel.Location = new System.Drawing.Point(8, 350);
-            flowLayoutPanel.Name = "flowLayoutPanel";
-            flowLayoutPanel.Size = new System.Drawing.Size(314, 50);
-            flowLayoutPanel.TabIndex = 3;
             // 
             // uiManagerComponent
             // 
@@ -140,39 +98,21 @@ namespace Be.HexEditor
             languageListBox.FormattingEnabled = true;
             languageListBox.Location = new System.Drawing.Point(28, 39);
             languageListBox.Name = "languageListBox";
-            languageListBox.Size = new System.Drawing.Size(294, 156);
+            languageListBox.Size = new System.Drawing.Size(452, 143);
             languageListBox.TabIndex = 6;
-            // 
-            // flowLayoutPanelTheme
-            // 
-            flowLayoutPanelTheme.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanelTheme.AutoSize = true;
-            flowLayoutPanelTheme.BackColor = System.Drawing.Color.FromArgb(30, 30, 30);
-            flowLayoutPanelTheme.EnumType = null;
-            flowLayoutPanelTheme.HeaderText = "Theme";
-            flowLayoutPanelTheme.Location = new System.Drawing.Point(8, 298);
-            flowLayoutPanelTheme.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelTheme.Name = "flowLayoutPanelTheme";
-            flowLayoutPanelTheme.Padding = new System.Windows.Forms.Padding(5);
-            flowLayoutPanelTheme.SelectedValue = null;
-            flowLayoutPanelTheme.Size = new System.Drawing.Size(314, 46);
-            flowLayoutPanelTheme.TabIndex = 7;
-            flowLayoutPanelTheme.WrapContents = false;
             // 
             // FormOptions
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            CancelButton = cancelButton;
-            ClientSize = new System.Drawing.Size(331, 404);
-            Controls.Add(flowLayoutPanelTheme);
+            ClientSize = new System.Drawing.Size(506, 400);
             Controls.Add(languageListBox);
             Controls.Add(clearRecentFilesButton);
             Controls.Add(recentFilesMaxlabel);
             Controls.Add(recentFilesMaxTextBox);
-            Controls.Add(flowLayoutPanel);
             Controls.Add(useSystemLanguageCheckBox);
             Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            ForeColor = System.Drawing.Color.White;
             Margin = new System.Windows.Forms.Padding(683, 129, 683, 129);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -181,8 +121,6 @@ namespace Be.HexEditor
             ShowInTaskbar = false;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Options";
-            flowLayoutPanel.ResumeLayout(false);
-            flowLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -193,17 +131,13 @@ namespace Be.HexEditor
 
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage generalTabPage;
-        private System.Windows.Forms.Button okButton;
-        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.GroupBox recentFilesGroupBox;
         private System.Windows.Forms.Button clearRecentFilesButton;
         private System.Windows.Forms.Label recentFilesMaxlabel;
         private System.Windows.Forms.TextBox recentFilesMaxTextBox;
         private System.Windows.Forms.GroupBox languageSettingsGroupBox;
         private System.Windows.Forms.CheckBox useSystemLanguageCheckBox;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private UiManagerComponent uiManagerComponent;
         private System.Windows.Forms.ListBox languageListBox;
-        private Be.HexEditor.EnumPanel flowLayoutPanelTheme;
     }
 }
