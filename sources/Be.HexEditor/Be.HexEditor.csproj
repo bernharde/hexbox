@@ -26,6 +26,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Locales\strings-de.json" />
+		<None Remove="Locales\strings-it.json" />
+		<None Remove="Locales\strings-ja.json" />
+		<None Remove="Locales\strings-ru.json" />
+		<None Remove="Locales\strings-zh-Hans.json" />
+		<None Remove="Locales\strings.json" />
 		<None Remove="Resources\ThanksTo.rtf" />
 	</ItemGroup>
 
@@ -33,24 +39,13 @@
 		<EmbeddedResource Include="..\..\license.txt">
 			<Link>Resources\license.txt</Link>
 		</EmbeddedResource>
-		<EmbeddedResource Include="Locales\strings-de.json">
-			<LogicalName>Be.HexEditor.Locales.strings-de.json</LogicalName>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Locales\strings-it.json">
-			<LogicalName>Be.HexEditor.Locales.strings-it.json</LogicalName>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Locales\strings-ja.json">
-			<LogicalName>Be.HexEditor.Locales.strings-ja.json</LogicalName>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Locales\strings.json">
-			<LogicalName>Be.HexEditor.Locales.strings.json</LogicalName>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Locales\strings-ru.json">
-			<LogicalName>Be.HexEditor.Locales.strings-ru.json</LogicalName>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Locales\strings-zh-Hans.json">
-			<LogicalName>Be.HexEditor.Locales.strings-zh-Hans.json</LogicalName>
-		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings-de.json" />
+		<EmbeddedResource Include="Locales\strings-it.json" />
+		<EmbeddedResource Include="Locales\strings-ja.json" />
+		<EmbeddedResource Include="Locales\strings-ru.json" />
+		<EmbeddedResource Include="Locales\strings-zh-Hans.json" />
+		<EmbeddedResource Include="Locales\strings.json" />
+	
 		<EmbeddedResource Include="Resources\ThanksTo.rtf" />
 	</ItemGroup>
 
