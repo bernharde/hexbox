@@ -38,7 +38,13 @@ namespace Be.HexEditor
             recentFilesMaxTextBox = new System.Windows.Forms.TextBox();
             uiManagerComponent = new UiManagerComponent(components);
             languageListBox = new System.Windows.Forms.ListBox();
+            themeLabel = new System.Windows.Forms.Label();
+            themeButtonsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            btnThemeSystem = new System.Windows.Forms.Button();
+            btnThemeDark = new System.Windows.Forms.Button();
+            btnThemeLight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
+            themeButtonsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // useSystemLanguageCheckBox
@@ -101,11 +107,75 @@ namespace Be.HexEditor
             languageListBox.Size = new System.Drawing.Size(452, 143);
             languageListBox.TabIndex = 6;
             // 
+            // themeLabel
+            // 
+            themeLabel.AutoSize = true;
+            themeLabel.Location = new System.Drawing.Point(14, 310);
+            themeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            themeLabel.Name = "themeLabel";
+            themeLabel.Size = new System.Drawing.Size(40, 13);
+            themeLabel.TabIndex = 7;
+            themeLabel.Text = "Theme";
+            // 
+            // themeButtonsPanel
+            // 
+            themeButtonsPanel.AutoSize = true;
+            themeButtonsPanel.Controls.Add(btnThemeSystem);
+            themeButtonsPanel.Controls.Add(btnThemeDark);
+            themeButtonsPanel.Controls.Add(btnThemeLight);
+            themeButtonsPanel.Location = new System.Drawing.Point(28, 332);
+            themeButtonsPanel.Margin = new System.Windows.Forms.Padding(0);
+            themeButtonsPanel.Name = "themeButtonsPanel";
+            themeButtonsPanel.Size = new System.Drawing.Size(245, 35);
+            themeButtonsPanel.TabIndex = 8;
+            themeButtonsPanel.WrapContents = false;
+            // 
+            // btnThemeSystem
+            // 
+            btnThemeSystem.AutoSize = true;
+            btnThemeSystem.FlatAppearance.BorderSize = 0;
+            btnThemeSystem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnThemeSystem.Location = new System.Drawing.Point(0, 0);
+            btnThemeSystem.Margin = new System.Windows.Forms.Padding(0);
+            btnThemeSystem.Name = "btnThemeSystem";
+            btnThemeSystem.Size = new System.Drawing.Size(80, 32);
+            btnThemeSystem.TabIndex = 0;
+            btnThemeSystem.Text = "System";
+            btnThemeSystem.Click += BtnThemeSystem_Click;
+            // 
+            // btnThemeDark
+            // 
+            btnThemeDark.AutoSize = true;
+            btnThemeDark.FlatAppearance.BorderSize = 0;
+            btnThemeDark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnThemeDark.Location = new System.Drawing.Point(80, 0);
+            btnThemeDark.Margin = new System.Windows.Forms.Padding(0);
+            btnThemeDark.Name = "btnThemeDark";
+            btnThemeDark.Size = new System.Drawing.Size(80, 32);
+            btnThemeDark.TabIndex = 1;
+            btnThemeDark.Text = "Dark";
+            btnThemeDark.Click += BtnThemeDark_Click;
+            // 
+            // btnThemeLight
+            // 
+            btnThemeLight.AutoSize = true;
+            btnThemeLight.FlatAppearance.BorderSize = 0;
+            btnThemeLight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnThemeLight.Location = new System.Drawing.Point(160, 0);
+            btnThemeLight.Margin = new System.Windows.Forms.Padding(0);
+            btnThemeLight.Name = "btnThemeLight";
+            btnThemeLight.Size = new System.Drawing.Size(80, 32);
+            btnThemeLight.TabIndex = 2;
+            btnThemeLight.Text = "Light";
+            btnThemeLight.Click += BtnThemeLight_Click;
+            // 
             // FormOptions
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             ClientSize = new System.Drawing.Size(506, 400);
+            Controls.Add(themeButtonsPanel);
+            Controls.Add(themeLabel);
             Controls.Add(languageListBox);
             Controls.Add(clearRecentFilesButton);
             Controls.Add(recentFilesMaxlabel);
@@ -122,6 +192,8 @@ namespace Be.HexEditor
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Options";
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
+            themeButtonsPanel.ResumeLayout(false);
+            themeButtonsPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -139,5 +211,10 @@ namespace Be.HexEditor
         private System.Windows.Forms.CheckBox useSystemLanguageCheckBox;
         private UiManagerComponent uiManagerComponent;
         private System.Windows.Forms.ListBox languageListBox;
+        private System.Windows.Forms.Label themeLabel;
+        private System.Windows.Forms.FlowLayoutPanel themeButtonsPanel;
+        private System.Windows.Forms.Button btnThemeSystem;
+        private System.Windows.Forms.Button btnThemeDark;
+        private System.Windows.Forms.Button btnThemeLight;
     }
 }
