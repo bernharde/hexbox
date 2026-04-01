@@ -69,7 +69,8 @@ namespace Be.HexEditor.Theme
             if (Form != null)
             {
                 ThemeChanged += UiManagerComponent_ThemeChanged;
-                Form.Load += (s, e) => Apply(Form);
+                //Form.Load += (s, e) => Apply(Form);
+                Apply(Form);
             }
         }
 

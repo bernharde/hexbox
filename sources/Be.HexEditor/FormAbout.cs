@@ -117,25 +117,25 @@ namespace Be.HexEditor
             mainLayout.Controls.Add(btnOK, 0, 3);
             mainLayout.Dock = DockStyle.Fill;
             mainLayout.Location = new Point(0, 0);
+            mainLayout.Margin = new Padding(0);
             mainLayout.Name = "mainLayout";
-            mainLayout.Padding = new Padding(10);
+            mainLayout.Padding = new Padding(5);
             mainLayout.RowCount = 4;
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             mainLayout.Size = new Size(600, 500);
             mainLayout.TabIndex = 0;
             // 
             // headerPanel
             // 
-            headerPanel.BorderStyle = BorderStyle.FixedSingle;
             headerPanel.Controls.Add(headerContent);
             headerPanel.Dock = DockStyle.Fill;
-            headerPanel.Location = new Point(13, 13);
+            headerPanel.Location = new Point(8, 8);
             headerPanel.Name = "headerPanel";
             headerPanel.Padding = new Padding(5);
-            headerPanel.Size = new Size(574, 134);
+            headerPanel.Size = new Size(584, 134);
             headerPanel.TabIndex = 0;
             // 
             // headerContent
@@ -149,15 +149,14 @@ namespace Be.HexEditor
             headerContent.Location = new Point(5, 5);
             headerContent.Margin = new Padding(0);
             headerContent.Name = "headerContent";
-            headerContent.Padding = new Padding(5);
-            headerContent.Size = new Size(562, 122);
+            headerContent.Size = new Size(574, 124);
             headerContent.TabIndex = 0;
             headerContent.WrapContents = false;
             // 
             // lblTitle
             // 
             lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.Location = new Point(5, 5);
+            lblTitle.Location = new Point(0, 0);
             lblTitle.Margin = new Padding(0, 0, 0, 5);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(300, 35);
@@ -166,7 +165,7 @@ namespace Be.HexEditor
             // 
             // lblVersion
             // 
-            lblVersion.Location = new Point(5, 45);
+            lblVersion.Location = new Point(0, 40);
             lblVersion.Margin = new Padding(0, 0, 0, 3);
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new Size(300, 25);
@@ -175,7 +174,7 @@ namespace Be.HexEditor
             // 
             // lblAuthor
             // 
-            lblAuthor.Location = new Point(5, 73);
+            lblAuthor.Location = new Point(0, 68);
             lblAuthor.Margin = new Padding(0, 0, 0, 3);
             lblAuthor.Name = "lblAuthor";
             lblAuthor.Size = new Size(300, 25);
@@ -185,7 +184,7 @@ namespace Be.HexEditor
             // lnkWebsite
             // 
             lnkWebsite.AutoSize = true;
-            lnkWebsite.Location = new Point(5, 101);
+            lnkWebsite.Location = new Point(0, 96);
             lnkWebsite.Margin = new Padding(0);
             lnkWebsite.Name = "lnkWebsite";
             lnkWebsite.Size = new Size(204, 15);
@@ -200,15 +199,16 @@ namespace Be.HexEditor
             tabButtonsPanel.Controls.Add(btnTabLicense);
             tabButtonsPanel.Controls.Add(btnTabChanges);
             tabButtonsPanel.Dock = DockStyle.Fill;
-            tabButtonsPanel.Location = new Point(10, 155);
-            tabButtonsPanel.Margin = new Padding(0, 5, 0, 5);
+            tabButtonsPanel.Location = new Point(10, 150);
+            tabButtonsPanel.Margin = new Padding(5, 5, 5, 0);
             tabButtonsPanel.Name = "tabButtonsPanel";
-            tabButtonsPanel.Size = new Size(580, 30);
+            tabButtonsPanel.Size = new Size(580, 35);
             tabButtonsPanel.TabIndex = 1;
             tabButtonsPanel.WrapContents = false;
             // 
             // btnTabAbout
             // 
+            btnTabAbout.AutoSize = true;
             btnTabAbout.FlatAppearance.BorderSize = 0;
             btnTabAbout.FlatStyle = FlatStyle.Flat;
             btnTabAbout.Location = new Point(0, 0);
@@ -220,6 +220,7 @@ namespace Be.HexEditor
             // 
             // btnTabThanksTo
             // 
+            btnTabThanksTo.AutoSize = true;
             btnTabThanksTo.FlatAppearance.BorderSize = 0;
             btnTabThanksTo.FlatStyle = FlatStyle.Flat;
             btnTabThanksTo.Location = new Point(80, 0);
@@ -231,6 +232,7 @@ namespace Be.HexEditor
             // 
             // btnTabLicense
             // 
+            btnTabLicense.AutoSize = true;
             btnTabLicense.FlatAppearance.BorderSize = 0;
             btnTabLicense.FlatStyle = FlatStyle.Flat;
             btnTabLicense.Location = new Point(160, 0);
@@ -242,6 +244,7 @@ namespace Be.HexEditor
             // 
             // btnTabChanges
             // 
+            btnTabChanges.AutoSize = true;
             btnTabChanges.FlatAppearance.BorderSize = 0;
             btnTabChanges.FlatStyle = FlatStyle.Flat;
             btnTabChanges.Location = new Point(240, 0);
@@ -253,15 +256,16 @@ namespace Be.HexEditor
             // 
             // contentPanel
             // 
+            contentPanel.BorderStyle = BorderStyle.FixedSingle;
             contentPanel.Controls.Add(pnlChanges);
             contentPanel.Controls.Add(pnlLicense);
             contentPanel.Controls.Add(pnlThanksTo);
             contentPanel.Controls.Add(pnlAbout);
             contentPanel.Dock = DockStyle.Fill;
-            contentPanel.Location = new Point(10, 190);
+            contentPanel.Location = new Point(5, 185);
             contentPanel.Margin = new Padding(0);
             contentPanel.Name = "contentPanel";
-            contentPanel.Size = new Size(580, 250);
+            contentPanel.Size = new Size(590, 265);
             contentPanel.TabIndex = 2;
             // 
             // pnlChanges
@@ -271,7 +275,7 @@ namespace Be.HexEditor
             pnlChanges.Location = new Point(0, 0);
             pnlChanges.Name = "pnlChanges";
             pnlChanges.Padding = new Padding(5);
-            pnlChanges.Size = new Size(580, 250);
+            pnlChanges.Size = new Size(588, 263);
             pnlChanges.TabIndex = 0;
             pnlChanges.Visible = false;
             // 
@@ -280,10 +284,11 @@ namespace Be.HexEditor
             txtChanges.BackColor = Color.White;
             txtChanges.BorderStyle = BorderStyle.None;
             txtChanges.Dock = DockStyle.Fill;
+            txtChanges.ForeColor = Color.White;
             txtChanges.Location = new Point(5, 5);
             txtChanges.Name = "txtChanges";
             txtChanges.ReadOnly = true;
-            txtChanges.Size = new Size(570, 240);
+            txtChanges.Size = new Size(578, 253);
             txtChanges.TabIndex = 0;
             txtChanges.Text = "";
             // 
@@ -294,7 +299,7 @@ namespace Be.HexEditor
             pnlLicense.Location = new Point(0, 0);
             pnlLicense.Name = "pnlLicense";
             pnlLicense.Padding = new Padding(5);
-            pnlLicense.Size = new Size(580, 250);
+            pnlLicense.Size = new Size(588, 263);
             pnlLicense.TabIndex = 1;
             pnlLicense.Visible = false;
             // 
@@ -306,7 +311,7 @@ namespace Be.HexEditor
             txtLicense.Location = new Point(5, 5);
             txtLicense.Name = "txtLicense";
             txtLicense.ReadOnly = true;
-            txtLicense.Size = new Size(570, 240);
+            txtLicense.Size = new Size(578, 253);
             txtLicense.TabIndex = 0;
             txtLicense.Text = "";
             // 
@@ -317,7 +322,7 @@ namespace Be.HexEditor
             pnlThanksTo.Location = new Point(0, 0);
             pnlThanksTo.Name = "pnlThanksTo";
             pnlThanksTo.Padding = new Padding(5);
-            pnlThanksTo.Size = new Size(580, 250);
+            pnlThanksTo.Size = new Size(588, 263);
             pnlThanksTo.TabIndex = 2;
             pnlThanksTo.Visible = false;
             // 
@@ -329,7 +334,7 @@ namespace Be.HexEditor
             txtThanksTo.Location = new Point(5, 5);
             txtThanksTo.Name = "txtThanksTo";
             txtThanksTo.ReadOnly = true;
-            txtThanksTo.Size = new Size(570, 240);
+            txtThanksTo.Size = new Size(578, 253);
             txtThanksTo.TabIndex = 0;
             txtThanksTo.Text = "";
             // 
@@ -340,7 +345,7 @@ namespace Be.HexEditor
             pnlAbout.Location = new Point(0, 0);
             pnlAbout.Name = "pnlAbout";
             pnlAbout.Padding = new Padding(5);
-            pnlAbout.Size = new Size(580, 250);
+            pnlAbout.Size = new Size(588, 263);
             pnlAbout.TabIndex = 3;
             // 
             // txtAbout
@@ -351,7 +356,7 @@ namespace Be.HexEditor
             txtAbout.Location = new Point(5, 5);
             txtAbout.Name = "txtAbout";
             txtAbout.ReadOnly = true;
-            txtAbout.Size = new Size(570, 240);
+            txtAbout.Size = new Size(578, 253);
             txtAbout.TabIndex = 0;
             txtAbout.Text = resources.GetString("txtAbout.Text");
             // 
@@ -361,7 +366,7 @@ namespace Be.HexEditor
             btnOK.AutoSize = true;
             btnOK.DialogResult = DialogResult.OK;
             btnOK.FlatStyle = FlatStyle.Flat;
-            btnOK.Location = new Point(480, 456);
+            btnOK.Location = new Point(485, 461);
             btnOK.Margin = new Padding(0, 10, 10, 0);
             btnOK.MinimumSize = new Size(100, 34);
             btnOK.Name = "btnOK";
@@ -381,6 +386,7 @@ namespace Be.HexEditor
             CancelButton = btnOK;
             ClientSize = new Size(600, 500);
             Controls.Add(mainLayout);
+            ForeColor = Color.White;
             MinimumSize = new Size(500, 400);
             Name = "FormAbout";
             ShowIcon = false;
@@ -393,6 +399,7 @@ namespace Be.HexEditor
             headerContent.ResumeLayout(false);
             headerContent.PerformLayout();
             tabButtonsPanel.ResumeLayout(false);
+            tabButtonsPanel.PerformLayout();
             contentPanel.ResumeLayout(false);
             pnlChanges.ResumeLayout(false);
             pnlLicense.ResumeLayout(false);
@@ -406,9 +413,12 @@ namespace Be.HexEditor
 		{
 			// Get theme colors
 			var theme = ThemeManager.GetCurrentTheme();
-			var foreColor = theme != null ? theme.ForeColor : SystemColors.ControlText;
-			var backColor = theme != null ? theme.BackColor : SystemColors.Control;
-			var accentColor = theme != null ? theme.AccentColor : Color.CornflowerBlue;
+			if (theme == null)
+				return; // Theme not loaded yet
+
+			var foreColor = theme.ForeColor;
+			var backColor = theme.BackColor;
+			var accentColor = theme.AccentColor;
 
 			// Hide all panels
 			pnlAbout.Visible = false;
@@ -427,6 +437,7 @@ namespace Be.HexEditor
 			btnTabChanges.ForeColor = foreColor;
 
 			// Show selected panel and highlight button with accent color
+			// Use white text for good contrast on the accent background
 			switch (index)
 			{
 				case 0:
@@ -502,5 +513,7 @@ namespace Be.HexEditor
 		}
 	}
 }
+
+
 
 
