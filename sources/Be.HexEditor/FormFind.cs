@@ -21,8 +21,8 @@ namespace Be.HexEditor
 		private Label lblPercent;
 		private Label lblFinding;
 		private CheckBox chkMatchCase;
-		private Timer timerPercent;
-		private Timer timer;
+		private System.Windows.Forms.Timer timerPercent;
+		private System.Windows.Forms.Timer timer;
 		private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
         private Panel line;
@@ -81,8 +81,8 @@ namespace Be.HexEditor
             lblPercent = new Label();
             lblFinding = new Label();
             chkMatchCase = new CheckBox();
-            timerPercent = new Timer(components);
-            timer = new Timer(components);
+            timerPercent = new System.Windows.Forms.Timer(components);
+            timer = new System.Windows.Forms.Timer(components);
             flowLayoutPanel1 = new FlowLayoutPanel();
             line = new Panel();
             flowLayoutPanel2 = new FlowLayoutPanel();

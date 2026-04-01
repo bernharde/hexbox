@@ -93,6 +93,9 @@ namespace Be.HexEditor
             this.languageListBox.SelectedValue = Settings.Default.SelectedLanguage;
             if (this.languageListBox.SelectedIndex == -1)
                 this.languageListBox.SelectedIndex = 0;
+
+            // Add event handler for immediate language switching
+            this.languageListBox.SelectedIndexChanged += LanguageListBox_SelectedIndexChanged;
         }
 
         void clearRecentFilesButton_Click(object sender, EventArgs e)
@@ -120,8 +123,6 @@ namespace Be.HexEditor
             {
                 Settings.Default.UseSystemLanguage = this.UseSystemLanguage;
                 Settings.Default.SelectedLanguage = (string)this.languageListBox.SelectedValue;
-
-
                 changed = true;
             }
 
@@ -134,6 +135,29 @@ namespace Be.HexEditor
         void useSystemLanguageCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             this.languageListBox.Enabled = !useSystemLanguageCheckBox.Checked;
+        }
+
+        void LanguageListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedLanguage = (string)this.languageListBox.SelectedValue;
+            if (selectedLanguage != Settings.Default.SelectedLanguage)
+            {
+                Settings.Default.SelectedLanguage = selectedLanguage;
+                Settings.Default.Save();
+
+                // Load new language and apply immediately
+                var culture = new CultureInfo(selectedLanguage);
+                LocalizationManager.LoadLocalization(culture);
+
+                // Update all open forms immediately
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form != null && !form.IsDisposed)
+                    {
+                        form.ApplyLocalization();
+                    }
+                }
+            }
         }
     }
 }

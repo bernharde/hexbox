@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -13,39 +15,106 @@ namespace Be.HexEditor.Localization
     internal static class LocalizationManager
     {
         private static Dictionary<string, string> _currentLocalization = new();
-        private static readonly string LocalesPath = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "Locales"
-        );
 
         /// <summary>
-        /// Loads the localization for the specified culture.
+        /// Loads the localization for the specified culture from embedded resources.
         /// </summary>
         public static void LoadLocalization(CultureInfo culture)
         {
-            var fileName = culture.Equals(CultureInfo.InvariantCulture) || culture.Equals(CultureInfo.CurrentCulture)
-                ? "strings.json"
-                : $"strings.{culture.Name}.json";
-
-            var filePath = Path.Combine(LocalesPath, fileName);
-
-            if (!File.Exists(filePath))
+            var assembly = Assembly.GetExecutingAssembly();
+            
+            // Build fallback chain: specific culture → neutral language → en-US → en → default
+            var fileNames = new List<string>();
+            
+            // 1. Exact culture match (e.g., de-DE)
+            if (!culture.Equals(CultureInfo.InvariantCulture))
             {
-                // Fallback to English if culture-specific file doesn't exist
-                filePath = Path.Combine(LocalesPath, "strings.json");
+                fileNames.Add($"strings.{culture.Name}.json");
+                
+                // 2. Neutral language (e.g., de from de-DE)
+                if (!string.IsNullOrEmpty(culture.Name) && culture.Name.Contains("-"))
+                {
+                    var neutral = culture.Name.Split('-')[0];
+                    fileNames.Add($"strings.{neutral}.json");
+                }
             }
-
+            
+            // 3. Default invariant culture
+            fileNames.Add("strings.json");
+            
             try
             {
-                var json = File.ReadAllText(filePath);
-                _currentLocalization = JsonSerializer.Deserialize<Dictionary<string, string>>(json) 
-                    ?? new Dictionary<string, string>();
+                foreach (var fileName in fileNames)
+                {
+                    var stream = FindEmbeddedResource(assembly, fileName);
+                    
+                    if (stream != null)
+                    {
+                        using (stream)
+                        using (var reader = new StreamReader(stream))
+                        {
+                            var json = reader.ReadToEnd();
+                            _currentLocalization = JsonSerializer.Deserialize<Dictionary<string, string>>(json)
+                                ?? new Dictionary<string, string>();
+                            return;
+                        }
+                    }
+                }
+                
+                // If we get here, no resource was found
+                System.Diagnostics.Debug.WriteLine($"Error: Could not find any embedded localization resource");
+                _currentLocalization = new Dictionary<string, string>();
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error loading localization: {ex.Message}");
                 _currentLocalization = new Dictionary<string, string>();
             }
+        }
+
+        /// <summary>
+        /// Finds an embedded resource by searching common resource name patterns.
+        /// </summary>
+        private static Stream FindEmbeddedResource(Assembly assembly, string fileName)
+        {
+            // Try multiple possible resource name patterns
+            var resourcePatterns = new[]
+            {
+                $"Be.HexEditor.Locales.{fileName}",
+                fileName
+            };
+
+            foreach (var pattern in resourcePatterns)
+            {
+                var stream = assembly.GetManifestResourceStream(pattern);       
+                if (stream != null)
+                {
+                    return stream;
+                }
+            }
+
+            // Log available resources for debugging
+            System.Diagnostics.Debug.WriteLine($"Available resources for '{fileName}':");
+            var allResources = assembly.GetManifestResourceNames();
+            var matchingResources = allResources.Where(r => r.Contains(fileName)).ToList();
+            if (matchingResources.Count > 0)
+            {
+                foreach (var resource in matchingResources)
+                {
+                    System.Diagnostics.Debug.WriteLine($"  - {resource}");
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine($"  No resources found containing '{fileName}'");
+                System.Diagnostics.Debug.WriteLine($"  All embedded resources:");
+                foreach (var resource in allResources.Where(r => r.Contains("Locales") || r.Contains("strings")).OrderBy(r => r))
+                {
+                    System.Diagnostics.Debug.WriteLine($"    - {resource}");
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -70,22 +139,18 @@ namespace Be.HexEditor.Localization
         /// </summary>
         public static void ApplyControlLocalization(Control control)
         {
-            // Get the control name without the type suffix (e.g., "okButton" -> "OK")
             var controlName = control.Name;
-
-            // Map common control names to localization keys
             var localizationKey = GetLocalizationKeyForControl(controlName);
 
             if (!string.IsNullOrEmpty(localizationKey))
             {
                 var localizedText = GetString(localizationKey);
-                if (localizedText != localizationKey) // Only set if we have a translation
+                if (localizedText != localizationKey)
                 {
                     control.Text = localizedText;
                 }
             }
 
-            // Recursively apply to child controls
             foreach (Control child in control.Controls)
             {
                 ApplyControlLocalization(child);
@@ -99,7 +164,6 @@ namespace Be.HexEditor.Localization
         {
             return controlName switch
             {
-                // Buttons
                 "okButton" => "OK",
                 "cancelButton" => "Cancel",
                 "applyButton" => "Apply",
@@ -112,19 +176,13 @@ namespace Be.HexEditor.Localization
                 "findAllButton" => "FindAll",
                 "findNextButton" => "FindNext",
                 "clearRecentFilesButton" => "ClearRecentFiles",
-
-                // CheckBox and Labels
                 "useSystemLanguageCheckBox" => "UseSystemLanguage",
                 "recentFilesMaxlabel" => "ItemsShownInTheRecentFilesMenu",
-
-                // Menu Items - File
                 "fileToolStripMenuItem" => "File",
                 "openToolStripMenuItem" => "Open",
                 "saveToolStripMenuItem" => "Save",
                 "recentFilesToolStripMenuItem" => "RecentFiles",
                 "exitToolStripMenuItem" => "Exit",
-
-                // Menu Items - Edit
                 "editToolStripMenuItem" => "Edit",
                 "cutToolStripMenuItem" => "Cut",
                 "copyToolStripMenuItem" => "Copy",
@@ -135,18 +193,13 @@ namespace Be.HexEditor.Localization
                 "findNextToolStripMenuItem" => "FindNext",
                 "goToToolStripMenuItem" => "GoTo",
                 "selectAllToolStripMenuItem" => "SelectAll",
-
-                // Menu Items - Help
                 "helpToolStripMenuItem" => "Help",
                 "aboutToolStripMenuItem" => "About",
                 "optionsToolStripMenuItem" => "Options",
-
-                // Other items
                 "copyToolStripMenuItem1" => "Copy",
                 "copyHexToolStripMenuItem1" => "CopyHex",
                 "pasteToolStripMenuItem1" => "Paste",
                 "pasteHexToolStripMenuItem1" => "PasteHex",
-
                 _ => null
             };
         }

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net10.0-windows</TargetFramework>
@@ -13,15 +13,43 @@
 		<Description>View and edit files in hex format</Description>
 		<Company>Be</Company>
 		<Product>Be.HexEditor</Product>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\ThanksTo.rtf" />
+		<None Remove="Resources\ThanksTo.rtf" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="..\..\license.txt">
 			<Link>Resources\license.txt</Link>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings.de.json">
+			<LogicalName>Be.HexEditor.Locales.strings.de.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings.it.json">
+			<LogicalName>Be.HexEditor.Locales.strings.it.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings.ja.json">
+			<LogicalName>Be.HexEditor.Locales.strings.ja.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings.json">
+			<LogicalName>Be.HexEditor.Locales.strings.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings.ru.json">
+			<LogicalName>Be.HexEditor.Locales.strings.ru.json</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings.zh-Hans.json">
+			<LogicalName>Be.HexEditor.Locales.strings.zh-Hans.json</LogicalName>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Resources\ThanksTo.rtf" />
 	</ItemGroup>
@@ -46,3 +74,4 @@
 	</ItemGroup>
 
 </Project>
+
