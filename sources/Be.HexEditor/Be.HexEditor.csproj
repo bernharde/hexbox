@@ -22,6 +22,7 @@
 		<None Remove="Locales\strings-ru.json" />
 		<None Remove="Locales\strings-zh-Hans.json" />
 		<None Remove="Locales\strings.json" />
+		<None Remove="Resources\Changes.rtf" />
 		<None Remove="Resources\ThanksTo.rtf" />
 	</ItemGroup>
 
@@ -35,6 +36,7 @@
 		<EmbeddedResource Include="Locales\strings-ru.json" />
 		<EmbeddedResource Include="Locales\strings-zh-Hans.json" />
 		<EmbeddedResource Include="Locales\strings.json" />
+		<EmbeddedResource Include="Resources\Changes.rtf" />
 	
 		<EmbeddedResource Include="Resources\ThanksTo.rtf" />
 	</ItemGroup>

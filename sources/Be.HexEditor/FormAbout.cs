@@ -484,7 +484,9 @@ namespace Be.HexEditor
 				{
 					if (stream != null)
 						txtThanksTo.LoadFile(stream, RichTextBoxStreamType.RichText);
-				}
+                    txtThanksTo.SelectAll();
+                    txtThanksTo.SelectionColor = SystemColors.ControlText;
+                }
 
 				// Load License
 				string resLicense = "Be.HexEditor.Resources.license.txt";
@@ -500,7 +502,9 @@ namespace Be.HexEditor
 				{
 					if (stream != null)
 						txtChanges.LoadFile(stream, RichTextBoxStreamType.RichText);
-				}
+                    txtChanges.SelectAll();
+                    txtChanges.SelectionColor = SystemColors.ControlText;
+                }
 			}
 			catch (Exception ex)
 			{
