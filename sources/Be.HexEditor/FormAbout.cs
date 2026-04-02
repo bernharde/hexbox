@@ -156,6 +156,7 @@ namespace Be.HexEditor
             // lblTitle
             // 
             lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.ForeColor = SystemColors.WindowText;
             lblTitle.Location = new Point(0, 0);
             lblTitle.Margin = new Padding(0, 0, 0, 5);
             lblTitle.Name = "lblTitle";
@@ -165,6 +166,7 @@ namespace Be.HexEditor
             // 
             // lblVersion
             // 
+            lblVersion.ForeColor = SystemColors.WindowText;
             lblVersion.Location = new Point(0, 40);
             lblVersion.Margin = new Padding(0, 0, 0, 3);
             lblVersion.Name = "lblVersion";
@@ -175,6 +177,7 @@ namespace Be.HexEditor
             // 
             // lblAuthor
             // 
+            lblAuthor.ForeColor = SystemColors.WindowText;
             lblAuthor.Location = new Point(0, 68);
             lblAuthor.Margin = new Padding(0, 0, 0, 3);
             lblAuthor.Name = "lblAuthor";
@@ -212,12 +215,13 @@ namespace Be.HexEditor
             btnTabAbout.AutoSize = true;
             btnTabAbout.FlatAppearance.BorderSize = 0;
             btnTabAbout.FlatStyle = FlatStyle.Flat;
+            btnTabAbout.ForeColor = SystemColors.ControlText;
             btnTabAbout.Location = new Point(0, 0);
             btnTabAbout.Margin = new Padding(0);
             btnTabAbout.Name = "btnTabAbout";
             btnTabAbout.Size = new Size(80, 32);
-            btnTabAbout.Tag = "About";
             btnTabAbout.TabIndex = 0;
+            btnTabAbout.Tag = "About";
             btnTabAbout.Text = "About";
             // 
             // btnTabThanksTo
@@ -225,6 +229,7 @@ namespace Be.HexEditor
             btnTabThanksTo.AutoSize = true;
             btnTabThanksTo.FlatAppearance.BorderSize = 0;
             btnTabThanksTo.FlatStyle = FlatStyle.Flat;
+            btnTabThanksTo.ForeColor = SystemColors.ControlText;
             btnTabThanksTo.Location = new Point(80, 0);
             btnTabThanksTo.Margin = new Padding(0);
             btnTabThanksTo.Name = "btnTabThanksTo";
@@ -238,6 +243,7 @@ namespace Be.HexEditor
             btnTabLicense.AutoSize = true;
             btnTabLicense.FlatAppearance.BorderSize = 0;
             btnTabLicense.FlatStyle = FlatStyle.Flat;
+            btnTabLicense.ForeColor = SystemColors.ControlText;
             btnTabLicense.Location = new Point(160, 0);
             btnTabLicense.Margin = new Padding(0);
             btnTabLicense.Name = "btnTabLicense";
@@ -251,6 +257,7 @@ namespace Be.HexEditor
             btnTabChanges.AutoSize = true;
             btnTabChanges.FlatAppearance.BorderSize = 0;
             btnTabChanges.FlatStyle = FlatStyle.Flat;
+            btnTabChanges.ForeColor = SystemColors.ControlText;
             btnTabChanges.Location = new Point(240, 0);
             btnTabChanges.Margin = new Padding(0);
             btnTabChanges.Name = "btnTabChanges";
@@ -286,10 +293,8 @@ namespace Be.HexEditor
             // 
             // txtChanges
             // 
-            txtChanges.BackColor = Color.White;
             txtChanges.BorderStyle = BorderStyle.None;
             txtChanges.Dock = DockStyle.Fill;
-            txtChanges.ForeColor = Color.White;
             txtChanges.Location = new Point(5, 5);
             txtChanges.Name = "txtChanges";
             txtChanges.ReadOnly = true;
@@ -310,7 +315,6 @@ namespace Be.HexEditor
             // 
             // txtLicense
             // 
-            txtLicense.BackColor = Color.White;
             txtLicense.BorderStyle = BorderStyle.None;
             txtLicense.Dock = DockStyle.Fill;
             txtLicense.Location = new Point(5, 5);
@@ -333,7 +337,6 @@ namespace Be.HexEditor
             // 
             // txtThanksTo
             // 
-            txtThanksTo.BackColor = Color.White;
             txtThanksTo.BorderStyle = BorderStyle.None;
             txtThanksTo.Dock = DockStyle.Fill;
             txtThanksTo.Location = new Point(5, 5);
@@ -341,6 +344,7 @@ namespace Be.HexEditor
             txtThanksTo.ReadOnly = true;
             txtThanksTo.Size = new Size(578, 253);
             txtThanksTo.TabIndex = 0;
+            txtThanksTo.Text = "";
             // 
             // pnlAbout
             // 
@@ -354,7 +358,6 @@ namespace Be.HexEditor
             // 
             // txtAbout
             // 
-            txtAbout.BackColor = Color.White;
             txtAbout.BorderStyle = BorderStyle.None;
             txtAbout.Dock = DockStyle.Fill;
             txtAbout.Location = new Point(5, 5);
@@ -375,8 +378,8 @@ namespace Be.HexEditor
             btnOK.MinimumSize = new Size(100, 34);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(100, 34);
-            btnOK.Tag = "Ok";
             btnOK.TabIndex = 3;
+            btnOK.Tag = "Ok";
             btnOK.Text = "OK";
             // 
             // uiManagerComponent
@@ -397,8 +400,8 @@ namespace Be.HexEditor
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "About";
             Tag = "About";
+            Text = "About";
             mainLayout.ResumeLayout(false);
             mainLayout.PerformLayout();
             headerPanel.ResumeLayout(false);
@@ -417,17 +420,13 @@ namespace Be.HexEditor
 
         private void SelectTab(int index)
 		{
-			// Get theme colors
-			var theme = ThemeManager.GetCurrentTheme();
-			if (theme == null)
-				return; // Theme not loaded yet
+            var backColor = SystemColors.Control;
+            var foreColor = SystemColors.ControlText;
+            var accentBackColor = SystemColors.Highlight;
+            var accentForeColor = SystemColors.HighlightText;
 
-			var foreColor = theme.ForeColor;
-			var backColor = theme.BackColor;
-			var accentColor = theme.AccentColor;
-
-			// Hide all panels
-			pnlAbout.Visible = false;
+            // Hide all panels
+            pnlAbout.Visible = false;
 			pnlThanksTo.Visible = false;
 			pnlLicense.Visible = false;
 			pnlChanges.Visible = false;
@@ -448,23 +447,23 @@ namespace Be.HexEditor
 			{
 				case 0:
 					pnlAbout.Visible = true;
-					btnTabAbout.BackColor = accentColor;
-					btnTabAbout.ForeColor = Color.White;
+					btnTabAbout.BackColor = accentBackColor;
+					btnTabAbout.ForeColor = accentForeColor;
 					break;
 				case 1:
 					pnlThanksTo.Visible = true;
-					btnTabThanksTo.BackColor = accentColor;
-					btnTabThanksTo.ForeColor = Color.White;
+					btnTabThanksTo.BackColor = accentBackColor;
+					btnTabThanksTo.ForeColor = accentForeColor;
 					break;
 				case 2:
 					pnlLicense.Visible = true;
-					btnTabLicense.BackColor = accentColor;
-					btnTabLicense.ForeColor = Color.White;
+					btnTabLicense.BackColor = accentBackColor;
+					btnTabLicense.ForeColor = accentForeColor;
 					break;
 				case 3:
 					pnlChanges.Visible = true;
-					btnTabChanges.BackColor = accentColor;
-					btnTabChanges.ForeColor = Color.White;
+					btnTabChanges.BackColor = accentBackColor;
+					btnTabChanges.ForeColor = accentForeColor;
 					break;
 			}
 		}

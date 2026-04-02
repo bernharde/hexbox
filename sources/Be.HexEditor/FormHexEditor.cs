@@ -93,7 +93,7 @@ namespace Be.HexEditor
             {
                 string textFormat = "{0}{1} - {2}";
                 string readOnly = ((DynamicFileByteProvider)hexBox.ByteProvider).ReadOnly
-                    ? strings.Readonly : "";
+                    ? LocalizationManager.GetString("Readonly") : "";
                 string text = Path.GetFileName(_fileName);
                 this.Text = string.Format(textFormat, text, readOnly, Program.SoftwareName);
             }
@@ -164,7 +164,7 @@ namespace Be.HexEditor
         {
             if (!File.Exists(fileName))
             {
-                Program.ShowMessage(strings.FileDoesNotExist);
+                Program.ShowMessage(LocalizationManager.GetString("FileDoesNotExist"));
                 return;
             }
 
@@ -187,7 +187,7 @@ namespace Be.HexEditor
                     {
                         // try to open in read-only mode
                         dynamicFileByteProvider = new DynamicFileByteProvider(fileName, true);
-                        if (Program.ShowQuestion(strings.OpenReadonly) == DialogResult.No)
+                        if (Program.ShowQuestion(LocalizationManager.GetString("OpenReadonly")) == DialogResult.No)
                         {
                             dynamicFileByteProvider.Dispose();
                             return;
@@ -196,7 +196,7 @@ namespace Be.HexEditor
                     catch (IOException) // read-only also failed
                     {
                         // file cannot be opened
-                        Program.ShowError(strings.OpenFailed);
+                        Program.ShowError(LocalizationManager.GetString("OpenFailed"));
                         return;
                     }
                 }
@@ -259,7 +259,7 @@ namespace Be.HexEditor
             {
                 if (hexBox.ByteProvider != null && hexBox.ByteProvider.HasChanges())
                 {
-                    DialogResult res = MessageBox.Show(strings.SaveChangesQuestion,
+                    DialogResult res = MessageBox.Show(LocalizationManager.GetString("SaveChangesQuestion"),
                         Program.SoftwareName,
                         MessageBoxButtons.YesNoCancel,
                         MessageBoxIcon.Warning);

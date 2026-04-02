@@ -1,8 +1,9 @@
+using Be.HexEditor.Localization;
+using Be.HexEditor.Theme;
 using Be.Windows.Forms;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Be.HexEditor.Theme;
 
 namespace Be.HexEditor
 {
@@ -402,7 +403,7 @@ namespace Be.HexEditor
 
 			if (res == -1) // -1 = no match
 			{
-				MessageBox.Show(strings.FindOperationEndOfFile, Program.SoftwareName,
+				MessageBox.Show(LocalizationManager.GetString("FindOperationEndOfFile"), Program.SoftwareName,
 					MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 			else if (res == -2) // -2 = find was aborted
