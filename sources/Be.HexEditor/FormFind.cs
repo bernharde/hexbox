@@ -110,6 +110,7 @@ namespace Be.HexEditor
             rbString.Location = new System.Drawing.Point(26, 59);
             rbString.Name = "rbString";
             rbString.Size = new System.Drawing.Size(46, 19);
+            rbString.Tag = "Text";
             rbString.TabIndex = 0;
             rbString.TabStop = true;
             rbString.Text = "Text";
@@ -121,6 +122,7 @@ namespace Be.HexEditor
             rbHex.Location = new System.Drawing.Point(26, 131);
             rbHex.Name = "rbHex";
             rbHex.Size = new System.Drawing.Size(45, 19);
+            rbHex.Tag = "Hex";
             rbHex.TabIndex = 3;
             rbHex.Text = "Hex";
             // 
@@ -132,6 +134,7 @@ namespace Be.HexEditor
             label1.Location = new System.Drawing.Point(3, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(30, 15);
+            label1.Tag = "Find";
             label1.TabIndex = 6;
             label1.Text = "Find";
             // 
@@ -144,6 +147,7 @@ namespace Be.HexEditor
             btnOK.Location = new System.Drawing.Point(266, 3);
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(120, 34);
+            btnOK.Tag = "Find";
             btnOK.TabIndex = 5;
             btnOK.Text = "&Find";
             btnOK.Click += btnOK_Click;
@@ -158,6 +162,7 @@ namespace Be.HexEditor
             btnCancel.Location = new System.Drawing.Point(392, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(120, 34);
+            btnCancel.Tag = "Cancel";
             btnCancel.TabIndex = 6;
             btnCancel.Text = "&Cancel";
             btnCancel.Click += btnCancel_Click;
@@ -188,6 +193,7 @@ namespace Be.HexEditor
             chkMatchCase.Name = "chkMatchCase";
             chkMatchCase.Size = new System.Drawing.Size(86, 19);
             chkMatchCase.TabIndex = 2;
+            chkMatchCase.Tag = "MatchCase";
             chkMatchCase.Text = "Match case";
             chkMatchCase.UseVisualStyleBackColor = true;
             // 

@@ -89,15 +89,13 @@ namespace Be.HexEditor.Localization
         }
 
         /// <summary>
-        /// Applies localization to a control based on its name.
-        /// For controls, the name is used as the key (e.g., "okButton" -> "OK" from JSON).
+        /// Applies localization to a control based on its Tag property.
+        /// The Tag property should contain the localization key (e.g., "okButton" -> Tag="OK").
         /// </summary>
         public static void ApplyControlLocalization(Control control)
         {
-            var controlName = control.Name;
-            var localizationKey = GetLocalizationKeyForControl(controlName);
-
-            if (!string.IsNullOrEmpty(localizationKey))
+            // Check if control has a localization key in its Tag property
+            if (control.Tag is string localizationKey && !string.IsNullOrEmpty(localizationKey))
             {
                 var localizedText = GetString(localizationKey);
                 if (localizedText != localizationKey)
@@ -106,57 +104,11 @@ namespace Be.HexEditor.Localization
                 }
             }
 
+            // Recursively apply to child controls
             foreach (Control child in control.Controls)
             {
                 ApplyControlLocalization(child);
             }
-        }
-
-        /// <summary>
-        /// Maps control names and menu item names to localization keys.
-        /// </summary>
-        private static string GetLocalizationKeyForControl(string controlName)
-        {
-            return controlName switch
-            {
-                "okButton" => "OK",
-                "cancelButton" => "Cancel",
-                "applyButton" => "Apply",
-                "yesButton" => "Yes",
-                "noButton" => "No",
-                "closeButton" => "Close",
-                "openButton" => "Open",
-                "saveButton" => "Save",
-                "findButton" => "Find",
-                "findAllButton" => "FindAll",
-                "findNextButton" => "FindNext",
-                "clearRecentFilesButton" => "ClearRecentFiles",
-                "useSystemLanguageCheckBox" => "UseSystemLanguage",
-                "recentFilesMaxlabel" => "ItemsShownInTheRecentFilesMenu",
-                "fileToolStripMenuItem" => "File",
-                "openToolStripMenuItem" => "Open",
-                "saveToolStripMenuItem" => "Save",
-                "recentFilesToolStripMenuItem" => "RecentFiles",
-                "exitToolStripMenuItem" => "Exit",
-                "editToolStripMenuItem" => "Edit",
-                "cutToolStripMenuItem" => "Cut",
-                "copyToolStripMenuItem" => "Copy",
-                "pasteToolStripMenuItem" => "Paste",
-                "copyHexStringToolStripMenuItem" => "CopyHex",
-                "pasteHexToolStripMenuItem" => "PasteHex",
-                "findToolStripMenuItem" => "Find",
-                "findNextToolStripMenuItem" => "FindNext",
-                "goToToolStripMenuItem" => "GoTo",
-                "selectAllToolStripMenuItem" => "SelectAll",
-                "helpToolStripMenuItem" => "Help",
-                "aboutToolStripMenuItem" => "About",
-                "optionsToolStripMenuItem" => "Options",
-                "copyToolStripMenuItem1" => "Copy",
-                "copyHexToolStripMenuItem1" => "CopyHex",
-                "pasteToolStripMenuItem1" => "Paste",
-                "pasteHexToolStripMenuItem1" => "PasteHex",
-                _ => null
-            };
         }
     }
 }

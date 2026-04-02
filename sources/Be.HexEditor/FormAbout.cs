@@ -215,6 +215,7 @@ namespace Be.HexEditor
             btnTabAbout.Margin = new Padding(0);
             btnTabAbout.Name = "btnTabAbout";
             btnTabAbout.Size = new Size(80, 32);
+            btnTabAbout.Tag = "About";
             btnTabAbout.TabIndex = 0;
             btnTabAbout.Text = "About";
             // 
@@ -229,6 +230,7 @@ namespace Be.HexEditor
             btnTabThanksTo.Size = new Size(80, 32);
             btnTabThanksTo.TabIndex = 1;
             btnTabThanksTo.Text = "Thanks To";
+            btnTabThanksTo.Tag = "ThanksTo";
             // 
             // btnTabLicense
             // 
@@ -241,6 +243,7 @@ namespace Be.HexEditor
             btnTabLicense.Size = new Size(80, 32);
             btnTabLicense.TabIndex = 2;
             btnTabLicense.Text = "License";
+            btnTabLicense.Tag = "License";
             // 
             // btnTabChanges
             // 
@@ -253,6 +256,7 @@ namespace Be.HexEditor
             btnTabChanges.Size = new Size(80, 32);
             btnTabChanges.TabIndex = 3;
             btnTabChanges.Text = "Changes";
+            btnTabChanges.Tag = "Changes";
             // 
             // contentPanel
             // 
@@ -371,6 +375,7 @@ namespace Be.HexEditor
             btnOK.MinimumSize = new Size(100, 34);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(100, 34);
+            btnOK.Tag = "Ok";
             btnOK.TabIndex = 3;
             btnOK.Text = "OK";
             // 
@@ -393,6 +398,7 @@ namespace Be.HexEditor
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "About";
+            Tag = "About";
             mainLayout.ResumeLayout(false);
             mainLayout.PerformLayout();
             headerPanel.ResumeLayout(false);

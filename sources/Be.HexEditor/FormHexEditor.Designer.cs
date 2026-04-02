@@ -100,7 +100,6 @@ namespace Be.HexEditor
             menuStrip.Padding = new System.Windows.Forms.Padding(9, 2, 0, 2);
             menuStrip.Size = new System.Drawing.Size(652, 24);
             menuStrip.TabIndex = 0;
-            menuStrip.Text = "menuStrip1";
             menuStrip.ItemClicked += menuStrip_ItemClicked;
             // 
             // fileToolStripMenuItem
@@ -108,6 +107,7 @@ namespace Be.HexEditor
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripMenuItem, toolStripSeparator, saveToolStripMenuItem, toolStripSeparator2, recentFilesToolStripMenuItem, toolStripSeparator1, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            fileToolStripMenuItem.Tag = "File";
             fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
@@ -117,6 +117,7 @@ namespace Be.HexEditor
             openToolStripMenuItem.Name = "openToolStripMenuItem";
             openToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O;
             openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            openToolStripMenuItem.Tag = "Open";
             openToolStripMenuItem.Text = "&Open";
             openToolStripMenuItem.Click += open_Click;
             // 
@@ -132,6 +133,7 @@ namespace Be.HexEditor
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S;
             saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            saveToolStripMenuItem.Tag = "Save";
             saveToolStripMenuItem.Text = "&Save";
             saveToolStripMenuItem.Click += save_Click;
             // 
@@ -145,6 +147,7 @@ namespace Be.HexEditor
             recentFilesToolStripMenuItem.Enabled = false;
             recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
             recentFilesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            recentFilesToolStripMenuItem.Tag = "RecentFiles";
             recentFilesToolStripMenuItem.Text = "Recent Files";
             recentFilesToolStripMenuItem.DropDownItemClicked += recentFiles_DropDownItemClicked;
             // 
@@ -157,6 +160,7 @@ namespace Be.HexEditor
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            exitToolStripMenuItem.Tag = "Exit";
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exit_Click;
             // 
@@ -165,6 +169,7 @@ namespace Be.HexEditor
             editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { cutToolStripMenuItem, copyToolStripMenuItem, pasteToolStripMenuItem, toolStripSeparator3, copyHexStringToolStripMenuItem, pasteHexToolStripMenuItem, toolStripSeparator4, findToolStripMenuItem, findNextToolStripMenuItem, goToToolStripMenuItem, toolStripSeparator5, selectAllToolStripMenuItem });
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            editToolStripMenuItem.Tag = "Edit";
             editToolStripMenuItem.Text = "&Edit";
             // 
             // cutToolStripMenuItem
@@ -174,6 +179,7 @@ namespace Be.HexEditor
             cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             cutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X;
             cutToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            cutToolStripMenuItem.Tag = "Cut";
             cutToolStripMenuItem.Text = "Cu&t";
             cutToolStripMenuItem.Click += cut_Click;
             // 
@@ -184,6 +190,7 @@ namespace Be.HexEditor
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             copyToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C;
             copyToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            copyToolStripMenuItem.Tag = "Copy";
             copyToolStripMenuItem.Text = "&Copy";
             copyToolStripMenuItem.Click += copy_Click;
             // 
@@ -194,6 +201,7 @@ namespace Be.HexEditor
             pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             pasteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V;
             pasteToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            pasteToolStripMenuItem.Tag = "Paste";
             pasteToolStripMenuItem.Text = "&Paste";
             pasteToolStripMenuItem.Click += paste_Click;
             // 
@@ -207,6 +215,7 @@ namespace Be.HexEditor
             copyHexStringToolStripMenuItem.Name = "copyHexStringToolStripMenuItem";
             copyHexStringToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.C;
             copyHexStringToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            copyHexStringToolStripMenuItem.Tag = "CopyHex";
             copyHexStringToolStripMenuItem.Text = "Copy Hex";
             copyHexStringToolStripMenuItem.Click += copyHex_Click;
             // 
@@ -215,6 +224,7 @@ namespace Be.HexEditor
             pasteHexToolStripMenuItem.Name = "pasteHexToolStripMenuItem";
             pasteHexToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.V;
             pasteHexToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            pasteHexToolStripMenuItem.Tag = "PasteHex";
             pasteHexToolStripMenuItem.Text = "Paste Hex";
             pasteHexToolStripMenuItem.Click += pasteHex_Click;
             // 
@@ -229,6 +239,7 @@ namespace Be.HexEditor
             findToolStripMenuItem.Name = "findToolStripMenuItem";
             findToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F;
             findToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            findToolStripMenuItem.Tag = "Find";
             findToolStripMenuItem.Text = "Find";
             findToolStripMenuItem.Click += find_Click;
             // 
@@ -238,6 +249,7 @@ namespace Be.HexEditor
             findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
             findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             findNextToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            findNextToolStripMenuItem.Tag = "FindNext";
             findNextToolStripMenuItem.Text = "Find Next";
             findNextToolStripMenuItem.Click += findNext_Click;
             // 
@@ -246,6 +258,7 @@ namespace Be.HexEditor
             goToToolStripMenuItem.Name = "goToToolStripMenuItem";
             goToToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G;
             goToToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            goToToolStripMenuItem.Tag = "GoTo";
             goToToolStripMenuItem.Text = "Go To";
             goToToolStripMenuItem.Click += goTo_Click;
             // 
@@ -259,6 +272,7 @@ namespace Be.HexEditor
             selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             selectAllToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A;
             selectAllToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            selectAllToolStripMenuItem.Tag = "SelectAll";
             selectAllToolStripMenuItem.Text = "Select &All";
             selectAllToolStripMenuItem.Click += selectAllToolStripMenuItem_Click;
             // 
@@ -267,12 +281,14 @@ namespace Be.HexEditor
             viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { encodingToolStripMenuItem, bitsToolStripMenuItem });
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            viewToolStripMenuItem.Tag = "View";
             viewToolStripMenuItem.Text = "&View";
             // 
             // encodingToolStripMenuItem
             // 
             encodingToolStripMenuItem.Name = "encodingToolStripMenuItem";
             encodingToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            encodingToolStripMenuItem.Tag = "Encoding";
             encodingToolStripMenuItem.Text = "&Encoding";
             // 
             // bitsToolStripMenuItem
@@ -280,6 +296,7 @@ namespace Be.HexEditor
             bitsToolStripMenuItem.CheckOnClick = true;
             bitsToolStripMenuItem.Name = "bitsToolStripMenuItem";
             bitsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            bitsToolStripMenuItem.Tag = "Bits";
             bitsToolStripMenuItem.Text = "&Bits";
             bitsToolStripMenuItem.CheckedChanged += bitsToolStripMenuItem_CheckedChanged;
             // 
@@ -288,12 +305,14 @@ namespace Be.HexEditor
             toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { optionsToolStripMenuItem });
             toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            toolsToolStripMenuItem.Tag = "Tools";
             toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
             // 
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            optionsToolStripMenuItem.Tag = "Options";
             optionsToolStripMenuItem.Text = "&Options";
             optionsToolStripMenuItem.Click += options_Click;
             // 
@@ -302,12 +321,14 @@ namespace Be.HexEditor
             helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            helpToolStripMenuItem.Tag = "Help";
             helpToolStripMenuItem.Text = "&Help";
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            aboutToolStripMenuItem.Tag = "About";
             aboutToolStripMenuItem.Text = "&About...";
             aboutToolStripMenuItem.Click += about_Click;
             // 
@@ -322,7 +343,6 @@ namespace Be.HexEditor
             toolStrip.Padding = new System.Windows.Forms.Padding(4);
             toolStrip.Size = new System.Drawing.Size(652, 35);
             toolStrip.TabIndex = 1;
-            toolStrip.Text = "toolStrip1";
             // 
             // openToolStripButton
             // 
@@ -333,7 +353,6 @@ namespace Be.HexEditor
             openToolStripButton.Padding = new System.Windows.Forms.Padding(2);
             openToolStripButton.Size = new System.Drawing.Size(24, 24);
             openToolStripButton.Text = "&Open";
-            openToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             openToolStripButton.Click += open_Click;
             // 
             // saveToolStripButton
@@ -344,6 +363,7 @@ namespace Be.HexEditor
             saveToolStripButton.Name = "saveToolStripButton";
             saveToolStripButton.Padding = new System.Windows.Forms.Padding(2);
             saveToolStripButton.Size = new System.Drawing.Size(24, 24);
+            saveToolStripButton.Tag = "Save";
             saveToolStripButton.Text = "&Save";
             saveToolStripButton.Click += save_Click;
             // 
@@ -360,6 +380,7 @@ namespace Be.HexEditor
             cutToolStripButton.Name = "cutToolStripButton";
             cutToolStripButton.Padding = new System.Windows.Forms.Padding(2);
             cutToolStripButton.Size = new System.Drawing.Size(24, 24);
+            cutToolStripButton.Tag = "Cut";
             cutToolStripButton.Text = "Cut";
             cutToolStripButton.Click += cut_Click;
             // 
@@ -373,6 +394,7 @@ namespace Be.HexEditor
             copyToolStripSplitButton.Name = "copyToolStripSplitButton";
             copyToolStripSplitButton.Padding = new System.Windows.Forms.Padding(2);
             copyToolStripSplitButton.Size = new System.Drawing.Size(36, 24);
+            copyToolStripSplitButton.Tag = "Copy";
             copyToolStripSplitButton.Text = "Copy";
             copyToolStripSplitButton.ButtonClick += copy_Click;
             // 
@@ -380,6 +402,7 @@ namespace Be.HexEditor
             // 
             copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             copyToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            copyToolStripMenuItem1.Tag = "Copy";
             copyToolStripMenuItem1.Text = "Copy";
             copyToolStripMenuItem1.Click += copy_Click;
             // 
@@ -387,6 +410,7 @@ namespace Be.HexEditor
             // 
             copyHexToolStripMenuItem1.Name = "copyHexToolStripMenuItem1";
             copyHexToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            copyHexToolStripMenuItem1.Tag = "CopyHex";
             copyHexToolStripMenuItem1.Text = "Copy Hex";
             copyHexToolStripMenuItem1.Click += copyHex_Click;
             // 
@@ -399,6 +423,7 @@ namespace Be.HexEditor
             pasteToolStripSplitButton.Name = "pasteToolStripSplitButton";
             pasteToolStripSplitButton.Padding = new System.Windows.Forms.Padding(2);
             pasteToolStripSplitButton.Size = new System.Drawing.Size(36, 24);
+            pasteToolStripSplitButton.Tag = "Paste";
             pasteToolStripSplitButton.Text = "Paste";
             pasteToolStripSplitButton.ButtonClick += paste_Click;
             // 
@@ -406,6 +431,7 @@ namespace Be.HexEditor
             // 
             pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
             pasteToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            pasteToolStripMenuItem1.Tag = "Paste";
             pasteToolStripMenuItem1.Text = "Paste";
             pasteToolStripMenuItem1.Click += paste_Click;
             // 
@@ -413,6 +439,7 @@ namespace Be.HexEditor
             // 
             pasteHexToolStripMenuItem1.Name = "pasteHexToolStripMenuItem1";
             pasteHexToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            pasteHexToolStripMenuItem1.Tag = "PasteHex";
             pasteHexToolStripMenuItem1.Text = "Paste Hex";
             pasteHexToolStripMenuItem1.Click += pasteHex_Click;
             // 
@@ -424,7 +451,7 @@ namespace Be.HexEditor
             encodingToolStripComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             encodingToolStripComboBox.Name = "encodingToolStripComboBox";
             encodingToolStripComboBox.Padding = new System.Windows.Forms.Padding(2);
-            encodingToolStripComboBox.Size = new System.Drawing.Size(136, 27);
+            encodingToolStripComboBox.Size = new System.Drawing.Size(166, 27);
             encodingToolStripComboBox.SelectedIndexChanged += toolStripEncoding_SelectedIndexChanged;
             // 
             // statusStrip
@@ -482,10 +509,10 @@ namespace Be.HexEditor
             hexBox.BuiltInContextMenu.CopyMenuItemText = "Copy ";
             hexBox.BuiltInContextMenu.CutMenuItemImage = FluentUI.Cut16;
             hexBox.BuiltInContextMenu.CutMenuItemScalingImageName = "Cut";
-            hexBox.BuiltInContextMenu.CutMenuItemText = "Cut ";
+            hexBox.BuiltInContextMenu.CutMenuItemText = "Cut";
             hexBox.BuiltInContextMenu.PasteMenuItemImage = FluentUI.ClipboardPaste16;
             hexBox.BuiltInContextMenu.PasteMenuItemScalingImageName = "Paste";
-            hexBox.BuiltInContextMenu.PasteMenuItemText = "Paste ";
+            hexBox.BuiltInContextMenu.PasteMenuItemText = "Paste";
             hexBox.BuiltInContextMenu.SelectAllMenuItemText = "Select All ";
             hexBox.ColumnInfoVisible = true;
             hexBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -610,13 +637,13 @@ namespace Be.HexEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         public RecentFileHandler recentFileHandler;
-		private System.Windows.Forms.ToolStripStatusLabel bitToolStripStatusLabel;
-		private System.Windows.Forms.ToolStripComboBox encodingToolStripComboBox;
-		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem encodingToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem bitsToolStripMenuItem;
-		private BitControl bitControl1;
-		private System.Windows.Forms.Panel bodyPanel;
+        private System.Windows.Forms.ToolStripStatusLabel bitToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripComboBox encodingToolStripComboBox;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem encodingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bitsToolStripMenuItem;
+        private BitControl bitControl1;
+        private System.Windows.Forms.Panel bodyPanel;
         private UiManagerComponent uiManagerComponent;
     }
 }
