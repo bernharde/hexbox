@@ -68,10 +68,10 @@ namespace Be.HexEditor
             clearRecentFilesButton.Location = new System.Drawing.Point(28, 257);
             clearRecentFilesButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             clearRecentFilesButton.Name = "clearRecentFilesButton";
-            clearRecentFilesButton.Size = new System.Drawing.Size(103, 25);
+            clearRecentFilesButton.Size = new System.Drawing.Size(109, 25);
             clearRecentFilesButton.TabIndex = 2;
             clearRecentFilesButton.Tag = "ClearRecentFiles";
-            clearRecentFilesButton.Text = "ClearRecentFiles";
+            clearRecentFilesButton.Text = "Clear Recent Files";
             clearRecentFilesButton.UseVisualStyleBackColor = true;
             clearRecentFilesButton.Click += clearRecentFilesButton_Click;
             // 
@@ -95,6 +95,7 @@ namespace Be.HexEditor
             recentFilesMaxTextBox.Name = "recentFilesMaxTextBox";
             recentFilesMaxTextBox.Size = new System.Drawing.Size(66, 22);
             recentFilesMaxTextBox.TabIndex = 0;
+            recentFilesMaxTextBox.TextChanged += recentFilesMaxTextBox_TextChanged;
             // 
             // uiManagerComponent
             // 

@@ -116,7 +116,7 @@ namespace Be.HexEditor
             openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             openToolStripMenuItem.Name = "openToolStripMenuItem";
             openToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O;
-            openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             openToolStripMenuItem.Tag = "Open";
             openToolStripMenuItem.Text = "&Open";
             openToolStripMenuItem.Click += open_Click;
@@ -124,7 +124,7 @@ namespace Be.HexEditor
             // toolStripSeparator
             // 
             toolStripSeparator.Name = "toolStripSeparator";
-            toolStripSeparator.Size = new System.Drawing.Size(143, 6);
+            toolStripSeparator.Size = new System.Drawing.Size(177, 6);
             // 
             // saveToolStripMenuItem
             // 
@@ -132,7 +132,7 @@ namespace Be.HexEditor
             saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S;
-            saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             saveToolStripMenuItem.Tag = "Save";
             saveToolStripMenuItem.Text = "&Save";
             saveToolStripMenuItem.Click += save_Click;
@@ -140,13 +140,13 @@ namespace Be.HexEditor
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
+            toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // recentFilesToolStripMenuItem
             // 
             recentFilesToolStripMenuItem.Enabled = false;
             recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
-            recentFilesToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            recentFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             recentFilesToolStripMenuItem.Tag = "RecentFiles";
             recentFilesToolStripMenuItem.Text = "Recent Files";
             recentFilesToolStripMenuItem.DropDownItemClicked += recentFiles_DropDownItemClicked;
@@ -154,12 +154,12 @@ namespace Be.HexEditor
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
+            toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             exitToolStripMenuItem.Tag = "Exit";
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exit_Click;
@@ -311,7 +311,7 @@ namespace Be.HexEditor
             // optionsToolStripMenuItem
             // 
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             optionsToolStripMenuItem.Tag = "Options";
             optionsToolStripMenuItem.Text = "&Options";
             optionsToolStripMenuItem.Click += options_Click;
@@ -451,7 +451,7 @@ namespace Be.HexEditor
             encodingToolStripComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             encodingToolStripComboBox.Name = "encodingToolStripComboBox";
             encodingToolStripComboBox.Padding = new System.Windows.Forms.Padding(2);
-            encodingToolStripComboBox.Size = new System.Drawing.Size(166, 27);
+            encodingToolStripComboBox.Size = new System.Drawing.Size(158, 27);
             encodingToolStripComboBox.SelectedIndexChanged += toolStripEncoding_SelectedIndexChanged;
             // 
             // statusStrip
@@ -571,7 +571,6 @@ namespace Be.HexEditor
             Controls.Add(toolStrip);
             Controls.Add(menuStrip);
             Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            ForeColor = System.Drawing.Color.White;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip;
             Margin = new System.Windows.Forms.Padding(44, 29, 44, 29);

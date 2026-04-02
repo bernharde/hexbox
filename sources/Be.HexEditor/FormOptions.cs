@@ -14,23 +14,6 @@ namespace Be.HexEditor
 {
     public partial class FormOptions : Form
     {
-        int recentFilesMax;
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int RecentFilesMax
-        {
-            get { return recentFilesMax; }
-            set
-            {
-                if (recentFilesMax == value)
-                    return;
-                if (value < 0 || value > RecentFileHandler.MaxRecentFiles)
-                    return;
-
-                recentFilesMax = value;
-            }
-        }
-
 
         bool useSystemLanguage;
         [Browsable(false)]
@@ -79,10 +62,8 @@ namespace Be.HexEditor
             // Apply localization to all UI elements
             this.ApplyLocalization();
 
-            this.recentFilesMax = Settings.Default.RecentFilesMax;
-            this.recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
-            this.useSystemLanguage = Settings.Default.UseSystemLanguage;
-            this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
+            this.recentFilesMaxTextBox.Text = Settings.Default.RecentFilesMax.ToString();
+            this.useSystemLanguageCheckBox.Checked = Settings.Default.UseSystemLanguage;
 
             if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
                 Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
@@ -117,35 +98,6 @@ namespace Be.HexEditor
             Program.MainForm.recentFileHandler.Clear();
         }
 
-        void okButton_Click(object sender, EventArgs e)
-        {
-            bool changed = false;
-            if (recentFilesMax != Settings.Default.RecentFilesMax)
-            {
-                Settings.Default.RecentFilesMax = recentFilesMax;
-                changed = true;
-            }
-
-            //if ((ThemeMode)this.themeComboBox.SelectedValue != UiManagerComponent.CurrentTheme)
-            //{
-            //    UiManagerComponent.CurrentTheme = (ThemeMode)this.themeComboBox.SelectedValue;
-            //    changed = true;
-            //}
-
-            if (Settings.Default.UseSystemLanguage != this.useSystemLanguage ||
-                Settings.Default.SelectedLanguage != (string)this.languageListBox.SelectedValue)
-            {
-                Settings.Default.UseSystemLanguage = this.UseSystemLanguage;
-                Settings.Default.SelectedLanguage = (string)this.languageListBox.SelectedValue;
-                changed = true;
-            }
-
-            if (changed)
-                Settings.Default.Save();
-
-            this.DialogResult = DialogResult.OK;
-        }
-
         void useSystemLanguageCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             this.languageListBox.Enabled = !useSystemLanguageCheckBox.Checked;
@@ -169,8 +121,8 @@ namespace Be.HexEditor
                 hasChanges = true;
             }
 
-            if(hasChanges)
-            {                 
+            if (hasChanges)
+            {
                 Settings.Default.Save();
                 Program.SetCulture();
                 LocalizationManager.LoadCurrentCulture();
@@ -189,40 +141,45 @@ namespace Be.HexEditor
             CheckLanguageChange();
         }
 
-        void BtnThemeSystem_Click(object sender, EventArgs e)
+        private void SetTheme(SystemColorMode mode)
         {
-            if (UiManagerComponent.CurrentSystemColorMode != SystemColorMode.System)
+            if (UiManagerComponent.CurrentSystemColorMode != mode)
             {
-                UiManagerComponent.CurrentSystemColorMode = SystemColorMode.System;
-                Settings.Default.SelectedSystemColorMode = SystemColorMode.System;
+                Settings.Default.SelectedSystemColorMode = mode;
                 Settings.Default.Save();
                 UpdateThemeButtons();
-                this.Refresh();
+
+                MessageBox.Show(LocalizationManager.GetString("ProgramRestartSettings"), LocalizationManager.GetString("Information"), MessageBoxButtons.OK);
             }
+        }
+
+        void BtnThemeSystem_Click(object sender, EventArgs e)
+        {
+            SetTheme(SystemColorMode.System);
         }
 
         void BtnThemeDark_Click(object sender, EventArgs e)
         {
-            if (UiManagerComponent.CurrentSystemColorMode != SystemColorMode.Dark)
-            {
-                UiManagerComponent.CurrentSystemColorMode = SystemColorMode.Dark;
-                Settings.Default.SelectedSystemColorMode = SystemColorMode.Dark;
-                Settings.Default.Save();
-                UpdateThemeButtons();
-                this.Refresh();
-            }
+            SetTheme(SystemColorMode.Dark);
         }
 
         void BtnThemeLight_Click(object sender, EventArgs e)
         {
-            if (UiManagerComponent.CurrentSystemColorMode != SystemColorMode.Classic)
+            SetTheme(SystemColorMode.Classic);
+        }
+
+        private void recentFilesMaxTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var ok = int.TryParse(recentFilesMaxTextBox.Text, out int count);
+            if (ok)
             {
-                UiManagerComponent.CurrentSystemColorMode = SystemColorMode.Classic;
-                Settings.Default.SelectedSystemColorMode = SystemColorMode.Classic;
-                Settings.Default.Save();
-                UpdateThemeButtons();
-                this.Refresh();
+                if (Settings.Default.RecentFilesMax != count)
+                {
+                    Settings.Default.RecentFilesMax = count;
+                    Settings.Default.Save();
+                }
             }
+
         }
     }
 }
