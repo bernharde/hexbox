@@ -170,6 +170,7 @@ namespace Be.HexEditor
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new Size(300, 25);
             lblVersion.TabIndex = 1;
+            lblVersion.Tag = "Version";
             lblVersion.Text = "Version: ";
             // 
             // lblAuthor
@@ -229,8 +230,8 @@ namespace Be.HexEditor
             btnTabThanksTo.Name = "btnTabThanksTo";
             btnTabThanksTo.Size = new Size(80, 32);
             btnTabThanksTo.TabIndex = 1;
-            btnTabThanksTo.Text = "Thanks To";
             btnTabThanksTo.Tag = "ThanksTo";
+            btnTabThanksTo.Text = "Thanks To";
             // 
             // btnTabLicense
             // 
@@ -242,8 +243,8 @@ namespace Be.HexEditor
             btnTabLicense.Name = "btnTabLicense";
             btnTabLicense.Size = new Size(80, 32);
             btnTabLicense.TabIndex = 2;
-            btnTabLicense.Text = "License";
             btnTabLicense.Tag = "License";
+            btnTabLicense.Text = "License";
             // 
             // btnTabChanges
             // 
@@ -255,8 +256,8 @@ namespace Be.HexEditor
             btnTabChanges.Name = "btnTabChanges";
             btnTabChanges.Size = new Size(80, 32);
             btnTabChanges.TabIndex = 3;
-            btnTabChanges.Text = "Changes";
             btnTabChanges.Tag = "Changes";
+            btnTabChanges.Text = "Changes";
             // 
             // contentPanel
             // 
@@ -340,7 +341,6 @@ namespace Be.HexEditor
             txtThanksTo.ReadOnly = true;
             txtThanksTo.Size = new Size(578, 253);
             txtThanksTo.TabIndex = 0;
-            txtThanksTo.Text = "";
             // 
             // pnlAbout
             // 

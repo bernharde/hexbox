@@ -55,6 +55,7 @@ namespace Be.HexEditor
             useSystemLanguageCheckBox.Name = "useSystemLanguageCheckBox";
             useSystemLanguageCheckBox.Size = new System.Drawing.Size(134, 17);
             useSystemLanguageCheckBox.TabIndex = 0;
+            useSystemLanguageCheckBox.Tag = "UseSystemLanguage";
             useSystemLanguageCheckBox.Text = "Use system language";
             useSystemLanguageCheckBox.UseVisualStyleBackColor = true;
             useSystemLanguageCheckBox.CheckedChanged += useSystemLanguageCheckBox_CheckedChanged;
@@ -69,6 +70,7 @@ namespace Be.HexEditor
             clearRecentFilesButton.Name = "clearRecentFilesButton";
             clearRecentFilesButton.Size = new System.Drawing.Size(103, 25);
             clearRecentFilesButton.TabIndex = 2;
+            clearRecentFilesButton.Tag = "ClearRecentFiles";
             clearRecentFilesButton.Text = "ClearRecentFiles";
             clearRecentFilesButton.UseVisualStyleBackColor = true;
             clearRecentFilesButton.Click += clearRecentFilesButton_Click;
@@ -82,6 +84,7 @@ namespace Be.HexEditor
             recentFilesMaxlabel.Name = "recentFilesMaxlabel";
             recentFilesMaxlabel.Size = new System.Drawing.Size(196, 13);
             recentFilesMaxlabel.TabIndex = 1;
+            recentFilesMaxlabel.Tag = "RecentFilesMaxItems";
             recentFilesMaxlabel.Text = "Items shown in the recent files menu";
             // 
             // recentFilesMaxTextBox
@@ -115,6 +118,7 @@ namespace Be.HexEditor
             themeLabel.Name = "themeLabel";
             themeLabel.Size = new System.Drawing.Size(40, 13);
             themeLabel.TabIndex = 7;
+            themeLabel.Tag = "Theme";
             themeLabel.Text = "Theme";
             // 
             // themeButtonsPanel
@@ -141,6 +145,7 @@ namespace Be.HexEditor
             btnThemeSystem.Size = new System.Drawing.Size(80, 32);
             btnThemeSystem.TabIndex = 0;
             btnThemeSystem.Text = "System";
+            btnThemeSystem.Tag = "System";
             btnThemeSystem.UseVisualStyleBackColor = false;
             btnThemeSystem.Click += BtnThemeSystem_Click;
             // 
@@ -154,6 +159,7 @@ namespace Be.HexEditor
             btnThemeDark.Name = "btnThemeDark";
             btnThemeDark.Size = new System.Drawing.Size(80, 32);
             btnThemeDark.TabIndex = 1;
+            btnThemeDark.Tag = "Dark";
             btnThemeDark.Text = "Dark";
             btnThemeDark.UseVisualStyleBackColor = false;
             btnThemeDark.Click += BtnThemeDark_Click;
@@ -168,6 +174,7 @@ namespace Be.HexEditor
             btnThemeLight.Name = "btnThemeLight";
             btnThemeLight.Size = new System.Drawing.Size(80, 32);
             btnThemeLight.TabIndex = 2;
+            btnThemeLight.Tag = "Light";
             btnThemeLight.Text = "Light";
             btnThemeLight.UseVisualStyleBackColor = false;
             btnThemeLight.Click += BtnThemeLight_Click;
@@ -193,6 +200,7 @@ namespace Be.HexEditor
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Tag = "Options";
             Text = "Options";
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
             themeButtonsPanel.ResumeLayout(false);

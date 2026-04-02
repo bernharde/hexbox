@@ -88,6 +88,7 @@ namespace Be.HexEditor
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(95, 34);
             btnCancel.TabIndex = 1;
+            btnCancel.Tag = "Cancel";
             btnCancel.Text = "Cancel";
             btnCancel.Click += btnCancel_Click;
             // 
@@ -101,6 +102,7 @@ namespace Be.HexEditor
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(91, 34);
             btnOK.TabIndex = 2;
+            btnOK.Tag = "Ok";
             btnOK.Text = "OK";
             btnOK.Click += btnOK_Click;
             // 
@@ -121,7 +123,8 @@ namespace Be.HexEditor
             label2.Name = "label2";
             label2.Size = new Size(64, 23);
             label2.TabIndex = 10;
-            label2.Text = "Goto";
+            label2.Tag = "GoTo";
+            label2.Text = "Go to";
             // 
             // line
             // 
@@ -168,6 +171,7 @@ namespace Be.HexEditor
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Goto byte";
+            Tag = "GotoByte";
             Activated += FormGoTo_Activated;
             ((ISupportInitialize)nup).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
