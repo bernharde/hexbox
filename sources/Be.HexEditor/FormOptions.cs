@@ -150,35 +150,30 @@ namespace Be.HexEditor
         {
             this.languageListBox.Enabled = !useSystemLanguageCheckBox.Checked;
 
-            if(Settings.Default.UseSystemLanguage != useSystemLanguageCheckBox.Checked)
-            {
-                Settings.Default.UseSystemLanguage = useSystemLanguageCheckBox.Checked;
-
-                string selectedLanguage = (string)this.languageListBox.SelectedValue;
-                if (selectedLanguage != Settings.Default.SelectedLanguage)
-                {
-                    Settings.Default.SelectedLanguage = selectedLanguage;
-                }
-                
-                Settings.Default.Save();
-                Program.SetCulture();
-                LocalizationManager.LoadCurrentCulture();
-            }
+            CheckLanguageChange();
         }
 
-        void LanguageListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void CheckLanguageChange()
         {
+            var hasChanges = false;
+            if (Settings.Default.UseSystemLanguage != useSystemLanguageCheckBox.Checked)
+            {
+                Settings.Default.UseSystemLanguage = useSystemLanguageCheckBox.Checked;
+                hasChanges = true;
+            }
+
             string selectedLanguage = (string)this.languageListBox.SelectedValue;
             if (selectedLanguage != Settings.Default.SelectedLanguage)
             {
                 Settings.Default.SelectedLanguage = selectedLanguage;
+                hasChanges = true;
+            }
+
+            if(hasChanges)
+            {                 
                 Settings.Default.Save();
-
-                // Load new language and apply immediately
-                var culture = new CultureInfo(selectedLanguage);
-                LocalizationManager.LoadLocalization(culture);
-
-                // Update all open forms immediately
+                Program.SetCulture();
+                LocalizationManager.LoadCurrentCulture();
                 foreach (Form form in Application.OpenForms)
                 {
                     if (form != null && !form.IsDisposed)
@@ -187,6 +182,11 @@ namespace Be.HexEditor
                     }
                 }
             }
+        }
+
+        void LanguageListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckLanguageChange();
         }
 
         void BtnThemeSystem_Click(object sender, EventArgs e)
