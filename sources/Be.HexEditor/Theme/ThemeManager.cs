@@ -16,6 +16,8 @@ namespace Be.HexEditor.Theme
             _currentTheme = theme;
             _isDarkTheme = dark;
 
+            
+
             //control.BackColor = theme.BackColor;
             //control.ForeColor = theme.ForeColor;
 
@@ -29,10 +31,10 @@ namespace Be.HexEditor.Theme
                     : new ToolStripProfessionalRenderer();
             }
 
-            if (control is Be.Windows.Forms.HexBox hexBox)
-            {
-                hexBox.BackColorDisabled = theme.DisabledBackColor;
-            }
+            //if (control is Be.Windows.Forms.HexBox hexBox)
+            //{
+            //    hexBox.BackColorDisabled = theme.DisabledBackColor;
+            //}
 
             if (control is LinkLabel linkLabel)
             {

@@ -48,7 +48,8 @@ namespace Be.HexEditor.Theme
 
         private void UiManagerComponent_SystemColorModeChanged(object? sender, SystemColorMode e)
         {
-            if(Form != null)
+            Application.SetColorMode(UiManagerComponent.CurrentSystemColorMode);
+            if (Form != null)
                 Apply(Form);
         }
 
@@ -92,15 +93,10 @@ namespace Be.HexEditor.Theme
             ImageApplier.Apply(form, dark);
 
             ConfigureToolStrips(form, dark);
-            //FixToolStripText(form, dark);
+
+            form.Refresh();
         }
 
-        // =========================
-        // TOOLSTRIP CONFIG
-        // =========================
-
-        private static readonly ToolStripRenderer _darkRenderer = new ToolStripDarkRenderer();
-        private static readonly ToolStripRenderer _lightRenderer = new ToolStripProfessionalRenderer();
 
         private void ConfigureToolStrips(Control parent, bool dark)
         {
@@ -112,8 +108,6 @@ namespace Be.HexEditor.Theme
                                parent.DeviceDpi >= 144 ? 24 : 16;
 
                     ts.ImageScalingSize = new Size(size, size);
-                    //ts.RenderMode = ToolStripRenderMode.Professional;
-                    //ts.Renderer = dark ? _darkRenderer : _lightRenderer;
 
                     ts.Padding = new Padding(2, 3, 2, 3);
 

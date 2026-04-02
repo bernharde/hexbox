@@ -149,6 +149,21 @@ namespace Be.HexEditor
         void useSystemLanguageCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             this.languageListBox.Enabled = !useSystemLanguageCheckBox.Checked;
+
+            if(Settings.Default.UseSystemLanguage != useSystemLanguageCheckBox.Checked)
+            {
+                Settings.Default.UseSystemLanguage = useSystemLanguageCheckBox.Checked;
+
+                string selectedLanguage = (string)this.languageListBox.SelectedValue;
+                if (selectedLanguage != Settings.Default.SelectedLanguage)
+                {
+                    Settings.Default.SelectedLanguage = selectedLanguage;
+                }
+                
+                Settings.Default.Save();
+                Program.SetCulture();
+                LocalizationManager.LoadCurrentCulture();
+            }
         }
 
         void LanguageListBox_SelectedIndexChanged(object sender, EventArgs e)

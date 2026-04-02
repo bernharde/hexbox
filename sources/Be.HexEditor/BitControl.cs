@@ -31,13 +31,13 @@ namespace Be.HexEditor
             _innerBorderHeaderPanel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
 
             _innerBorderPanel = new Panel();
-            _innerBorderPanel.BackColor = Color.White;
+            _innerBorderPanel.BackColor = SystemColors.Control;
             _innerBorderPanel.Dock = DockStyle.Fill;
             _innerBorderPanel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
 
 			InitializeComponent();
 
-			pnBitsEditor.BackColor = System.Windows.Forms.VisualStyles.VisualStyleInformation.TextControlBorder;
+			pnBitsEditor.BackColor = SystemColors.Control;
 
             
             pnBitsHeader.Controls.Add(_innerBorderHeaderPanel);

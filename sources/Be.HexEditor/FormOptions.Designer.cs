@@ -144,8 +144,8 @@ namespace Be.HexEditor
             btnThemeSystem.Name = "btnThemeSystem";
             btnThemeSystem.Size = new System.Drawing.Size(80, 32);
             btnThemeSystem.TabIndex = 0;
-            btnThemeSystem.Text = "System";
             btnThemeSystem.Tag = "System";
+            btnThemeSystem.Text = "System";
             btnThemeSystem.UseVisualStyleBackColor = false;
             btnThemeSystem.Click += BtnThemeSystem_Click;
             // 
@@ -192,7 +192,6 @@ namespace Be.HexEditor
             Controls.Add(recentFilesMaxTextBox);
             Controls.Add(useSystemLanguageCheckBox);
             Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            ForeColor = System.Drawing.Color.White;
             Margin = new System.Windows.Forms.Padding(683, 129, 683, 129);
             MaximizeBox = false;
             MinimizeBox = false;

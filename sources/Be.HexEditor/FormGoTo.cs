@@ -118,7 +118,7 @@ namespace Be.HexEditor
             // 
             // label2
             // 
-            label2.ForeColor = Color.Blue;
+            label2.ForeColor = SystemColors.ControlText;
             label2.Location = new Point(13, 12);
             label2.Name = "label2";
             label2.Size = new Size(64, 23);
@@ -170,8 +170,8 @@ namespace Be.HexEditor
             Name = "FormGoTo";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Goto byte";
             Tag = "GotoByte";
+            Text = "Goto byte";
             Activated += FormGoTo_Activated;
             ((ISupportInitialize)nup).EndInit();
             flowLayoutPanel1.ResumeLayout(false);

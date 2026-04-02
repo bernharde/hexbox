@@ -25,6 +25,7 @@ internal static class Program
 
         Application.SetColorMode(UiManagerComponent.CurrentSystemColorMode);
 
+
         using var form = new FormHexEditor();
         MainForm = form;
 
@@ -36,7 +37,7 @@ internal static class Program
         Application.Run(form);
     }
 
-    private static void SetCulture()
+    public static void SetCulture()
     {
         if (!Settings.Default.UseSystemLanguage)
         {
