@@ -141,6 +141,7 @@ namespace Be.HexEditor
             btnThemeSystem.Size = new System.Drawing.Size(80, 32);
             btnThemeSystem.TabIndex = 0;
             btnThemeSystem.Text = "System";
+            btnThemeSystem.UseVisualStyleBackColor = false;
             btnThemeSystem.Click += BtnThemeSystem_Click;
             // 
             // btnThemeDark
@@ -154,6 +155,7 @@ namespace Be.HexEditor
             btnThemeDark.Size = new System.Drawing.Size(80, 32);
             btnThemeDark.TabIndex = 1;
             btnThemeDark.Text = "Dark";
+            btnThemeDark.UseVisualStyleBackColor = false;
             btnThemeDark.Click += BtnThemeDark_Click;
             // 
             // btnThemeLight
@@ -167,6 +169,7 @@ namespace Be.HexEditor
             btnThemeLight.Size = new System.Drawing.Size(80, 32);
             btnThemeLight.TabIndex = 2;
             btnThemeLight.Text = "Light";
+            btnThemeLight.UseVisualStyleBackColor = false;
             btnThemeLight.Click += BtnThemeLight_Click;
             // 
             // FormOptions

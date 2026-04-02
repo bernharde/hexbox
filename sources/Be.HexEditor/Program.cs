@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using Be.HexEditor.Properties;
+using Be.HexEditor.Theme;
 
 namespace Be.HexEditor;
 
@@ -21,6 +22,8 @@ internal static class Program
         Application.EnableVisualStyles();
         Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
         Application.SetCompatibleTextRenderingDefault(false);
+
+        Application.SetColorMode(UiManagerComponent.CurrentSystemColorMode);
 
         using var form = new FormHexEditor();
         MainForm = form;

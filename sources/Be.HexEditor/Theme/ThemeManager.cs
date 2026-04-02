@@ -16,20 +16,20 @@ namespace Be.HexEditor.Theme
             _currentTheme = theme;
             _isDarkTheme = dark;
 
-            control.BackColor = theme.BackColor;
-            control.ForeColor = theme.ForeColor;
+            //control.BackColor = theme.BackColor;
+            //control.ForeColor = theme.ForeColor;
 
             if (control is ToolStrip ts)
             {
-                ts.BackColor = theme.ToolStripBack;
-                ts.ForeColor = theme.ForeColor;
+                //ts.BackColor = theme.ToolStripBack;
+                //ts.ForeColor = theme.ForeColor;
 
                 ts.Renderer = dark
-                    ? new ToolStripDarkRenderer()
+                    ? new ToolStripDark2Renderer()
                     : new ToolStripProfessionalRenderer();
             }
 
-            if(control is Be.Windows.Forms.HexBox hexBox)
+            if (control is Be.Windows.Forms.HexBox hexBox)
             {
                 hexBox.BackColorDisabled = theme.DisabledBackColor;
             }
@@ -40,16 +40,16 @@ namespace Be.HexEditor.Theme
                 linkLabel.VisitedLinkColor = theme.AccentColor;
             }
 
-            if (control is Button button && button.FlatStyle == FlatStyle.Flat)
-            {
-                button.BackColor = theme.BackColor;
-                button.ForeColor = theme.ForeColor;
-            }
+            //if (control is Button button && button.FlatStyle == FlatStyle.Flat)
+            //{
+            //    button.BackColor = theme.BackColor;
+            //    button.ForeColor = theme.ForeColor;
+            //}
 
-            if (control is MenuStrip or ContextMenuStrip)
-            {
-                control.BackColor = theme.MenuBack;
-            }
+            //if (control is MenuStrip or ContextMenuStrip)
+            //{
+            //    control.BackColor = theme.MenuBack;
+            //}
 
             foreach (Control child in control.Controls)
             {

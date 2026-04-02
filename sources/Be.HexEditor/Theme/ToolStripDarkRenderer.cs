@@ -24,6 +24,50 @@ namespace Be.HexEditor.Theme
     // DARK RENDERER
     // =========================
 
+    public class ToolStripDark2Renderer : ToolStripProfessionalRenderer
+    {
+        protected override void OnRenderItemImage(ToolStripItemImageRenderEventArgs e)
+        {
+            if (!e.Item.Enabled && e.Image != null)
+            {
+                bool dark = Application.ColorMode == SystemColorMode.Dark;
+
+                // Pick a visible disabled color
+                Color tint = dark
+                    ? Color.FromArgb(100, 100, 100) // light gray (for dark mode)
+                    : Color.FromArgb(160, 160, 160); // normal gray
+
+                using var ia = new System.Drawing.Imaging.ImageAttributes();
+
+                float r = tint.R / 255f;
+                float g = tint.G / 255f;
+                float b = tint.B / 255f;
+
+                var matrix = new System.Drawing.Imaging.ColorMatrix(new float[][]
+                {
+                new float[] {0, 0, 0, 0, 0},
+                new float[] {0, 0, 0, 0, 0},
+                new float[] {0, 0, 0, 0, 0},
+                new float[] {0, 0, 0, 1, 0},
+                new float[] {r, g, b, 0, 1}
+                });
+
+                ia.SetColorMatrix(matrix);
+
+                e.Graphics.DrawImage(
+                    e.Image,
+                    e.ImageRectangle,
+                    0, 0, e.Image.Width, e.Image.Height,
+                    GraphicsUnit.Pixel,
+                    ia);
+
+                return;
+            }
+
+            base.OnRenderItemImage(e);
+        }
+    }
+
     public class ToolStripDarkRenderer : ToolStripProfessionalRenderer
     {
         public ToolStripDarkRenderer() : base(new VsColorTable())

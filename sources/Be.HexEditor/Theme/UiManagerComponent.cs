@@ -9,50 +9,44 @@ using System.Windows.Forms;
 
 namespace Be.HexEditor.Theme
 {
-    public enum ThemeMode
-    {
-        Light,
-        Dark,
-        System
-    }
 
     public class UiManagerComponent : Component, ISupportInitialize
     {
         public UiManagerComponent() {
-            ThemeChanged += UiManagerComponent_ThemeChanged;
+            SystemColorModeChanged += UiManagerComponent_SystemColorModeChanged;
         }
 
         public UiManagerComponent(IContainer container)
         {
             container.Add(this);
-            ThemeChanged += UiManagerComponent_ThemeChanged;
+            SystemColorModeChanged += UiManagerComponent_SystemColorModeChanged;
         }
 
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            ThemeChanged -= UiManagerComponent_ThemeChanged;
+            SystemColorModeChanged -= UiManagerComponent_SystemColorModeChanged;
         }
 
 
-        public static event EventHandler<ThemeMode>? ThemeChanged;
+        public static event EventHandler<SystemColorMode>? SystemColorModeChanged;
 
-        public static ThemeMode CurrentTheme
+        public static SystemColorMode CurrentSystemColorMode
         {
-            get => Settings.Default.SelectedTheme;
+            get => Settings.Default.SelectedSystemColorMode;
             set
             {
-                if (Settings.Default.SelectedTheme == value)
+                if (Settings.Default.SelectedSystemColorMode == value)
                     return;
 
-                Settings.Default.SelectedTheme = value;
+                Settings.Default.SelectedSystemColorMode = value;
                 Settings.Default.Save();
 
-                ThemeChanged?.Invoke(null, value); // ✔ FIX
+                SystemColorModeChanged?.Invoke(null, value); // ✔ FIX
             }
         }
 
-        private void UiManagerComponent_ThemeChanged(object? sender, ThemeMode e)
+        private void UiManagerComponent_SystemColorModeChanged(object? sender, SystemColorMode e)
         {
             if(Form != null)
                 Apply(Form);
@@ -68,7 +62,7 @@ namespace Be.HexEditor.Theme
         {
             if (Form != null)
             {
-                ThemeChanged += UiManagerComponent_ThemeChanged;
+                SystemColorModeChanged += UiManagerComponent_SystemColorModeChanged;
                 //Form.Load += (s, e) => Apply(Form);
                 Apply(Form);
             }
@@ -76,8 +70,8 @@ namespace Be.HexEditor.Theme
 
         private bool IsDark()
         {
-            if (CurrentTheme == ThemeMode.Dark) return true;
-            if (CurrentTheme == ThemeMode.Light) return false;
+            if (CurrentSystemColorMode == SystemColorMode.Dark) return true;
+            if (CurrentSystemColorMode == SystemColorMode.Classic) return false;
 
             var value = Microsoft.Win32.Registry.GetValue(
                 @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
@@ -98,7 +92,7 @@ namespace Be.HexEditor.Theme
             ImageApplier.Apply(form, dark);
 
             ConfigureToolStrips(form, dark);
-            FixToolStripText(form, dark);
+            //FixToolStripText(form, dark);
         }
 
         // =========================
@@ -118,8 +112,8 @@ namespace Be.HexEditor.Theme
                                parent.DeviceDpi >= 144 ? 24 : 16;
 
                     ts.ImageScalingSize = new Size(size, size);
-                    ts.RenderMode = ToolStripRenderMode.Professional;
-                    ts.Renderer = dark ? _darkRenderer : _lightRenderer;
+                    //ts.RenderMode = ToolStripRenderMode.Professional;
+                    //ts.Renderer = dark ? _darkRenderer : _lightRenderer;
 
                     ts.Padding = new Padding(2, 3, 2, 3);
 
@@ -137,37 +131,37 @@ namespace Be.HexEditor.Theme
         // TEXT COLOR FIX
         // =========================
 
-        private void FixToolStripText(Control parent, bool dark)
-        {
-            foreach (Control c in parent.Controls)
-            {
-                if (c is ToolStrip ts)
-                {
-                    var foreColor = dark
-                        ? Color.FromArgb(230, 230, 230)
-                        : Color.Black;
+        //private void FixToolStripText(Control parent, bool dark)
+        //{
+        //    foreach (Control c in parent.Controls)
+        //    {
+        //        if (c is ToolStrip ts)
+        //        {
+        //            var foreColor = dark
+        //                ? Color.FromArgb(230, 230, 230)
+        //                : Color.Black;
 
-                    foreach (ToolStripItem item in ts.Items)
-                    {
-                        item.ForeColor = foreColor;
-                        ApplyDropDown(item, foreColor);
-                    }
-                }
+        //            foreach (ToolStripItem item in ts.Items)
+        //            {
+        //                item.ForeColor = foreColor;
+        //                ApplyDropDown(item, foreColor);
+        //            }
+        //        }
 
-                FixToolStripText(c, dark);
-            }
-        }
+        //        FixToolStripText(c, dark);
+        //    }
+        //}
 
-        private void ApplyDropDown(ToolStripItem item, Color foreColor)
-        {
-            if (item is ToolStripDropDownItem dd)
-            {
-                foreach (ToolStripItem sub in dd.DropDownItems)
-                {
-                    sub.ForeColor = foreColor;
-                    ApplyDropDown(sub, foreColor);
-                }
-            }
-        }
+        //private void ApplyDropDown(ToolStripItem item, Color foreColor)
+        //{
+        //    if (item is ToolStripDropDownItem dd)
+        //    {
+        //        foreach (ToolStripItem sub in dd.DropDownItems)
+        //        {
+        //            sub.ForeColor = foreColor;
+        //            ApplyDropDown(sub, foreColor);
+        //        }
+        //    }
+        //}
     }
 }

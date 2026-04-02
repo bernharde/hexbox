@@ -12,7 +12,7 @@ using Be.HexEditor.Theme;
 
 namespace Be.HexEditor
 {
-    public partial class FormOptions: Form
+    public partial class FormOptions : Form
     {
         int recentFilesMax;
         [Browsable(false)]
@@ -20,14 +20,14 @@ namespace Be.HexEditor
         public int RecentFilesMax
         {
             get { return recentFilesMax; }
-            set 
+            set
             {
                 if (recentFilesMax == value)
                     return;
                 if (value < 0 || value > RecentFileHandler.MaxRecentFiles)
                     return;
 
-                recentFilesMax = value; 
+                recentFilesMax = value;
             }
         }
 
@@ -43,58 +43,74 @@ namespace Be.HexEditor
 
         void UpdateThemeButtons()
         {
-            var bgColor = Color.FromArgb(0, 120, 215);
-            var theme = UiManagerComponent.CurrentTheme;
-            btnThemeSystem.BackColor = theme == ThemeMode.System ? bgColor : Color.Transparent;
-            btnThemeSystem.ForeColor = theme == ThemeMode.System ? Color.White : Color.White;
-            btnThemeDark.BackColor = theme == ThemeMode.Dark ? bgColor : Color.Transparent;
-            btnThemeDark.ForeColor = theme == ThemeMode.Dark ? Color.White : Color.White;
-            btnThemeLight.BackColor = theme == ThemeMode.Light ? bgColor : Color.Transparent;
-            btnThemeLight.ForeColor = theme == ThemeMode.Light ? Color.White : Color.White;
+            var currentTheme = UiManagerComponent.CurrentSystemColorMode;
+            var accentColor = Color.FromArgb(0, 120, 215); // Blue accent
+            var inactiveColor = Color.Transparent;
+
+            // Determine text color based on theme
+            var activeForeColor = Color.White; // White text on blue accent
+            var inactiveForeColor = currentTheme == SystemColorMode.Classic ? Color.Black : Color.White;
+
+            // Update System button
+            btnThemeSystem.BackColor = currentTheme == SystemColorMode.System ? accentColor : inactiveColor;
+            btnThemeSystem.ForeColor = currentTheme == SystemColorMode.System ? activeForeColor : inactiveForeColor;
+
+            // Update Dark button
+            btnThemeDark.BackColor = currentTheme == SystemColorMode.Dark ? accentColor : inactiveColor;
+            btnThemeDark.ForeColor = currentTheme == SystemColorMode.Dark ? activeForeColor : inactiveForeColor;
+
+            // Update Light button
+            btnThemeLight.BackColor = currentTheme == SystemColorMode.Classic ? accentColor : inactiveColor;
+            btnThemeLight.ForeColor = currentTheme == SystemColorMode.Classic ? activeForeColor : inactiveForeColor;
+
+            // Force refresh
+            btnThemeSystem.Refresh();
+            btnThemeDark.Refresh();
+            btnThemeLight.Refresh();
         }
 
-		public FormOptions()
-		{
-			InitializeComponent();
+        public FormOptions()
+        {
+            InitializeComponent();
 
-			// Load localization based on current culture
-			LocalizationManager.LoadCurrentCulture();
+            // Load localization based on current culture
+            LocalizationManager.LoadCurrentCulture();
 
-			// Apply localization to all UI elements
-			this.ApplyLocalization();
+            // Apply localization to all UI elements
+            this.ApplyLocalization();
 
-			this.recentFilesMax = Settings.Default.RecentFilesMax;
-			this.recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
-			this.useSystemLanguage = Settings.Default.UseSystemLanguage;
-			this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
+            this.recentFilesMax = Settings.Default.RecentFilesMax;
+            this.recentFilesMaxTextBox.DataBindings.Add("Text", this, "RecentFilesMax");
+            this.useSystemLanguage = Settings.Default.UseSystemLanguage;
+            this.useSystemLanguageCheckBox.DataBindings.Add("Checked", this, "UseSystemLanguage");
 
-			if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
-				Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName; 
+            if (string.IsNullOrEmpty(Settings.Default.SelectedLanguage))
+                Settings.Default.SelectedLanguage = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 
-			DataTable dt = new DataTable();
-			dt.Columns.Add("Name", typeof(string));
-			dt.Columns.Add("Value", typeof(string));
-			dt.Rows.Add("English", "en");
-			dt.Rows.Add("Deutsch", "de");
-			dt.Rows.Add("Italiano", "it");
-			dt.Rows.Add("日本語", "ja");
-			dt.Rows.Add("Русский", "ru");
-			dt.Rows.Add("中文", "zh-CN");
-			dt.DefaultView.Sort = "Name";
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Name", typeof(string));
+            dt.Columns.Add("Value", typeof(string));
+            dt.Rows.Add("English", "en");
+            dt.Rows.Add("Deutsch", "de");
+            dt.Rows.Add("Italiano", "it");
+            dt.Rows.Add("日本語", "ja");
+            dt.Rows.Add("Русский", "ru");
+            dt.Rows.Add("中文", "zh-CN");
+            dt.DefaultView.Sort = "Name";
 
-			this.languageListBox.DataSource = dt.DefaultView;
-			this.languageListBox.DisplayMember = "Name";
-			this.languageListBox.ValueMember = "Value";
-			this.languageListBox.SelectedValue = Settings.Default.SelectedLanguage;
-			if (this.languageListBox.SelectedIndex == -1)
-				this.languageListBox.SelectedIndex = 0;
+            this.languageListBox.DataSource = dt.DefaultView;
+            this.languageListBox.DisplayMember = "Name";
+            this.languageListBox.ValueMember = "Value";
+            this.languageListBox.SelectedValue = Settings.Default.SelectedLanguage;
+            if (this.languageListBox.SelectedIndex == -1)
+                this.languageListBox.SelectedIndex = 0;
 
-			// Add event handler for immediate language switching
-			this.languageListBox.SelectedIndexChanged += LanguageListBox_SelectedIndexChanged;
+            // Add event handler for immediate language switching
+            this.languageListBox.SelectedIndexChanged += LanguageListBox_SelectedIndexChanged;
 
-			// Initialize theme buttons
-			UpdateThemeButtons();
-		}
+            // Initialize theme buttons
+            UpdateThemeButtons();
+        }
 
         void clearRecentFilesButton_Click(object sender, EventArgs e)
         {
@@ -124,7 +140,7 @@ namespace Be.HexEditor
                 changed = true;
             }
 
-            if(changed)
+            if (changed)
                 Settings.Default.Save();
 
             this.DialogResult = DialogResult.OK;
@@ -160,31 +176,38 @@ namespace Be.HexEditor
 
         void BtnThemeSystem_Click(object sender, EventArgs e)
         {
-            UiManagerComponent.CurrentTheme = ThemeMode.System;
-            Settings.Default.SelectedTheme = ThemeMode.System;
-            Settings.Default.Save();
-            UpdateThemeButtons();
+            if (UiManagerComponent.CurrentSystemColorMode != SystemColorMode.System)
+            {
+                UiManagerComponent.CurrentSystemColorMode = SystemColorMode.System;
+                Settings.Default.SelectedSystemColorMode = SystemColorMode.System;
+                Settings.Default.Save();
+                UpdateThemeButtons();
+                this.Refresh();
+            }
         }
 
         void BtnThemeDark_Click(object sender, EventArgs e)
         {
-            UiManagerComponent.CurrentTheme = ThemeMode.Dark;
-            Settings.Default.SelectedTheme = ThemeMode.Dark;
-            Settings.Default.Save();
-            UpdateThemeButtons();
+            if (UiManagerComponent.CurrentSystemColorMode != SystemColorMode.Dark)
+            {
+                UiManagerComponent.CurrentSystemColorMode = SystemColorMode.Dark;
+                Settings.Default.SelectedSystemColorMode = SystemColorMode.Dark;
+                Settings.Default.Save();
+                UpdateThemeButtons();
+                this.Refresh();
+            }
         }
 
         void BtnThemeLight_Click(object sender, EventArgs e)
         {
-            UiManagerComponent.CurrentTheme = ThemeMode.Light;
-            Settings.Default.SelectedTheme = ThemeMode.Light;
-            Settings.Default.Save();
-            UpdateThemeButtons();
+            if (UiManagerComponent.CurrentSystemColorMode != SystemColorMode.Classic)
+            {
+                UiManagerComponent.CurrentSystemColorMode = SystemColorMode.Classic;
+                Settings.Default.SelectedSystemColorMode = SystemColorMode.Classic;
+                Settings.Default.Save();
+                UpdateThemeButtons();
+                this.Refresh();
+            }
         }
     }
 }
-
-
-
-
-

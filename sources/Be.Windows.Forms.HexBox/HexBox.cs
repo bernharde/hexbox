@@ -2693,9 +2693,11 @@ namespace Be.Windows.Forms
             if (rec.Top < 0 || rec.Left < 0 || rec.Width <= 0 || rec.Height <= 0)
                 return;
 
+			var shadowSelectionColor = Color.FromArgb(100, this.SelectionBackColor);
+
             using (var myBitmap = new Bitmap(rec.Width, rec.Height))
             using (Graphics bitmapGraphics = Graphics.FromImage(myBitmap))
-            using (SolidBrush greenBrush = new SolidBrush(_shadowSelectionColor))
+            using (SolidBrush greenBrush = new SolidBrush(shadowSelectionColor))
             {
                 bitmapGraphics.FillRectangle(greenBrush, 0,
                     0, rec.Width, rec.Height);

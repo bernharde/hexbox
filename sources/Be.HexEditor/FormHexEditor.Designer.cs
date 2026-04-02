@@ -424,7 +424,7 @@ namespace Be.HexEditor
             encodingToolStripComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             encodingToolStripComboBox.Name = "encodingToolStripComboBox";
             encodingToolStripComboBox.Padding = new System.Windows.Forms.Padding(2);
-            encodingToolStripComboBox.Size = new System.Drawing.Size(192, 27);
+            encodingToolStripComboBox.Size = new System.Drawing.Size(136, 27);
             encodingToolStripComboBox.SelectedIndexChanged += toolStripEncoding_SelectedIndexChanged;
             // 
             // statusStrip
@@ -471,6 +471,8 @@ namespace Be.HexEditor
             // hexBox
             // 
             hexBox.AllowDrop = true;
+            hexBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            hexBox.BackColorDisabled = System.Drawing.SystemColors.ControlLight;
             hexBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             // 
             // 
@@ -488,13 +490,15 @@ namespace Be.HexEditor
             hexBox.ColumnInfoVisible = true;
             hexBox.Dock = System.Windows.Forms.DockStyle.Fill;
             hexBox.Font = new System.Drawing.Font("Consolas", 9F);
+            hexBox.ForeColor = System.Drawing.SystemColors.WindowText;
             hexBox.HexCasing = Windows.Forms.HexCasing.Lower;
             hexBox.LineInfoVisible = true;
             hexBox.Location = new System.Drawing.Point(0, 0);
             hexBox.Margin = new System.Windows.Forms.Padding(0);
             hexBox.Name = "hexBox";
-            hexBox.SelectionBackColor = System.Drawing.Color.FromArgb(0, 120, 212);
-            hexBox.ShadowSelectionColor = System.Drawing.Color.FromArgb(38, 79, 120, 255);
+            hexBox.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            hexBox.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            hexBox.ShadowSelectionColor = System.Drawing.SystemColors.ActiveCaption;
             hexBox.Size = new System.Drawing.Size(652, 334);
             hexBox.StringViewVisible = true;
             hexBox.TabIndex = 8;
@@ -540,6 +544,7 @@ namespace Be.HexEditor
             Controls.Add(toolStrip);
             Controls.Add(menuStrip);
             Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            ForeColor = System.Drawing.Color.White;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip;
             Margin = new System.Windows.Forms.Padding(44, 29, 44, 29);
