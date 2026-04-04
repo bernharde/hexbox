@@ -304,6 +304,7 @@ namespace Be.HexEditor
             // 
             // txtChanges
             // 
+            txtChanges.BackColor = SystemColors.ControlLightLight;
             txtChanges.BorderStyle = BorderStyle.None;
             txtChanges.Dock = DockStyle.Fill;
             txtChanges.Location = new Point(5, 5);
@@ -326,6 +327,7 @@ namespace Be.HexEditor
             // 
             // txtLicense
             // 
+            txtLicense.BackColor = SystemColors.ControlLightLight;
             txtLicense.BorderStyle = BorderStyle.None;
             txtLicense.Dock = DockStyle.Fill;
             txtLicense.Location = new Point(5, 5);
@@ -348,6 +350,7 @@ namespace Be.HexEditor
             // 
             // txtThanksTo
             // 
+            txtThanksTo.BackColor = SystemColors.ControlLightLight;
             txtThanksTo.BorderStyle = BorderStyle.None;
             txtThanksTo.Dock = DockStyle.Fill;
             txtThanksTo.Location = new Point(5, 5);
@@ -369,6 +372,7 @@ namespace Be.HexEditor
             // 
             // txtAbout
             // 
+            txtAbout.BackColor = SystemColors.ControlLightLight;
             txtAbout.BorderStyle = BorderStyle.None;
             txtAbout.Dock = DockStyle.Fill;
             txtAbout.Location = new Point(5, 5);
