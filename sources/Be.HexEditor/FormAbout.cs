@@ -39,7 +39,6 @@ namespace Be.HexEditor
 		private RichTextBox txtThanksTo;
 		private RichTextBox txtLicense;
 		private RichTextBox txtChanges;
-		private Button btnOK;
 		private UiManagerComponent uiManagerComponent;
 		private System.ComponentModel.IContainer components;
 
@@ -93,7 +92,6 @@ namespace Be.HexEditor
             txtThanksTo = new RichTextBox();
             pnlAbout = new Panel();
             txtAbout = new RichTextBox();
-            btnOK = new Button();
             uiManagerComponent = new UiManagerComponent(components);
             mainLayout.SuspendLayout();
             headerPanel.SuspendLayout();
@@ -114,7 +112,6 @@ namespace Be.HexEditor
             mainLayout.Controls.Add(headerPanel, 0, 0);
             mainLayout.Controls.Add(tabButtonsPanel, 0, 1);
             mainLayout.Controls.Add(contentPanel, 0, 2);
-            mainLayout.Controls.Add(btnOK, 0, 3);
             mainLayout.Dock = DockStyle.Fill;
             mainLayout.Location = new Point(0, 0);
             mainLayout.Margin = new Padding(0);
@@ -124,7 +121,7 @@ namespace Be.HexEditor
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
             mainLayout.Size = new Size(600, 500);
             mainLayout.TabIndex = 0;
             // 
@@ -279,7 +276,7 @@ namespace Be.HexEditor
             contentPanel.Location = new Point(5, 185);
             contentPanel.Margin = new Padding(0);
             contentPanel.Name = "contentPanel";
-            contentPanel.Size = new Size(590, 265);
+            contentPanel.Size = new Size(590, 302);
             contentPanel.TabIndex = 2;
             // 
             // pnlChanges
@@ -289,7 +286,7 @@ namespace Be.HexEditor
             pnlChanges.Location = new Point(0, 0);
             pnlChanges.Name = "pnlChanges";
             pnlChanges.Padding = new Padding(5);
-            pnlChanges.Size = new Size(588, 263);
+            pnlChanges.Size = new Size(588, 300);
             pnlChanges.TabIndex = 0;
             pnlChanges.Visible = false;
             // 
@@ -300,7 +297,7 @@ namespace Be.HexEditor
             txtChanges.Location = new Point(5, 5);
             txtChanges.Name = "txtChanges";
             txtChanges.ReadOnly = true;
-            txtChanges.Size = new Size(578, 253);
+            txtChanges.Size = new Size(578, 290);
             txtChanges.TabIndex = 0;
             txtChanges.Text = "";
             // 
@@ -311,7 +308,7 @@ namespace Be.HexEditor
             pnlLicense.Location = new Point(0, 0);
             pnlLicense.Name = "pnlLicense";
             pnlLicense.Padding = new Padding(5);
-            pnlLicense.Size = new Size(588, 263);
+            pnlLicense.Size = new Size(588, 300);
             pnlLicense.TabIndex = 1;
             pnlLicense.Visible = false;
             // 
@@ -322,7 +319,7 @@ namespace Be.HexEditor
             txtLicense.Location = new Point(5, 5);
             txtLicense.Name = "txtLicense";
             txtLicense.ReadOnly = true;
-            txtLicense.Size = new Size(578, 253);
+            txtLicense.Size = new Size(578, 290);
             txtLicense.TabIndex = 0;
             txtLicense.Text = "";
             // 
@@ -333,7 +330,7 @@ namespace Be.HexEditor
             pnlThanksTo.Location = new Point(0, 0);
             pnlThanksTo.Name = "pnlThanksTo";
             pnlThanksTo.Padding = new Padding(5);
-            pnlThanksTo.Size = new Size(588, 263);
+            pnlThanksTo.Size = new Size(588, 300);
             pnlThanksTo.TabIndex = 2;
             pnlThanksTo.Visible = false;
             // 
@@ -344,7 +341,7 @@ namespace Be.HexEditor
             txtThanksTo.Location = new Point(5, 5);
             txtThanksTo.Name = "txtThanksTo";
             txtThanksTo.ReadOnly = true;
-            txtThanksTo.Size = new Size(578, 253);
+            txtThanksTo.Size = new Size(578, 290);
             txtThanksTo.TabIndex = 0;
             txtThanksTo.Text = "";
             // 
@@ -355,7 +352,7 @@ namespace Be.HexEditor
             pnlAbout.Location = new Point(0, 0);
             pnlAbout.Name = "pnlAbout";
             pnlAbout.Padding = new Padding(5);
-            pnlAbout.Size = new Size(588, 263);
+            pnlAbout.Size = new Size(588, 300);
             pnlAbout.TabIndex = 3;
             // 
             // txtAbout
@@ -365,24 +362,9 @@ namespace Be.HexEditor
             txtAbout.Location = new Point(5, 5);
             txtAbout.Name = "txtAbout";
             txtAbout.ReadOnly = true;
-            txtAbout.Size = new Size(578, 253);
+            txtAbout.Size = new Size(578, 290);
             txtAbout.TabIndex = 0;
             txtAbout.Text = resources.GetString("txtAbout.Text");
-            // 
-            // btnOK
-            // 
-            btnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnOK.AutoSize = true;
-            btnOK.DialogResult = DialogResult.OK;
-            btnOK.FlatStyle = FlatStyle.Flat;
-            btnOK.Location = new Point(485, 461);
-            btnOK.Margin = new Padding(0, 10, 10, 0);
-            btnOK.MinimumSize = new Size(100, 34);
-            btnOK.Name = "btnOK";
-            btnOK.Size = new Size(100, 34);
-            btnOK.TabIndex = 3;
-            btnOK.Tag = "Ok";
-            btnOK.Text = "OK";
             // 
             // uiManagerComponent
             // 
@@ -390,10 +372,8 @@ namespace Be.HexEditor
             // 
             // FormAbout
             // 
-            AcceptButton = btnOK;
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            CancelButton = btnOK;
             ClientSize = new Size(600, 500);
             Controls.Add(mainLayout);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -405,7 +385,6 @@ namespace Be.HexEditor
             Tag = "About";
             Text = "About";
             mainLayout.ResumeLayout(false);
-            mainLayout.PerformLayout();
             headerPanel.ResumeLayout(false);
             headerContent.ResumeLayout(false);
             headerContent.PerformLayout();
