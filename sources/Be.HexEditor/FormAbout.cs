@@ -396,7 +396,7 @@ namespace Be.HexEditor
             CancelButton = btnOK;
             ClientSize = new Size(600, 500);
             Controls.Add(mainLayout);
-            ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MinimumSize = new Size(500, 400);
             Name = "FormAbout";
             ShowIcon = false;

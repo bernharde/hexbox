@@ -193,12 +193,14 @@ namespace Be.HexEditor
             Controls.Add(recentFilesMaxTextBox);
             Controls.Add(useSystemLanguageCheckBox);
             Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(683, 129, 683, 129);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormOptions";
             ShowIcon = false;
             ShowInTaskbar = false;
+            SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Tag = "Options";
             Text = "Options";
