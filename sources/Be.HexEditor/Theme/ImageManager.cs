@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Be.HexEditor
+namespace Be.HexEditor.Theme
 {
     public static class ImageManager
     {
