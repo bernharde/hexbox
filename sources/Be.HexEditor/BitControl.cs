@@ -2,111 +2,40 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Be.HexEditor
 {
 	public partial class BitControl : UserControl
 	{
-		List<RichTextBox> _txtBits = new List<RichTextBox>();
+		const int BitCount = 8;
+
+		readonly List<TextBox> _bitEditors = new List<TextBox>(BitCount);
+		readonly TableLayoutPanel _headerPanel;
+		readonly TableLayoutPanel _editorPanel;
 
 		public event EventHandler BitChanged;
 
+		BitInfo _bitInfo;
+
 		protected virtual void OnBitChanged(EventArgs e)
 		{
-			if(BitChanged != null)
+			if (BitChanged != null)
 				BitChanged(this, e);
 		}
 
-        Panel _innerBorderHeaderPanel;
-
-		Panel _innerBorderPanel;
-
 		public BitControl()
 		{
-            _innerBorderHeaderPanel = new Panel();
-            _innerBorderHeaderPanel.Dock = DockStyle.Fill;
-            _innerBorderHeaderPanel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-
-            _innerBorderPanel = new Panel();
-            _innerBorderPanel.BackColor = SystemColors.Control;
-            _innerBorderPanel.Dock = DockStyle.Fill;
-            _innerBorderPanel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-
 			InitializeComponent();
 
-			pnBitsEditor.BackColor = SystemColors.Control;
+			_headerPanel = CreateBitPanel();
+			_editorPanel = CreateBitPanel();
 
-            
-            pnBitsHeader.Controls.Add(_innerBorderHeaderPanel);
-
-            bool first = true;
-            Size size = new Size();
-            int pos = 5;
-            for (int i = 7; i > -1; i--)
-            {
-                Label lbl = new Label();
-                lbl.Tag = i;
-                lbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                lbl.Font = new System.Drawing.Font("Consolas", SystemFonts.MessageBoxFont.Size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                lbl.Margin = new System.Windows.Forms.Padding(0);
-
-                lbl.Name = "lbl" + i.ToString();
-
-                //lbl.Size = new System.Drawing.Size(14, 14);
-                
-                lbl.AutoSize = true;
-                lbl.Text = i.ToString();
-                lbl.Enter += new System.EventHandler(this.txt_Enter);
-                lbl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
-                _innerBorderHeaderPanel.Controls.Add(lbl);
-
-                if (first)
-                {
-                    size = lbl.Size;
-                    lbl.AutoSize = false;
-                    first = false;
-                }
-                
-                lbl.Size = size;
-                lbl.Left = pos;
-                lbl.Top = 3;
-                pos += size.Width;
-            }
-			
-			pnBitsEditor.Controls.Add(_innerBorderPanel);
-            pos = 8;
-			for(int i = 7; i > -1; i--)
-			{
-				RichTextBox txt = new RichTextBox();
-				txt.Tag = i;
-				txt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-                txt.Font = new System.Drawing.Font("Consolas", SystemFonts.MessageBoxFont.Size, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-				txt.Margin = new System.Windows.Forms.Padding(0);
-                
-				txt.MaxLength = 1;
-				txt.Multiline = false;
-				txt.Name = "txt" + i.ToString();
-                //txt.Size = new System.Drawing.Size(14, 14);
-                txt.Size = size;
-                txt.Left = pos;
-                txt.Top = 6;
-                pos += size.Width;
-				txt.TabIndex = 10 -i + 7;
-				txt.Text = "0";
-				txt.Visible = false;
-				txt.SelectionChanged += new System.EventHandler(this.txt_SelectionChanged);
-				txt.Enter += new System.EventHandler(this.txt_Enter);
-				txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_KeyDown);
-				_innerBorderPanel.Controls.Add(txt);
-				_txtBits.Add(txt);
-			}
+			ConfigureLayout();
+			CreateBitEditors();
 			UpdateView();
 		}
 
-		BitInfo _bitInfo;
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public BitInfo BitInfo
 		{
@@ -118,164 +47,200 @@ namespace Be.HexEditor
 			}
 		}
 
+		TableLayoutPanel CreateBitPanel()
+		{
+			var panel = new TableLayoutPanel();
+			panel.ColumnCount = BitCount;
+			panel.RowCount = 1;
+			panel.Dock = DockStyle.Fill;
+			panel.Margin = Padding.Empty;
+			panel.Padding = Padding.Empty;
+			panel.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
+
+			for (int i = 0; i < BitCount; i++)
+			{
+				panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F / BitCount));
+			}
+
+			panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+			return panel;
+		}
+
+		void ConfigureLayout()
+		{
+			pnBitsHeader.SuspendLayout();
+			pnBitsEditor.SuspendLayout();
+
+			pnBitsHeader.Controls.Clear();
+			pnBitsHeader.BackColor = SystemColors.Control;
+			pnBitsHeader.Padding = new Padding(4, 2, 4, 0);
+			pnBitsHeader.Controls.Add(_headerPanel);
+
+			pnBitsEditor.Controls.Clear();
+			pnBitsEditor.BackColor = SystemColors.Control;
+			pnBitsEditor.Padding = new Padding(4, 0, 4, 2);
+			pnBitsEditor.Controls.Add(_editorPanel);
+
+			pnBitsHeader.ResumeLayout(false);
+			pnBitsEditor.ResumeLayout(false);
+		}
+
+		void CreateBitEditors()
+		{
+			for (int bit = BitCount - 1, column = 0; bit >= 0; bit--, column++)
+			{
+				_headerPanel.Controls.Add(CreateHeaderLabel(bit), column, 0);
+
+				var editor = CreateBitEditor(bit);
+				_editorPanel.Controls.Add(editor, column, 0);
+				_bitEditors.Add(editor);
+			}
+		}
+
+		Label CreateHeaderLabel(int bit)
+		{
+			var label = new Label();
+			label.AutoSize = false;
+			label.Dock = DockStyle.Fill;
+			label.Margin = Padding.Empty;
+			label.Name = "lbl" + bit.ToString();
+			label.Text = bit.ToString();
+			label.TextAlign = ContentAlignment.MiddleCenter;
+			label.Font = new Font("Consolas", SystemFonts.MessageBoxFont.Size, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+			return label;
+		}
+
+		TextBox CreateBitEditor(int bit)
+		{
+			var editor = new TextBox();
+			editor.BorderStyle = BorderStyle.FixedSingle;
+			editor.Dock = DockStyle.Fill;
+			editor.Font = new Font("Consolas", SystemFonts.MessageBoxFont.Size, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+			editor.Margin = new Padding(1, 0, 1, 0);
+			editor.MaxLength = 1;
+			editor.Name = "txt" + bit.ToString();
+			editor.ShortcutsEnabled = false;
+			editor.TabIndex = BitCount - bit;
+			editor.Tag = bit;
+			editor.Text = "0";
+			editor.TextAlign = HorizontalAlignment.Center;
+			editor.Enter += editor_Enter;
+			editor.KeyDown += editor_KeyDown;
+			editor.MouseUp += editor_MouseUp;
+			return editor;
+		}
+
 		private void UpdateView()
 		{
-			foreach(var txt in _txtBits)
-				txt.TextChanged -= new EventHandler(txt_TextChanged);
-
 			if (_bitInfo == null)
 			{
-				foreach (var txt in _txtBits)
+				foreach (var editor in _bitEditors)
 				{
-					txt.Text = string.Empty;
+					editor.Text = string.Empty;
 				}
-				pnBitsEditor.Visible = lblValue.Visible = lblBit.Visible = pnBitsHeader.Visible = false;
+				pnBitsHeader.Visible = false;
+				pnBitsEditor.Visible = false;
 
 				return;
 			}
-			else
+
+			pnBitsHeader.Visible = true;
+			pnBitsEditor.Visible = true;
+
+			foreach (var editor in _bitEditors)
 			{
-				foreach (var txt in _txtBits)
-					txt.Visible = true;
-				pnBitsEditor.Visible = lblValue.Visible = lblBit.Visible = pnBitsHeader.Visible = true;
-			}
-
-			foreach (var txt in _txtBits)
-			{
-				int bit = (int)txt.Tag;
-				txt.Text = _bitInfo.GetBitAsString(bit);
-			}
-
-			foreach(var txt in _txtBits)
-				txt.TextChanged += new EventHandler(txt_TextChanged);
-		}
-
-		int GetBitSetInt(byte b, int pos)
-		{
-			if (IsBitSet(b, pos))
-				return 1;
-			else
-				return 0;
-		}
-
-		bool IsBitSet(byte b, int pos)
-		{
-			return (b & (1 << pos)) != 0;
-		}
-
-		byte SetBit(byte b, int BitNumber)
-		{
-			//Kleine Fehlerbehandlung
-			if (BitNumber < 8 && BitNumber > -1)
-			{
-				return (byte)(b | (byte)(0x01 << BitNumber));
-			}
-			else
-			{
-				throw new InvalidOperationException(
-				"Der Wert für BitNumber " + BitNumber.ToString() + " war nicht im zulässigen Bereich! (BitNumber = (min)0 - (max)7)");
+				int bit = (int)editor.Tag;
+				editor.Text = _bitInfo.GetBitAsString(bit);
 			}
 		}
 
-		void txt_TextChanged(object sender, EventArgs e)
+		void editor_KeyDown(object sender, KeyEventArgs e)
 		{
-			var txt = (RichTextBox)sender;
-			var index = (int)txt.Tag;
-			var value = txt.Text != "0";
-			this.BitInfo[index] = value;
-			OnBitChanged(EventArgs.Empty);
-
-			NavigateRight((RichTextBox)sender);
-		}
-
-		void NavigateLeft(RichTextBox txt)
-		{
-			var indexOf = _txtBits.IndexOf(txt);
-
-			NavigateTo(indexOf - 1);
-		}
-
-		void NavigateRight(RichTextBox txt)
-		{
-			var indexOf = _txtBits.IndexOf(txt);
-
-			NavigateTo(indexOf + 1);
-		}
-
-		void NavigateTo(int indexOf)
-		{
-			if (indexOf > _txtBits.Count - 1 || indexOf < 0)
+			if (e.KeyCode == Keys.Tab)
 				return;
 
-			var txtFocus = false;
-			foreach (var txt in _txtBits)
+			if (e.Modifiers != Keys.None)
+				return;
+
+			var editor = (TextBox)sender;
+			e.Handled = true;
+			e.SuppressKeyPress = true;
+
+			switch (e.KeyCode)
 			{
-				if (txt.Focused)
-				{
-					txtFocus = true;
+				case Keys.D0:
+				case Keys.NumPad0:
+					UpdateBit(editor, false);
 					break;
-				}
+				case Keys.D1:
+				case Keys.NumPad1:
+					UpdateBit(editor, true);
+					break;
+				case Keys.Left:
+					NavigateRelative(editor, -1);
+					break;
+				case Keys.Right:
+					NavigateRelative(editor, 1);
+					break;
+				case Keys.Home:
+					FocusEditor(0);
+					break;
+				case Keys.End:
+					FocusEditor(_bitEditors.Count - 1);
+					break;
 			}
+		}
 
-			if (!txtFocus)
+		void UpdateBit(TextBox editor, bool value)
+		{
+			if (_bitInfo == null)
 				return;
 
-			var selectBox = _txtBits[indexOf];
-			selectBox.Focus();
-		}
+			var bitIndex = (int)editor.Tag;
+			var text = value ? "1" : "0";
 
-		void txt_KeyDown(object sender, KeyEventArgs e)
-		{
-			var txt = (RichTextBox)sender;
-
-			List<Keys> bitKeys = new List<Keys>() { Keys.D0, Keys.D1 };
-
-			var txt7 = _txtBits[0];
-			if (txt7.SelectionLength > 1)
-				txt7.SelectionLength = 1;
-
-			var modifiersNone = e.Modifiers == Keys.None;
-			var updateBit = modifiersNone && bitKeys.Contains(e.KeyCode);
-
-			e.Handled = e.SuppressKeyPress = !updateBit;
-
-			if (!updateBit && modifiersNone)
+			if (editor.Text == text && _bitInfo[bitIndex] == value)
 			{
-				switch (e.KeyCode)
-				{
-					case Keys.Left:
-						NavigateLeft(txt);
-						break;
-					case Keys.Right:
-						NavigateRight(txt);
-						break;
-					case Keys.Home:
-						NavigateTo(0);
-						break;
-					case Keys.End:
-						NavigateTo(7);
-						break;
-				}
+				NavigateRelative(editor, 1);
+				return;
 			}
+
+			editor.Text = text;
+			_bitInfo[bitIndex] = value;
+			OnBitChanged(EventArgs.Empty);
+			NavigateRelative(editor, 1);
 		}
 
-		void txt_SelectionChanged(object sender, EventArgs e)
+		void NavigateRelative(TextBox editor, int offset)
 		{
-			var txt = (RichTextBox)sender;
-			UpdateSelection(txt);
+			var index = _bitEditors.IndexOf(editor);
+			FocusEditor(index + offset);
 		}
 
-		void UpdateSelection(RichTextBox txt)
+		void FocusEditor(int index)
 		{
-			txt.SelectionStart = 0;
-			if (txt.SelectionLength == 0)
-				txt.SelectionLength = 1;
+			if (index < 0 || index >= _bitEditors.Count)
+				return;
+
+			var editor = _bitEditors[index];
+			editor.Focus();
+			SelectEditorText(editor);
 		}
 
-		void txt_Enter(object sender, EventArgs e)
+		void editor_Enter(object sender, EventArgs e)
 		{
-			var txt = (RichTextBox)sender;
-			UpdateSelection(txt);
+			SelectEditorText((TextBox)sender);
+		}
+
+		void editor_MouseUp(object sender, MouseEventArgs e)
+		{
+			SelectEditorText((TextBox)sender);
+		}
+
+		void SelectEditorText(TextBox editor)
+		{
+			editor.SelectionStart = 0;
+			editor.SelectionLength = editor.TextLength;
 		}
    }
 }

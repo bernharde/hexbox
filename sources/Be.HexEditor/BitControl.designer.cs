@@ -22,67 +22,70 @@ namespace Be.HexEditor
 			base.Dispose(disposing);
 		}
 
-		#region Component Designer generated code
+        #region Component Designer generated code
 
-		/// <summary> 
-		/// Required method for Designer support - do not modify 
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			this.lblValue = new System.Windows.Forms.Label();
-			this.lblBit = new System.Windows.Forms.Label();
-			this.pnBitsEditor = new System.Windows.Forms.Panel();
-			this.pnBitsHeader = new System.Windows.Forms.Panel();
-			this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-			this.flowLayoutPanel.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// lblValue
-			// 
-			this.lblValue.Name = "lblValue";
-			this.lblValue.AutoSize = true;
-			// 
-			// lblBit
-			// 
-			this.lblBit.Name = "lblBit";
-			this.lblBit.AutoSize = true;
-			// 
-			// pnBitsEditor
-			// 
-			this.pnBitsEditor.Name = "pnBitsEditor";
-			// 
-			// pnBitsHeader
-			// 
-			this.flowLayoutPanel.SetFlowBreak(this.pnBitsHeader, true);
-			this.pnBitsHeader.Name = "pnBitsHeader";
-			// 
-			// flowLayoutPanel
-			// 
-			this.flowLayoutPanel.Controls.Add(this.lblBit);
-			this.flowLayoutPanel.Controls.Add(this.pnBitsHeader);
-			this.flowLayoutPanel.Controls.Add(this.lblValue);
-			this.flowLayoutPanel.Controls.Add(this.pnBitsEditor);
-			this.flowLayoutPanel.Name = "flowLayoutPanel";
-			// 
-			// BitControl
-			// 
-			this.Text = LocalizationManager.GetString("BitControl");
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.Controls.Add(this.flowLayoutPanel);
-			this.Name = "BitControl";
-			this.flowLayoutPanel.ResumeLayout(false);
-			this.flowLayoutPanel.PerformLayout();
-			this.ResumeLayout(false);
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            pnBitsEditor = new System.Windows.Forms.Panel();
+            pnBitsHeader = new System.Windows.Forms.Panel();
+            layoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            layoutPanel.SuspendLayout();
+            SuspendLayout();
+            // 
+            // pnBitsEditor
+            // 
+            pnBitsEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnBitsEditor.Location = new System.Drawing.Point(0, 30);
+            pnBitsEditor.Margin = new System.Windows.Forms.Padding(0);
+            pnBitsEditor.Name = "pnBitsEditor";
+            pnBitsEditor.Size = new System.Drawing.Size(422, 30);
+            pnBitsEditor.TabIndex = 1;
+            // 
+            // pnBitsHeader
+            // 
+            pnBitsHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnBitsHeader.Location = new System.Drawing.Point(0, 0);
+            pnBitsHeader.Margin = new System.Windows.Forms.Padding(0);
+            pnBitsHeader.Name = "pnBitsHeader";
+            pnBitsHeader.Size = new System.Drawing.Size(422, 30);
+            pnBitsHeader.TabIndex = 0;
+            // 
+            // layoutPanel
+            // 
+            layoutPanel.ColumnCount = 1;
+            layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            layoutPanel.Controls.Add(pnBitsHeader, 0, 0);
+            layoutPanel.Controls.Add(pnBitsEditor, 0, 1);
+            layoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            layoutPanel.Location = new System.Drawing.Point(0, 0);
+            layoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            layoutPanel.Name = "layoutPanel";
+            layoutPanel.RowCount = 2;
+            layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            layoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            layoutPanel.Size = new System.Drawing.Size(422, 60);
+            layoutPanel.TabIndex = 0;
+            // 
+            // BitControl
+            // 
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            Controls.Add(layoutPanel);
+            Name = "BitControl";
+            Size = new System.Drawing.Size(422, 60);
+            layoutPanel.ResumeLayout(false);
+            ResumeLayout(false);
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.Label lblValue;
-        private System.Windows.Forms.Label lblBit;
         private System.Windows.Forms.Panel pnBitsEditor;
         private System.Windows.Forms.Panel pnBitsHeader;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel layoutPanel;
 	}
 }
