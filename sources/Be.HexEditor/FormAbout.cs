@@ -40,7 +40,8 @@ namespace Be.HexEditor
 		private RichTextBox txtLicense;
 		private RichTextBox txtChanges;
 		private UiManagerComponent uiManagerComponent;
-		private System.ComponentModel.IContainer components;
+        private Button cancelButton;
+        private System.ComponentModel.IContainer components;
 
 		public FormAbout()
 		{
@@ -51,7 +52,6 @@ namespace Be.HexEditor
 				LocalizationManager.LoadCurrentCulture();
 				this.ApplyLocalization();
 				lnkWebsite.LinkClicked += (s, e) => Process.Start(new ProcessStartInfo(lnkWebsite.Text) { UseShellExecute = true });
-				btnOK.Click += (s, e) => Close();
 
 				// Tab button event handlers
 				btnTabAbout.Click += (s, e) => SelectTab(0);
@@ -83,6 +83,7 @@ namespace Be.HexEditor
             btnTabThanksTo = new Button();
             btnTabLicense = new Button();
             btnTabChanges = new Button();
+            cancelButton = new Button();
             contentPanel = new Panel();
             pnlChanges = new Panel();
             txtChanges = new RichTextBox();
@@ -201,6 +202,7 @@ namespace Be.HexEditor
             tabButtonsPanel.Controls.Add(btnTabThanksTo);
             tabButtonsPanel.Controls.Add(btnTabLicense);
             tabButtonsPanel.Controls.Add(btnTabChanges);
+            tabButtonsPanel.Controls.Add(cancelButton);
             tabButtonsPanel.Dock = DockStyle.Fill;
             tabButtonsPanel.Location = new Point(10, 150);
             tabButtonsPanel.Margin = new Padding(5, 5, 5, 0);
@@ -264,6 +266,16 @@ namespace Be.HexEditor
             btnTabChanges.TabIndex = 3;
             btnTabChanges.Tag = "Changes";
             btnTabChanges.Text = "Changes";
+            // 
+            // cancelButton
+            // 
+            cancelButton.DialogResult = DialogResult.Cancel;
+            cancelButton.Location = new Point(323, 3);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(0, 0);
+            cancelButton.TabIndex = 4;
+            cancelButton.Text = "btnCancel";
+            cancelButton.UseVisualStyleBackColor = true;
             // 
             // contentPanel
             // 
@@ -374,6 +386,7 @@ namespace Be.HexEditor
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            CancelButton = cancelButton;
             ClientSize = new Size(600, 500);
             Controls.Add(mainLayout);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;

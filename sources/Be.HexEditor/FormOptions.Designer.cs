@@ -43,6 +43,7 @@ namespace Be.HexEditor
             btnThemeSystem = new System.Windows.Forms.Button();
             btnThemeDark = new System.Windows.Forms.Button();
             btnThemeLight = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).BeginInit();
             themeButtonsPanel.SuspendLayout();
             SuspendLayout();
@@ -180,11 +181,23 @@ namespace Be.HexEditor
             btnThemeLight.UseVisualStyleBackColor = false;
             btnThemeLight.Click += BtnThemeLight_Click;
             // 
+            // btnCancel
+            // 
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Location = new System.Drawing.Point(388, 333);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(0, 0);
+            btnCancel.TabIndex = 9;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            // 
             // FormOptions
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            CancelButton = btnCancel;
             ClientSize = new System.Drawing.Size(506, 400);
+            Controls.Add(btnCancel);
             Controls.Add(themeButtonsPanel);
             Controls.Add(themeLabel);
             Controls.Add(languageListBox);
@@ -229,5 +242,6 @@ namespace Be.HexEditor
         private System.Windows.Forms.Button btnThemeSystem;
         private System.Windows.Forms.Button btnThemeDark;
         private System.Windows.Forms.Button btnThemeLight;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
