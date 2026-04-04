@@ -6,9 +6,10 @@
     <UseWindowsForms>true</UseWindowsForms>
 	  <RootNamespace>Be.Windows.Forms</RootNamespace>
     <LangVersion>latest</LangVersion>
+	  <Nullable>annotations</Nullable>
 	
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
     <Reference Include="System.Configuration" />
   </ItemGroup>
 </Project>

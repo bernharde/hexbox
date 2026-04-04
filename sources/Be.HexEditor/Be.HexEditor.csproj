@@ -7,7 +7,7 @@
 		<OutputType>WinExe</OutputType>
 		<ApplicationIcon>App.ico</ApplicationIcon>
 
-		<Nullable>enable</Nullable>
+		<Nullable>annotations</Nullable>
 
 		<AssemblyTitle>Be.HexEditor</AssemblyTitle>
 		<Description>View and edit files in hex format</Description>
