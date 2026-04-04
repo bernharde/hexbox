@@ -138,12 +138,16 @@ namespace Be.HexEditor
 				{
 					editor.Text = string.Empty;
 				}
+				lblBit.Visible = false;
+				lblValue.Visible = false;
 				pnBitsHeader.Visible = false;
 				pnBitsEditor.Visible = false;
 
 				return;
 			}
 
+			lblBit.Visible = true;
+			lblValue.Visible = true;
 			pnBitsHeader.Visible = true;
 			pnBitsEditor.Visible = true;
 

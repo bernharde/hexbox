@@ -30,36 +30,65 @@ namespace Be.HexEditor
         /// </summary>
         private void InitializeComponent()
         {
+            lblBit = new System.Windows.Forms.Label();
+            lblValue = new System.Windows.Forms.Label();
             pnBitsEditor = new System.Windows.Forms.Panel();
             pnBitsHeader = new System.Windows.Forms.Panel();
             layoutPanel = new System.Windows.Forms.TableLayoutPanel();
             layoutPanel.SuspendLayout();
             SuspendLayout();
             // 
+            // lblBit
+            // 
+            lblBit.AutoSize = true;
+            lblBit.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblBit.Location = new System.Drawing.Point(0, 0);
+            lblBit.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            lblBit.Name = "lblBit";
+            lblBit.Size = new System.Drawing.Size(44, 30);
+            lblBit.TabIndex = 0;
+            lblBit.Text = "Bit";
+            lblBit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblValue
+            // 
+            lblValue.AutoSize = true;
+            lblValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblValue.Location = new System.Drawing.Point(0, 30);
+            lblValue.Margin = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            lblValue.Name = "lblValue";
+            lblValue.Size = new System.Drawing.Size(44, 30);
+            lblValue.TabIndex = 1;
+            lblValue.Text = "Value";
+            lblValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // pnBitsEditor
             // 
             pnBitsEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnBitsEditor.Location = new System.Drawing.Point(0, 30);
+            pnBitsEditor.Location = new System.Drawing.Point(52, 30);
             pnBitsEditor.Margin = new System.Windows.Forms.Padding(0);
             pnBitsEditor.Name = "pnBitsEditor";
-            pnBitsEditor.Size = new System.Drawing.Size(422, 30);
-            pnBitsEditor.TabIndex = 1;
+            pnBitsEditor.Size = new System.Drawing.Size(370, 30);
+            pnBitsEditor.TabIndex = 3;
             // 
             // pnBitsHeader
             // 
             pnBitsHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnBitsHeader.Location = new System.Drawing.Point(0, 0);
+            pnBitsHeader.Location = new System.Drawing.Point(52, 0);
             pnBitsHeader.Margin = new System.Windows.Forms.Padding(0);
             pnBitsHeader.Name = "pnBitsHeader";
-            pnBitsHeader.Size = new System.Drawing.Size(422, 30);
-            pnBitsHeader.TabIndex = 0;
+            pnBitsHeader.Size = new System.Drawing.Size(370, 30);
+            pnBitsHeader.TabIndex = 2;
             // 
             // layoutPanel
             // 
-            layoutPanel.ColumnCount = 1;
+            layoutPanel.ColumnCount = 2;
+            layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             layoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            layoutPanel.Controls.Add(pnBitsHeader, 0, 0);
-            layoutPanel.Controls.Add(pnBitsEditor, 0, 1);
+            layoutPanel.Controls.Add(lblBit, 0, 0);
+            layoutPanel.Controls.Add(lblValue, 0, 1);
+            layoutPanel.Controls.Add(pnBitsHeader, 1, 0);
+            layoutPanel.Controls.Add(pnBitsEditor, 1, 1);
             layoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             layoutPanel.Location = new System.Drawing.Point(0, 0);
             layoutPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -84,6 +113,8 @@ namespace Be.HexEditor
 
         #endregion
 
+        private System.Windows.Forms.Label lblBit;
+        private System.Windows.Forms.Label lblValue;
         private System.Windows.Forms.Panel pnBitsEditor;
         private System.Windows.Forms.Panel pnBitsHeader;
         private System.Windows.Forms.TableLayoutPanel layoutPanel;
