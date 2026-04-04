@@ -188,6 +188,7 @@ namespace Be.HexEditor
             // lnkWebsite
             // 
             lnkWebsite.AutoSize = true;
+            lnkWebsite.LinkColor = SystemColors.HotTrack;
             lnkWebsite.Location = new Point(0, 96);
             lnkWebsite.Margin = new Padding(0);
             lnkWebsite.Name = "lnkWebsite";
@@ -195,6 +196,7 @@ namespace Be.HexEditor
             lnkWebsite.TabIndex = 3;
             lnkWebsite.TabStop = true;
             lnkWebsite.Text = "https://github.com/bemento/hexbox";
+            lnkWebsite.VisitedLinkColor = SystemColors.HotTrack;
             // 
             // tabButtonsPanel
             // 

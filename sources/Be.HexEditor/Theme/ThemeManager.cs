@@ -21,26 +21,26 @@ namespace Be.HexEditor.Theme
             //control.BackColor = theme.BackColor;
             //control.ForeColor = theme.ForeColor;
 
-            if (control is ToolStrip ts)
-            {
-                //ts.BackColor = theme.ToolStripBack;
-                //ts.ForeColor = theme.ForeColor;
+            //if (control is ToolStrip ts)
+            //{
+            //    //ts.BackColor = theme.ToolStripBack;
+            //    //ts.ForeColor = theme.ForeColor;
 
-                ts.Renderer = dark
-                    ? new ToolStripDark2Renderer()
-                    : new ToolStripProfessionalRenderer();
-            }
+            //    ts.Renderer = dark
+            //        ? new ToolStripDarkRenderer()
+            //        : new ToolStripProfessionalRenderer();
+            //}
 
             //if (control is Be.Windows.Forms.HexBox hexBox)
             //{
             //    hexBox.BackColorDisabled = theme.DisabledBackColor;
             //}
 
-            if (control is LinkLabel linkLabel)
-            {
-                linkLabel.LinkColor = theme.AccentColor;
-                linkLabel.VisitedLinkColor = theme.AccentColor;
-            }
+            //if (control is LinkLabel linkLabel)
+            //{
+            //    linkLabel.LinkColor = theme.AccentColor;
+            //    linkLabel.VisitedLinkColor = theme.AccentColor;
+            //}
 
             //if (control is Button button && button.FlatStyle == FlatStyle.Flat)
             //{

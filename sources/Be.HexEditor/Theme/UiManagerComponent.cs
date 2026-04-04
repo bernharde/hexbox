@@ -69,7 +69,7 @@ namespace Be.HexEditor.Theme
             }
         }
 
-        private bool IsDark()
+        public static bool IsDark()
         {
             if (CurrentSystemColorMode == SystemColorMode.Dark) return true;
             if (CurrentSystemColorMode == SystemColorMode.Classic) return false;
