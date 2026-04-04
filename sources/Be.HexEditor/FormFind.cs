@@ -82,8 +82,8 @@ namespace Be.HexEditor
             lblPercent = new Label();
             lblFinding = new Label();
             chkMatchCase = new CheckBox();
-            timerPercent = new System.Windows.Forms.Timer(components);
-            timer = new System.Windows.Forms.Timer(components);
+            timerPercent = new Timer(components);
+            timer = new Timer(components);
             flowLayoutPanel1 = new FlowLayoutPanel();
             line = new Panel();
             flowLayoutPanel2 = new FlowLayoutPanel();
@@ -111,9 +111,9 @@ namespace Be.HexEditor
             rbString.Location = new System.Drawing.Point(26, 59);
             rbString.Name = "rbString";
             rbString.Size = new System.Drawing.Size(46, 19);
-            rbString.Tag = "Text";
             rbString.TabIndex = 0;
             rbString.TabStop = true;
+            rbString.Tag = "Text";
             rbString.Text = "Text";
             // 
             // rbHex
@@ -123,20 +123,20 @@ namespace Be.HexEditor
             rbHex.Location = new System.Drawing.Point(26, 131);
             rbHex.Name = "rbHex";
             rbHex.Size = new System.Drawing.Size(45, 19);
-            rbHex.Tag = "Hex";
             rbHex.TabIndex = 3;
+            rbHex.Tag = "Hex";
             rbHex.Text = "Hex";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.ForeColor = System.Drawing.Color.Blue;
+            label1.ForeColor = System.Drawing.SystemColors.ControlText;
             label1.ImeMode = ImeMode.NoControl;
             label1.Location = new System.Drawing.Point(3, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(30, 15);
-            label1.Tag = "Find";
             label1.TabIndex = 6;
+            label1.Tag = "Find";
             label1.Text = "Find";
             // 
             // btnOK
@@ -148,8 +148,8 @@ namespace Be.HexEditor
             btnOK.Location = new System.Drawing.Point(266, 3);
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(120, 34);
-            btnOK.Tag = "Find";
             btnOK.TabIndex = 5;
+            btnOK.Tag = "Find";
             btnOK.Text = "&Find";
             btnOK.Click += btnOK_Click;
             // 
@@ -163,8 +163,8 @@ namespace Be.HexEditor
             btnCancel.Location = new System.Drawing.Point(392, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(120, 34);
-            btnCancel.Tag = "Cancel";
             btnCancel.TabIndex = 6;
+            btnCancel.Tag = "Cancel";
             btnCancel.Text = "&Cancel";
             btnCancel.Click += btnCancel_Click;
             // 
@@ -232,6 +232,7 @@ namespace Be.HexEditor
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            flowLayoutPanel2.AutoSize = true;
             flowLayoutPanel2.Controls.Add(btnCancel);
             flowLayoutPanel2.Controls.Add(btnOK);
             flowLayoutPanel2.Controls.Add(lblFinding);
@@ -245,6 +246,8 @@ namespace Be.HexEditor
             // hexFind
             // 
             hexFind.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            hexFind.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            hexFind.BackColorDisabled = System.Drawing.SystemColors.ControlLight;
             // 
             // 
             // 
@@ -263,6 +266,9 @@ namespace Be.HexEditor
             hexFind.InfoForeColor = System.Drawing.Color.Empty;
             hexFind.Location = new System.Drawing.Point(26, 154);
             hexFind.Name = "hexFind";
+            hexFind.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            hexFind.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            hexFind.ShadowSelectionColor = System.Drawing.SystemColors.ActiveCaption;
             hexFind.Size = new System.Drawing.Size(495, 162);
             hexFind.TabIndex = 4;
             // 
