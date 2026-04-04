@@ -1,16 +1,20 @@
-﻿using System;
+﻿using Be.HexEditor.Properties;
+using Be.HexEditor.Theme;
+using System;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using Be.HexEditor.Properties;
-using Be.HexEditor.Theme;
 
 namespace Be.HexEditor;
 
 internal static class Program
 {
     public const string SoftwareName = "Be.HexEditor";
+
+   public static CultureInfo InitialCulure { get; } = Thread.CurrentThread.CurrentCulture;
+   public static CultureInfo InitialUICulure { get; } = Thread.CurrentThread.CurrentUICulture;
 
     public static FormHexEditor? MainForm { get; set; }
 
@@ -44,6 +48,11 @@ internal static class Program
             var culture = new CultureInfo(Settings.Default.SelectedLanguage);
             Thread.CurrentThread.CurrentUICulture = culture;
             Thread.CurrentThread.CurrentCulture = culture;
+        }
+        else
+        {
+            Thread.CurrentThread.CurrentUICulture = InitialUICulure;
+            Thread.CurrentThread.CurrentCulture = InitialCulure;
         }
     }
 
