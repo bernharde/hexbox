@@ -35,7 +35,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Install Sandcastle Help File Builder
-        run: choco install sandcastlehelpfilebuilder --yes --no-progress
+        run: choco install shfb --yes --no-progress
 
       - name: Build Be.Windows.Forms.HexBox for documentation
         run: dotnet build src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --framework net48 /p:ContinuousIntegrationBuild=true
