@@ -8,8 +8,8 @@
     <LangVersion>latest</LangVersion>
 	  <Nullable>annotations</Nullable>
 	  <IsPackable>true</IsPackable>
-	  <PackageId>Be.Windows.Forms.HexBox</PackageId>
-	  <Title>Be.Windows.Forms.HexBox</Title>
+	  <PackageId>HexBox</PackageId>
+	  <Title>HexBox (Be.Windows.Forms.HexBox)</Title>
 	  <Authors>Bernhard Elbl</Authors>
 	  <Company>Be</Company>
 	  <Description>Reusable WinForms HexBox control for viewing and editing binary data.</Description>
