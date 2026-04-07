@@ -3911,7 +3911,10 @@ namespace Be.Windows.Forms
 		#endregion
 
         #region Scaling Support for High DPI resolution screens
-
+		/// <summary>
+		/// Supports DPI change event
+		/// </summary>
+		/// <param name="e">The event args</param>
         protected override void OnDpiChangedAfterParent(EventArgs e)
         {
             base.OnDpiChangedAfterParent(e);
