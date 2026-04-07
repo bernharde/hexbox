@@ -1,6 +1,6 @@
 # HexBox
 
-HexBox is a lightweight and efficient hexadecimal editor for Windows, designed for inspecting and editing binary files with ease.
+Be.HexEditor is a lightweight and efficient hexadecimal editor for Windows, designed for inspecting and editing binary files with ease. It contains a reuseable HexBox control for Windows Forms.
 
 ## 🚀 Features
 
@@ -29,13 +29,13 @@ HexBox is a lightweight and efficient hexadecimal editor for Windows, designed f
 
 1. Download the latest release
 2. Extract the archive
-3. Run the executable (`HexBox.exe`)
+3. Run the executable (`Be.HexEditor.exe`)
 
 No installation required.
 
 ## 🛠️ Development
 
-This repository contains the source code migrated from SourceForge.
+This repository contains the source code migrated from SourceForge https://sourceforge.net/projects/hexbox/.
 
 ### Build
 
