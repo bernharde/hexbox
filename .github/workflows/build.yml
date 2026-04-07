@@ -34,7 +34,7 @@ jobs:
         run: dotnet build src/hexbox.sln --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
 
       - name: Pack Be.Windows.Forms.HexBox
-        run: dotnet pack src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --no-build --output artifacts/nuget /p:ContinuousIntegrationBuild=true /p:PackageVersion=0.0.0-ci.${{ github.run_number }}
+        run: dotnet pack src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --no-build --output artifacts/nuget /p:ContinuousIntegrationBuild=true /p:PackageVersion=2.0.${{ github.run_number }}
 
       - name: Publish Be.HexEditor fast-start artifact
         run: dotnet publish src/Be.HexEditor/Be.HexEditor.csproj -p:PublishProfile=FastStartupSelfContained --output artifacts/publish/Be.HexEditor/FastStartupSelfContained
