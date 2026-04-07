@@ -1,0 +1,52 @@
+name: build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - feature/**
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Restore
+        run: dotnet restore src/hexbox.sln
+
+      - name: Build
+        run: dotnet build src/hexbox.sln --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
+
+      - name: Pack Be.Windows.Forms.HexBox
+        run: dotnet pack src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --no-build --output artifacts/nuget /p:ContinuousIntegrationBuild=true /p:PackageVersion=0.0.0-ci.${{ github.run_number }}
+
+      - name: Publish Be.HexEditor fast-start artifact
+        run: dotnet publish src/Be.HexEditor/Be.HexEditor.csproj -p:PublishProfile=FastStartupSelfContained --output artifacts/publish/Be.HexEditor/FastStartupSelfContained
+
+      - name: Upload NuGet artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: artifacts/nuget/*
+
+      - name: Upload Be.HexEditor artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: be-hexeditor-fast-start
+          path: artifacts/publish/Be.HexEditor/FastStartupSelfContained/**
