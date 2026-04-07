@@ -21,15 +21,12 @@ namespace Be.HexEditor
 		private Label lblAuthor;
 		private LinkLabel lnkWebsite;
 		
-		// Custom tab buttons instead of TabControl
-		private FlowLayoutPanel tabButtonsPanel;
-		private Button btnTabAbout;
-		private Button btnTabThanksTo;
-		private Button btnTabLicense;
-		private Button btnTabChanges;
+		private TabControl aboutTabControl;
+		private TabPage tabPageAbout;
+		private TabPage tabPageThanksTo;
+		private TabPage tabPageLicense;
+		private TabPage tabPageChanges;
 		
-		// Content panels for each tab
-		private Panel contentPanel;
 		private Panel pnlAbout;
 		private Panel pnlThanksTo;
 		private Panel pnlLicense;
@@ -53,17 +50,8 @@ namespace Be.HexEditor
 				this.ApplyLocalization();
 				lnkWebsite.LinkClicked += (s, e) => Process.Start(new ProcessStartInfo(lnkWebsite.Text) { UseShellExecute = true });
 
-				// Tab button event handlers
-				btnTabAbout.Click += (s, e) => SelectTab(0);
-				btnTabThanksTo.Click += (s, e) => SelectTab(1);
-				btnTabLicense.Click += (s, e) => SelectTab(2);
-				btnTabChanges.Click += (s, e) => SelectTab(3);
-
 				// Apply theme BEFORE selecting the first tab
 				uiManagerComponent.Form = this;
-
-				// Select first tab AFTER theme is applied
-				SelectTab(0);
 			}
 		}
 
@@ -78,13 +66,12 @@ namespace Be.HexEditor
             lblVersion = new Label();
             lblAuthor = new Label();
             lnkWebsite = new LinkLabel();
-            tabButtonsPanel = new FlowLayoutPanel();
-            btnTabAbout = new Button();
-            btnTabThanksTo = new Button();
-            btnTabLicense = new Button();
-            btnTabChanges = new Button();
+            aboutTabControl = new TabControl();
+            tabPageAbout = new TabPage();
+            tabPageThanksTo = new TabPage();
+            tabPageLicense = new TabPage();
+            tabPageChanges = new TabPage();
             cancelButton = new Button();
-            contentPanel = new Panel();
             pnlChanges = new Panel();
             txtChanges = new RichTextBox();
             pnlLicense = new Panel();
@@ -97,8 +84,11 @@ namespace Be.HexEditor
             mainLayout.SuspendLayout();
             headerPanel.SuspendLayout();
             headerContent.SuspendLayout();
-            tabButtonsPanel.SuspendLayout();
-            contentPanel.SuspendLayout();
+            aboutTabControl.SuspendLayout();
+            tabPageAbout.SuspendLayout();
+            tabPageThanksTo.SuspendLayout();
+            tabPageLicense.SuspendLayout();
+            tabPageChanges.SuspendLayout();
             pnlChanges.SuspendLayout();
             pnlLicense.SuspendLayout();
             pnlThanksTo.SuspendLayout();
@@ -111,16 +101,14 @@ namespace Be.HexEditor
             mainLayout.ColumnCount = 1;
             mainLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             mainLayout.Controls.Add(headerPanel, 0, 0);
-            mainLayout.Controls.Add(tabButtonsPanel, 0, 1);
-            mainLayout.Controls.Add(contentPanel, 0, 2);
+            mainLayout.Controls.Add(aboutTabControl, 0, 1);
             mainLayout.Dock = DockStyle.Fill;
             mainLayout.Location = new Point(0, 0);
             mainLayout.Margin = new Padding(0);
             mainLayout.Name = "mainLayout";
             mainLayout.Padding = new Padding(5);
-            mainLayout.RowCount = 4;
+            mainLayout.RowCount = 3;
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F));
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
             mainLayout.Size = new Size(600, 500);
@@ -196,100 +184,77 @@ namespace Be.HexEditor
             lnkWebsite.Text = "https://github.com/bemento/hexbox";
             lnkWebsite.VisitedLinkColor = SystemColors.HotTrack;
             // 
-            // tabButtonsPanel
+            // aboutTabControl
             // 
-            tabButtonsPanel.Controls.Add(btnTabAbout);
-            tabButtonsPanel.Controls.Add(btnTabThanksTo);
-            tabButtonsPanel.Controls.Add(btnTabLicense);
-            tabButtonsPanel.Controls.Add(btnTabChanges);
-            tabButtonsPanel.Controls.Add(cancelButton);
-            tabButtonsPanel.Dock = DockStyle.Fill;
-            tabButtonsPanel.Location = new Point(10, 150);
-            tabButtonsPanel.Margin = new Padding(5, 5, 5, 0);
-            tabButtonsPanel.Name = "tabButtonsPanel";
-            tabButtonsPanel.Size = new Size(580, 35);
-            tabButtonsPanel.TabIndex = 1;
-            tabButtonsPanel.WrapContents = false;
+            aboutTabControl.Controls.Add(tabPageAbout);
+            aboutTabControl.Controls.Add(tabPageThanksTo);
+            aboutTabControl.Controls.Add(tabPageLicense);
+            aboutTabControl.Controls.Add(tabPageChanges);
+            aboutTabControl.Dock = DockStyle.Fill;
+            aboutTabControl.Location = new Point(5, 145);
+            aboutTabControl.Margin = new Padding(0);
+            aboutTabControl.Name = "aboutTabControl";
+            aboutTabControl.SelectedIndex = 0;
+            aboutTabControl.Size = new Size(590, 342);
+            aboutTabControl.TabIndex = 1;
             // 
-            // btnTabAbout
+            // tabPageAbout
             // 
-            btnTabAbout.AutoSize = true;
-            btnTabAbout.FlatAppearance.BorderSize = 0;
-            btnTabAbout.FlatStyle = FlatStyle.Flat;
-            btnTabAbout.ForeColor = SystemColors.ControlText;
-            btnTabAbout.Location = new Point(0, 0);
-            btnTabAbout.Margin = new Padding(0);
-            btnTabAbout.Name = "btnTabAbout";
-            btnTabAbout.Size = new Size(80, 32);
-            btnTabAbout.TabIndex = 0;
-            btnTabAbout.Tag = "About";
-            btnTabAbout.Text = "About";
+            tabPageAbout.Controls.Add(pnlAbout);
+            tabPageAbout.Location = new Point(4, 24);
+            tabPageAbout.Name = "tabPageAbout";
+            tabPageAbout.Padding = new Padding(0);
+            tabPageAbout.Size = new Size(582, 314);
+            tabPageAbout.TabIndex = 0;
+            tabPageAbout.Tag = "About";
+            tabPageAbout.Text = "About";
+            tabPageAbout.UseVisualStyleBackColor = true;
             // 
-            // btnTabThanksTo
+            // tabPageThanksTo
             // 
-            btnTabThanksTo.AutoSize = true;
-            btnTabThanksTo.FlatAppearance.BorderSize = 0;
-            btnTabThanksTo.FlatStyle = FlatStyle.Flat;
-            btnTabThanksTo.ForeColor = SystemColors.ControlText;
-            btnTabThanksTo.Location = new Point(80, 0);
-            btnTabThanksTo.Margin = new Padding(0);
-            btnTabThanksTo.Name = "btnTabThanksTo";
-            btnTabThanksTo.Size = new Size(80, 32);
-            btnTabThanksTo.TabIndex = 1;
-            btnTabThanksTo.Tag = "ThanksTo";
-            btnTabThanksTo.Text = "Thanks To";
+            tabPageThanksTo.Controls.Add(pnlThanksTo);
+            tabPageThanksTo.Location = new Point(4, 24);
+            tabPageThanksTo.Name = "tabPageThanksTo";
+            tabPageThanksTo.Padding = new Padding(0);
+            tabPageThanksTo.Size = new Size(582, 314);
+            tabPageThanksTo.TabIndex = 1;
+            tabPageThanksTo.Tag = "ThanksTo";
+            tabPageThanksTo.Text = "Thanks To";
+            tabPageThanksTo.UseVisualStyleBackColor = true;
             // 
-            // btnTabLicense
+            // tabPageLicense
             // 
-            btnTabLicense.AutoSize = true;
-            btnTabLicense.FlatAppearance.BorderSize = 0;
-            btnTabLicense.FlatStyle = FlatStyle.Flat;
-            btnTabLicense.ForeColor = SystemColors.ControlText;
-            btnTabLicense.Location = new Point(160, 0);
-            btnTabLicense.Margin = new Padding(0);
-            btnTabLicense.Name = "btnTabLicense";
-            btnTabLicense.Size = new Size(80, 32);
-            btnTabLicense.TabIndex = 2;
-            btnTabLicense.Tag = "License";
-            btnTabLicense.Text = "License";
+            tabPageLicense.Controls.Add(pnlLicense);
+            tabPageLicense.Location = new Point(4, 24);
+            tabPageLicense.Name = "tabPageLicense";
+            tabPageLicense.Padding = new Padding(0);
+            tabPageLicense.Size = new Size(582, 314);
+            tabPageLicense.TabIndex = 2;
+            tabPageLicense.Tag = "License";
+            tabPageLicense.Text = "License";
+            tabPageLicense.UseVisualStyleBackColor = true;
             // 
-            // btnTabChanges
+            // tabPageChanges
             // 
-            btnTabChanges.AutoSize = true;
-            btnTabChanges.FlatAppearance.BorderSize = 0;
-            btnTabChanges.FlatStyle = FlatStyle.Flat;
-            btnTabChanges.ForeColor = SystemColors.ControlText;
-            btnTabChanges.Location = new Point(240, 0);
-            btnTabChanges.Margin = new Padding(0);
-            btnTabChanges.Name = "btnTabChanges";
-            btnTabChanges.Size = new Size(80, 32);
-            btnTabChanges.TabIndex = 3;
-            btnTabChanges.Tag = "Changes";
-            btnTabChanges.Text = "Changes";
+            tabPageChanges.Controls.Add(pnlChanges);
+            tabPageChanges.Location = new Point(4, 24);
+            tabPageChanges.Name = "tabPageChanges";
+            tabPageChanges.Padding = new Padding(0);
+            tabPageChanges.Size = new Size(582, 314);
+            tabPageChanges.TabIndex = 3;
+            tabPageChanges.Tag = "Changes";
+            tabPageChanges.Text = "Changes";
+            tabPageChanges.UseVisualStyleBackColor = true;
             // 
             // cancelButton
             // 
             cancelButton.DialogResult = DialogResult.Cancel;
-            cancelButton.Location = new Point(323, 3);
+            cancelButton.Location = new Point(0, 0);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(0, 0);
             cancelButton.TabIndex = 4;
             cancelButton.Text = "btnCancel";
             cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // contentPanel
-            // 
-            contentPanel.BorderStyle = BorderStyle.FixedSingle;
-            contentPanel.Controls.Add(pnlChanges);
-            contentPanel.Controls.Add(pnlLicense);
-            contentPanel.Controls.Add(pnlThanksTo);
-            contentPanel.Controls.Add(pnlAbout);
-            contentPanel.Dock = DockStyle.Fill;
-            contentPanel.Location = new Point(5, 185);
-            contentPanel.Margin = new Padding(0);
-            contentPanel.Name = "contentPanel";
-            contentPanel.Size = new Size(590, 302);
-            contentPanel.TabIndex = 2;
             // 
             // pnlChanges
             // 
@@ -298,9 +263,8 @@ namespace Be.HexEditor
             pnlChanges.Location = new Point(0, 0);
             pnlChanges.Name = "pnlChanges";
             pnlChanges.Padding = new Padding(5);
-            pnlChanges.Size = new Size(588, 300);
+            pnlChanges.Size = new Size(582, 314);
             pnlChanges.TabIndex = 0;
-            pnlChanges.Visible = false;
             // 
             // txtChanges
             // 
@@ -310,7 +274,7 @@ namespace Be.HexEditor
             txtChanges.Location = new Point(5, 5);
             txtChanges.Name = "txtChanges";
             txtChanges.ReadOnly = true;
-            txtChanges.Size = new Size(578, 290);
+            txtChanges.Size = new Size(572, 304);
             txtChanges.TabIndex = 0;
             txtChanges.Text = "";
             // 
@@ -321,9 +285,8 @@ namespace Be.HexEditor
             pnlLicense.Location = new Point(0, 0);
             pnlLicense.Name = "pnlLicense";
             pnlLicense.Padding = new Padding(5);
-            pnlLicense.Size = new Size(588, 300);
+            pnlLicense.Size = new Size(582, 314);
             pnlLicense.TabIndex = 1;
-            pnlLicense.Visible = false;
             // 
             // txtLicense
             // 
@@ -333,7 +296,7 @@ namespace Be.HexEditor
             txtLicense.Location = new Point(5, 5);
             txtLicense.Name = "txtLicense";
             txtLicense.ReadOnly = true;
-            txtLicense.Size = new Size(578, 290);
+            txtLicense.Size = new Size(572, 304);
             txtLicense.TabIndex = 0;
             txtLicense.Text = "";
             // 
@@ -344,9 +307,8 @@ namespace Be.HexEditor
             pnlThanksTo.Location = new Point(0, 0);
             pnlThanksTo.Name = "pnlThanksTo";
             pnlThanksTo.Padding = new Padding(5);
-            pnlThanksTo.Size = new Size(588, 300);
+            pnlThanksTo.Size = new Size(582, 314);
             pnlThanksTo.TabIndex = 2;
-            pnlThanksTo.Visible = false;
             // 
             // txtThanksTo
             // 
@@ -356,7 +318,7 @@ namespace Be.HexEditor
             txtThanksTo.Location = new Point(5, 5);
             txtThanksTo.Name = "txtThanksTo";
             txtThanksTo.ReadOnly = true;
-            txtThanksTo.Size = new Size(578, 290);
+            txtThanksTo.Size = new Size(572, 304);
             txtThanksTo.TabIndex = 0;
             txtThanksTo.Text = "";
             // 
@@ -367,7 +329,7 @@ namespace Be.HexEditor
             pnlAbout.Location = new Point(0, 0);
             pnlAbout.Name = "pnlAbout";
             pnlAbout.Padding = new Padding(5);
-            pnlAbout.Size = new Size(588, 300);
+            pnlAbout.Size = new Size(582, 314);
             pnlAbout.TabIndex = 3;
             // 
             // txtAbout
@@ -378,7 +340,7 @@ namespace Be.HexEditor
             txtAbout.Location = new Point(5, 5);
             txtAbout.Name = "txtAbout";
             txtAbout.ReadOnly = true;
-            txtAbout.Size = new Size(578, 290);
+            txtAbout.Size = new Size(572, 304);
             txtAbout.TabIndex = 0;
             txtAbout.Text = resources.GetString("txtAbout.Text");
             // 
@@ -392,6 +354,7 @@ namespace Be.HexEditor
             AutoScaleMode = AutoScaleMode.Dpi;
             CancelButton = cancelButton;
             ClientSize = new Size(600, 500);
+            Controls.Add(cancelButton);
             Controls.Add(mainLayout);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MinimumSize = new Size(500, 400);
@@ -405,9 +368,11 @@ namespace Be.HexEditor
             headerPanel.ResumeLayout(false);
             headerContent.ResumeLayout(false);
             headerContent.PerformLayout();
-            tabButtonsPanel.ResumeLayout(false);
-            tabButtonsPanel.PerformLayout();
-            contentPanel.ResumeLayout(false);
+            aboutTabControl.ResumeLayout(false);
+            tabPageAbout.ResumeLayout(false);
+            tabPageThanksTo.ResumeLayout(false);
+            tabPageLicense.ResumeLayout(false);
+            tabPageChanges.ResumeLayout(false);
             pnlChanges.ResumeLayout(false);
             pnlLicense.ResumeLayout(false);
             pnlThanksTo.ResumeLayout(false);
@@ -415,56 +380,6 @@ namespace Be.HexEditor
             ((System.ComponentModel.ISupportInitialize)uiManagerComponent).EndInit();
             ResumeLayout(false);
         }
-
-        private void SelectTab(int index)
-		{
-            var backColor = SystemColors.Control;
-            var foreColor = SystemColors.ControlText;
-            var accentBackColor = SystemColors.Highlight;
-            var accentForeColor = SystemColors.HighlightText;
-
-            // Hide all panels
-            pnlAbout.Visible = false;
-			pnlThanksTo.Visible = false;
-			pnlLicense.Visible = false;
-			pnlChanges.Visible = false;
-
-			// Reset all button styles to unselected state
-			btnTabAbout.BackColor = backColor;
-			btnTabAbout.ForeColor = foreColor;
-			btnTabThanksTo.BackColor = backColor;
-			btnTabThanksTo.ForeColor = foreColor;
-			btnTabLicense.BackColor = backColor;
-			btnTabLicense.ForeColor = foreColor;
-			btnTabChanges.BackColor = backColor;
-			btnTabChanges.ForeColor = foreColor;
-
-			// Show selected panel and highlight button with accent color
-			// Use white text for good contrast on the accent background
-			switch (index)
-			{
-				case 0:
-					pnlAbout.Visible = true;
-					btnTabAbout.BackColor = accentBackColor;
-					btnTabAbout.ForeColor = accentForeColor;
-					break;
-				case 1:
-					pnlThanksTo.Visible = true;
-					btnTabThanksTo.BackColor = accentBackColor;
-					btnTabThanksTo.ForeColor = accentForeColor;
-					break;
-				case 2:
-					pnlLicense.Visible = true;
-					btnTabLicense.BackColor = accentBackColor;
-					btnTabLicense.ForeColor = accentForeColor;
-					break;
-				case 3:
-					pnlChanges.Visible = true;
-					btnTabChanges.BackColor = accentBackColor;
-					btnTabChanges.ForeColor = accentForeColor;
-					break;
-			}
-		}
 
 		private void LoadResources()
 		{

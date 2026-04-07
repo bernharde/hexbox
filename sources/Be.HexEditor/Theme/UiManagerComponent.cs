@@ -1,10 +1,7 @@
 using Be.HexEditor.Properties;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Be.HexEditor.Theme
@@ -85,11 +82,6 @@ namespace Be.HexEditor.Theme
         {
             bool dark = IsDark();
 
-            DarkTitleBar.Apply(form, dark);
-
-            var theme = dark ? Themes.Dark : Themes.Light;
-
-            ThemeManager.Apply(form, theme, dark);
             ImageApplier.Apply(form, dark);
 
             ConfigureToolStrips(form, dark);
