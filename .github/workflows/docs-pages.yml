@@ -1,0 +1,65 @@
+name: docs-pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-docs:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Install Sandcastle Help File Builder
+        run: choco install sandcastlehelpfilebuilder --yes --no-progress
+
+      - name: Build Be.Windows.Forms.HexBox for documentation
+        run: dotnet build src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --framework net48 /p:ContinuousIntegrationBuild=true
+
+      - name: Build Sandcastle website
+        run: msbuild src/Sandcastle/Be.Windows.Forms.HexBox.shfbproj /p:Configuration=Release /p:Platform=AnyCPU
+
+      - name: Add .nojekyll
+        shell: pwsh
+        run: New-Item -ItemType File -Path src/Sandcastle/web/.nojekyll -Force | Out-Null
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: src/Sandcastle/web
+
+  deploy-docs:
+    needs: build-docs
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

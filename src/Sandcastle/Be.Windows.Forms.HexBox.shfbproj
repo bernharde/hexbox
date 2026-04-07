@@ -26,12 +26,12 @@
     <SandcastlePath />
     <WorkingPath />
     <BuildLogFile />
-    <FrameworkVersion>.NET 2.0.50727</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.8</FrameworkVersion>
     <HelpTitle>Be.Windows.Forms.HexBox API Reference</HelpTitle>
-    <PresentationStyle>vs2010</PresentationStyle>
+    <PresentationStyle>Default2022</PresentationStyle>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\Be.HexEditor\bin\Debug\Be.Windows.Forms.HexBox.dll" />
-      <DocumentationSource sourceFile="..\Be.HexEditor\bin\Debug\Be.Windows.Forms.HexBox.xml" />
+      <DocumentationSource sourceFile="..\Be.Windows.Forms.HexBox\bin\$(Configuration)\net48\Be.Windows.Forms.HexBox.dll" />
+      <DocumentationSource sourceFile="..\Be.Windows.Forms.HexBox\bin\$(Configuration)\net48\Be.Windows.Forms.HexBox.xml" />
     </DocumentationSources>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
     <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
