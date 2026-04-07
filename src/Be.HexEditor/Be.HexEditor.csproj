@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<LangVersion>latest</LangVersion>
+
+		<OutputType>WinExe</OutputType>
+		<ApplicationIcon>App.ico</ApplicationIcon>
+
+		<Nullable>annotations</Nullable>
+
+		<AssemblyTitle>Be.HexEditor</AssemblyTitle>
+		<Description>View and edit files in hex format</Description>
+		<Company>Be</Company>
+		<Product>Be.HexEditor</Product>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Locales\strings-de.json" />
+		<None Remove="Locales\strings-it.json" />
+		<None Remove="Locales\strings-ja.json" />
+		<None Remove="Locales\strings-ru.json" />
+		<None Remove="Locales\strings-zh-Hans.json" />
+		<None Remove="Locales\strings.json" />
+		<None Remove="Resources\Changes.rtf" />
+		<None Remove="Resources\ThanksTo.rtf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="..\..\LICENSE">
+			<Link>Resources\license.txt</Link>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Locales\strings-de.json" />
+		<EmbeddedResource Include="Locales\strings-it.json" />
+		<EmbeddedResource Include="Locales\strings-ja.json" />
+		<EmbeddedResource Include="Locales\strings-ru.json" />
+		<EmbeddedResource Include="Locales\strings-zh-Hans.json" />
+		<EmbeddedResource Include="Locales\strings.json" />
+		<EmbeddedResource Include="Resources\Changes.rtf" />
+	
+		<EmbeddedResource Include="Resources\ThanksTo.rtf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="FluentUI.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>FluentUI.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\Settings.Designer.cs">
+	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Settings.settings</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="FluentUI.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>FluentUI.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+
+</Project>
+

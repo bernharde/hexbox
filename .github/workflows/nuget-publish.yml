@@ -1,0 +1,67 @@
+name: publish-nuget
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Package version to publish. Defaults to the release tag without a leading v.
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    environment: nuget
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Resolve package version
+        id: version
+        shell: pwsh
+        run: |
+          $version = '${{ inputs.version }}'
+
+          if ([string]::IsNullOrWhiteSpace($version) -and '${{ github.event_name }}' -eq 'release') {
+            $version = '${{ github.event.release.tag_name }}'
+          }
+
+          if ([string]::IsNullOrWhiteSpace($version)) {
+            throw 'A package version is required for manual runs.'
+          }
+
+          $version = $version.TrimStart('v')
+          if ([string]::IsNullOrWhiteSpace($version)) {
+            throw 'Resolved package version is empty.'
+          }
+
+          "value=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Restore
+        run: dotnet restore src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj
+
+      - name: Pack
+        run: dotnet pack src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --output artifacts/nuget /p:ContinuousIntegrationBuild=true /p:PackageVersion=${{ steps.version.outputs.value }}
+
+      - name: Upload package artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: be-windows-forms-hexbox-${{ steps.version.outputs.value }}
+          path: artifacts/nuget/*
+
+      - name: Publish packages to NuGet
+        run: dotnet nuget push "artifacts/nuget/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

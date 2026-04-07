@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	  <TargetFrameworks>net48;net8.0-windows;net10.0-windows</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+	  <AssemblyOriginatorKeyFile>HexBox.snk</AssemblyOriginatorKeyFile>
+    <UseWindowsForms>true</UseWindowsForms>
+	  <RootNamespace>Be.Windows.Forms</RootNamespace>
+    <LangVersion>latest</LangVersion>
+	  <Nullable>annotations</Nullable>
+	  <IsPackable>true</IsPackable>
+	  <PackageId>HexBox</PackageId>
+	  <Title>HexBox (Be.Windows.Forms.HexBox)</Title>
+	  <Authors>Bernhard Elbl</Authors>
+	  <Company>Be</Company>
+	  <Description>Reusable WinForms HexBox control for viewing and editing binary data.</Description>
+	  <PackageTags>hex;hexeditor;winforms;control;binary</PackageTags>
+	  <PackageProjectUrl>https://github.com/bernharde/hexbox</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/bernharde/hexbox</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <IncludeSymbols>true</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+</Project>

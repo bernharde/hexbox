@@ -1,0 +1,61 @@
+name: windows-store-publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish-profile:
+        description: Be.HexEditor publish profile to use when no MSIX packaging project is supplied.
+        required: true
+        default: SmallSelfContained
+        type: choice
+        options:
+          - FastStartupSelfContained
+          - SmallSelfContained
+      package-project:
+        description: Optional path to a Windows packaging project (.wapproj or similar) for Store upload generation.
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    environment: windows-store
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore
+        run: dotnet restore src/hexbox.sln
+
+      - name: Build
+        run: dotnet build src/hexbox.sln --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
+
+      - name: Build Microsoft Store package
+        if: ${{ inputs.package-project != '' }}
+        shell: pwsh
+        run: |
+          msbuild "${{ inputs.package-project }}" /restore /p:Configuration=Release /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:AppxPackageDir=$env:GITHUB_WORKSPACE\artifacts\store\
+
+      - name: Publish Be.HexEditor Store candidate
+        if: ${{ inputs.package-project == '' }}
+        run: dotnet publish src/Be.HexEditor/Be.HexEditor.csproj -p:PublishProfile=${{ inputs.publish-profile }} --output artifacts/store/Be.HexEditor/${{ inputs.publish-profile }}
+
+      - name: Upload Store artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-store-artifacts
+          path: artifacts/store/**
