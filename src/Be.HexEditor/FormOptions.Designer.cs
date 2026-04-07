@@ -227,7 +227,6 @@ namespace Be.HexEditor
 
         #endregion
 
-        private System.Windows.Forms.GroupBox recentFilesGroupBox;
         private System.Windows.Forms.Button clearRecentFilesButton;
         private System.Windows.Forms.Label recentFilesMaxlabel;
         private System.Windows.Forms.TextBox recentFilesMaxTextBox;

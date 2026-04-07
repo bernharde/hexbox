@@ -3384,24 +3384,13 @@ namespace Be.Windows.Forms
 		/// Default alpha = 100
 		/// </remarks>
 		[Category("Hex"), Description("Gets or sets the color of the shadow selection.")]
-		public Color ShadowSelectionColor
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public Color ShadowSelectionColor
 		{
 			get { return _shadowSelectionColor; }
 			set { _shadowSelectionColor = value; Invalidate(); }
 		} Color _shadowSelectionColor = Color.FromArgb(100, 60, 188, 255);
 
-        // Designer serialization helpers
-        // Ensures the designer serializes the property when it differs from the default
-        public bool ShouldSerializeShadowSelectionColor()
-        {
-            return _shadowSelectionColor != Color.FromArgb(100, 60, 188, 255);
-        }
-
-        // Resets the property to its default value
-        public void ResetShadowSelectionColor()
-        {
-            ShadowSelectionColor = Color.FromArgb(100, 60, 188, 255);
-        }
 
         /// <summary>
         /// Contains the size of a single character in pixel
@@ -3940,7 +3929,13 @@ namespace Be.Windows.Forms
             Invalidate();
         }
 
-        public static T GetParent<T>(Control c) where T : Control
+        /// <summary>
+		/// Get Parent control of type T
+		/// </summary>
+		/// <typeparam name="T">The type</typeparam>
+		/// <param name="c">the control</param>
+		/// <returns>The parent control</returns>
+		public static T GetParent<T>(Control c) where T : Control
         {
             if (c == null)
                 return default(T);
