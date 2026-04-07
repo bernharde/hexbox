@@ -230,7 +230,6 @@ namespace Be.HexEditor
         private System.Windows.Forms.Button clearRecentFilesButton;
         private System.Windows.Forms.Label recentFilesMaxlabel;
         private System.Windows.Forms.TextBox recentFilesMaxTextBox;
-        private System.Windows.Forms.GroupBox languageSettingsGroupBox;
         private System.Windows.Forms.CheckBox useSystemLanguageCheckBox;
         private UiManagerComponent uiManagerComponent;
         private System.Windows.Forms.ListBox languageListBox;

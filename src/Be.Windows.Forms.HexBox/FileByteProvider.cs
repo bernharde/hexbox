@@ -166,7 +166,9 @@ namespace Be.Windows.Forms
 		/// <summary>
 		/// Never used.
 		/// </summary>
+#pragma warning disable CS0067
         public event EventHandler LengthChanged;
+#pragma warning restore CS0067
 
 		/// <summary>
 		/// Reads a byte from the file.
