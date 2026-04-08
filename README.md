@@ -2,7 +2,7 @@
 
 Be.HexEditor is a lightweight and efficient hexadecimal editor for Windows, designed for inspecting and editing binary files with ease. It contains a reuseable HexBox control for Windows Forms.
 
-- Documentation: [Docs Home](docs/index.md)
+- Api Reference: [Docs Home](docs/index.md)
 
 ## 📸 Screenshot
 

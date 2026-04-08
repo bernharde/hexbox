@@ -63,6 +63,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
       - name: Create and push tag
         run: |
           git config user.name "github-actions[bot]"
@@ -95,3 +100,11 @@ jobs:
             release-assets/nuget/*.nupkg
             release-assets/nuget/*.snupkg
             release-assets/Be.HexEditor-v2.0.${{ github.run_number }}.zip
+
+      - name: Publish NuGet packages
+        if: ${{ secrets.NUGET_API_KEY != '' }}
+        run: dotnet nuget push "release-assets/nuget/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Warn when NuGet key is missing
+        if: ${{ secrets.NUGET_API_KEY == '' }}
+        run: echo "::warning::NUGET_API_KEY is not configured, skipping NuGet publish."
