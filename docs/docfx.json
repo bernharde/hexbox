@@ -1,0 +1,34 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../src",
+          "files": ["Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj"]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["api/**.yml", "api/index.md"]
+      },
+      {
+        "files": ["*.md", "toc.yml"]
+      }
+    ],
+    "resource": [
+      {
+        "files": ["images/**"]
+      }
+    ],
+    "output": "_site",
+    "globalMetadata": {
+      "_appName": "HexBox",
+      "_appTitle": "HexBox API Reference",
+      "_enableSearch": true
+    }
+  }
+}
