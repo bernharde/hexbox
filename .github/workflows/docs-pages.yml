@@ -35,7 +35,13 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Install Sandcastle Help File Builder
-        run: choco install shfb --yes --no-progress
+        shell: pwsh
+        run: |
+          Invoke-WebRequest "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" -OutFile nuget.exe
+          .\nuget.exe install EWSoftware.SHFB -OutputDirectory shfb-packages -ExcludeVersion -NonInteractive
+          .\nuget.exe install EWSoftware.SHFB.NETFramework -OutputDirectory shfb-packages -ExcludeVersion -NonInteractive
+          $shfbRoot = (Resolve-Path "shfb-packages\EWSoftware.SHFB\tools").Path
+          "SHFBROOT=$shfbRoot\" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Build Be.Windows.Forms.HexBox for documentation
         run: dotnet build src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --framework net48 /p:ContinuousIntegrationBuild=true

@@ -12,6 +12,9 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: windows-latest
@@ -66,3 +69,29 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag "v2.0.${{ github.run_number }}"
           git push origin "v2.0.${{ github.run_number }}"
+
+      - name: Download NuGet artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages
+          path: release-assets/nuget
+
+      - name: Download Be.HexEditor artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: be-hexeditor-fast-start
+          path: release-assets/Be.HexEditor
+
+      - name: Zip Be.HexEditor binaries
+        run: zip -r release-assets/Be.HexEditor-v2.0.${{ github.run_number }}.zip release-assets/Be.HexEditor/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v2.0.${{ github.run_number }}
+          name: Release v2.0.${{ github.run_number }}
+          generate_release_notes: true
+          files: |
+            release-assets/nuget/*.nupkg
+            release-assets/nuget/*.snupkg
+            release-assets/Be.HexEditor-v2.0.${{ github.run_number }}.zip
