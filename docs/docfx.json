@@ -7,7 +7,11 @@
           "files": ["Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj"]
         }
       ],
-      "dest": "api"
+      "dest": "api",
+      "properties": {
+        "TargetFramework": "net10.0-windows",
+        "EnableWindowsTargeting": "true"
+      }
     }
   ],
   "build": {
