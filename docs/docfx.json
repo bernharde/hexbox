@@ -4,14 +4,10 @@
       "src": [
         {
           "src": "../src",
-          "files": ["Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj"]
+          "files": ["Be.Windows.Forms.HexBox/bin/Release/net10.0-windows/Be.Windows.Forms.HexBox.dll"]
         }
       ],
       "dest": "api",
-      "properties": {
-        "TargetFramework": "net10.0-windows",
-        "EnableWindowsTargeting": "true"
-      }
     }
   ],
   "build": {

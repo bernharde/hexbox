@@ -32,6 +32,9 @@ jobs:
       - name: Install DocFX
         run: dotnet tool update -g docfx
 
+      - name: Build Be.Windows.Forms.HexBox for documentation
+        run: dotnet build src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --framework net10.0-windows /p:EnableWindowsTargeting=true /p:ContinuousIntegrationBuild=true
+
       - name: Build docs
         run: docfx docs/docfx.json
 
