@@ -7,7 +7,7 @@
           "files": ["Be.Windows.Forms.HexBox/bin/Release/net10.0-windows/Be.Windows.Forms.HexBox.dll"]
         }
       ],
-      "dest": "api",
+      "dest": "api"
     }
   ],
   "build": {
@@ -21,7 +21,8 @@
     ],
     "resource": [
       {
-        "files": ["images/**"]
+        "files": ["../images/**"],
+        "dest": "images"
       }
     ],
     "output": "_site",
