@@ -57,6 +57,7 @@ jobs:
   tag-release:
     runs-on: ubuntu-latest
     needs: build
+    environment: nuget
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
 
     steps:
