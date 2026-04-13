@@ -5,9 +5,11 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 env:
   PRODUCT_VERSION: 2.0.${{ github.run_number }}
+  BLOB_PREFIX: store-v${{ github.run_number }}
 
 jobs:
   publish:
@@ -108,3 +110,77 @@ jobs:
             release-assets/msi/x86/*.msi
             release-assets/msi/x64/*.msi
             release-assets/msi/arm64/*.msi
+
+  blob:
+    runs-on: windows-latest
+    needs: publish
+    environment: production
+
+    steps:
+      - name: Download x86 MSI
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-installer-x86
+          path: blob-assets/x86
+
+      - name: Download x64 MSI
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-installer-x64
+          path: blob-assets/x64
+
+      - name: Download arm64 MSI
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-installer-arm64
+          path: blob-assets/arm64
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Upload MSI files to Blob Storage
+        shell: pwsh
+        env:
+          AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
+          AZURE_STORAGE_CONTAINER: ${{ vars.AZURE_STORAGE_CONTAINER }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:AZURE_STORAGE_ACCOUNT)) {
+            throw 'Repository variable AZURE_STORAGE_ACCOUNT is required.'
+          }
+
+          if ([string]::IsNullOrWhiteSpace($env:AZURE_STORAGE_CONTAINER)) {
+            throw 'Repository variable AZURE_STORAGE_CONTAINER is required.'
+          }
+
+          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -Filter *.msi -File -Recurse
+          if (-not $files) {
+            throw 'No MSI files were downloaded for Blob upload.'
+          }
+
+          foreach ($file in $files) {
+            $blobName = "$env:BLOB_PREFIX/$($file.Name)"
+            az storage blob upload --account-name $env:AZURE_STORAGE_ACCOUNT --container-name $env:AZURE_STORAGE_CONTAINER --name $blobName --file $file.FullName --overwrite true --auth-mode login --content-type application/x-msi | Out-Null
+          }
+
+      - name: Print direct download URLs
+        shell: pwsh
+        env:
+          AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
+          AZURE_STORAGE_CONTAINER: ${{ vars.AZURE_STORAGE_CONTAINER }}
+        run: |
+          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -Filter *.msi -File -Recurse | Sort-Object Name
+          $summaryLines = @(
+            "## Azure Blob MSI URLs",
+            ""
+          )
+
+          foreach ($file in $files) {
+            $url = "https://$($env:AZURE_STORAGE_ACCOUNT).blob.core.windows.net/$($env:AZURE_STORAGE_CONTAINER)/$env:BLOB_PREFIX/$($file.Name)"
+            $summaryLines += "- $($file.Name): $url"
+          }
+
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ($summaryLines -join [Environment]::NewLine)
