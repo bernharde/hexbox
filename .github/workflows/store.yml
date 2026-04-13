@@ -32,12 +32,12 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore solution
-        run: dotnet restore src/hexbox.sln
+        run: dotnet restore src/hexbox.sln -r win-x64
 
       - name: Build Store upload package
         shell: pwsh
         run: |
-          msbuild "${{ inputs.package_project }}" /restore /p:Configuration=Release /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:AppxPackageDir=$env:GITHUB_WORKSPACE\artifacts\store\
+          msbuild "${{ inputs.package_project }}" /restore /p:Configuration=Release /p:Platform=x64 /p:RuntimeIdentifier=win-x64 /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:AppxBundlePlatforms=x64 /p:AppxPackageDir=$env:GITHUB_WORKSPACE\artifacts\store\
 
       - name: Validate Store package output
         shell: pwsh
