@@ -1,4 +1,4 @@
-name: docs-pages
+name: docs
 
 on:
   push:

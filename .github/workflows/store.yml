@@ -1,4 +1,4 @@
-name: windows-store-publish
+name: store
 
 on:
   workflow_dispatch:
