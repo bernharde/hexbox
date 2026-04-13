@@ -4,12 +4,12 @@
     <OutputType>Package</OutputType>
     <InstallerPlatform Condition="'$(InstallerPlatform)' == ''">x64</InstallerPlatform>
     <Platform Condition="'$(Platform)' == ''">$(InstallerPlatform)</Platform>
-    <ProductName>HexBox</ProductName>
+    <ProductName>Be.HexEditor</ProductName>
     <Manufacturer>Be</Manufacturer>
     <ProductVersion Condition="'$(ProductVersion)' == ''">2.0.0</ProductVersion>
     <PublishDir Condition="'$(PublishDir)' == ''">$(MSBuildProjectDirectory)\..\..\artifacts\publish\$(InstallerPlatform)</PublishDir>
     <GeneratedWxsPath Condition="'$(GeneratedWxsPath)' == ''">$(MSBuildProjectDirectory)\obj\$(InstallerPlatform)\GeneratedFiles.wxs</GeneratedWxsPath>
-    <OutputName>HexBox-$(InstallerPlatform)</OutputName>
+    <OutputName>Be.HexEditor-$(InstallerPlatform)</OutputName>
     <DefineConstants>ProductName=$(ProductName);Manufacturer=$(Manufacturer);ProductVersion=$(ProductVersion);PublishDir=$(PublishDir)</DefineConstants>
   </PropertyGroup>
 

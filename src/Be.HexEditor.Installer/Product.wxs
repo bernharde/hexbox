@@ -17,9 +17,7 @@
     <Property Id="ARPNOMODIFY" Value="1" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="ManufacturerFolder" Name="$(var.Manufacturer)">
-        <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
-      </Directory>
+      <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
     </StandardDirectory>
 
     <Feature Id="MainFeature" Title="$(var.ProductName)" Level="1">
