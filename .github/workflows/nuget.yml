@@ -1,0 +1,53 @@
+name: nuget-publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Build workflow run ID containing the NuGet artifact.
+        required: true
+        type: string
+      artifact_name:
+        description: Artifact name containing NuGet packages.
+        required: false
+        default: nuget-packages
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    environment: nuget
+    env:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+
+    steps:
+      - name: Download NuGet artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: artifacts/nuget
+          run-id: ${{ inputs.run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+
+      - name: Publish packages to NuGet
+        if: ${{ env.NUGET_API_KEY != '' }}
+        shell: bash
+        run: |
+          shopt -s nullglob
+          packages=(artifacts/nuget/*.nupkg)
+          if [ ${#packages[@]} -eq 0 ]; then
+            echo "No .nupkg files found in artifacts/nuget." >&2
+            exit 1
+          fi
+
+          dotnet nuget push artifacts/nuget/*.nupkg --api-key "${{ env.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Fail when NuGet key is missing
+        if: ${{ env.NUGET_API_KEY == '' }}
+        shell: pwsh
+        run: throw 'NUGET_API_KEY is not configured for environment nuget.'
