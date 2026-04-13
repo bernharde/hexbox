@@ -2,64 +2,74 @@ name: store
 
 on:
   workflow_dispatch:
-    inputs:
-      package_project:
-        description: Path to Windows packaging project (.wapproj).
-        required: true
-        default: src/Be.HexEditor.Package/Be.HexEditor.Package.wapproj
-        type: string
 
 permissions:
   contents: read
 
+env:
+  PRODUCT_VERSION: 2.0.${{ github.run_number }}
+
 jobs:
   publish:
-    runs-on: windows-2022
+    runs-on: windows-latest
     environment: production
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: x86
+            runtime: win-x86
+          - platform: x64
+            runtime: win-x64
+          - platform: arm64
+            runtime: win-arm64
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET SDKs
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: |
-            8.0.x
-            10.0.x
+          dotnet-version: 10.0.x
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+      - name: Restore app project
+        run: dotnet restore src/Be.HexEditor/Be.HexEditor.csproj --runtime ${{ matrix.runtime }}
 
-      - name: Restore solution
-        run: dotnet restore src/hexbox.sln
-
-      - name: Build Store upload package
+      - name: Publish app
         shell: pwsh
         run: |
-          $PackageProject = "${{ inputs.package_project }}"
           $WorkspaceDir = $env:GITHUB_WORKSPACE
-          & msbuild @(
-            $PackageProject,
-            '/restore',
-            '/p:Configuration=Release',
-            '/p:UapAppxPackageBuildMode=StoreUpload',
-            '/p:AppxBundle=Always',
-            '/p:AppxBundlePlatforms=x86|x64|arm64',
-            "/p:AppxPackageDir=$WorkspaceDir\artifacts\store\"
-          )
+          $PublishDir = Join-Path $WorkspaceDir "artifacts\publish\${{ matrix.platform }}"
+          dotnet publish src/Be.HexEditor/Be.HexEditor.csproj --configuration Release --runtime ${{ matrix.runtime }} --self-contained true /p:PublishSingleFile=true /p:EnableCompressionInSingleFile=true /p:PublishTrimmed=false /p:DebugType=none /p:DebugSymbols=false --output $PublishDir
 
-      - name: Validate Store package output
+      - name: Generate installer file list
         shell: pwsh
         run: |
-          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\artifacts\store" -Recurse -File -ErrorAction SilentlyContinue
-          $uploads = $files | Where-Object { $_.Name -match '\.(msixupload|appxupload)$' }
-          if (-not $uploads) {
-            throw 'No .msixupload or .appxupload files were produced. Ensure package_project points to a valid .wapproj configured for Store upload.'
+          $WorkspaceDir = $env:GITHUB_WORKSPACE
+          $PublishDir = Join-Path $WorkspaceDir "artifacts\publish\${{ matrix.platform }}"
+          $GeneratedWxsPath = Join-Path $WorkspaceDir "artifacts\wix\${{ matrix.platform }}\GeneratedFiles.wxs"
+          pwsh -File src/Be.HexEditor.Installer/GenerateInstallerFiles.ps1 -PublishDir $PublishDir -OutputPath $GeneratedWxsPath
+
+      - name: Build MSI installer
+        shell: pwsh
+        run: |
+          $WorkspaceDir = $env:GITHUB_WORKSPACE
+          $PublishDir = Join-Path $WorkspaceDir "artifacts\publish\${{ matrix.platform }}"
+          $GeneratedWxsPath = Join-Path $WorkspaceDir "artifacts\wix\${{ matrix.platform }}\GeneratedFiles.wxs"
+          $OutputDir = Join-Path $WorkspaceDir "artifacts\msi\${{ matrix.platform }}"
+          dotnet build src/Be.HexEditor.Installer/Be.HexEditor.Installer.wixproj --configuration Release -p:InstallerPlatform=${{ matrix.platform }} -p:ProductVersion=$env:PRODUCT_VERSION -p:PublishDir=$PublishDir -p:GeneratedWxsPath=$GeneratedWxsPath -p:OutputPath=$OutputDir
+
+      - name: Validate MSI output
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\artifacts\msi\${{ matrix.platform }}" -Filter *.msi -File -ErrorAction SilentlyContinue
+          if (-not $files) {
+            throw 'No MSI installer was produced.'
           }
 
       - name: Upload Store artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: windows-store-artifacts
-          path: artifacts/store/**
+          name: windows-store-installer-${{ matrix.platform }}
+          path: artifacts/msi/${{ matrix.platform }}/*.msi
