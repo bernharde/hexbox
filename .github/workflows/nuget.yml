@@ -1,11 +1,11 @@
-name: nuget-publish
+name: nuget
 
 on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: Build workflow run ID containing the NuGet artifact.
-        required: true
+        description: Optional build workflow run ID. Leave empty to use latest successful run.
+        required: false
         type: string
       artifact_name:
         description: Artifact name containing NuGet packages.
@@ -25,12 +25,41 @@ jobs:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
     steps:
+      - name: Resolve build run ID
+        id: resolve_run
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const provided = `${{ inputs.run_id }}`.trim();
+            if (provided) {
+              core.info(`Using provided run_id: ${provided}`);
+              core.setOutput('run_id', provided);
+              return;
+            }
+
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'build.yml',
+              status: 'completed',
+              per_page: 50
+            });
+
+            const latestSuccessful = runs.find((r) => r.conclusion === 'success');
+            if (!latestSuccessful) {
+              core.setFailed('No successful build workflow runs found.');
+              return;
+            }
+
+            core.info(`Auto-selected run_id: ${latestSuccessful.id}`);
+            core.setOutput('run_id', String(latestSuccessful.id));
+
       - name: Download NuGet artifacts
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.artifact_name }}
           path: artifacts/nuget
-          run-id: ${{ inputs.run_id }}
+          run-id: ${{ steps.resolve_run.outputs.run_id }}
           repository: ${{ github.repository }}
           github-token: ${{ github.token }}
 
