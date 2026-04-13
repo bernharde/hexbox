@@ -3,18 +3,27 @@ name: publish-nuget
 on:
   workflow_call:
     inputs:
-      tag:
-        description: Release tag to publish from (for example v2.0.123).
+      run_id:
+        description: Workflow run ID that produced the NuGet artifact.
+        required: true
+        type: string
+      artifact_name:
+        description: Artifact name containing the NuGet package files.
         required: true
         type: string
   workflow_dispatch:
     inputs:
-      tag:
-        description: Release tag to publish from (for example v2.0.123).
+      run_id:
+        description: Workflow run ID that produced the NuGet artifact.
+        required: true
+        type: string
+      artifact_name:
+        description: Artifact name containing the NuGet package files.
         required: true
         type: string
 
 permissions:
+  actions: read
   contents: read
 
 jobs:
@@ -25,22 +34,20 @@ jobs:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
     steps:
-      - name: Download package from release assets
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p artifacts/nuget
-          gh release download "${{ inputs.tag }}" \
-            --repo "${{ github.repository }}" \
-            --pattern "*.nupkg" \
-            --dir artifacts/nuget
+      - name: Download package artifact from build run
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: artifacts/nuget
+          run-id: ${{ inputs.run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
 
       - name: Validate downloaded package files
         shell: bash
         run: |
           if ! ls artifacts/nuget/*.nupkg >/dev/null 2>&1; then
-            echo "No .nupkg files found in release assets for tag '${{ inputs.tag }}'." >&2
+            echo "No .nupkg files found in artifact '${{ inputs.artifact_name }}' from run '${{ inputs.run_id }}'." >&2
             exit 1
           fi
 
