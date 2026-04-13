@@ -16,13 +16,14 @@ on:
 permissions:
   actions: read
   contents: read
+  id-token: write
 
 jobs:
   publish:
     runs-on: windows-latest
-    environment: nuget
+    environment: production
     env:
-      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      NUGET_USER: bernharde
 
     steps:
       - name: Resolve build run ID
@@ -64,7 +65,14 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Publish packages to NuGet
-        if: ${{ env.NUGET_API_KEY != '' }}
+        if: ${{ env.NUGET_USER != '' }}
+        uses: NuGet/login@v1
+        id: nuget_login
+        with:
+          user: ${{ env.NUGET_USER }}
+
+      - name: Push packages to NuGet
+        if: ${{ env.NUGET_USER != '' }}
         shell: bash
         run: |
           shopt -s nullglob
@@ -74,9 +82,9 @@ jobs:
             exit 1
           fi
 
-          dotnet nuget push artifacts/nuget/*.nupkg --api-key "${{ env.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push artifacts/nuget/*.nupkg --api-key "${{ steps.nuget_login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-      - name: Fail when NuGet key is missing
-        if: ${{ env.NUGET_API_KEY == '' }}
+      - name: Fail when NuGet trusted user is missing
+        if: ${{ env.NUGET_USER == '' }}
         shell: pwsh
-        run: throw 'NUGET_API_KEY is not configured for environment nuget.'
+        run: throw 'NUGET_USER is not configured for environment nuget.'
