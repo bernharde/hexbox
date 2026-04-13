@@ -115,9 +115,14 @@ function Add-FileNodes {
         $componentId = New-Id -Prefix 'cmp' -Value $fileNode.RelativePath
         $fileId = New-Id -Prefix 'fil' -Value $fileNode.RelativePath
         $escapedSource = Escape-Xml $fileNode.FullPath
+        $isMainExecutable = $fileNode.Name -ieq 'Be.HexEditor.exe'
         [void]$componentIds.Add($componentId)
         [void]$Xml.AppendLine(('{0}<Component Id="{1}" Guid="*">' -f $indent, $componentId))
-        [void]$Xml.AppendLine(('{0}  <File Id="{1}" Source="{2}" KeyPath="yes" />' -f $indent, $fileId, $escapedSource))
+        [void]$Xml.AppendLine(('{0}  <File Id="{1}" Source="{2}" KeyPath="yes">' -f $indent, $fileId, $escapedSource))
+        if ($isMainExecutable) {
+            [void]$Xml.AppendLine(('{0}    <Shortcut Id="ApplicationShortcut" Directory="ApplicationProgramsFolder" Name="Be.HexEditor" WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" IconIndex="0" />' -f $indent))
+        }
+        [void]$Xml.AppendLine(('{0}  </File>' -f $indent))
         [void]$Xml.AppendLine(('{0}</Component>' -f $indent))
     }
 

@@ -20,6 +20,10 @@
       <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
     </StandardDirectory>
 
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="$(var.ProductName)" />
+    </StandardDirectory>
+
     <Feature Id="MainFeature" Title="$(var.ProductName)" Level="1">
       <ComponentGroupRef Id="GeneratedFileComponents" />
     </Feature>
