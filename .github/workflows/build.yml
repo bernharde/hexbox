@@ -8,6 +8,12 @@ on:
       - feature/**
   pull_request:
   workflow_dispatch:
+    inputs:
+      publish_nuget:
+        description: Publish generated NuGet package to nuget.org.
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -101,14 +107,37 @@ jobs:
             release-assets/nuget/*.snupkg
             release-assets/Be.HexEditor-v2.0.${{ github.run_number }}.zip
 
-  publish-nuget:
-    needs: tag-release
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+  publish-nuget-manual:
+    runs-on: windows-latest
+    needs: build
+    if: github.event_name == 'workflow_dispatch' && inputs.publish_nuget == true
+    environment: nuget
     permissions:
-      actions: read
       contents: read
-    uses: ./.github/workflows/nuget-publish.yml
-    with:
-      run_id: ${{ github.run_id }}
-      artifact_name: nuget-packages
-    secrets: inherit
+    env:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+
+    steps:
+      - name: Download NuGet artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages
+          path: artifacts/nuget
+
+      - name: Publish packages to NuGet
+        if: ${{ env.NUGET_API_KEY != '' }}
+        shell: bash
+        run: |
+          shopt -s nullglob
+          packages=(artifacts/nuget/*.nupkg)
+          if [ ${#packages[@]} -eq 0 ]; then
+            echo "No .nupkg files found in artifacts/nuget." >&2
+            exit 1
+          fi
+
+          dotnet nuget push artifacts/nuget/*.nupkg --api-key "${{ env.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Fail when NuGet key is missing
+        if: ${{ env.NUGET_API_KEY == '' }}
+        shell: pwsh
+        run: throw 'NUGET_API_KEY is not configured for environment nuget.'
