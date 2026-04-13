@@ -36,14 +36,26 @@ jobs:
             --pattern "*.nupkg" \
             --dir artifacts/nuget
 
+      - name: Validate downloaded package files
+        shell: bash
+        run: |
           if ! ls artifacts/nuget/*.nupkg >/dev/null 2>&1; then
-            echo "No .nupkg asset found on release tag ${{ inputs.tag }}." >&2
+            echo "No .nupkg files found in release assets for tag '${{ inputs.tag }}'." >&2
             exit 1
           fi
 
       - name: Publish packages to NuGet
         if: ${{ env.NUGET_API_KEY != '' }}
-        run: dotnet nuget push "artifacts/nuget/*.nupkg" --api-key "${{ env.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        shell: bash
+        run: |
+          shopt -s nullglob
+          packages=(artifacts/nuget/*.nupkg)
+          if [ ${#packages[@]} -eq 0 ]; then
+            echo "No .nupkg files found in artifacts/nuget." >&2
+            exit 1
+          fi
+
+          dotnet nuget push artifacts/nuget/*.nupkg --api-key "${{ env.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: Fail when NuGet key is missing
         if: ${{ env.NUGET_API_KEY == '' }}
