@@ -3,70 +3,49 @@ name: store
 on:
   workflow_dispatch:
     inputs:
-      run_id:
-        description: Optional build workflow run ID. Leave empty to use latest successful run.
-        required: false
-        type: string
-      artifact_name:
-        description: Artifact name containing the Store candidate build output.
-        required: false
-        default: store-candidate
+      package_project:
+        description: Path to Windows packaging project (.wapproj).
+        required: true
         type: string
 
 permissions:
-  actions: read
   contents: read
 
 jobs:
   publish:
     runs-on: windows-latest
+    environment: production
 
     steps:
-      - name: Resolve build run ID
-        id: resolve_run
-        uses: actions/github-script@v7
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
         with:
-          script: |
-            const provided = `${{ inputs.run_id }}`.trim();
-            if (provided) {
-              core.info(`Using provided run_id: ${provided}`);
-              core.setOutput('run_id', provided);
-              return;
-            }
+          dotnet-version: |
+            8.0.x
+            10.0.x
 
-            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'build.yml',
-              status: 'completed',
-              per_page: 50
-            });
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
 
-            const latestSuccessful = runs.find((r) => r.conclusion === 'success');
-            if (!latestSuccessful) {
-              core.setFailed('No successful build workflow runs found.');
-              return;
-            }
+      - name: Restore solution
+        run: dotnet restore src/hexbox.sln
 
-            core.info(`Auto-selected run_id: ${latestSuccessful.id}`);
-            core.setOutput('run_id', String(latestSuccessful.id));
-
-      - name: Download Store candidate artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ inputs.artifact_name }}
-          path: artifacts/store
-          run-id: ${{ steps.resolve_run.outputs.run_id }}
-          repository: ${{ github.repository }}
-          github-token: ${{ github.token }}
-
-      - name: Validate downloaded Store artifact
-        shell: bash
+      - name: Build Store upload package
+        shell: pwsh
         run: |
-          if ! find artifacts/store -type f | grep -q .; then
-            echo "No files found in store artifact '${{ inputs.artifact_name }}' from run '${{ steps.resolve_run.outputs.run_id }}'." >&2
-            exit 1
-          fi
+          msbuild "${{ inputs.package_project }}" /restore /p:Configuration=Release /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:AppxPackageDir=$env:GITHUB_WORKSPACE\artifacts\store\
+
+      - name: Validate Store package output
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\artifacts\store" -Recurse -File -ErrorAction SilentlyContinue
+          $uploads = $files | Where-Object { $_.Name -match '\.(msixupload|appxupload)$' }
+          if (-not $uploads) {
+            throw 'No .msixupload or .appxupload files were produced. Ensure package_project points to a valid .wapproj configured for Store upload.'
+          }
 
       - name: Upload Store artifacts
         uses: actions/upload-artifact@v4
