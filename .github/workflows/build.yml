@@ -104,6 +104,9 @@ jobs:
   publish-nuget:
     needs: tag-release
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+    permissions:
+      actions: read
+      contents: read
     uses: ./.github/workflows/nuget-publish.yml
     with:
       run_id: ${{ github.run_id }}
