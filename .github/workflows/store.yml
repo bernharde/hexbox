@@ -43,7 +43,6 @@ jobs:
             $PackageProject,
             '/restore',
             '/p:Configuration=Release',
-            '/p:RuntimeIdentifiers=win-x86;win-x64;win-arm64',
             '/p:UapAppxPackageBuildMode=StoreUpload',
             '/p:AppxBundle=Always',
             '/p:AppxBundlePlatforms=x86|x64|arm64',
