@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -57,7 +58,6 @@ jobs:
   tag-release:
     runs-on: ubuntu-latest
     needs: build
-    environment: nuget
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
 
     steps:
@@ -102,10 +102,16 @@ jobs:
             release-assets/nuget/*.snupkg
             release-assets/Be.HexEditor-v2.0.${{ github.run_number }}.zip
 
-      - name: Publish NuGet packages
-        if: ${{ secrets.NUGET_API_KEY != '' }}
-        run: dotnet nuget push "release-assets/nuget/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
-
-      - name: Warn when NuGet key is missing
-        if: ${{ secrets.NUGET_API_KEY == '' }}
-        run: echo "::warning::NUGET_API_KEY is not configured, skipping NuGet publish."
+      - name: Trigger NuGet publish workflow
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'nuget-publish.yml',
+              ref: '${{ github.ref_name }}',
+              inputs: {
+                version: '2.0.${{ github.run_number }}'
+              }
+            });
