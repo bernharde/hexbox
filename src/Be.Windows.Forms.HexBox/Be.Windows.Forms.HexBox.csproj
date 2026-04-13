@@ -18,13 +18,13 @@
 	  <RepositoryUrl>https://github.com/bernharde/hexbox</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageReadmeFile>NUGET_README.md</PackageReadmeFile>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <IncludeSymbols>true</IncludeSymbols>
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="NUGET_README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
     <Reference Include="System.Configuration" />
