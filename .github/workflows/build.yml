@@ -8,12 +8,6 @@ on:
       - feature/**
   pull_request:
   workflow_dispatch:
-    inputs:
-      publish_nuget:
-        description: Publish generated NuGet package to nuget.org.
-        required: false
-        default: false
-        type: boolean
 
 permissions:
   contents: write
@@ -110,7 +104,7 @@ jobs:
   publish-nuget-manual:
     runs-on: windows-latest
     needs: build
-    if: github.event_name == 'workflow_dispatch' && inputs.publish_nuget == true
+    if: github.event_name == 'workflow_dispatch'
     environment: nuget
     permissions:
       contents: read
