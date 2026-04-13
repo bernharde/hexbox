@@ -1,14 +1,11 @@
 name: publish-nuget
 
 on:
-  release:
-    types:
-      - published
   workflow_dispatch:
     inputs:
-      version:
-        description: Package version to publish. Defaults to the release tag without a leading v.
-        required: false
+      tag:
+        description: Release tag to publish from (for example v2.0.123).
+        required: true
         type: string
 
 permissions:
@@ -20,48 +17,27 @@ jobs:
     environment: nuget
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup .NET SDKs
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: |
-            8.0.x
-            10.0.x
-
-      - name: Resolve package version
-        id: version
-        shell: pwsh
+      - name: Download package from release assets
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          $version = '${{ inputs.version }}'
+          mkdir -p artifacts/nuget
+          gh release download "${{ inputs.tag }}" \
+            --repo "${{ github.repository }}" \
+            --pattern "*.nupkg" \
+            --dir artifacts/nuget
 
-          if ([string]::IsNullOrWhiteSpace($version) -and '${{ github.event_name }}' -eq 'release') {
-            $version = '${{ github.event.release.tag_name }}'
-          }
-
-          if ([string]::IsNullOrWhiteSpace($version)) {
-            throw 'A package version is required for manual runs.'
-          }
-
-          $version = $version.TrimStart('v')
-          if ([string]::IsNullOrWhiteSpace($version)) {
-            throw 'Resolved package version is empty.'
-          }
-
-          "value=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-
-      - name: Restore
-        run: dotnet restore src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj
-
-      - name: Pack
-        run: dotnet pack src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --output artifacts/nuget /p:ContinuousIntegrationBuild=true /p:PackageVersion=${{ steps.version.outputs.value }}
-
-      - name: Upload package artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: be-windows-forms-hexbox-${{ steps.version.outputs.value }}
-          path: artifacts/nuget/*
+          if ! ls artifacts/nuget/*.nupkg >/dev/null 2>&1; then
+            echo "No .nupkg asset found on release tag ${{ inputs.tag }}." >&2
+            exit 1
+          fi
 
       - name: Publish packages to NuGet
+        if: ${{ secrets.NUGET_API_KEY != '' }}
         run: dotnet nuget push "artifacts/nuget/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Fail when NuGet key is missing
+        if: ${{ secrets.NUGET_API_KEY == '' }}
+        shell: pwsh
+        run: throw 'NUGET_API_KEY is not configured for environment nuget.'
