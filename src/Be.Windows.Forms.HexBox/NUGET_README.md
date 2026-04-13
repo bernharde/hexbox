@@ -45,7 +45,7 @@ hexBox.ByteProvider = provider;
 
 ## Documentation
 
-- **API Reference**: https://github.com/bernharde/hexbox/blob/main/docs/api/
+- **Documentation**: https://github.com/bernharde/hexbox/blob/master/docs/index.md
 - **GitHub Repository**: https://github.com/bernharde/hexbox
 - **License**: MIT
 
