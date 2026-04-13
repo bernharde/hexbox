@@ -6,6 +6,7 @@ on:
       package_project:
         description: Path to Windows packaging project (.wapproj).
         required: true
+        default: src/Be.HexEditor.Package/Be.HexEditor.Package.wapproj
         type: string
 
 permissions:
