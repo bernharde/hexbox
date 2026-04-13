@@ -39,8 +39,16 @@ jobs:
         run: |
           $PackageProject = "${{ inputs.package_project }}"
           $WorkspaceDir = $env:GITHUB_WORKSPACE
-          $env:RuntimeIdentifiers = "win-x86;win-x64;win-arm64"
-          msbuild $PackageProject /restore /p:Configuration=Release "/p:RuntimeIdentifiers=$env:RuntimeIdentifiers" /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always "/p:AppxBundlePlatforms=x86|x64|arm64" /p:AppxPackageDir=$WorkspaceDir\artifacts\store\
+          & msbuild @(
+            $PackageProject,
+            '/restore',
+            '/p:Configuration=Release',
+            '/p:RuntimeIdentifiers=win-x86;win-x64;win-arm64',
+            '/p:UapAppxPackageBuildMode=StoreUpload',
+            '/p:AppxBundle=Always',
+            '/p:AppxBundlePlatforms=x86|x64|arm64',
+            "/p:AppxPackageDir=$WorkspaceDir\artifacts\store\"
+          )
 
       - name: Validate Store package output
         shell: pwsh
