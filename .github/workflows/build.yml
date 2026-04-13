@@ -51,7 +51,7 @@ jobs:
       - name: Upload Be.HexEditor artifact
         uses: actions/upload-artifact@v4
         with:
-          name: be-hexeditor-fast-start
+          name: store-candidate
           path: artifacts/publish/Be.HexEditor/SmallSelfContained/**
 
   tag-release:
@@ -84,7 +84,7 @@ jobs:
       - name: Download Be.HexEditor artifact
         uses: actions/download-artifact@v4
         with:
-          name: be-hexeditor-fast-start
+          name: store-candidate
           path: release-assets/Be.HexEditor
 
       - name: Zip Be.HexEditor binaries

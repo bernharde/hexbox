@@ -3,56 +3,70 @@ name: store
 on:
   workflow_dispatch:
     inputs:
-      publish-profile:
-        description: Be.HexEditor publish profile to use when no MSIX packaging project is supplied.
-        required: true
-        default: SmallSelfContained
-        type: choice
-        options:
-          - FastStartupSelfContained
-          - SmallSelfContained
-      package-project:
-        description: Optional path to a Windows packaging project (.wapproj or similar) for Store upload generation.
+      run_id:
+        description: Optional build workflow run ID. Leave empty to use latest successful run.
         required: false
+        type: string
+      artifact_name:
+        description: Artifact name containing the Store candidate build output.
+        required: false
+        default: store-candidate
         type: string
 
 permissions:
+  actions: read
   contents: read
 
 jobs:
   publish:
     runs-on: windows-latest
-    environment: windows-store
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup .NET SDKs
-        uses: actions/setup-dotnet@v4
+      - name: Resolve build run ID
+        id: resolve_run
+        uses: actions/github-script@v7
         with:
-          dotnet-version: |
-            8.0.x
-            10.0.x
+          script: |
+            const provided = `${{ inputs.run_id }}`.trim();
+            if (provided) {
+              core.info(`Using provided run_id: ${provided}`);
+              core.setOutput('run_id', provided);
+              return;
+            }
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'build.yml',
+              status: 'completed',
+              per_page: 50
+            });
 
-      - name: Restore
-        run: dotnet restore src/hexbox.sln
+            const latestSuccessful = runs.find((r) => r.conclusion === 'success');
+            if (!latestSuccessful) {
+              core.setFailed('No successful build workflow runs found.');
+              return;
+            }
 
-      - name: Build
-        run: dotnet build src/hexbox.sln --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
+            core.info(`Auto-selected run_id: ${latestSuccessful.id}`);
+            core.setOutput('run_id', String(latestSuccessful.id));
 
-      - name: Build Microsoft Store package
-        if: ${{ inputs.package-project != '' }}
-        shell: pwsh
+      - name: Download Store candidate artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: artifacts/store
+          run-id: ${{ steps.resolve_run.outputs.run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+
+      - name: Validate downloaded Store artifact
+        shell: bash
         run: |
-          msbuild "${{ inputs.package-project }}" /restore /p:Configuration=Release /p:UapAppxPackageBuildMode=StoreUpload /p:AppxBundle=Always /p:AppxPackageDir=$env:GITHUB_WORKSPACE\artifacts\store\
-
-      - name: Publish Be.HexEditor Store candidate
-        if: ${{ inputs.package-project == '' }}
-        run: dotnet publish src/Be.HexEditor/Be.HexEditor.csproj -p:PublishProfile=${{ inputs.publish-profile }} --output artifacts/store/Be.HexEditor/${{ inputs.publish-profile }}
+          if ! find artifacts/store -type f | grep -q .; then
+            echo "No files found in store artifact '${{ inputs.artifact_name }}' from run '${{ steps.resolve_run.outputs.run_id }}'." >&2
+            exit 1
+          fi
 
       - name: Upload Store artifacts
         uses: actions/upload-artifact@v4
