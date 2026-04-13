@@ -10,11 +10,11 @@
     <ProjectGuid>7F6FCE24-2D10-45AB-B993-B538DB7A4ECA</ProjectGuid>
     <ProjectName>Be.HexEditor.Package</ProjectName>
     <EntryPointProjectUniqueName>..\Be.HexEditor\Be.HexEditor.csproj</EntryPointProjectUniqueName>
-    <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <GenerateAppInstallerFile>false</GenerateAppInstallerFile>
   </PropertyGroup>
