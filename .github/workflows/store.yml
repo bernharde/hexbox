@@ -32,7 +32,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Restore solution
-        run: dotnet restore --% src/hexbox.sln /p:RuntimeIdentifiers=win-x86;win-x64;win-arm64
+        run: dotnet restore src/hexbox.sln
 
       - name: Build Store upload package
         shell: pwsh
