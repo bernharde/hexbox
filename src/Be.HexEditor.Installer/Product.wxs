@@ -26,6 +26,7 @@
 
     <Feature Id="MainFeature" Title="$(var.ProductName)" Level="1">
       <ComponentGroupRef Id="GeneratedFileComponents" />
+      <ComponentGroupRef Id="ShortcutComponents" />
     </Feature>
   </Package>
 </Wix>
