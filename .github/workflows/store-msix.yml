@@ -106,7 +106,7 @@ jobs:
           Write-Host "Using MakeAppx: $($makeAppx.FullName)"
 
           $OutputFile = Join-Path $OutputDir "Be.HexEditor-${{ matrix.platform }}.msix"
-          & $makeAppx.FullName pack /d $StagingDir /p $OutputFile /nv
+          & $makeAppx.FullName pack /d $StagingDir /p $OutputFile
           if ($LASTEXITCODE -ne 0) {
             throw "MakeAppx failed with exit code $LASTEXITCODE"
           }
