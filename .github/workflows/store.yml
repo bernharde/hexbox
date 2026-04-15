@@ -38,12 +38,65 @@ jobs:
       - name: Restore app project
         run: dotnet restore src/Be.HexEditor/Be.HexEditor.csproj --runtime ${{ matrix.runtime }}
 
+      - name: Validate signing configuration
+        shell: pwsh
+        env:
+          ARTIFACT_SIGNING_ACCOUNT_NAME: ${{ vars.ARTIFACT_SIGNING_ACCOUNT_NAME }}
+          ARTIFACT_SIGNING_ENDPOINT: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          ARTIFACT_SIGNING_CERTIFICATE_PROFILE: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ACCOUNT_NAME)) {
+            throw 'Environment variable ARTIFACT_SIGNING_ACCOUNT_NAME is required.'
+          }
+
+          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ENDPOINT)) {
+            throw 'Environment variable ARTIFACT_SIGNING_ENDPOINT is required.'
+          }
+
+          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE)) {
+            throw 'Environment variable ARTIFACT_SIGNING_CERTIFICATE_PROFILE is required.'
+          }
+
+          if ($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE -eq 'REPLACE_ME') {
+            throw 'Environment variable ARTIFACT_SIGNING_CERTIFICATE_PROFILE must be replaced with a real certificate profile name.'
+          }
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
       - name: Publish app
         shell: pwsh
         run: |
           $WorkspaceDir = $env:GITHUB_WORKSPACE
           $PublishDir = Join-Path $WorkspaceDir "artifacts\publish\${{ matrix.platform }}"
           dotnet publish src/Be.HexEditor/Be.HexEditor.csproj --configuration Release --runtime ${{ matrix.runtime }} --self-contained true /p:PublishSingleFile=true /p:EnableCompressionInSingleFile=true /p:PublishTrimmed=false /p:DebugType=none /p:DebugSymbols=false --output $PublishDir
+
+      - name: Sign published executable
+        uses: azure/artifact-signing-action@v1
+        with:
+          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.ARTIFACT_SIGNING_ACCOUNT_NAME }}
+          certificate-profile-name: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          files: ${{ github.workspace }}\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
+          description: Be.HexEditor
+          description-url: https://github.com/bernharde/hexbox
+          exclude-environment-credential: true
+          exclude-workload-identity-credential: true
+          exclude-managed-identity-credential: true
+          exclude-shared-token-cache-credential: true
+          exclude-visual-studio-credential: true
+          exclude-visual-studio-code-credential: true
+          exclude-azure-cli-credential: false
+          exclude-azure-powershell-credential: true
+          exclude-azure-developer-cli-credential: true
+          exclude-interactive-browser-credential: true
 
       - name: Generate installer file list
         shell: pwsh
@@ -61,6 +114,29 @@ jobs:
           $GeneratedWxsPath = Join-Path $WorkspaceDir "artifacts\wix\${{ matrix.platform }}\GeneratedFiles.wxs"
           $OutputDir = Join-Path $WorkspaceDir "artifacts\msi\${{ matrix.platform }}"
           dotnet build src/Be.HexEditor.Installer/Be.HexEditor.Installer.wixproj --configuration Release -p:InstallerPlatform=${{ matrix.platform }} -p:ProductVersion=$env:PRODUCT_VERSION -p:PublishDir=$PublishDir -p:GeneratedWxsPath=$GeneratedWxsPath -p:OutputPath=$OutputDir
+
+      - name: Sign MSI installer
+        uses: azure/artifact-signing-action@v1
+        with:
+          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.ARTIFACT_SIGNING_ACCOUNT_NAME }}
+          certificate-profile-name: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          files: ${{ github.workspace }}\artifacts\msi\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.msi
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
+          description: Be.HexEditor installer
+          description-url: https://github.com/bernharde/hexbox
+          exclude-environment-credential: true
+          exclude-workload-identity-credential: true
+          exclude-managed-identity-credential: true
+          exclude-shared-token-cache-credential: true
+          exclude-visual-studio-credential: true
+          exclude-visual-studio-code-credential: true
+          exclude-azure-cli-credential: false
+          exclude-azure-powershell-credential: true
+          exclude-azure-developer-cli-credential: true
+          exclude-interactive-browser-credential: true
 
       - name: Validate MSI output
         shell: pwsh
