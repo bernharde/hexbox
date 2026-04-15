@@ -1,4 +1,4 @@
-name: store
+name: store-msi
 
 on:
   workflow_dispatch:

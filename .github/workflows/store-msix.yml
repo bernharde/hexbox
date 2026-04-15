@@ -1,4 +1,4 @@
-name: store2
+name: store-msix
 
 on:
   workflow_dispatch:
@@ -61,8 +61,8 @@ jobs:
           # Copy published app files into staging root
           Copy-Item "$PublishDir\*" -Destination $StagingDir -Recurse -Force
 
-          # Use PackageAssets from source tree if present, otherwise generate placeholders
-          $SourceAssets = Join-Path $WorkspaceDir "src\Be.HexEditor\PackageAssets"
+          # Use assets from source tree if present, otherwise generate placeholders
+          $SourceAssets = Join-Path $WorkspaceDir "src\Be.HexEditor\Package\Assets"
           if (Test-Path $SourceAssets) {
             Copy-Item "$SourceAssets\*" -Destination $AssetsDir -Recurse -Force
           } else {
@@ -85,62 +85,12 @@ jobs:
             }
           }
 
-          # Generate AppxManifest.xml
-          # Publisher CN must match your Partner Center publisher display name.
-          # Windows Store will replace the Identity block during ingestion when
-          # the package is submitted unsigned via the Store upload flow.
-          $manifest = @"
-<?xml version="1.0" encoding="utf-8"?>
-<Package
-  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
-  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap rescap">
-
-  <Identity
-    Name="Be.HexEditor"
-    Publisher="CN=Publisher"
-    Version="${{ env.PRODUCT_VERSION }}.0"
-    ProcessorArchitecture="${{ matrix.arch }}" />
-
-  <Properties>
-    <DisplayName>Be.HexEditor</DisplayName>
-    <PublisherDisplayName>Be</PublisherDisplayName>
-    <Logo>Assets\Square150x150Logo.png</Logo>
-  </Properties>
-
-  <Dependencies>
-    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0" />
-  </Dependencies>
-
-  <Resources>
-    <Resource Language="en-us" />
-  </Resources>
-
-  <Applications>
-    <Application Id="App" Executable="Be.HexEditor.exe" EntryPoint="Windows.FullTrustApplication">
-      <uap:VisualElements
-        DisplayName="Be.HexEditor"
-        Square150x150Logo="Assets\Square150x150Logo.png"
-        Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="View and edit files in hex format"
-        BackgroundColor="transparent">
-        <uap:DefaultTile
-          Wide310x150Logo="Assets\Wide310x150Logo.png"
-          Square71x71Logo="Assets\Square71x71Logo.png"
-          Square310x310Logo="Assets\Square310x310Logo.png" />
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
-      </uap:VisualElements>
-    </Application>
-  </Applications>
-
-  <Capabilities>
-    <rescap:Capability Name="runFullTrust" />
-  </Capabilities>
-
-</Package>
-"@
-          Set-Content -Path (Join-Path $StagingDir "AppxManifest.xml") -Value $manifest -Encoding UTF8
+          # Copy AppxManifest.xml from source tree and substitute build-time tokens
+          $manifestSrc = Join-Path $WorkspaceDir "src\Be.HexEditor\Package\AppxManifest.xml"
+          $manifestContent = Get-Content $manifestSrc -Raw -Encoding UTF8
+          $manifestContent = $manifestContent -replace '\{\{VERSION\}\}', "${{ env.PRODUCT_VERSION }}.0"
+          $manifestContent = $manifestContent -replace '\{\{ARCH\}\}',    "${{ matrix.arch }}"
+          Set-Content -Path (Join-Path $StagingDir "AppxManifest.xml") -Value $manifestContent -Encoding UTF8
 
           # Locate the latest MakeAppx.exe from the Windows SDK
           $makeAppx = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "makeappx.exe" -Recurse -ErrorAction SilentlyContinue |
