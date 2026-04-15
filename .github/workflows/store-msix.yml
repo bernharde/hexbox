@@ -169,7 +169,7 @@ jobs:
           Write-Host "Using MakeAppx: $($makeAppx.FullName)"
 
           $bundleFile = Join-Path $OutputDir "Be.HexEditor-$env:PRODUCT_VERSION.msixbundle"
-          & $makeAppx.FullName bundle /d $InputDir /p $bundleFile /bv $env:PRODUCT_VERSION.0
+          & $makeAppx.FullName bundle /d $InputDir /p $bundleFile
           if ($LASTEXITCODE -ne 0) {
             throw "MakeAppx bundle failed with exit code $LASTEXITCODE"
           }
