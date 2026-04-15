@@ -126,9 +126,74 @@ jobs:
           name: windows-store-msix-${{ matrix.platform }}
           path: artifacts/msix/${{ matrix.platform }}/*.msix
 
+  bundle:
+    runs-on: windows-latest
+    needs: publish
+    environment: production
+
+    steps:
+      - name: Download x86 MSIX
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-msix-x86
+          path: bundle-assets/x86
+
+      - name: Download x64 MSIX
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-msix-x64
+          path: bundle-assets/x64
+
+      - name: Download arm64 MSIX
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-msix-arm64
+          path: bundle-assets/arm64
+
+      - name: Create MSIX bundle
+        shell: pwsh
+        run: |
+          $WorkspaceDir = $env:GITHUB_WORKSPACE
+          $InputDir = Join-Path $WorkspaceDir "bundle-assets"
+          $OutputDir = Join-Path $WorkspaceDir "artifacts\bundle"
+          New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
+
+          $makeAppx = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "makeappx.exe" -Recurse -ErrorAction SilentlyContinue |
+            Where-Object { $_.Directory.Name -eq "x64" } |
+            Sort-Object FullName -Descending |
+            Select-Object -First 1
+
+          if (-not $makeAppx) {
+            throw "makeappx.exe not found. Ensure the Windows SDK is installed on the runner."
+          }
+          Write-Host "Using MakeAppx: $($makeAppx.FullName)"
+
+          $bundleFile = Join-Path $OutputDir "Be.HexEditor-$env:PRODUCT_VERSION.msixbundle"
+          & $makeAppx.FullName bundle /d $InputDir /p $bundleFile /bv $env:PRODUCT_VERSION.0
+          if ($LASTEXITCODE -ne 0) {
+            throw "MakeAppx bundle failed with exit code $LASTEXITCODE"
+          }
+
+      - name: Validate MSIX bundle output
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\artifacts\bundle" -Filter *.msixbundle -File -ErrorAction SilentlyContinue
+          if (-not $files) {
+            throw 'No MSIX bundle was produced.'
+          }
+          Write-Host "MSIX bundle produced: $($files | Select-Object -ExpandProperty Name)"
+
+      - name: Upload MSIX bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-store-msix-bundle
+          path: artifacts/bundle/*.msixbundle
+
   release:
     runs-on: ubuntu-latest
-    needs: publish
+    needs:
+      - publish
+      - bundle
     environment: production
 
     steps:
@@ -150,6 +215,12 @@ jobs:
           name: windows-store-msix-arm64
           path: release-assets/msix/arm64
 
+      - name: Download MSIX bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-msix-bundle
+          path: release-assets/bundle
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -160,10 +231,13 @@ jobs:
             release-assets/msix/x86/*.msix
             release-assets/msix/x64/*.msix
             release-assets/msix/arm64/*.msix
+            release-assets/bundle/*.msixbundle
 
   blob:
     runs-on: windows-latest
-    needs: publish
+    needs:
+      - publish
+      - bundle
     environment: production
 
     steps:
@@ -185,6 +259,12 @@ jobs:
           name: windows-store-msix-arm64
           path: blob-assets/arm64
 
+      - name: Download MSIX bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-store-msix-bundle
+          path: blob-assets/bundle
+
       - name: Azure login
         uses: azure/login@v2
         with:
@@ -192,7 +272,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Upload MSIX files to Blob Storage
+      - name: Upload MSIX and bundle files to Blob Storage
         shell: pwsh
         env:
           AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
@@ -206,14 +286,21 @@ jobs:
             throw 'Repository variable AZURE_STORAGE_CONTAINER is required.'
           }
 
-          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -Filter *.msix -File -Recurse
+          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -File -Recurse |
+            Where-Object { $_.Extension -in @('.msix', '.msixbundle') }
           if (-not $files) {
-            throw 'No MSIX files were downloaded for Blob upload.'
+            throw 'No MSIX or MSIX bundle files were downloaded for Blob upload.'
           }
 
           foreach ($file in $files) {
             $blobName = "$env:BLOB_PREFIX/$($file.Name)"
-            az storage blob upload --account-name $env:AZURE_STORAGE_ACCOUNT --container-name $env:AZURE_STORAGE_CONTAINER --name $blobName --file $file.FullName --overwrite true --auth-mode login --content-type application/x-msix | Out-Null
+            if ($file.Extension -eq '.msixbundle') {
+              $contentType = 'application/vns.ms-appx'
+            } else {
+              $contentType = 'application/x-msix'
+            }
+
+            az storage blob upload --account-name $env:AZURE_STORAGE_ACCOUNT --container-name $env:AZURE_STORAGE_CONTAINER --name $blobName --file $file.FullName --overwrite true --auth-mode login --content-type $contentType | Out-Null
           }
 
       - name: Print direct download URLs
@@ -222,7 +309,9 @@ jobs:
           AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
           AZURE_STORAGE_CONTAINER: ${{ vars.AZURE_STORAGE_CONTAINER }}
         run: |
-          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -Filter *.msix -File -Recurse | Sort-Object Name
+          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -File -Recurse |
+            Where-Object { $_.Extension -in @('.msix', '.msixbundle') } |
+            Sort-Object Name
           $summaryLines = @(
             "## Azure Blob MSIX URLs",
             ""
