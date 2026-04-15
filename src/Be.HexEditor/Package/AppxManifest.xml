@@ -11,8 +11,8 @@
     VERSION and ARCH are substituted by the CI pipeline at build time.
   -->
   <Identity
-    Name="Be.HexEditor"
-    Publisher="CN=Publisher"
+    Name="44005openorga.Be.HexEditor"
+    Publisher="CN=7B082BB6-D1EA-400B-94E4-F33606A3B368"
     Version="{{VERSION}}"
     ProcessorArchitecture="{{ARCH}}" />
 
