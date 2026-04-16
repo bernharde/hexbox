@@ -14,6 +14,8 @@ jobs:
   publish:
     runs-on: windows-latest
     environment: production
+    env:
+      RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE != 'REPLACE_ME' && vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE || secrets.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
     strategy:
       fail-fast: false
       matrix:
@@ -44,14 +46,14 @@ jobs:
         shell: pwsh
         env:
           ARTIFACT_SIGNING_ENDPOINT: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
-          ARTIFACT_SIGNING_CERTIFICATE_PROFILE: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          ARTIFACT_SIGNING_CERTIFICATE_PROFILE: ${{ env.RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
         run: |
           if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ENDPOINT)) {
             throw 'Environment variable ARTIFACT_SIGNING_ENDPOINT is required.'
           }
 
           if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE)) {
-            throw 'Environment variable ARTIFACT_SIGNING_CERTIFICATE_PROFILE is required.'
+            throw 'Set ARTIFACT_SIGNING_CERTIFICATE_PROFILE as a repository/environment variable, or set the ARTIFACT_SIGNING_CERTIFICATE_PROFILE secret.'
           }
 
           if ($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE -eq 'REPLACE_ME') {
@@ -140,7 +142,7 @@ jobs:
         with:
           endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
           signing-account-name: hexboxsigning3573
-          certificate-profile-name: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          certificate-profile-name: ${{ env.RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
           files: ${{ github.workspace }}\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe
           file-digest: SHA256
           timestamp-rfc3161: http://timestamp.acs.microsoft.com
@@ -179,7 +181,7 @@ jobs:
         with:
           endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
           signing-account-name: hexboxsigning3573
-          certificate-profile-name: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          certificate-profile-name: ${{ env.RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
           files: ${{ github.workspace }}\artifacts\msixs\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.msix
           file-digest: SHA256
           timestamp-rfc3161: http://timestamp.acs.microsoft.com
