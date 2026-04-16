@@ -9,7 +9,6 @@ permissions:
 
 env:
   PRODUCT_VERSION: 2.0.${{ github.run_number }}
-  BLOB_PREFIX: store-msix-v${{ github.run_number }}
 
 jobs:
   publish:
@@ -40,6 +39,31 @@ jobs:
 
       - name: Restore app project
         run: dotnet restore src/Be.HexEditor/Be.HexEditor.csproj --runtime ${{ matrix.runtime }}
+
+      - name: Validate signing configuration
+        shell: pwsh
+        env:
+          ARTIFACT_SIGNING_ENDPOINT: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          ARTIFACT_SIGNING_CERTIFICATE_PROFILE: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ENDPOINT)) {
+            throw 'Environment variable ARTIFACT_SIGNING_ENDPOINT is required.'
+          }
+
+          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE)) {
+            throw 'Environment variable ARTIFACT_SIGNING_CERTIFICATE_PROFILE is required.'
+          }
+
+          if ($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE -eq 'REPLACE_ME') {
+            throw 'Environment variable ARTIFACT_SIGNING_CERTIFICATE_PROFILE must be replaced with a real certificate profile name.'
+          }
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Publish app
         shell: pwsh
@@ -111,6 +135,84 @@ jobs:
             throw "MakeAppx failed with exit code $LASTEXITCODE"
           }
 
+      - name: Sign published executable
+        uses: azure/artifact-signing-action@v1
+        with:
+          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          signing-account-name: hexboxsigning3573
+          certificate-profile-name: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          files: ${{ github.workspace }}\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
+          description: Be.HexEditor
+          description-url: https://github.com/bernharde/hexbox
+          exclude-environment-credential: true
+          exclude-workload-identity-credential: true
+          exclude-managed-identity-credential: true
+          exclude-shared-token-cache-credential: true
+          exclude-visual-studio-credential: true
+          exclude-visual-studio-code-credential: true
+          exclude-azure-cli-credential: false
+          exclude-azure-powershell-credential: true
+          exclude-azure-developer-cli-credential: true
+          exclude-interactive-browser-credential: true
+
+      - name: Create MSIXS candidate
+        shell: pwsh
+        run: |
+          $WorkspaceDir = $env:GITHUB_WORKSPACE
+          $MsixDir = Join-Path $WorkspaceDir "artifacts\msix\${{ matrix.platform }}"
+          $MsixsDir = Join-Path $WorkspaceDir "artifacts\msixs\${{ matrix.platform }}"
+          New-Item -ItemType Directory -Force -Path $MsixsDir | Out-Null
+
+          $sourceMsix = Get-ChildItem -Path $MsixDir -Filter *.msix -File -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $sourceMsix) {
+            throw 'No MSIX package found to create MSIXS candidate.'
+          }
+
+          $candidateMsix = Join-Path $MsixsDir ($sourceMsix.BaseName + '.msix')
+          Copy-Item -Path $sourceMsix.FullName -Destination $candidateMsix -Force
+
+      - name: Sign MSIXS candidate
+        uses: azure/artifact-signing-action@v1
+        with:
+          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          signing-account-name: hexboxsigning3573
+          certificate-profile-name: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          files: ${{ github.workspace }}\artifacts\msixs\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.msix
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
+          description: Be.HexEditor MSIXS
+          description-url: https://github.com/bernharde/hexbox
+          exclude-environment-credential: true
+          exclude-workload-identity-credential: true
+          exclude-managed-identity-credential: true
+          exclude-shared-token-cache-credential: true
+          exclude-visual-studio-credential: true
+          exclude-visual-studio-code-credential: true
+          exclude-azure-cli-credential: false
+          exclude-azure-powershell-credential: true
+          exclude-azure-developer-cli-credential: true
+          exclude-interactive-browser-credential: true
+
+      - name: Rename signed package to MSIXS
+        shell: pwsh
+        run: |
+          $MsixsDir = Join-Path $env:GITHUB_WORKSPACE "artifacts\msixs\${{ matrix.platform }}"
+          $signedMsix = Get-ChildItem -Path $MsixsDir -Filter *.msix -File -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $signedMsix) {
+            throw 'No signed MSIX candidate found to rename as .msixs.'
+          }
+
+          $target = Join-Path $MsixsDir ($signedMsix.BaseName + '.msixs')
+          if (Test-Path $target) {
+            Remove-Item -Path $target -Force
+          }
+
+          Move-Item -Path $signedMsix.FullName -Destination $target
+
       - name: Validate MSIX output
         shell: pwsh
         run: |
@@ -120,11 +222,35 @@ jobs:
           }
           Write-Host "MSIX produced: $($files | Select-Object -ExpandProperty Name)"
 
+          $signedPackages = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\artifacts\msixs\${{ matrix.platform }}" -Filter *.msixs -File -ErrorAction SilentlyContinue
+          if (-not $signedPackages) {
+            throw 'No MSIXS package was produced.'
+          }
+          Write-Host "MSIXS produced: $($signedPackages | Select-Object -ExpandProperty Name)"
+
+          $signedExe = Get-Item -Path "$env:GITHUB_WORKSPACE\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe" -ErrorAction SilentlyContinue
+          if (-not $signedExe) {
+            throw 'No signed Be.HexEditor.exe was found.'
+          }
+          Write-Host "Signed executable produced: $($signedExe.Name)"
+
       - name: Upload MSIX artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-store-msix-${{ matrix.platform }}
           path: artifacts/msix/${{ matrix.platform }}/*.msix
+
+      - name: Upload MSIXS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-signed-msix-${{ matrix.platform }}
+          path: artifacts/msixs/${{ matrix.platform }}/*.msixs
+
+      - name: Upload signed executable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-signed-exe-${{ matrix.platform }}
+          path: artifacts/publish/${{ matrix.platform }}/Be.HexEditor.exe
 
   bundle:
     runs-on: windows-latest
@@ -233,93 +359,3 @@ jobs:
             release-assets/msix/arm64/*.msix
             release-assets/bundle/*.msixbundle
 
-  blob:
-    runs-on: windows-latest
-    needs:
-      - publish
-      - bundle
-    environment: production
-
-    steps:
-      - name: Download x86 MSIX
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-store-msix-x86
-          path: blob-assets/x86
-
-      - name: Download x64 MSIX
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-store-msix-x64
-          path: blob-assets/x64
-
-      - name: Download arm64 MSIX
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-store-msix-arm64
-          path: blob-assets/arm64
-
-      - name: Download MSIX bundle
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-store-msix-bundle
-          path: blob-assets/bundle
-
-      - name: Azure login
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
-      - name: Upload MSIX and bundle files to Blob Storage
-        shell: pwsh
-        env:
-          AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
-          AZURE_STORAGE_CONTAINER: ${{ vars.AZURE_STORAGE_CONTAINER }}
-        run: |
-          if ([string]::IsNullOrWhiteSpace($env:AZURE_STORAGE_ACCOUNT)) {
-            throw 'Repository variable AZURE_STORAGE_ACCOUNT is required.'
-          }
-
-          if ([string]::IsNullOrWhiteSpace($env:AZURE_STORAGE_CONTAINER)) {
-            throw 'Repository variable AZURE_STORAGE_CONTAINER is required.'
-          }
-
-          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -File -Recurse |
-            Where-Object { $_.Extension -in @('.msix', '.msixbundle') }
-          if (-not $files) {
-            throw 'No MSIX or MSIX bundle files were downloaded for Blob upload.'
-          }
-
-          foreach ($file in $files) {
-            $blobName = "$env:BLOB_PREFIX/$($file.Name)"
-            if ($file.Extension -eq '.msixbundle') {
-              $contentType = 'application/vns.ms-appx'
-            } else {
-              $contentType = 'application/x-msix'
-            }
-
-            az storage blob upload --account-name $env:AZURE_STORAGE_ACCOUNT --container-name $env:AZURE_STORAGE_CONTAINER --name $blobName --file $file.FullName --overwrite true --auth-mode login --content-type $contentType | Out-Null
-          }
-
-      - name: Print direct download URLs
-        shell: pwsh
-        env:
-          AZURE_STORAGE_ACCOUNT: ${{ vars.AZURE_STORAGE_ACCOUNT }}
-          AZURE_STORAGE_CONTAINER: ${{ vars.AZURE_STORAGE_CONTAINER }}
-        run: |
-          $files = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\blob-assets" -File -Recurse |
-            Where-Object { $_.Extension -in @('.msix', '.msixbundle') } |
-            Sort-Object Name
-          $summaryLines = @(
-            "## Azure Blob MSIX URLs",
-            ""
-          )
-
-          foreach ($file in $files) {
-            $url = "https://$($env:AZURE_STORAGE_ACCOUNT).blob.core.windows.net/$($env:AZURE_STORAGE_CONTAINER)/$env:BLOB_PREFIX/$($file.Name)"
-            $summaryLines += "- $($file.Name): $url"
-          }
-
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value ($summaryLines -join [Environment]::NewLine)
