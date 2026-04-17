@@ -191,7 +191,8 @@ jobs:
           if ([string]::IsNullOrWhiteSpace($publisher)) {
             throw 'ARTIFACT_SIGNING_PUBLISHER is not set. Failed to resolve publisher from Trusted Signing certificate profile.'
           }
-          $manifestContent = $manifestContent -replace 'Publisher="[^"]+"', "Publisher=\"$publisher\""
+          $publisherReplacement = 'Publisher="{0}"' -f $publisher
+          $manifestContent = $manifestContent -replace 'Publisher="[^"]+"', $publisherReplacement
 
           Set-Content -Path (Join-Path $StagingDir "AppxManifest.xml") -Value $manifestContent -Encoding UTF8
 
