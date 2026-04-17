@@ -5,7 +5,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
 
 env:
   PRODUCT_VERSION: 2.0.${{ github.run_number }}
@@ -40,42 +39,6 @@ jobs:
 
       - name: Restore app project
         run: dotnet restore src/Be.HexEditor/Be.HexEditor.csproj --runtime ${{ matrix.runtime }}
-
-      - name: Validate signing configuration
-        shell: pwsh
-        env:
-          ARTIFACT_SIGNING_ENDPOINT: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
-          ARTIFACT_SIGNING_CERTIFICATE_PROFILE_VAR: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
-          ARTIFACT_SIGNING_CERTIFICATE_PROFILE_SECRET: ${{ secrets.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
-        run: |
-          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ENDPOINT)) {
-            throw 'Environment variable ARTIFACT_SIGNING_ENDPOINT is required.'
-          }
-
-          $profileFromVar = $env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE_VAR
-          $profileFromSecret = $env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE_SECRET
-          $resolvedProfile = $null
-
-          if (-not [string]::IsNullOrWhiteSpace($profileFromVar) -and $profileFromVar.Trim() -ne 'REPLACE_ME') {
-            $resolvedProfile = $profileFromVar.Trim()
-          }
-
-          if ([string]::IsNullOrWhiteSpace($resolvedProfile) -and -not [string]::IsNullOrWhiteSpace($profileFromSecret) -and $profileFromSecret.Trim() -ne 'REPLACE_ME') {
-            $resolvedProfile = $profileFromSecret.Trim()
-          }
-
-          if ([string]::IsNullOrWhiteSpace($resolvedProfile)) {
-            throw 'Set ARTIFACT_SIGNING_CERTIFICATE_PROFILE as a repository/environment variable, or set the ARTIFACT_SIGNING_CERTIFICATE_PROFILE secret.'
-          }
-
-          "ARTIFACT_SIGNING_CERTIFICATE_PROFILE=$resolvedProfile" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-
-      - name: Azure login
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Publish app
         shell: pwsh
@@ -147,84 +110,6 @@ jobs:
             throw "MakeAppx failed with exit code $LASTEXITCODE"
           }
 
-      - name: Sign published executable
-        uses: azure/artifact-signing-action@v1
-        with:
-          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
-          signing-account-name: hexboxsigning3573
-          certificate-profile-name: ${{ env.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
-          files: ${{ github.workspace }}\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe
-          file-digest: SHA256
-          timestamp-rfc3161: http://timestamp.acs.microsoft.com
-          timestamp-digest: SHA256
-          description: Be.HexEditor
-          description-url: https://github.com/bernharde/hexbox
-          exclude-environment-credential: true
-          exclude-workload-identity-credential: true
-          exclude-managed-identity-credential: true
-          exclude-shared-token-cache-credential: true
-          exclude-visual-studio-credential: true
-          exclude-visual-studio-code-credential: true
-          exclude-azure-cli-credential: false
-          exclude-azure-powershell-credential: true
-          exclude-azure-developer-cli-credential: true
-          exclude-interactive-browser-credential: true
-
-      - name: Create MSIXS candidate
-        shell: pwsh
-        run: |
-          $WorkspaceDir = $env:GITHUB_WORKSPACE
-          $MsixDir = Join-Path $WorkspaceDir "artifacts\msix\${{ matrix.platform }}"
-          $MsixsDir = Join-Path $WorkspaceDir "artifacts\msixs\${{ matrix.platform }}"
-          New-Item -ItemType Directory -Force -Path $MsixsDir | Out-Null
-
-          $sourceMsix = Get-ChildItem -Path $MsixDir -Filter *.msix -File -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $sourceMsix) {
-            throw 'No MSIX package found to create MSIXS candidate.'
-          }
-
-          $candidateMsix = Join-Path $MsixsDir ($sourceMsix.BaseName + '.msix')
-          Copy-Item -Path $sourceMsix.FullName -Destination $candidateMsix -Force
-
-      - name: Sign MSIXS candidate
-        uses: azure/artifact-signing-action@v1
-        with:
-          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
-          signing-account-name: hexboxsigning3573
-          certificate-profile-name: ${{ env.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
-          files: ${{ github.workspace }}\artifacts\msixs\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.msix
-          file-digest: SHA256
-          timestamp-rfc3161: http://timestamp.acs.microsoft.com
-          timestamp-digest: SHA256
-          description: Be.HexEditor MSIXS
-          description-url: https://github.com/bernharde/hexbox
-          exclude-environment-credential: true
-          exclude-workload-identity-credential: true
-          exclude-managed-identity-credential: true
-          exclude-shared-token-cache-credential: true
-          exclude-visual-studio-credential: true
-          exclude-visual-studio-code-credential: true
-          exclude-azure-cli-credential: false
-          exclude-azure-powershell-credential: true
-          exclude-azure-developer-cli-credential: true
-          exclude-interactive-browser-credential: true
-
-      - name: Rename signed package to MSIXS
-        shell: pwsh
-        run: |
-          $MsixsDir = Join-Path $env:GITHUB_WORKSPACE "artifacts\msixs\${{ matrix.platform }}"
-          $signedMsix = Get-ChildItem -Path $MsixsDir -Filter *.msix -File -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $signedMsix) {
-            throw 'No signed MSIX candidate found to rename as .msixs.'
-          }
-
-          $target = Join-Path $MsixsDir ($signedMsix.BaseName + '.msixs')
-          if (Test-Path $target) {
-            Remove-Item -Path $target -Force
-          }
-
-          Move-Item -Path $signedMsix.FullName -Destination $target
-
       - name: Validate MSIX output
         shell: pwsh
         run: |
@@ -234,35 +119,11 @@ jobs:
           }
           Write-Host "MSIX produced: $($files | Select-Object -ExpandProperty Name)"
 
-          $signedPackages = Get-ChildItem -Path "$env:GITHUB_WORKSPACE\artifacts\msixs\${{ matrix.platform }}" -Filter *.msixs -File -ErrorAction SilentlyContinue
-          if (-not $signedPackages) {
-            throw 'No MSIXS package was produced.'
-          }
-          Write-Host "MSIXS produced: $($signedPackages | Select-Object -ExpandProperty Name)"
-
-          $signedExe = Get-Item -Path "$env:GITHUB_WORKSPACE\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe" -ErrorAction SilentlyContinue
-          if (-not $signedExe) {
-            throw 'No signed Be.HexEditor.exe was found.'
-          }
-          Write-Host "Signed executable produced: $($signedExe.Name)"
-
       - name: Upload MSIX artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-store-msix-${{ matrix.platform }}
           path: artifacts/msix/${{ matrix.platform }}/*.msix
-
-      - name: Upload MSIXS artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-signed-msix-${{ matrix.platform }}
-          path: artifacts/msixs/${{ matrix.platform }}/*.msixs
-
-      - name: Upload signed executable artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-signed-exe-${{ matrix.platform }}
-          path: artifacts/publish/${{ matrix.platform }}/Be.HexEditor.exe
 
   bundle:
     runs-on: windows-latest
