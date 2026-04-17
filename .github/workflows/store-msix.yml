@@ -9,13 +9,12 @@ permissions:
 
 env:
   PRODUCT_VERSION: 2.0.${{ github.run_number }}
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   publish:
     runs-on: windows-latest
     environment: production
-    env:
-      RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE != 'REPLACE_ME' && vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE || secrets.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
     strategy:
       fail-fast: false
       matrix:
@@ -46,19 +45,30 @@ jobs:
         shell: pwsh
         env:
           ARTIFACT_SIGNING_ENDPOINT: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
-          ARTIFACT_SIGNING_CERTIFICATE_PROFILE: ${{ env.RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          ARTIFACT_SIGNING_CERTIFICATE_PROFILE_VAR: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          ARTIFACT_SIGNING_CERTIFICATE_PROFILE_SECRET: ${{ secrets.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
         run: |
           if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ENDPOINT)) {
             throw 'Environment variable ARTIFACT_SIGNING_ENDPOINT is required.'
           }
 
-          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE)) {
+          $profileFromVar = $env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE_VAR
+          $profileFromSecret = $env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE_SECRET
+          $resolvedProfile = $null
+
+          if (-not [string]::IsNullOrWhiteSpace($profileFromVar) -and $profileFromVar.Trim() -ne 'REPLACE_ME') {
+            $resolvedProfile = $profileFromVar.Trim()
+          }
+
+          if ([string]::IsNullOrWhiteSpace($resolvedProfile) -and -not [string]::IsNullOrWhiteSpace($profileFromSecret) -and $profileFromSecret.Trim() -ne 'REPLACE_ME') {
+            $resolvedProfile = $profileFromSecret.Trim()
+          }
+
+          if ([string]::IsNullOrWhiteSpace($resolvedProfile)) {
             throw 'Set ARTIFACT_SIGNING_CERTIFICATE_PROFILE as a repository/environment variable, or set the ARTIFACT_SIGNING_CERTIFICATE_PROFILE secret.'
           }
 
-          if ($env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE -eq 'REPLACE_ME') {
-            throw 'Environment variable ARTIFACT_SIGNING_CERTIFICATE_PROFILE must be replaced with a real certificate profile name.'
-          }
+          "ARTIFACT_SIGNING_CERTIFICATE_PROFILE=$resolvedProfile" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Azure login
         uses: azure/login@v2
@@ -142,7 +152,7 @@ jobs:
         with:
           endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
           signing-account-name: hexboxsigning3573
-          certificate-profile-name: ${{ env.RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          certificate-profile-name: ${{ env.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
           files: ${{ github.workspace }}\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe
           file-digest: SHA256
           timestamp-rfc3161: http://timestamp.acs.microsoft.com
@@ -181,7 +191,7 @@ jobs:
         with:
           endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
           signing-account-name: hexboxsigning3573
-          certificate-profile-name: ${{ env.RESOLVED_ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          certificate-profile-name: ${{ env.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
           files: ${{ github.workspace }}\artifacts\msixs\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.msix
           file-digest: SHA256
           timestamp-rfc3161: http://timestamp.acs.microsoft.com
