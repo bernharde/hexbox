@@ -388,7 +388,17 @@ namespace Be.HexEditor
 				Assembly assembly = Assembly.GetExecutingAssembly();
 
 				// Load version
-				var version = assembly.GetName().Version;
+                var fileInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+                var version = fileInfo.ProductVersion;
+                if (string.IsNullOrWhiteSpace(version))
+                    version = fileInfo.FileVersion;
+                if (string.IsNullOrWhiteSpace(version))
+                    version = assembly.GetName().Version?.ToString() ?? "unknown";
+
+                int metadataSeparator = version.IndexOf('+');
+                if (metadataSeparator > 0)
+                    version = version.Substring(0, metadataSeparator);
+
 				lblVersion.Text = $"Version: {version}";
 
 				// Load ThanksTo
