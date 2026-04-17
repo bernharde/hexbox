@@ -1,4 +1,4 @@
-name: store-msix
+name: msix-store
 
 on:
   workflow_dispatch:
