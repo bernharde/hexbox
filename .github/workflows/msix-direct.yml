@@ -44,6 +44,8 @@ jobs:
 
           echo "product_version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "release_tag=direct-msix-v$VERSION" >> "$GITHUB_OUTPUT"
+          echo "### Version: $VERSION" >> "$GITHUB_STEP_SUMMARY"
+          echo "Resolved version: $VERSION"
 
   publish:
     runs-on: windows-latest
