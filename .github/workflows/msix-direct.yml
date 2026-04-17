@@ -294,11 +294,18 @@ jobs:
           name: windows-direct-msix-${{ matrix.platform }}
           path: artifacts/msix/${{ matrix.platform }}/Be.HexEditor-${{ matrix.platform }}.msix
 
+      - name: Rename executable for release
+        shell: pwsh
+        run: |
+          $src = "$env:GITHUB_WORKSPACE\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe"
+          $dst = "$env:GITHUB_WORKSPACE\artifacts\publish\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.exe"
+          Rename-Item -Path $src -NewName (Split-Path $dst -Leaf)
+
       - name: Upload signed executable artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-direct-exe-${{ matrix.platform }}
-          path: artifacts/publish/${{ matrix.platform }}/Be.HexEditor.exe
+          path: artifacts/publish/${{ matrix.platform }}/Be.HexEditor-${{ matrix.platform }}.exe
 
   release:
     runs-on: ubuntu-latest
