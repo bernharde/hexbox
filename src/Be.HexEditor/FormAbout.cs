@@ -387,17 +387,17 @@ namespace Be.HexEditor
 			{
 				Assembly assembly = Assembly.GetExecutingAssembly();
 
-				// Load version
-                var fileInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-                var version = fileInfo.ProductVersion;
-                if (string.IsNullOrWhiteSpace(version))
-                    version = fileInfo.FileVersion;
-                if (string.IsNullOrWhiteSpace(version))
-                    version = assembly.GetName().Version?.ToString() ?? "unknown";
+				// Load version. Application.ProductVersion is resilient for single-file/MSIX hosts.
+				var version = Application.ProductVersion;
+				if (string.IsNullOrWhiteSpace(version))
+				{
+					var infoVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+					version = string.IsNullOrWhiteSpace(infoVersion) ? assembly.GetName().Version?.ToString() ?? "unknown" : infoVersion;
+				}
 
-                int metadataSeparator = version.IndexOf('+');
-                if (metadataSeparator > 0)
-                    version = version.Substring(0, metadataSeparator);
+				int metadataSeparator = version.IndexOf('+');
+				if (metadataSeparator > 0)
+					version = version.Substring(0, metadataSeparator);
 
 				lblVersion.Text = $"Version: {version}";
 

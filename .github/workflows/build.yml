@@ -70,13 +70,13 @@ jobs:
         run: dotnet restore src/hexbox.sln
 
       - name: Build
-        run: dotnet build src/hexbox.sln --configuration Release --no-restore /p:ContinuousIntegrationBuild=true /p:Version=${{ env.PRODUCT_VERSION }}
+        run: dotnet build src/hexbox.sln --configuration Release --no-restore /p:ContinuousIntegrationBuild=true /p:Version=${{ env.PRODUCT_VERSION }} /p:AssemblyVersion=${{ env.PRODUCT_VERSION }}.0 /p:FileVersion=${{ env.PRODUCT_VERSION }}.0 /p:InformationalVersion=${{ env.PRODUCT_VERSION }}
 
       - name: Pack Be.Windows.Forms.HexBox
         run: dotnet pack src/Be.Windows.Forms.HexBox/Be.Windows.Forms.HexBox.csproj --configuration Release --no-build --output artifacts/nuget /p:ContinuousIntegrationBuild=true /p:PackageVersion=${{ env.PRODUCT_VERSION }}
 
       - name: Publish Be.HexEditor small self-contained artifact
-        run: dotnet publish src/Be.HexEditor/Be.HexEditor.csproj -p:PublishProfile=SmallSelfContained -p:Version=${{ env.PRODUCT_VERSION }} --output artifacts/publish/Be.HexEditor/SmallSelfContained
+        run: dotnet publish src/Be.HexEditor/Be.HexEditor.csproj -p:PublishProfile=SmallSelfContained -p:Version=${{ env.PRODUCT_VERSION }} -p:AssemblyVersion=${{ env.PRODUCT_VERSION }}.0 -p:FileVersion=${{ env.PRODUCT_VERSION }}.0 -p:InformationalVersion=${{ env.PRODUCT_VERSION }} --output artifacts/publish/Be.HexEditor/SmallSelfContained
 
       - name: Upload NuGet artifacts
         uses: actions/upload-artifact@v4

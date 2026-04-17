@@ -157,7 +157,7 @@ jobs:
         shell: pwsh
         run: |
           $PublishDir = Join-Path $env:GITHUB_WORKSPACE "artifacts\publish\${{ matrix.platform }}"
-          dotnet publish src/Be.HexEditor/Be.HexEditor.csproj --configuration Release --runtime ${{ matrix.runtime }} --self-contained true /p:Version=$env:PRODUCT_VERSION /p:PublishSingleFile=true /p:EnableCompressionInSingleFile=true /p:PublishTrimmed=false /p:DebugType=none /p:DebugSymbols=false --output $PublishDir
+          dotnet publish src/Be.HexEditor/Be.HexEditor.csproj --configuration Release --runtime ${{ matrix.runtime }} --self-contained true /p:Version=$env:PRODUCT_VERSION /p:AssemblyVersion=$env:PRODUCT_VERSION.0 /p:FileVersion=$env:PRODUCT_VERSION.0 /p:InformationalVersion=$env:PRODUCT_VERSION /p:PublishSingleFile=true /p:EnableCompressionInSingleFile=true /p:PublishTrimmed=false /p:DebugType=none /p:DebugSymbols=false --output $PublishDir
 
       - name: Sign published executable
         uses: azure/artifact-signing-action@v1
