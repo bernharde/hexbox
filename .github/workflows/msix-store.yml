@@ -10,6 +10,11 @@ on:
         description: 'Release version (for example 2.0.11). If empty on tag runs, version comes from tag vX.Y.Z.'
         required: false
         type: string
+      create_github_release:
+        description: 'Set to true to publish a GitHub Release for this run.'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -234,6 +239,7 @@ jobs:
       - version
       - publish
       - bundle
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.create_github_release == 'true'
     environment: production
     env:
       PRODUCT_VERSION: ${{ needs.version.outputs.product_version }}
