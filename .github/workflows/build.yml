@@ -24,6 +24,11 @@ jobs:
       product_version: ${{ steps.resolve.outputs.product_version }}
       release_tag: ${{ steps.resolve.outputs.release_tag }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Resolve release version
         id: resolve
         shell: bash
@@ -31,7 +36,8 @@ jobs:
           if [[ "${GITHUB_REF_TYPE}" == "tag" && "${GITHUB_REF_NAME}" =~ ^v ]]; then
             VERSION="${GITHUB_REF_NAME#v}"
           else
-            VERSION="2.0.${GITHUB_RUN_NUMBER}"
+            COMMIT_COUNT=$(git rev-list --count HEAD)
+            VERSION="2.0.${COMMIT_COUNT}"
           fi
 
           if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
