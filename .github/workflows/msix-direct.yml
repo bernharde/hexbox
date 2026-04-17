@@ -1,0 +1,319 @@
+name: msix-direct
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+env:
+  PRODUCT_VERSION: 2.0.${{ github.run_number }}
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    environment: production
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: x86
+            runtime: win-x86
+            arch: x86
+          - platform: x64
+            runtime: win-x64
+            arch: x64
+          - platform: arm64
+            runtime: win-arm64
+            arch: arm64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore app project
+        run: dotnet restore src/Be.HexEditor/Be.HexEditor.csproj --runtime ${{ matrix.runtime }}
+
+      - name: Validate signing configuration
+        shell: pwsh
+        env:
+          ARTIFACT_SIGNING_ENDPOINT: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          ARTIFACT_SIGNING_ACCOUNT_NAME: ${{ vars.ARTIFACT_SIGNING_ACCOUNT_NAME }}
+          ARTIFACT_SIGNING_CERTIFICATE_PROFILE_VAR: ${{ vars.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          ARTIFACT_SIGNING_CERTIFICATE_PROFILE_SECRET: ${{ secrets.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ENDPOINT)) {
+            throw 'Environment variable ARTIFACT_SIGNING_ENDPOINT is required.'
+          }
+
+          if ([string]::IsNullOrWhiteSpace($env:ARTIFACT_SIGNING_ACCOUNT_NAME)) {
+            throw 'Environment variable ARTIFACT_SIGNING_ACCOUNT_NAME is required.'
+          }
+
+          $profileFromVar = $env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE_VAR
+          $profileFromSecret = $env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE_SECRET
+          $resolvedProfile = $null
+
+          if (-not [string]::IsNullOrWhiteSpace($profileFromVar) -and $profileFromVar.Trim() -ne 'REPLACE_ME') {
+            $resolvedProfile = $profileFromVar.Trim()
+          }
+
+          if ([string]::IsNullOrWhiteSpace($resolvedProfile) -and -not [string]::IsNullOrWhiteSpace($profileFromSecret) -and $profileFromSecret.Trim() -ne 'REPLACE_ME') {
+            $resolvedProfile = $profileFromSecret.Trim()
+          }
+
+          if ([string]::IsNullOrWhiteSpace($resolvedProfile)) {
+            throw 'Set ARTIFACT_SIGNING_CERTIFICATE_PROFILE as a repository/environment variable, or set the ARTIFACT_SIGNING_CERTIFICATE_PROFILE secret.'
+          }
+
+          "ARTIFACT_SIGNING_CERTIFICATE_PROFILE=$resolvedProfile" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Resolve publisher from Trusted Signing profile
+        shell: pwsh
+        env:
+          ARTIFACT_SIGNING_ACCOUNT_NAME: ${{ vars.ARTIFACT_SIGNING_ACCOUNT_NAME }}
+        run: |
+          $accountName = $env:ARTIFACT_SIGNING_ACCOUNT_NAME
+          $profileName = $env:ARTIFACT_SIGNING_CERTIFICATE_PROFILE
+
+          $accountId = az resource list --name $accountName --resource-type Microsoft.CodeSigning/codeSigningAccounts --query "[0].id" -o tsv
+          if ([string]::IsNullOrWhiteSpace($accountId)) {
+            throw "Trusted Signing account '$accountName' was not found in the current subscription."
+          }
+
+          $token = az account get-access-token --resource "https://management.azure.com" --query accessToken -o tsv
+          if ([string]::IsNullOrWhiteSpace($token)) {
+            throw 'Failed to acquire Azure access token.'
+          }
+
+          $uri = "https://management.azure.com$accountId/certificateProfiles/${profileName}?api-version=2024-09-30-preview"
+          $profile = Invoke-RestMethod -Uri $uri -Headers @{ Authorization = "Bearer $token" } -Method Get
+
+          $publisher = $profile.properties.certificates |
+            Where-Object { $_.status -eq 'Active' } |
+            Select-Object -First 1 -ExpandProperty subjectName
+
+          if ([string]::IsNullOrWhiteSpace($publisher)) {
+            $publisher = $profile.properties.certificates | Select-Object -First 1 -ExpandProperty subjectName
+          }
+
+          if ([string]::IsNullOrWhiteSpace($publisher)) {
+            throw "No certificate subject name was found for profile '$profileName'."
+          }
+
+          "ARTIFACT_SIGNING_PUBLISHER=$publisher" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Publish app
+        shell: pwsh
+        run: |
+          $PublishDir = Join-Path $env:GITHUB_WORKSPACE "artifacts\publish\${{ matrix.platform }}"
+          dotnet publish src/Be.HexEditor/Be.HexEditor.csproj --configuration Release --runtime ${{ matrix.runtime }} --self-contained true /p:PublishSingleFile=true /p:EnableCompressionInSingleFile=true /p:PublishTrimmed=false /p:DebugType=none /p:DebugSymbols=false --output $PublishDir
+
+      - name: Sign published executable
+        uses: azure/artifact-signing-action@v1
+        with:
+          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.ARTIFACT_SIGNING_ACCOUNT_NAME }}
+          certificate-profile-name: ${{ env.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          files: ${{ github.workspace }}\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
+          description: Be.HexEditor
+          description-url: https://github.com/bernharde/hexbox
+          exclude-environment-credential: true
+          exclude-workload-identity-credential: true
+          exclude-managed-identity-credential: true
+          exclude-shared-token-cache-credential: true
+          exclude-visual-studio-credential: true
+          exclude-visual-studio-code-credential: true
+          exclude-azure-cli-credential: false
+          exclude-azure-powershell-credential: true
+          exclude-azure-developer-cli-credential: true
+          exclude-interactive-browser-credential: true
+
+      - name: Create MSIX package
+        shell: pwsh
+        run: |
+          $WorkspaceDir    = $env:GITHUB_WORKSPACE
+          $PublishDir      = Join-Path $WorkspaceDir "artifacts\publish\${{ matrix.platform }}"
+          $StagingDir      = Join-Path $WorkspaceDir "artifacts\msix-staging\${{ matrix.platform }}"
+          $OutputDir       = Join-Path $WorkspaceDir "artifacts\msix\${{ matrix.platform }}"
+          $AssetsDir       = Join-Path $StagingDir "Assets"
+
+          New-Item -ItemType Directory -Force -Path $StagingDir | Out-Null
+          New-Item -ItemType Directory -Force -Path $OutputDir  | Out-Null
+          New-Item -ItemType Directory -Force -Path $AssetsDir  | Out-Null
+
+          Copy-Item "$PublishDir\*" -Destination $StagingDir -Recurse -Force
+
+          $SourceAssets = Join-Path $WorkspaceDir "src\Be.HexEditor\Package\Assets"
+          if (Test-Path $SourceAssets) {
+            Copy-Item "$SourceAssets\*" -Destination $AssetsDir -Recurse -Force
+          } else {
+            Add-Type -AssemblyName System.Drawing
+            $sizes = @{
+              "Square44x44Logo.png"     = [System.Drawing.Size]::new(44, 44)
+              "Square150x150Logo.png"   = [System.Drawing.Size]::new(150, 150)
+              "Wide310x150Logo.png"     = [System.Drawing.Size]::new(310, 150)
+              "Square71x71Logo.png"     = [System.Drawing.Size]::new(71, 71)
+              "Square310x310Logo.png"   = [System.Drawing.Size]::new(310, 310)
+              "StoreLogo.png"           = [System.Drawing.Size]::new(50, 50)
+              "SplashScreen.png"        = [System.Drawing.Size]::new(620, 300)
+            }
+            foreach ($entry in $sizes.GetEnumerator()) {
+              $bmp = New-Object System.Drawing.Bitmap($entry.Value.Width, $entry.Value.Height)
+              $bmp.Save((Join-Path $AssetsDir $entry.Key), [System.Drawing.Imaging.ImageFormat]::Png)
+              $bmp.Dispose()
+            }
+          }
+
+          $manifestSrc = Join-Path $WorkspaceDir "src\Be.HexEditor\Package\AppxManifest.xml"
+          $manifestContent = Get-Content $manifestSrc -Raw -Encoding UTF8
+          $manifestContent = $manifestContent -replace '\{\{VERSION\}\}', "${{ env.PRODUCT_VERSION }}.0"
+          $manifestContent = $manifestContent -replace '\{\{ARCH\}\}',    "${{ matrix.arch }}"
+
+          $publisher = $env:ARTIFACT_SIGNING_PUBLISHER
+          if ([string]::IsNullOrWhiteSpace($publisher)) {
+            throw 'ARTIFACT_SIGNING_PUBLISHER is not set. Failed to resolve publisher from Trusted Signing certificate profile.'
+          }
+          $manifestContent = $manifestContent -replace 'Publisher="[^"]+"', "Publisher=\"$publisher\""
+
+          Set-Content -Path (Join-Path $StagingDir "AppxManifest.xml") -Value $manifestContent -Encoding UTF8
+
+          $makeAppx = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "makeappx.exe" -Recurse -ErrorAction SilentlyContinue |
+            Where-Object { $_.Directory.Name -eq "x64" } |
+            Sort-Object FullName -Descending |
+            Select-Object -First 1
+
+          if (-not $makeAppx) {
+            throw "makeappx.exe not found. Ensure the Windows SDK is installed on the runner."
+          }
+          Write-Host "Using MakeAppx: $($makeAppx.FullName)"
+
+          $OutputFile = Join-Path $OutputDir "Be.HexEditor-${{ matrix.platform }}.msix"
+          & $makeAppx.FullName pack /d $StagingDir /p $OutputFile
+          if ($LASTEXITCODE -ne 0) {
+            throw "MakeAppx failed with exit code $LASTEXITCODE"
+          }
+
+      - name: Sign MSIX package
+        uses: azure/artifact-signing-action@v1
+        with:
+          endpoint: ${{ vars.ARTIFACT_SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.ARTIFACT_SIGNING_ACCOUNT_NAME }}
+          certificate-profile-name: ${{ env.ARTIFACT_SIGNING_CERTIFICATE_PROFILE }}
+          files: ${{ github.workspace }}\artifacts\msix\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.msix
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
+          description: Be.HexEditor MSIX
+          description-url: https://github.com/bernharde/hexbox
+          exclude-environment-credential: true
+          exclude-workload-identity-credential: true
+          exclude-managed-identity-credential: true
+          exclude-shared-token-cache-credential: true
+          exclude-visual-studio-credential: true
+          exclude-visual-studio-code-credential: true
+          exclude-azure-cli-credential: false
+          exclude-azure-powershell-credential: true
+          exclude-azure-developer-cli-credential: true
+          exclude-interactive-browser-credential: true
+
+      - name: Validate direct artifacts
+        shell: pwsh
+        run: |
+          $msix = Get-Item -Path "$env:GITHUB_WORKSPACE\artifacts\msix\${{ matrix.platform }}\Be.HexEditor-${{ matrix.platform }}.msix" -ErrorAction SilentlyContinue
+          if (-not $msix) {
+            throw 'No signed MSIX package was produced.'
+          }
+
+          $exe = Get-Item -Path "$env:GITHUB_WORKSPACE\artifacts\publish\${{ matrix.platform }}\Be.HexEditor.exe" -ErrorAction SilentlyContinue
+          if (-not $exe) {
+            throw 'No signed Be.HexEditor.exe was found.'
+          }
+
+          Write-Host "Signed MSIX: $($msix.Name)"
+          Write-Host "Signed EXE:  $($exe.Name)"
+
+      - name: Upload signed MSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-direct-msix-${{ matrix.platform }}
+          path: artifacts/msix/${{ matrix.platform }}/Be.HexEditor-${{ matrix.platform }}.msix
+
+      - name: Upload signed executable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-direct-exe-${{ matrix.platform }}
+          path: artifacts/publish/${{ matrix.platform }}/Be.HexEditor.exe
+
+  release:
+    runs-on: ubuntu-latest
+    needs: publish
+    environment: production
+
+    steps:
+      - name: Download x86 signed MSIX
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-direct-msix-x86
+          path: release-assets/msix/x86
+
+      - name: Download x64 signed MSIX
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-direct-msix-x64
+          path: release-assets/msix/x64
+
+      - name: Download arm64 signed MSIX
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-direct-msix-arm64
+          path: release-assets/msix/arm64
+
+      - name: Download x86 signed EXE
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-direct-exe-x86
+          path: release-assets/exe/x86
+
+      - name: Download x64 signed EXE
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-direct-exe-x64
+          path: release-assets/exe/x64
+
+      - name: Download arm64 signed EXE
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-direct-exe-arm64
+          path: release-assets/exe/arm64
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: direct-msix-v${{ env.PRODUCT_VERSION }}
+          name: Direct MSIX v${{ env.PRODUCT_VERSION }}
+          generate_release_notes: true
+          files: |
+            release-assets/msix/x86/*.msix
+            release-assets/msix/x64/*.msix
+            release-assets/msix/arm64/*.msix
+            release-assets/exe/x86/*.exe
+            release-assets/exe/x64/*.exe
+            release-assets/exe/arm64/*.exe
