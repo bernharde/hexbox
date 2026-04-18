@@ -39,7 +39,7 @@
 		<EmbeddedResource Include="Locales\strings-zh-Hans.json" />
 		<EmbeddedResource Include="Locales\strings.json" />
 		<EmbeddedResource Include="Resources\Changes.rtf" />
-	
+
 		<EmbeddedResource Include="Resources\ThanksTo.rtf" />
 	</ItemGroup>
 
@@ -48,30 +48,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="FluentUI.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>FluentUI.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Properties\Settings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Settings.settings</DependentUpon>
-	  </Compile>
+		<Compile Update="FluentUI.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>FluentUI.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="FluentUI.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>FluentUI.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="FluentUI.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>FluentUI.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="Properties\Settings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-	  </None>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
 	</ItemGroup>
 
 </Project>
