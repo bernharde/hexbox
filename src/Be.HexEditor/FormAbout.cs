@@ -181,7 +181,7 @@ namespace Be.HexEditor
             lnkWebsite.Size = new Size(204, 15);
             lnkWebsite.TabIndex = 3;
             lnkWebsite.TabStop = true;
-            lnkWebsite.Text = "https://github.com/bemento/hexbox";
+            lnkWebsite.Text = "https://github.com/bernharde/hexbox";
             lnkWebsite.VisitedLinkColor = SystemColors.HotTrack;
             // 
             // aboutTabControl
