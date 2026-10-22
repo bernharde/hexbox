@@ -2423,6 +2423,7 @@ namespace Be.Windows.Forms
 		void PaintHex(Graphics g, long startByte, long endByte)
 		{
 			using (Brush brush = new SolidBrush(GetDefaultForeColor()))
+			using (Brush headerBrush = new SolidBrush(GetHeaderForeColor()))
 			using (Brush selBrush = new SolidBrush(_selectionForeColor))
 			using (Brush selBrushBack = new SolidBrush(_selectionBackColor))
 			{
@@ -2445,7 +2446,7 @@ namespace Be.Windows.Forms
 					}
 					else
 					{
-						PaintHexString(g, b, brush, gridPoint);
+						PaintHexString(g, b, i <= _headerEndOffset ? headerBrush : brush, gridPoint);
 					}
 				}
 			}
@@ -2483,6 +2484,7 @@ namespace Be.Windows.Forms
         void PaintHexAndStringView(Graphics g, long startByte, long endByte)
         {
             using (Brush brush = new SolidBrush(GetDefaultForeColor()))
+            using (Brush headerBrush = new SolidBrush(GetHeaderForeColor()))
             using (Brush selBrush = new SolidBrush(_selectionForeColor))
             using (Brush selBrushBack = new SolidBrush(_selectionBackColor))
             {
@@ -2498,6 +2500,7 @@ namespace Be.Windows.Forms
                     Point gridPoint = GetGridBytePoint(counter);
                     PointF byteStringPointF = GetByteStringPointF(gridPoint);
                     byte b = _byteProvider.ReadByte(i);
+                    Brush byteBrush = i <= _headerEndOffset ? headerBrush : brush;
 
                     bool isSelectedByte = i >= _bytePos && i <= (_bytePos + _selectionLength - 1) && _selectionLength != 0;
 
@@ -2507,7 +2510,7 @@ namespace Be.Windows.Forms
                     }
                     else
                     {
-                        PaintHexString(g, b, brush, gridPoint);
+                        PaintHexString(g, b, byteBrush, gridPoint);
                     }
 
                     string s = new String(ByteCharConverter.ToChar(b), 1);
@@ -2519,7 +2522,7 @@ namespace Be.Windows.Forms
                     }
                     else
                     {
-                        g.DrawString(s, Font, brush, byteStringPointF, _stringFormat);
+                        g.DrawString(s, Font, byteBrush, byteStringPointF, _stringFormat);
                     }
                 }
             }
@@ -2709,6 +2712,7 @@ namespace Be.Windows.Forms
         }
 
 		Color GetDefaultForeColor() => Enabled ? ForeColor : Color.Gray;
+		Color GetHeaderForeColor() => Enabled && !_headerColor.IsEmpty ? _headerColor : GetDefaultForeColor();
 		void UpdateVisibilityBytes()
 		{
 			if (_byteProvider == null || _byteProvider.Length == 0)
@@ -3339,6 +3343,35 @@ namespace Be.Windows.Forms
 			get { return _infoForeColor; }
 			set { _infoForeColor = value; Invalidate(); }
 		} Color _infoForeColor = Color.Gray;
+
+		/// <summary>
+		/// Gets or sets the foreground color of header bytes in the hex and string views.
+		/// Color.Empty uses ForeColor. Selection colors and disabled styling take precedence.
+		/// </summary>
+		[DefaultValue(typeof(Color), ""), Category("Hex"), Description("Gets or sets the header byte color. Color.Empty uses ForeColor.")]
+		public Color HeaderColor
+		{
+			get { return _headerColor; }
+			set { _headerColor = value; Invalidate(); }
+		} Color _headerColor = Color.Empty;
+
+		/// <summary>
+		/// Gets or sets the inclusive, zero-based last header byte offset. The default, -1, disables header coloring.
+		/// Offsets are relative to the byte provider, independent of scrolling and LineInfoOffset.
+		/// </summary>
+		[DefaultValue(typeof(long), "-1"), Category("Hex"), Description("Gets or sets the inclusive last header byte offset. -1 disables header coloring.")]
+		public long HeaderEndOffset
+		{
+			get { return _headerEndOffset; }
+			set
+			{
+				if (value < -1)
+					throw new ArgumentOutOfRangeException(nameof(value), "The header end offset must be -1 or greater.");
+
+				_headerEndOffset = value;
+				Invalidate();
+			}
+		} long _headerEndOffset = -1;
 
 		/// <summary>
 		/// Gets or sets the background color for the selected bytes.
